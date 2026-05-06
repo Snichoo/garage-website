@@ -1,0 +1,171 @@
+import Image from "next/image";
+
+const features = [
+  "Same-Day Repairs",
+  "All Garage Door Types",
+  "Transparent Pricing",
+];
+
+function CheckIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-5 w-5 text-emerald-400"
+      aria-hidden
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm4.78-12.97a.75.75 0 1 0-1.06-1.06L11 12.69l-2.22-2.22a.75.75 0 1 0-1.06 1.06l2.75 2.75a.75.75 0 0 0 1.06 0l5.25-5.25z"
+      />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-6 w-6"
+      aria-hidden
+    >
+      <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.41.6 3.69.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.53.6 3.69a1 1 0 0 1-.25 1.05l-2.23 2.05z" />
+    </svg>
+  );
+}
+
+export default function Hero() {
+  return (
+    <section className="relative isolate w-full overflow-hidden bg-brand-navy text-white">
+      <Image
+        src="/images/hero.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="-z-20 object-cover"
+      />
+      {/* Dark overlay for legibility */}
+      <div className="absolute inset-0 -z-10 bg-black/55" />
+
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 pb-16 pt-44 md:pb-24 md:pt-48 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:pt-36">
+        {/* Left: copy */}
+        <div className="flex flex-col gap-6">
+          <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
+            Leading Experts in
+            <br />
+            <span className="text-brand-yellow">
+              Garage Door Repairs
+            </span>
+          </h1>
+
+          {/* Google rating badge */}
+          <div className="flex w-fit items-center gap-3 rounded-md bg-white px-3 py-2 text-[#1E1E1E] shadow-md">
+            <Image
+              src="/images/google-g.png"
+              alt="Google"
+              width={36}
+              height={36}
+              className="h-9 w-9 object-contain"
+            />
+            <div className="leading-tight">
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-amber-500">★★★★★</span>
+                <span className="font-bold">4.9</span>
+              </div>
+              <div className="text-xs font-bold">Top Rated Garage Door Company</div>
+            </div>
+          </div>
+
+          <p className="text-lg font-bold md:text-xl">
+            Professional Garage Door Repairs Across Australia
+          </p>
+
+          <ul className="flex flex-wrap gap-x-6 gap-y-3">
+            {features.map((f) => (
+              <li key={f} className="flex items-center gap-2 text-sm font-bold md:text-base">
+                <CheckIcon />
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="tel:0412667147"
+            className="mt-2 inline-flex w-fit items-center gap-3 bg-brand-yellow px-6 py-4 font-display text-lg font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 md:text-xl"
+          >
+            <PhoneIcon />
+            Emergency Door Repairs – 0412 667 147
+          </a>
+        </div>
+
+        {/* Right: contact card */}
+        <div className="rounded-xl bg-white p-6 text-brand-black shadow-2xl md:p-8">
+          <h2 className="mb-6 text-center font-display text-2xl font-extrabold text-[#1E1E1E] md:text-3xl">
+            Need Help?{" "}
+            <span className="font-bold text-brand-navy">Ask The Pros</span>
+          </h2>
+
+          <form className="flex flex-col gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <input
+                type="text"
+                placeholder="Name"
+                className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
+              />
+              <input
+                type="tel"
+                placeholder="Phone"
+                className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
+              />
+              <select
+                defaultValue=""
+                className="w-full rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-500 outline-none transition focus:border-brand-navy"
+              >
+                <option value="" disabled>
+                  Select city
+                </option>
+                <option>Sydney</option>
+                <option>Melbourne</option>
+                <option>Brisbane</option>
+                <option>Perth</option>
+                <option>Adelaide</option>
+              </select>
+            </div>
+            <textarea
+              placeholder="Your Message"
+              rows={5}
+              className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
+            />
+            <button
+              type="submit"
+              className="mt-2 w-full bg-brand-yellow py-3 font-display text-base font-extrabold text-brand-navy transition hover:opacity-90 md:text-lg"
+            >
+              Send us a message
+            </button>
+            <p className="text-center text-[11px] text-neutral-500">
+              This site is protected by reCAPTCHA and the Google{" "}
+              <a className="text-brand-navy underline" href="#">
+                Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a className="text-brand-navy underline" href="#">
+                Terms of Service
+              </a>{" "}
+              apply.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
