@@ -1,10 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type Card = {
   title: string;
   src: string;
   alt: string;
   items: string[];
+  href: string;
 };
 
 const cards: Card[] = [
@@ -18,6 +20,7 @@ const cards: Card[] = [
       "Custom Designs & Colours",
       "Remote Control Setup",
     ],
+    href: "/residential",
   },
   {
     title: "Emergency Door Repairs - 0412 667 147",
@@ -29,6 +32,7 @@ const cards: Card[] = [
       "Cable, roller & track repair",
       "Same-day service available",
     ],
+    href: "/emergency-repairs",
   },
   {
     title: "Automated Gates",
@@ -40,6 +44,7 @@ const cards: Card[] = [
       "Intercom & keypad integration",
       "Repairs & servicing",
     ],
+    href: "/automated-gates",
   },
   {
     title: "Smart Kits",
@@ -51,6 +56,7 @@ const cards: Card[] = [
       "Smart sensors & cameras",
       "Retrofit existing systems",
     ],
+    href: "/smart-kits",
   },
 ];
 
@@ -77,7 +83,7 @@ export default function Services() {
     <section className="relative w-full overflow-hidden py-12 md:py-16">
       <div className="relative mx-auto max-w-[1200px] px-6">
         {/* Heading */}
-        <div className="relative mb-12 h-[120px] md:h-[160px]">
+        <div className="relative mb-10 h-[88px] md:mb-12 md:h-[160px]">
           <h2 className="outlined-text absolute left-0 top-0 select-none font-display text-[68px] font-extrabold leading-none tracking-tight md:text-[120px]">
             SERVICES
           </h2>
@@ -87,11 +93,11 @@ export default function Services() {
         </div>
 
         {/* Service cards */}
-        <div className="mx-auto grid max-w-[900px] grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6">
+        <div className="mx-auto grid max-w-[820px] grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6">
           {cards.map((c) => (
             <article
               key={c.title}
-              className="flex flex-col bg-brand-navy text-white shadow-md"
+              className="mx-auto flex w-full max-w-[360px] flex-col bg-brand-navy text-white shadow-md sm:max-w-none"
             >
               <div className="relative aspect-[16/10] w-full">
                 <Image
@@ -120,12 +126,34 @@ export default function Services() {
                   ))}
                 </ul>
 
-                <a
-                  href="#contact"
-                  className="mt-auto inline-block bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg"
-                >
-                  GET A FREE QUOTE
-                </a>
+                <div className="mt-auto flex flex-col gap-3">
+                  <a
+                    href="#contact"
+                    className="inline-block bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg"
+                  >
+                    GET A FREE QUOTE
+                  </a>
+                  <Link
+                    href={c.href}
+                    className="group inline-flex items-center justify-center gap-2 text-center font-display text-sm font-bold uppercase tracking-wide text-white/90 underline-offset-4 transition hover:text-brand-yellow hover:underline"
+                  >
+                    Learn More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                      aria-hidden
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </article>
           ))}

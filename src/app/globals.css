@@ -46,9 +46,42 @@ body {
       );
 }
 
+/* Navy variant of the garage-door panel background */
+.garage-bg-navy {
+  background-color: #0f2747;
+  background-image:
+    /* top hairline highlight on each panel */
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 96px
+    ),
+    /* bottom hairline shadow on each panel */
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 94px,
+        rgba(0, 0, 0, 0.35) 94px,
+        rgba(0, 0, 0, 0.35) 96px
+      ),
+    /* gentle vertical shading inside each panel */
+      repeating-linear-gradient(
+        to bottom,
+        #15355e 0px,
+        #0d2244 48px,
+        #15355e 96px
+      );
+}
+
 /* Outlined display heading */
 .outlined-text {
   color: #d8d8d8;
+}
+
+.outlined-text-navy {
+  color: rgba(255, 255, 255, 0.18);
 }
 
 .mask-gradient {

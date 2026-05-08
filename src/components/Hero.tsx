@@ -52,14 +52,14 @@ export default function Hero() {
       {/* Dark overlay for legibility */}
       <div className="absolute inset-0 -z-10 bg-black/55" />
 
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 pb-16 pt-44 md:pb-24 md:pt-48 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:pt-36">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-6 pb-12 pt-32 md:gap-10 md:pb-24 md:pt-48 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:pt-36">
         {/* Left: copy */}
-        <div className="flex flex-col gap-6">
-          <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
-            Leading Experts in
+        <div className="flex flex-col gap-5 md:gap-6">
+          <h1 className="font-display text-[34px] font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
+            Brisbane&apos;s Trusted
             <br />
             <span className="text-brand-yellow">
-              Garage Door Repairs
+              Garage Door Specialists
             </span>
           </h1>
 
@@ -81,10 +81,6 @@ export default function Hero() {
             </div>
           </div>
 
-          <p className="text-lg font-bold md:text-xl">
-            Professional Garage Door Repairs Across Australia
-          </p>
-
           <ul className="flex flex-wrap gap-x-6 gap-y-3">
             {features.map((f) => (
               <li key={f} className="flex items-center gap-2 text-sm font-bold md:text-base">
@@ -96,10 +92,11 @@ export default function Hero() {
 
           <a
             href="tel:0412667147"
-            className="mt-2 inline-flex w-fit items-center gap-3 bg-brand-yellow px-6 py-4 font-display text-lg font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 md:text-xl"
+            className="mt-2 inline-flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-lg md:text-xl"
           >
             <PhoneIcon />
-            Emergency Door Repairs – 0412 667 147
+            <span className="sm:hidden">Emergency Repairs – 0412 667 147</span>
+            <span className="hidden sm:inline">Emergency Door Repairs – 0412 667 147</span>
           </a>
         </div>
 
