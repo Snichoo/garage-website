@@ -41,7 +41,7 @@ const IMAGE_SHAPE = "4px 40% 4px 40%";
 
 export default function CtaBanner() {
   return (
-    <section className="garage-bg relative w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden">
       {/* ── Brand-navy background panel ── */}
       {/* Full height on mobile, starts 160px down on desktop so image pokes above */}
       <div className="absolute inset-x-0 bottom-0 top-[110px] overflow-hidden bg-brand-navy md:top-[160px]">

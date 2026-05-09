@@ -20,7 +20,7 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: "Sparrow Garage Doors",
-  description: "Industrial, residential, and emergency garage door services.",
+  description: "Sparrow Garage Doors offers expert installation, repair, and 24/7 emergency service for residential and commercial garage doors. Trusted local specialists.",
   icons: {
     icon: [
       { url: "/favicon/favicon.ico", sizes: "any", type: "image/x-icon" },
