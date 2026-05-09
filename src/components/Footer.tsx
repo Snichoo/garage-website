@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { suburbs } from "@/data/suburbs";
 
 function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -18,24 +20,23 @@ const services = [
   { label: "Sectional Garage Doors", href: "/sectional-garage-doors" },
   { label: "Roller Doors", href: "/roller-doors" },
   { label: "Tilt Doors", href: "/tilt-doors" },
+  { label: "Automated Gates", href: "/automated-gates" },
+  { label: "Smart Kits", href: "/smart-kits" },
+  { label: "Emergency Repairs", href: "/emergency-repairs" },
 ];
 
 const company = [
   { label: "About Us", href: "/#about" },
   { label: "Services", href: "/#services" },
-  { label: "Contact Us", href: "/#contact" },
+  { label: "Contact Us", href: "/contact" },
   { label: "FAQs", href: "/#faq" },
 ];
 
-const suburbs = [
-  "Ashgrove",
-  "Jindalee",
-  "Wynnum",
-  "Morayfield",
-  "McDowall",
-];
+type FooterProps = {
+  suburb?: string;
+};
 
-export default function Footer() {
+export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
   const year = new Date().getFullYear();
 
   return (
@@ -58,7 +59,7 @@ export default function Footer() {
               />
             </a>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/80 md:text-base">
-              Brisbane&apos;s trusted experts in garage doors. Quality
+              {suburb}&apos;s trusted experts in garage doors. Quality
               installation, reliable servicing, and friendly local advice — for
               homes and businesses across South East Queensland.
             </p>
@@ -118,12 +119,14 @@ export default function Footer() {
               Servicing Suburbs
             </h3>
             <ul className="mt-5 space-y-3">
-              {suburbs.map((suburb) => (
-                <li
-                  key={suburb}
-                  className="font-display text-base font-semibold text-white/85"
-                >
-                  {suburb}
+              {suburbs.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/suburbs/${s.slug}`}
+                    className="font-display text-base font-semibold text-white/85 transition hover:text-brand-yellow"
+                  >
+                    {s.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -135,7 +138,7 @@ export default function Footer() {
           <div className="flex flex-col items-center justify-between gap-3 text-xs text-white/60 md:flex-row md:text-sm">
             <p>© {year} All rights reserved.</p>
             <p className="font-display tracking-wide">
-              Servicing Brisbane &amp; surrounds
+              Servicing {suburb} &amp; surrounds
             </p>
           </div>
         </div>

@@ -7,6 +7,7 @@ type Card = {
   alt: string;
   items: string[];
   href: string;
+  imagePosition?: string;
 };
 
 const cards: Card[] = [
@@ -57,6 +58,7 @@ const cards: Card[] = [
       "Retrofit existing systems",
     ],
     href: "/smart-kits",
+    imagePosition: "object-left",
   },
 ];
 
@@ -97,28 +99,34 @@ export default function Services() {
           {cards.map((c) => (
             <article
               key={c.title}
-              className="mx-auto flex w-full max-w-[360px] flex-col bg-brand-navy text-white shadow-md sm:max-w-none"
+              className="group mx-auto flex w-full max-w-[360px] flex-col bg-brand-navy text-white shadow-md transition hover:shadow-xl sm:max-w-none"
             >
-              <div className="relative aspect-[16/10] w-full">
+              <Link
+                href={c.href}
+                aria-label={c.title}
+                className="relative block aspect-[16/10] w-full overflow-hidden"
+              >
                 <Image
                   src={c.src}
                   alt={c.alt}
                   fill
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                  className="object-cover object-[center_70%]"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  className={`object-cover transition duration-300 group-hover:scale-105 ${c.imagePosition ?? "object-[center_70%]"}`}
                 />
-              </div>
+              </Link>
 
-              <div className="flex flex-1 flex-col gap-6 p-6 md:p-8">
-                <h3 className="font-display text-2xl font-extrabold leading-tight text-brand-yellow md:text-3xl">
-                  {c.title}
+              <div className="flex flex-1 flex-col gap-5 p-5 md:p-6">
+                <h3 className="font-display text-xl font-extrabold leading-tight text-brand-yellow md:text-2xl">
+                  <Link href={c.href} className="transition hover:underline">
+                    {c.title}
+                  </Link>
                 </h3>
 
-                <ul className="flex flex-col gap-4">
+                <ul className="flex flex-col gap-3">
                   {c.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 text-sm font-bold leading-snug text-white md:text-[15px]"
+                      className="flex items-start gap-3 text-sm font-bold leading-snug text-white"
                     >
                       <BulletIcon />
                       <span>{item}</span>
@@ -129,13 +137,13 @@ export default function Services() {
                 <div className="mt-auto flex flex-col gap-3">
                   <a
                     href="#contact"
-                    className="inline-block bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg"
+                    className="inline-block bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
                   >
                     GET A FREE QUOTE
                   </a>
                   <Link
                     href={c.href}
-                    className="group inline-flex items-center justify-center gap-2 text-center font-display text-sm font-bold uppercase tracking-wide text-white/90 underline-offset-4 transition hover:text-brand-yellow hover:underline"
+                    className="group/learn inline-flex items-center justify-center gap-2 text-center font-display text-sm font-bold uppercase tracking-wide text-white/90 underline-offset-4 transition hover:text-brand-yellow hover:underline"
                   >
                     Learn More
                     <svg
@@ -146,7 +154,7 @@ export default function Services() {
                       strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                      className="h-3.5 w-3.5 transition-transform group-hover/learn:translate-x-1"
                       aria-hidden
                     >
                       <path d="M5 12h14" />

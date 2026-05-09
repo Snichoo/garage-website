@@ -38,7 +38,11 @@ function PhoneIcon() {
   );
 }
 
-export default function Hero() {
+type HeroProps = {
+  suburb?: string;
+};
+
+export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
   return (
     <section className="relative isolate w-full overflow-hidden bg-brand-navy text-white">
       <Image
@@ -56,7 +60,7 @@ export default function Hero() {
         {/* Left: copy */}
         <div className="flex flex-col gap-5 md:gap-6">
           <h1 className="font-display text-[34px] font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
-            Brisbane&apos;s Trusted
+            {suburb}&apos;s Trusted
             <br />
             <span className="text-brand-yellow">
               Garage Door Specialists

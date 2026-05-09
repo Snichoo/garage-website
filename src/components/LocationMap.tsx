@@ -1,5 +1,9 @@
-export default function LocationMap() {
-  const address = "1/24 Lisburn St, East Brisbane QLD 4169";
+type LocationMapProps = {
+  query?: string;
+};
+
+export default function LocationMap({ query }: LocationMapProps = {}) {
+  const address = query ?? "1/24 Lisburn St, East Brisbane QLD 4169";
   const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
     address,
   )}&output=embed`;

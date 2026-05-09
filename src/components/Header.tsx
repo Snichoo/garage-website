@@ -10,7 +10,7 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { label: "About Us", href: "/#about" },
+  { label: "About Us", href: "/about" },
   {
     label: "Services",
     href: "/#services",
@@ -18,9 +18,12 @@ const navItems: NavItem[] = [
       { label: "Sectional Garage Doors", href: "/sectional-garage-doors" },
       { label: "Roller Doors", href: "/roller-doors" },
       { label: "Tilt Doors", href: "/tilt-doors" },
+      { label: "Automated Gates", href: "/automated-gates" },
+      { label: "Smart Kits", href: "/smart-kits" },
+      { label: "Emergency Service", href: "/emergency-repairs" },
     ],
   },
-  { label: "Contact Us", href: "/#contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 function ChevronDown() {

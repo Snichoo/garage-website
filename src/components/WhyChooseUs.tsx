@@ -2,37 +2,25 @@ import Image from "next/image";
 
 function Shield100() {
   return (
-    <div className="relative h-[122px] w-28">
-      <svg
-        viewBox="0 0 100 110"
-        className="absolute inset-0 h-full w-full drop-shadow-md"
-      >
-        <path
-          d="M50 4 L92 18 L92 56 C92 82 72 100 50 106 C28 100 8 82 8 56 L8 18 Z"
-          fill="#15355E"
-          stroke="#FDD710"
-          strokeWidth="3"
-        />
-      </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center font-display font-extrabold leading-none text-brand-yellow">
-        <span className="text-2xl">100%</span>
-        <span className="mt-0.5 text-[9px] uppercase tracking-widest">
-          Guaranteed
-        </span>
-      </div>
-    </div>
+    <Image
+      src="/images/guarantee.png"
+      alt="100% Guaranteed"
+      width={300}
+      height={300}
+      className="h-32 w-32 object-contain mix-blend-multiply md:h-40 md:w-40"
+    />
   );
 }
 
 function Ring247() {
   return (
-    <div className="relative flex h-28 w-28 items-center justify-center rounded-full bg-brand-navy font-display text-2xl font-extrabold text-brand-yellow shadow-[0_0_0_4px_rgba(253,215,16,0.4)]">
-      24/7
-      <span className="absolute left-1/2 top-2 h-1.5 w-0.5 -translate-x-1/2 rounded bg-brand-yellow" />
-      <span className="absolute bottom-2 left-1/2 h-1.5 w-0.5 -translate-x-1/2 rounded bg-brand-yellow" />
-      <span className="absolute left-2 top-1/2 h-0.5 w-1.5 -translate-y-1/2 rounded bg-brand-yellow" />
-      <span className="absolute right-2 top-1/2 h-0.5 w-1.5 -translate-y-1/2 rounded bg-brand-yellow" />
-    </div>
+    <Image
+      src="/images/247.png"
+      alt="Available 24/7"
+      width={300}
+      height={300}
+      className="h-32 w-32 object-contain mix-blend-multiply md:h-40 md:w-40"
+    />
   );
 }
 
@@ -74,7 +62,11 @@ function PlaceholderArt({ label, tall = false }: { label: string; tall?: boolean
   );
 }
 
-export default function WhyChooseUs() {
+type WhyChooseUsProps = {
+  suburb?: string;
+};
+
+export default function WhyChooseUs({ suburb = "Brisbane" }: WhyChooseUsProps = {}) {
   return (
     <section className="garage-bg-navy w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -134,7 +126,7 @@ export default function WhyChooseUs() {
           </div>
           <WhyCard
             title="Local You Can Trust"
-            body="Family-owned and operated, serving Brisbane locals you can rely on."
+            body={`Family-owned and operated, serving ${suburb} locals you can rely on.`}
           >
             <PlaceholderArt label="Team photo" tall />
           </WhyCard>

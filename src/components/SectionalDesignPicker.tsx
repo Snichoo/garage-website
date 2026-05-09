@@ -12,25 +12,25 @@ type Design = {
 const designs: Design[] = [
   {
     name: "Oxford",
-    src: "/images/sectional/oxford.jpg",
+    src: "/images/sectional/oxford.png",
     blurb:
       "The Oxford style features timeless Georgian square panels, adding a traditional touch to any home. While it pairs beautifully with Gliderol's woodgrain finish, the Oxford style is also offered in a smooth finish.",
   },
   {
     name: "Madison",
-    src: "/images/sectional/madison.jpg",
+    src: "/images/sectional/madison.png",
     blurb:
       "The Madison style features clean, defined lines and a textured finish that pairs well with rendered homes. Offered in both woodgrain and smooth finishes, the Madison design is an excellent choice for those seeking a garage door that complements their home's exterior.",
   },
   {
     name: "Tuscan",
-    src: "/images/sectional/tuscan.jpg",
+    src: "/images/sectional/tuscan.png",
     blurb:
       "The Tuscan style mimics a timber-planked appearance, made from low-maintenance Colorbond® steel. Its horizontal \"V\" grooves offer a sleek, contemporary aesthetic, making it an ideal choice for modern homes.",
   },
   {
     name: "Hampton",
-    src: "/images/sectional/hampton.jpg",
+    src: "/images/sectional/hampton.png",
     blurb:
       "The Hampton style features elegant rectangular embossments that create a classic and strong appearance. Available in both woodgrain and smooth finishes, the Hampton design is a versatile option that complements both modern and traditional homes.",
   },

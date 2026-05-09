@@ -135,11 +135,11 @@ export default function RollerDoorsPage() {
         </div>
       </section>
 
-      <WhyChooseUs />
-
       <div id="colours">
         <ColorbondRange />
       </div>
+
+      <WhyChooseUs />
 
       <AreasWeServe />
 

@@ -1,12 +1,6 @@
 import Image from "next/image";
-
-const areas = [
-  "Ashgrove",
-  "Jindalee",
-  "Wynnum",
-  "Morayfield",
-  "McDowall",
-];
+import Link from "next/link";
+import { suburbs } from "@/data/suburbs";
 
 function PinIcon() {
   return (
@@ -21,7 +15,11 @@ function PinIcon() {
   );
 }
 
-export default function AreasWeServe() {
+type AreasWeServeProps = {
+  suburb?: string;
+};
+
+export default function AreasWeServe({ suburb = "Brisbane" }: AreasWeServeProps = {}) {
   return (
     <section className="w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -49,7 +47,7 @@ export default function AreasWeServe() {
               <span className="text-brand-yellow">SERVE</span>
             </h2>
             <p className="text-base leading-relaxed text-white/85 md:text-lg">
-              We extend our reliable service across the Brisbane region,
+              We extend our reliable service across the {suburb} region,
               offering smart, safe, and secure solutions. From homes to
               businesses, trust us to provide excellence and peace of mind
               tailored to your needs.
@@ -58,17 +56,19 @@ export default function AreasWeServe() {
 
           {/* Areas grid */}
           <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-14 md:grid-cols-3 lg:grid-cols-5">
-            {areas.map((area) => (
-              <li
-                key={area}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm transition hover:border-brand-yellow/40 hover:bg-white/10"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-yellow text-brand-navy shadow-md">
-                  <PinIcon />
-                </span>
-                <span className="font-display text-base font-extrabold tracking-wide md:text-lg">
-                  {area}
-                </span>
+            {suburbs.map((area) => (
+              <li key={area.slug}>
+                <Link
+                  href={`/suburbs/${area.slug}`}
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm transition hover:border-brand-yellow/40 hover:bg-white/10"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-yellow text-brand-navy shadow-md">
+                    <PinIcon />
+                  </span>
+                  <span className="font-display text-base font-extrabold tracking-wide md:text-lg">
+                    {area.name}
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>

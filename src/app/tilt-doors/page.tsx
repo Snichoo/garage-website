@@ -136,11 +136,11 @@ export default function TiltDoorsPage() {
         </div>
       </section>
 
-      <WhyChooseUs />
-
       <div id="colours">
         <ColorbondRange />
       </div>
+
+      <WhyChooseUs />
 
       <AreasWeServe />
 

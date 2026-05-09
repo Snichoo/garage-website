@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
-const faqs = [
+type FaqItem = { q: string; a: string };
+
+const defaultFaqs: FaqItem[] = [
   {
     q: "What factors should I consider when choosing a garage door?",
     a: "When selecting a garage door, consider factors such as your budget, the available space, insulation needs, security features, and the style of your home. Each type of door offers unique benefits tailored to different preferences and requirements.",
@@ -29,7 +31,17 @@ const faqs = [
   },
 ];
 
-export default function Faq() {
+const defaultIntro =
+  "Answers to the questions we hear most often about choosing, installing, and looking after your garage door.";
+
+type FaqProps = {
+  items?: FaqItem[];
+  intro?: string;
+};
+
+export default function Faq({ items, intro }: FaqProps = {}) {
+  const faqs = items ?? defaultFaqs;
+  const blurb = intro ?? defaultIntro;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -46,8 +58,7 @@ export default function Faq() {
         </div>
 
         <p className="mb-8 max-w-2xl text-base leading-relaxed text-neutral-700 md:mb-10 md:text-lg">
-          Answers to the questions we hear most often about choosing,
-          installing, and looking after your garage door.
+          {blurb}
         </p>
 
         <ul className="flex flex-col gap-3 md:gap-4">

@@ -57,6 +57,7 @@ function CheckMark() {
   );
 }
 
+
 export default function EmergencyRepairsPage() {
   return (
     <main className="garage-bg">
@@ -176,21 +177,21 @@ export default function EmergencyRepairsPage() {
             (and uncommon) garage door emergencies in a single visit.
           </p>
 
-          <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
-            {issues.map((item, i) => (
+          <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {issues.map((item) => (
               <li
                 key={item.title}
-                className="flex flex-col rounded-2xl border border-gray-200 bg-white/95 p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:p-7"
+                className="mx-auto flex w-full max-w-[360px] flex-col bg-brand-navy text-white shadow-md sm:max-w-none"
               >
-                <span className="font-display text-xs font-extrabold uppercase tracking-[0.25em] text-brand-yellow">
-                  Issue {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-2 font-display text-xl font-extrabold text-brand-navy md:text-2xl">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-700 md:text-base">
-                  {item.body}
-                </p>
+                <span aria-hidden className="h-1.5 w-full bg-brand-yellow" />
+                <div className="flex flex-1 flex-col gap-4 p-6 md:p-7">
+                  <h3 className="font-display text-2xl font-extrabold leading-tight text-brand-yellow md:text-[26px]">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/85 md:text-base">
+                    {item.body}
+                  </p>
+                </div>
               </li>
             ))}
           </ul>
