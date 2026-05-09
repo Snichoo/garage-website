@@ -228,7 +228,7 @@ export default function Reviews() {
           </div>
 
           {/* Right: reviews carousel */}
-          <div className="min-w-0 flex-1">
+          <div className="w-full min-w-0 flex-1">
             <div
               className="mask-gradient relative overflow-hidden"
               style={{ touchAction: "pan-y pinch-zoom" }}

@@ -80,7 +80,7 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
             <div className="leading-tight">
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-amber-500">★★★★★</span>
-                <span className="font-bold">4.9</span>
+                <span className="font-bold">5.0</span>
               </div>
               <div className="text-xs font-bold">Top Rated Garage Door Company</div>
             </div>
@@ -126,7 +126,7 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
               <input
                 type="tel"
                 placeholder="Phone"
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
+                className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy sm:col-span-2"
               />
             </div>
             <textarea

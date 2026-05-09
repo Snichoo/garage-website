@@ -70,14 +70,14 @@ export default function WhyChooseUs(_props: WhyChooseUsProps = {}) {
 
         {/* Top row */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          <div className="flex flex-col rounded-2xl border border-gray-200 bg-white/95 p-6 shadow-sm md:p-8">
+          <div className="flex flex-col rounded-2xl border border-white/10 p-6 md:p-8">
             <div className="flex flex-col items-center gap-6 md:flex-row md:items-stretch md:gap-8">
               {/* Left: text + rating */}
               <div className="flex flex-1 flex-col">
-                <h3 className="font-display text-xl font-extrabold text-brand-navy md:text-2xl">
+                <h3 className="font-display text-xl font-extrabold text-white md:text-2xl">
                   Quality Services and Expert Technicians
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-700 md:text-base">
+                <p className="mt-2 text-sm leading-relaxed text-white/80 md:text-base">
                   Locally made and serviced. Our expert technicians deliver quality on every repair and maintenance job.
                 </p>
                 <div className="mt-6 flex flex-col items-center gap-2 md:items-start">
@@ -94,7 +94,7 @@ export default function WhyChooseUs(_props: WhyChooseUsProps = {}) {
                       </svg>
                     ))}
                   </div>
-                  <p className="font-display text-sm font-extrabold uppercase tracking-[0.25em] text-brand-navy md:text-base">
+                  <p className="font-display text-sm font-extrabold uppercase tracking-[0.25em] text-brand-yellow md:text-base">
                     Rated Excellent
                   </p>
                 </div>
@@ -112,18 +112,23 @@ export default function WhyChooseUs(_props: WhyChooseUsProps = {}) {
               </div>
             </div>
           </div>
-          <WhyCard
-            title="Custom Solution and Design"
-            body="Customisable to fit any home and budget. Choose from various styles and colours."
-          >
-            <Image
-              src="/images/custom-solution.png"
-              alt="Custom solution and design illustration"
-              width={300}
-              height={300}
-              className="h-40 w-40 object-contain mix-blend-multiply md:h-52 md:w-52"
-            />
-          </WhyCard>
+          <div className="flex flex-col rounded-2xl border border-white/10 p-6 md:p-8">
+            <h3 className="font-display text-xl font-extrabold text-white md:text-2xl">
+              Custom Solution and Design
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-white/80 md:text-base">
+              Customisable to fit any home and budget. Choose from various styles and colours.
+            </p>
+            <div className="mt-6 flex flex-1 items-center justify-center">
+              <Image
+                src="/images/custom-solution.png"
+                alt="Custom solution and design illustration"
+                width={300}
+                height={300}
+                className="h-40 w-40 object-contain mix-blend-multiply md:h-52 md:w-52"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Bottom row */}
