@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Sora } from "next/font/google";
 import QuoteModal from "@/components/QuoteModal";
+import ScrollAnimator from "@/components/ScrollAnimator";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -18,13 +19,15 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Garage Doors",
+  title: "Sparrow Garage Doors",
   description: "Industrial, residential, and emergency garage door services.",
   icons: {
     icon: [
+      { url: "/favicon/favicon.ico", sizes: "any", type: "image/x-icon" },
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
+    shortcut: "/favicon/favicon.ico",
     apple: [{ url: "/favicon/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/favicon/site.webmanifest",
@@ -40,6 +43,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         <QuoteModal />
+        <ScrollAnimator />
       </body>
     </html>
   );

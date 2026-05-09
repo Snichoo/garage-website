@@ -58,7 +58,7 @@ const doorTypes: DoorType[] = [
     media: {
       kind: "video",
       src: "/videos/Sectional_Door_FrontBack_Colormatched-1.mp4",
-      objectPosition: "75% center",
+      objectPosition: "60% center",
     },
     intro:
       "Sectional doors are made of multiple horizontal panels connected by hinges, opening vertically and sliding smoothly into the ceiling space. Space-efficient and modern, they're an excellent choice for almost any home.",
