@@ -9,7 +9,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
   "24/7 call-outs, weekends and public holidays.",
-  "Every brand and model — fixed on the spot.",
+  "Every brand and model, fixed on the spot.",
   "Genuine parts and Australian-standard safety checks.",
 ];
 
@@ -28,7 +28,7 @@ const issues = [
   },
   {
     title: "Frayed or Broken Cables",
-    body: "Cable replacement to keep your door operating safely — no more sudden drops or jams.",
+    body: "Cable replacement to keep your door operating safely, with no more sudden drops or jams.",
   },
   {
     title: "Weather-Damaged Panels",
@@ -36,7 +36,7 @@ const issues = [
   },
   {
     title: "Door Stuck Halfway",
-    body: "Fast diagnostics for doors that won't fully open or close — back up and running, often same day.",
+    body: "Fast diagnostics for doors that won't fully open or close, back up and running, often same day.",
   },
 ];
 
@@ -94,10 +94,10 @@ export default function EmergencyRepairsPage() {
             </ul>
             <div className="mt-2 flex flex-wrap items-center gap-3">
               <a
-                href="tel:0412667147"
+                href="tel:0468789795"
                 className="inline-flex items-center gap-3 bg-brand-yellow px-6 py-4 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 md:text-lg"
               >
-                Call 0412 667 147
+                Call 0468 789 795
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"

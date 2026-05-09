@@ -7,65 +7,173 @@ type Review = {
   avatar: string;
   avatarBg: string;
   verified?: boolean;
-  image: string;
+  photo?: string;
 };
 
 const reviews: Review[] = [
   {
-    name: "Emma Richardson",
-    text: "Our garage door wouldn't open the morning we had to leave for a flight. They came out within an hour and had it sorted. Lifesavers!",
-    date: "18/11/2024",
-    avatar: "E",
+    name: "aw",
+    text: "Excellent service - my garage door motor had been entering an error state for a few months and I was quoted a full motor replace over the phone from another company. I called Sparrow and spoke with Elisha who offered to investigate first and he managed to fix it for a reasonable service cost - significantly cheaper than wasting money on a full motor replacement. Great, friendly, honest and efficient service, very highly recommended.",
+    date: "12/02/2026",
+    avatar: "A",
     avatarBg: "#26A69A",
     verified: true,
-    image: "/images/residential.png",
   },
   {
-    name: "Daniel Park",
-    text: "Replaced our old, noisy roller door with a quiet motor and new tracks. Looks brand new and runs like a dream. Couldn't recommend more.",
-    date: "02/11/2024",
-    avatar: "D",
-    avatarBg: "#7B1FA2",
-    verified: true,
-    image: "/images/residential.png",
-  },
-  {
-    name: "Rachel Nguyen",
-    text: "Spring snapped on a Sunday and they still came out same day. Fixed price quoted upfront — no surprises. Top blokes.",
-    date: "25/10/2024",
-    avatar: "R",
-    avatarBg: "#D81B60",
-    verified: true,
-    image: "/images/residential.png",
-  },
-  {
-    name: "Tom Bradley",
-    text: "Got three quotes — these guys were the most thorough and not the most expensive. Install was clean and tidy. Real professionals.",
-    date: "12/11/2024",
-    avatar: "T",
+    name: "Leilani Tuato",
+    text: "Very happy with communication from start to finish. We love our new garage. A+++",
+    date: "16/07/2025",
+    avatar: "L",
     avatarBg: "#00897B",
     verified: true,
-    image: "/images/residential.png",
+    photo: "/images/leilani-review.webp",
   },
   {
-    name: "Chloe Watts",
-    text: "The remote stopped working and I assumed I'd need a whole new motor. Turned out to be a quick fix. Honest service, fair price.",
-    date: "08/11/2024",
-    avatar: "C",
+    name: "Brenda Jelagat",
+    text: "I was very happy with their service, was on the phone with one of their team on Sunday evening on how to program my key garage remote and I was guided through successfully. Clear communication, simple instructions from start to end, amazing team, would definitely recommend to everybody. Thank you.",
+    date: "08/10/2025",
+    avatar: "B",
+    avatarBg: "#7B1FA2",
+    verified: true,
+  },
+  {
+    name: "Madupa Rodrigo",
+    text: "Elisha from Sparrow Garage Doors did an amazing job replacing my garage door motor. He was professional, efficient, and the price was very reasonable. Highly recommend his service!",
+    date: "03/09/2025",
+    avatar: "M",
+    avatarBg: "#D81B60",
+    verified: true,
+  },
+  {
+    name: "Ken Brown",
+    text: "Had to get our double garage panel door repaired or replaced after an attempted break in. Found Elisha online and called him. Despite being busy he came the next day, tried to repair the existing door but eventually ascertained it would need replacing. His quote was prompt and my insurance company quickly accepted it. As soon as Elisha was advised it was ready, he called me and the install began within 2 days. He did a great job and it was a pleasure to do business with. Highly recommend him.",
+    date: "21/05/2025",
+    avatar: "K",
     avatarBg: "#5C6BC0",
     verified: true,
-    image: "/images/residential.png",
   },
   {
-    name: "Liam Foster",
-    text: "Brand new sectional door fitted in a few hours. Took the time to explain how everything works. Will definitely use again.",
-    date: "01/11/2024",
-    avatar: "L",
+    name: "Giuseppe Scuderi",
+    text: "My front gate stopped working. Elisha from Sparrow Garage Doors was excellent!! Elisha was able to get a new motor and replace it that same day for a much better price than other people I had quote the job. Could not recommend enough!!",
+    date: "29/04/2025",
+    avatar: "G",
     avatarBg: "#F4511E",
     verified: true,
-    image: "/images/residential.png",
+  },
+  {
+    name: "Paul Ansell",
+    text: "Had the opening motors replaced. Very happy with the price, options and communication. Nicest bloke and very knowledgeable.",
+    date: "11/11/2025",
+    avatar: "P",
+    avatarBg: "#1E88E5",
+    verified: true,
+  },
+  {
+    name: "Christine Hogan",
+    text: "Could not recommend Sparrow Garage Doors highly enough!! After shopping around for a new garage door these guys gave us the best price by far and were so easy to deal with. Thanks so much for everything Sparrow.",
+    date: "18/09/2025",
+    avatar: "C",
+    avatarBg: "#43A047",
+    verified: true,
+  },
+  {
+    name: "James Brindle",
+    text: "Elisha definitely knows a thing or two about garage doors! We have an old B&D panel lift door at our place which was one of the first produced. We had 3 separate companies out to look at its issues and try and repair it but they all chalked it up to end of life and quoted for a replacement. I originally reached out to Sparrow Garage Doors for a quote for a new door, Elisha decided to swing round and within 2 mins had identified the issue and parts required to repair it. He even came back the same day and fixed our issues. The door is now running better than ever! If you are looking for a garage door service, repair, replacement or just general advice Elisha is hands down the best there is.",
+    date: "06/06/2025",
+    avatar: "J",
+    avatarBg: "#FB8C00",
+    verified: true,
+  },
+  {
+    name: "Iona Davis",
+    text: "Best service! Roller door got jammed and it was fixed quickly. Elisha was very friendly and knowledgeable. Highly recommend!",
+    date: "23/06/2025",
+    avatar: "I",
+    avatarBg: "#8E24AA",
+    verified: true,
+  },
+  {
+    name: "Bianca Edwards",
+    text: "Cannot recommend Elisha from Sparrow Doors enough! Our garage door collapsed off the rails and we called him at 7.45 on a Wednesday night and he was here within an hour and managed to get it all put back together so it's secure and in place and is organising the rest of the parts for us. He's polite and professional and super easy to deal with!",
+    date: "02/05/2025",
+    avatar: "B",
+    avatarBg: "#3949AB",
+    verified: true,
+  },
+  {
+    name: "Phillip Law",
+    text: "Prompt and professional. Elisha came out on a Saturday to replace my old broken garage door motor. He is very knowledgeable, thorough, and adds in valuable education (useful tips that most garage door owners are unaware of). Thank you!",
+    date: "10/05/2025",
+    avatar: "P",
+    avatarBg: "#00ACC1",
+    verified: true,
+  },
+  {
+    name: "Jenny Harris",
+    text: "Elisha did a wonderful job fixing our garage door. He was knowledgeable, professional, skilful and explained everything very well. I will certainly be asking him back for any future work.",
+    date: "17/05/2025",
+    avatar: "J",
+    avatarBg: "#E53935",
+    verified: true,
+  },
+  {
+    name: "Erden Er",
+    text: "The technician is so talented, we called few companies before, no one could figure out what the problem is. Then I got my luck here, the job got done so quick I am so surprised. Highly recommended, price is also very fair.",
+    date: "25/04/2025",
+    avatar: "E",
+    avatarBg: "#6D4C41",
+    verified: true,
+  },
+  {
+    name: "Mia Designer",
+    text: "Our garage door wouldn't open. Elisha got here early morning and had it taken care of in less than an hour. Exceptional service.",
+    date: "14/05/2025",
+    avatar: "M",
+    avatarBg: "#5E35B1",
+    verified: true,
+  },
+  {
+    name: "Julius Metcalfe",
+    text: "Excellent service! Prompt repair done on our broken spring. Very reasonably priced too, on a hot summer day over Christmas shutdown period no less.",
+    date: "30/04/2025",
+    avatar: "J",
+    avatarBg: "#039BE5",
+    verified: true,
+  },
+  {
+    name: "Damian Robson",
+    text: "Great service. Managed to fit me in on the same day I called. Friendly and professional service. Will definitely use again.",
+    date: "12/06/2025",
+    avatar: "D",
+    avatarBg: "#C0CA33",
+    verified: true,
+  },
+  {
+    name: "Graham Behnke",
+    text: "Professional friendly service. Wonderful and prompt work on my garage door motor.",
+    date: "27/07/2025",
+    avatar: "G",
+    avatarBg: "#FF7043",
+    verified: true,
+  },
+  {
+    name: "Rob Whitbourne",
+    text: "A really great professional, he was knowledgeable, proactive with a really great 'Can Do' attitude, turned up on time and also polite.",
+    date: "08/05/2025",
+    avatar: "R",
+    avatarBg: "#7CB342",
+    verified: true,
   },
 ];
+
+const MAX_REVIEW_CHARS = 280;
+
+function truncate(text: string, max = MAX_REVIEW_CHARS) {
+  if (text.length <= max) return text;
+  const sliced = text.slice(0, max);
+  const lastSpace = sliced.lastIndexOf(" ");
+  return `${sliced.slice(0, lastSpace > 0 ? lastSpace : max).trimEnd()}…`;
+}
 
 function Star({ className = "w-3 h-3" }: { className?: string }) {
   return (
@@ -108,7 +216,7 @@ export default function Reviews() {
               <Star className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <p className="mb-1 text-sm font-semibold text-neutral-900 sm:text-base">
-              150+ 5 Star Google Reviews
+              30+ 5 Star Google Reviews
             </p>
             <Image
               src="/images/google-text.png"
@@ -126,7 +234,7 @@ export default function Reviews() {
               style={{ touchAction: "pan-y pinch-zoom" }}
             >
               <div
-                className="flex animate-slide-infinite gap-3 will-change-transform sm:gap-4"
+                className="reviews-carousel flex animate-slide-infinite items-start gap-3 will-change-transform sm:gap-4"
                 style={{ width: "300%" }}
               >
                 {[0, 1, 2].map((setIndex) =>
@@ -135,7 +243,7 @@ export default function Reviews() {
                       key={`${setIndex}-${index}`}
                       className="w-64 flex-shrink-0 sm:w-72"
                     >
-                      <div className="h-full rounded-lg border border-gray-200 bg-white p-3 shadow-sm sm:p-4">
+                      <div className="rounded-lg border border-gray-200 bg-white p-3 shadow-sm sm:p-4">
                         <div className="mb-2 flex items-start justify-between sm:mb-3">
                           <div className="flex items-center gap-2 sm:gap-3">
                             <div
@@ -182,18 +290,20 @@ export default function Reviews() {
                         </div>
 
                         <p className="text-sm leading-relaxed text-neutral-800">
-                          {review.text}
+                          {truncate(review.text)}
                         </p>
 
-                        <div className="mt-3 overflow-hidden rounded-md">
-                          <Image
-                            src={review.image}
-                            alt={`${review.name}'s job`}
-                            width={400}
-                            height={120}
-                            className="h-28 w-full object-cover"
-                          />
-                        </div>
+                        {review.photo && (
+                          <div className="mt-3 overflow-hidden rounded-md">
+                            <Image
+                              src={review.photo}
+                              alt={`Photo from ${review.name}`}
+                              width={288}
+                              height={180}
+                              className="h-32 w-full object-cover sm:h-36"
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))

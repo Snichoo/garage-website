@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { openQuoteModal } from "./QuoteModal";
 
 type NavItem = {
   label: string;
@@ -117,22 +118,22 @@ export default function Header() {
       <header className="fixed inset-x-0 top-0 z-40 w-full">
         {/* Mobile-only call-out band */}
         <a
-          href="tel:0412667147"
+          href="tel:0468789795"
           className="flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3 text-brand-navy transition hover:opacity-95 lg:hidden"
         >
           <PhoneIcon className="h-5 w-5" />
           <span className="font-display text-base font-extrabold tracking-wide">
-            CALL US — 0412 667 147
+            CALL US 0468 789 795
           </span>
         </a>
 
-        {/* Mobile-only logo + hamburger bar — transparent over hero, white when scrolled */}
+        {/* Mobile-only logo + hamburger bar - transparent over hero, white when scrolled */}
         <div
           className={`w-full transition-colors duration-300 lg:hidden ${
             scrolled ? "bg-white shadow-md" : "bg-transparent"
           }`}
         >
-          <div className="flex items-center justify-between px-4 py-2.5">
+          <div className="flex items-center justify-between gap-2 px-4 py-2.5">
             <a href="/" className="flex items-center" aria-label="Home">
               <Image
                 src="/images/logo.png"
@@ -145,21 +146,34 @@ export default function Header() {
                 }`}
               />
             </a>
-            <button
-              aria-label="Open menu"
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen(true)}
-              className={`rounded-md p-1 transition ${
-                scrolled ? "text-brand-navy" : "text-white"
-              }`}
-              type="button"
-            >
-              <MenuIcon className="h-7 w-7" />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => openQuoteModal()}
+                className={`inline-flex items-center rounded-full border-2 px-3 py-1.5 font-display text-[11px] font-extrabold uppercase tracking-wide transition ${
+                  scrolled
+                    ? "border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white"
+                    : "border-white text-white hover:bg-white hover:text-brand-navy"
+                }`}
+              >
+                Get Free Quote
+              </button>
+              <button
+                aria-label="Open menu"
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen(true)}
+                className={`rounded-md p-1 transition ${
+                  scrolled ? "text-brand-navy" : "text-white"
+                }`}
+                type="button"
+              >
+                <MenuIcon className="h-7 w-7" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Desktop bar — transparent over hero, white when scrolled */}
+        {/* Desktop bar - transparent over hero, white when scrolled */}
         <div
           className={`hidden w-full transition-colors duration-300 lg:block ${
             scrolled
@@ -211,18 +225,31 @@ export default function Header() {
               ))}
             </nav>
 
-            <a
-              href="tel:0412667147"
-              className="inline-flex items-center gap-3 rounded-full bg-brand-yellow px-6 py-3.5 text-brand-navy shadow-lg transition hover:opacity-90"
-            >
-              <span className="font-display text-xs font-extrabold uppercase tracking-wide">
-                CALL US NOW
-              </span>
-              <span className="flex items-center gap-2 font-display text-lg font-extrabold">
-                <PhoneIcon />
-                0412 667 147
-              </span>
-            </a>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => openQuoteModal()}
+                className={`inline-flex items-center rounded-full border-2 px-5 py-3 font-display text-xs font-extrabold uppercase tracking-wide transition ${
+                  scrolled
+                    ? "border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white"
+                    : "border-white text-white hover:bg-white hover:text-brand-navy"
+                }`}
+              >
+                Get Free Quote
+              </button>
+              <a
+                href="tel:0468789795"
+                className="inline-flex items-center gap-3 rounded-full bg-brand-yellow px-6 py-3.5 text-brand-navy shadow-lg transition hover:opacity-90"
+              >
+                <span className="font-display text-xs font-extrabold uppercase tracking-wide">
+                  CALL US NOW
+                </span>
+                <span className="flex items-center gap-2 font-display text-lg font-extrabold">
+                  <PhoneIcon />
+                  0468 789 795
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -290,13 +317,25 @@ export default function Header() {
               </div>
             ))}
           </nav>
-          <a
-            href="tel:0412667147"
-            className="m-4 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-4 py-3 font-display text-base font-extrabold text-brand-navy shadow-md transition hover:opacity-90"
-          >
-            <PhoneIcon className="h-5 w-5" />
-            0412 667 147
-          </a>
+          <div className="flex flex-col gap-2 p-4">
+            <button
+              type="button"
+              onClick={() => {
+                setMenuOpen(false);
+                openQuoteModal();
+              }}
+              className="inline-flex items-center justify-center rounded-full border-2 border-brand-navy px-4 py-3 font-display text-base font-extrabold uppercase tracking-wide text-brand-navy transition hover:bg-brand-navy hover:text-white"
+            >
+              Get Free Quote
+            </button>
+            <a
+              href="tel:0468789795"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-4 py-3 font-display text-base font-extrabold text-brand-navy shadow-md transition hover:opacity-90"
+            >
+              <PhoneIcon className="h-5 w-5" />
+              0468 789 795
+            </a>
+          </div>
         </div>
       </div>
     </>

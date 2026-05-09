@@ -75,7 +75,7 @@ body {
       );
 }
 
-/* Tight navy variant — same look, narrower panels for small cards */
+/* Tight navy variant - same look, narrower panels for small cards */
 .garage-bg-navy-tight {
   background-color: #0f2747;
   background-image:
@@ -119,4 +119,14 @@ body {
 .reviews-font * {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+}
+
+/* Slow the reviews carousel on mobile, restore default on sm+ */
+.reviews-carousel {
+  animation-duration: 90s;
+}
+@media (min-width: 640px) {
+  .reviews-carousel {
+    animation-duration: 45s;
+  }
 }

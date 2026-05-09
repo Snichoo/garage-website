@@ -33,7 +33,7 @@ export default function AreasWeServe({ suburb = "Brisbane" }: AreasWeServeProps 
             className="-z-20 object-cover object-center"
             priority={false}
           />
-          {/* Overlay for legibility — uniform on mobile, directional on desktop */}
+          {/* Overlay for legibility - uniform on mobile, directional on desktop */}
           <div className="pointer-events-none absolute inset-0 -z-10 bg-brand-navy/75 md:bg-gradient-to-l md:from-brand-navy md:via-brand-navy/85 md:to-brand-navy/40" />
           {/* Decorative glow */}
           <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-brand-yellow/15 blur-3xl" />

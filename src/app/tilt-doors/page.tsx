@@ -5,10 +5,11 @@ import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
+import QuoteButton from "@/components/QuoteButton";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
-  "Classic design — a timeless, elegant look that suits traditional and modern homes.",
+  "Classic design with a timeless, elegant look that suits traditional and modern homes.",
   "Simple operation with minimal moving parts for straightforward, reliable functionality.",
   "Built tough to withstand frequent use and harsh weather conditions.",
   "Customisable finishes and materials to match your property's style.",
@@ -52,7 +53,7 @@ export default function TiltDoorsPage() {
               Tilt garage doors operate as a single solid panel that tilts
               outward and upward when opening. With a timeless design and robust
               construction, they&apos;re perfect for garages with ample outdoor
-              space — a great option for homeowners seeking a traditional
+              space, a great option for homeowners seeking a traditional
               aesthetic with reliable functionality.
             </p>
             <ul className="flex flex-col gap-3">
@@ -87,12 +88,11 @@ export default function TiltDoorsPage() {
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
               </a>
-              <a
-                href="tel:0412667147"
+              <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
                 Get a free quote
-              </a>
+              </QuoteButton>
             </div>
           </div>
 

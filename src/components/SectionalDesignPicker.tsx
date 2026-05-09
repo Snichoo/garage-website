@@ -14,7 +14,7 @@ const designs: Design[] = [
     name: "Oxford",
     src: "/images/sectional/oxford.png",
     blurb:
-      "The Oxford style features timeless Georgian square panels, adding a traditional touch to any home. While it pairs beautifully with Gliderol's woodgrain finish, the Oxford style is also offered in a smooth finish.",
+      "The Oxford style features timeless Georgian square panels, adding a traditional touch to any home. While it pairs beautifully with our woodgrain finish, the Oxford style is also offered in a smooth finish.",
   },
   {
     name: "Madison",

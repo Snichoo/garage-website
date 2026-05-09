@@ -60,17 +60,17 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
             </a>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/80 md:text-base">
               {suburb}&apos;s trusted experts in garage doors. Quality
-              installation, reliable servicing, and friendly local advice — for
+              installation, reliable servicing, and friendly local advice for
               homes and businesses across South East Queensland.
             </p>
 
             <a
-              href="tel:0412667147"
+              href="tel:0468789795"
               className="mt-6 inline-flex items-center gap-3 rounded-full bg-brand-yellow px-6 py-3 text-brand-navy shadow-lg transition hover:opacity-90"
             >
               <PhoneIcon className="h-5 w-5" />
               <span className="font-display text-base font-extrabold tracking-wide">
-                0412 667 147
+                0468 789 795
               </span>
             </a>
           </div>
@@ -137,9 +137,6 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
         <div className="mt-12 border-t border-white/15 pt-6 md:mt-16">
           <div className="flex flex-col items-center justify-between gap-3 text-xs text-white/60 md:flex-row md:text-sm">
             <p>© {year} All rights reserved.</p>
-            <p className="font-display tracking-wide">
-              Servicing {suburb} &amp; surrounds
-            </p>
           </div>
         </div>
       </div>

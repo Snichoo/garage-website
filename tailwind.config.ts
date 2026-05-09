@@ -23,6 +23,7 @@ const config: Config = {
       },
       animation: {
         "slide-infinite": "slide-infinite 45s linear infinite",
+        "slide-infinite-slow": "slide-infinite 90s linear infinite",
       },
     },
   },

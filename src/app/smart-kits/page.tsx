@@ -5,6 +5,7 @@ import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
+import QuoteButton from "@/components/QuoteButton";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
@@ -33,7 +34,7 @@ const smartKitFaqs = [
   },
   {
     q: "How often should I replace the batteries in my remotes?",
-    a: "We recommend checking the batteries every 6–12 months to ensure uninterrupted operation. If your remote becomes unresponsive, it may be time for a battery replacement.",
+    a: "We recommend checking the batteries every 6-12 months to ensure uninterrupted operation. If your remote becomes unresponsive, it may be time for a battery replacement.",
   },
 ];
 
@@ -55,7 +56,7 @@ const smartKits: SmartKit[] = [
     image: "/images/smart-kits/back-view-businesswoman-with-smartphone.avif",
     alt: "Person using a smartphone to remotely control a gate",
     intro:
-      "Wi-Fi Control Kits enable remote operation of your automated gates and garage doors through Wi-Fi receivers — control your system from anywhere, anytime, using a smartphone app.",
+      "Wi-Fi Control Kits enable remote operation of your automated gates and garage doors through Wi-Fi receivers, letting you control your system from anywhere, anytime, using a smartphone app.",
     benefits: [
       "Remote access to your gates and doors from your phone, no matter where you are.",
       "Quick, hassle-free installation with minimal disruption.",
@@ -74,7 +75,7 @@ const smartKits: SmartKit[] = [
     image: "/images/smart-kits/video-intercom.avif",
     alt: "Wi-Fi video intercom mounted at the entrance of an automated gate",
     intro:
-      "Combine Wi-Fi receivers with cameras, motion sensors and real-time alerts for enhanced security — ideal for monitoring your gates and garage doors remotely.",
+      "Combine Wi-Fi receivers with cameras, motion sensors and real-time alerts for enhanced security, ideal for monitoring your gates and garage doors remotely.",
     benefits: [
       "Advanced protection for entry points with added peace of mind.",
       "Real-time alerts when motion is detected or security issues arise.",
@@ -94,7 +95,7 @@ const smartKits: SmartKit[] = [
     image: "/images/smart-kits/remote-control.avif",
     alt: "Extra long-range remotes for automated gates and garage doors",
     intro:
-      "Additional remote kits provide extra or specialised remotes for your gates and garage doors — adding convenience, long-range access and the ability to sync multiple devices.",
+      "Additional remote kits provide extra or specialised remotes for your gates and garage doors, adding convenience, long-range access and the ability to sync multiple devices.",
     benefits: [
       "Add more remotes for greater flexibility and convenience.",
       "Long-range access to control gates and doors from greater distances.",
@@ -189,7 +190,7 @@ export default function SmartKitsPage() {
               Enhance your experience with automated gates and garage doors by
               exploring our range of smart kits. From Wi-Fi receivers to
               security cameras and additional remotes, our carefully curated
-              kits combine the latest technology with seamless operation —
+              kits combine the latest technology with seamless operation -
               making it easier than ever to manage your entry points.
             </p>
             <ul className="flex flex-col gap-3">
@@ -224,12 +225,11 @@ export default function SmartKitsPage() {
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
               </a>
-              <a
-                href="tel:0412667147"
+              <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
                 Get a free quote
-              </a>
+              </QuoteButton>
             </div>
           </div>
 
@@ -259,7 +259,7 @@ export default function SmartKitsPage() {
         </div>
       </section>
 
-      {/* Smart kit types — detailed */}
+      {/* Smart kit types - detailed */}
       <section id="types" className="w-full py-12 md:py-20">
         <div className="mx-auto max-w-[1200px] px-6">
           {/* Stencil heading */}
@@ -350,12 +350,11 @@ export default function SmartKitsPage() {
                         </ul>
                       </div>
 
-                      <a
-                        href="tel:0412667147"
+                      <QuoteButton
                         className="mt-auto inline-flex w-full items-center justify-center gap-3 bg-brand-yellow px-6 py-3 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg"
                       >
                         Get a free quote
-                      </a>
+                      </QuoteButton>
                     </div>
                   </div>
                 </article>

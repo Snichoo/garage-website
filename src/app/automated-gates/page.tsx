@@ -5,6 +5,7 @@ import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
+import QuoteButton from "@/components/QuoteButton";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
@@ -40,7 +41,6 @@ const gateFaqs = [
 type GateType = {
   id: string;
   name: string;
-  tag: string;
   image: string;
   alt: string;
   intro: string;
@@ -52,11 +52,10 @@ const gateTypes: GateType[] = [
   {
     id: "swing",
     name: "Automated Swing Gates",
-    tag: "Classic & Elegant",
     image: "/images/gates/swing-gate.avif",
     alt: "Modern wrought iron automated swing gate",
     intro:
-      "Swing gates open inward or outward on sturdy hinges — a classic, sophisticated entrance ideal for properties with the room to swing freely.",
+      "Swing gates open inward or outward on sturdy hinges, a classic, sophisticated entrance ideal for properties with the room to swing freely.",
     benefits: [
       "Timeless, traditional design that suits almost any property.",
       "Smooth, quiet operation with minimal maintenance.",
@@ -73,11 +72,10 @@ const gateTypes: GateType[] = [
   {
     id: "sliding",
     name: "Automated Sliding Gates",
-    tag: "Space-Saving",
     image: "/images/gates/sliding-gate.avif",
     alt: "Automated sliding driveway gate on a track",
     intro:
-      "Sliding gates run horizontally along a track — perfect for properties with limited driveway space, combining function with a clean, modern look.",
+      "Sliding gates run horizontally along a track, perfect for properties with limited driveway space, combining function with a clean, modern look.",
     benefits: [
       "Space-saving design ideal where swing gates aren't an option.",
       "Robust locking and sturdy construction for enhanced security.",
@@ -94,11 +92,10 @@ const gateTypes: GateType[] = [
   {
     id: "double",
     name: "Double Gates Automation",
-    tag: "Wide & Grand",
     image: "/images/gates/double-gates.avif",
     alt: "Symmetrical automated double entry gates",
     intro:
-      "Double gates use two symmetrical panels that open inward or outward together — a wide, grand entrance for properties that want both presence and access.",
+      "Double gates use two symmetrical panels that open inward or outward together, a wide, grand entrance for properties that want both presence and access.",
     benefits: [
       "Balanced, stylish appearance that elevates the property.",
       "Wide opening for larger vehicles and equipment.",
@@ -193,7 +190,7 @@ export default function AutomatedGatesPage() {
             <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
               From professional installation to regular maintenance and reliable
               repairs, our team makes sure your automated gate operates smoothly
-              and securely — whether you&apos;re setting up a brand-new system
+              and securely, whether you&apos;re setting up a brand-new system
               or fixing an existing one.
             </p>
             <ul className="flex flex-col gap-3">
@@ -228,12 +225,11 @@ export default function AutomatedGatesPage() {
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
               </a>
-              <a
-                href="tel:0412667147"
+              <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
                 Get a free quote
-              </a>
+              </QuoteButton>
             </div>
           </div>
 
@@ -263,7 +259,7 @@ export default function AutomatedGatesPage() {
         </div>
       </section>
 
-      {/* Gate types — detailed */}
+      {/* Gate types - detailed */}
       <section id="types" className="w-full py-12 md:py-20">
         <div className="mx-auto max-w-[1200px] px-6">
           {/* Stencil heading */}
@@ -310,9 +306,6 @@ export default function AutomatedGatesPage() {
                   <div className="flex flex-col bg-brand-navy text-white shadow-md">
                     <span aria-hidden className="h-1.5 w-full bg-brand-yellow" />
                     <div className="flex flex-1 flex-col gap-5 p-6 md:p-8">
-                      <p className="font-display text-xs font-extrabold uppercase tracking-[0.25em] text-brand-yellow">
-                        {g.tag}
-                      </p>
                       <h3 className="font-display text-2xl font-extrabold leading-tight text-white md:text-3xl">
                         {g.name}
                       </h3>
@@ -351,12 +344,11 @@ export default function AutomatedGatesPage() {
                         </ul>
                       </div>
 
-                      <a
-                        href="tel:0412667147"
+                      <QuoteButton
                         className="mt-auto inline-flex w-full items-center justify-center gap-3 bg-brand-yellow px-6 py-3 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg"
                       >
                         Get a free quote
-                      </a>
+                      </QuoteButton>
                     </div>
                   </div>
                 </article>

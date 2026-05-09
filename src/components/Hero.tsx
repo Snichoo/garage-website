@@ -4,6 +4,7 @@ const features = [
   "Same-Day Repairs",
   "All Garage Door Types",
   "Transparent Pricing",
+  "Licensed & Insured",
 ];
 
 function CheckIcon() {
@@ -12,7 +13,7 @@ function CheckIcon() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="h-5 w-5 text-emerald-400"
+      className="h-5 w-5 text-brand-yellow"
       aria-hidden
     >
       <path
@@ -95,20 +96,19 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
           </ul>
 
           <a
-            href="tel:0412667147"
+            href="tel:0468789795"
             className="mt-2 inline-flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-lg md:text-xl"
           >
             <PhoneIcon />
-            <span className="sm:hidden">Emergency Repairs – 0412 667 147</span>
-            <span className="hidden sm:inline">Emergency Door Repairs – 0412 667 147</span>
+            <span className="sm:hidden">Emergency Repairs 0468 789 795</span>
+            <span className="hidden sm:inline">Emergency Door Repairs 0468 789 795</span>
           </a>
         </div>
 
         {/* Right: contact card */}
         <div className="rounded-xl bg-white p-6 text-brand-black shadow-2xl md:p-8">
           <h2 className="mb-6 text-center font-display text-2xl font-extrabold text-[#1E1E1E] md:text-3xl">
-            Need Help?{" "}
-            <span className="font-bold text-brand-navy">Ask The Pros</span>
+            Get A <span className="font-bold text-brand-navy">Free Quote</span>
           </h2>
 
           <form className="flex flex-col gap-4">
@@ -128,19 +128,6 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
                 placeholder="Phone"
                 className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
               />
-              <select
-                defaultValue=""
-                className="w-full rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-500 outline-none transition focus:border-brand-navy"
-              >
-                <option value="" disabled>
-                  Select city
-                </option>
-                <option>Sydney</option>
-                <option>Melbourne</option>
-                <option>Brisbane</option>
-                <option>Perth</option>
-                <option>Adelaide</option>
-              </select>
             </div>
             <textarea
               placeholder="Your Message"
@@ -153,17 +140,6 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
             >
               Send us a message
             </button>
-            <p className="text-center text-[11px] text-neutral-500">
-              This site is protected by reCAPTCHA and the Google{" "}
-              <a className="text-brand-navy underline" href="#">
-                Privacy Policy
-              </a>{" "}
-              and{" "}
-              <a className="text-brand-navy underline" href="#">
-                Terms of Service
-              </a>{" "}
-              apply.
-            </p>
           </form>
         </div>
       </div>

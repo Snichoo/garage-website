@@ -35,7 +35,7 @@ export default function ColorbondRange() {
         <p className="mb-10 max-w-2xl text-base leading-relaxed text-neutral-700 md:text-lg">
           Opt for timeless durability with our standard Colorbond® range,
           available in classic colours like Monument, Surfmist, Woodland Grey
-          and many more — designed to withstand the Australian climate while
+          and many more, designed to withstand the Australian climate while
           complementing any home exterior.
         </p>
 

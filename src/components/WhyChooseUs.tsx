@@ -50,23 +50,11 @@ function WhyCard({
   );
 }
 
-function PlaceholderArt({ label, tall = false }: { label: string; tall?: boolean }) {
-  return (
-    <div
-      className={`flex w-full items-center justify-center rounded-xl bg-brand-navy/5 text-sm text-neutral-500 ${
-        tall ? "h-40 md:h-48" : "h-32"
-      }`}
-    >
-      {label}
-    </div>
-  );
-}
-
 type WhyChooseUsProps = {
   suburb?: string;
 };
 
-export default function WhyChooseUs({ suburb = "Brisbane" }: WhyChooseUsProps = {}) {
+export default function WhyChooseUs(_props: WhyChooseUsProps = {}) {
   return (
     <section className="garage-bg-navy w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -90,7 +78,7 @@ export default function WhyChooseUs({ suburb = "Brisbane" }: WhyChooseUsProps = 
                   Quality Services and Expert Technicians
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-neutral-700 md:text-base">
-                  Locally made and serviced — our expert technicians deliver quality on every repair and maintenance job.
+                  Locally made and serviced. Our expert technicians deliver quality on every repair and maintenance job.
                 </p>
                 <div className="mt-6 flex flex-col items-center gap-2 md:items-start">
                   <div className="flex items-center gap-1.5 text-brand-yellow">
@@ -125,15 +113,21 @@ export default function WhyChooseUs({ suburb = "Brisbane" }: WhyChooseUsProps = 
             </div>
           </div>
           <WhyCard
-            title="Local You Can Trust"
-            body={`Family-owned and operated, serving ${suburb} locals you can rely on.`}
+            title="Custom Solution and Design"
+            body="Customisable to fit any home and budget. Choose from various styles and colours."
           >
-            <PlaceholderArt label="Team photo" tall />
+            <Image
+              src="/images/custom-solution.png"
+              alt="Custom solution and design illustration"
+              width={300}
+              height={300}
+              className="h-40 w-40 object-contain mix-blend-multiply md:h-52 md:w-52"
+            />
           </WhyCard>
         </div>
 
         {/* Bottom row */}
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-8 md:gap-8 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-8 md:gap-8 lg:grid-cols-3">
           <WhyCard
             title="100% Guaranteed"
             body="We put our utmost effort into ensuring your satisfaction."
@@ -167,19 +161,6 @@ export default function WhyChooseUs({ suburb = "Brisbane" }: WhyChooseUsProps = 
               </p>
             </div>
           </div>
-
-          <WhyCard
-            title="Custom Solution and Design"
-            body="Customisable to fit any home and budget — choose from various styles and colours."
-          >
-            <Image
-              src="/images/custom-solution.png"
-              alt="Custom solution and design illustration"
-              width={300}
-              height={300}
-              className="h-32 w-32 object-contain mix-blend-multiply md:h-40 md:w-40"
-            />
-          </WhyCard>
         </div>
       </div>
     </section>

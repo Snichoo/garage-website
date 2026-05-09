@@ -1,6 +1,7 @@
 import Image from "next/image";
+import QuoteButton from "./QuoteButton";
 
-/* ─── Decorative dot-grid overlay ─── */
+/* Decorative dot-grid overlay */
 function DotField({ id, className }: { id: string; className?: string }) {
   return (
     <svg
@@ -58,11 +59,11 @@ export default function CtaBanner() {
       </div>
 
       {/* ── Dot fields (desktop only) ── */}
-      {/* Left dot cluster — beneath the heading area */}
+      {/* Left dot cluster - beneath the heading area */}
       <div className="pointer-events-none absolute left-[2%] top-[52%] hidden h-[40%] w-[18%] opacity-80 md:block">
         <DotField id="cta-dots-l" />
       </div>
-      {/* Right dot cluster — behind / around the image */}
+      {/* Right dot cluster - behind / around the image */}
       <div className="pointer-events-none absolute right-0 top-[16%] hidden h-[80%] w-[32%] opacity-80 md:block">
         <DotField id="cta-dots-r" />
       </div>
@@ -73,10 +74,10 @@ export default function CtaBanner() {
         {/* Left column: copy + button + arrow */}
         <div className="relative order-2 text-white md:order-none">
           <h2 className="font-display text-3xl font-extrabold lowercase leading-[1.08] tracking-tight md:text-[42px] lg:text-[52px]">
-            schedule your free measure and quote today with steel-line
+            schedule your free measure and quote today with sparrow
           </h2>
 
-          {/* Paragraph + arrow wrapper — arrow floats to the right of the text */}
+          {/* Paragraph + arrow wrapper - arrow floats to the right of the text */}
           <div className="relative mt-5">
             <p className="max-w-[340px] text-sm font-semibold italic leading-relaxed text-white/90 md:text-base">
               Discover the perfect door for your home and enjoy peace of mind
@@ -87,13 +88,12 @@ export default function CtaBanner() {
 
           {/* Button + Arrow */}
           <div className="relative mt-4">
-            <a
-              href="#contact"
+            <QuoteButton
               className="inline-flex items-center justify-center rounded-md bg-brand-yellow px-8 py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-lg transition hover:opacity-90 md:text-lg"
             >
               FREE Measure &amp; Quote
-            </a>
-            {/* Arrow image — desktop: above-right of button; mobile: to the right of button */}
+            </QuoteButton>
+            {/* Arrow image - desktop: above-right of button; mobile: to the right of button */}
             <div className="pointer-events-none absolute right-2 top-[-40px] block min-[1206px]:hidden">
               <Image
                 src="https://www.steel-line.com.au/wp-content/uploads/2024/07/Arrow.png"
@@ -117,7 +117,7 @@ export default function CtaBanner() {
           </div>
         </div>
 
-        {/* Right column: leaf-shaped house image — bottom aligns with button, top extends above teal panel */}
+        {/* Right column: leaf-shaped house image - bottom aligns with button, top extends above teal panel */}
         <div className="relative order-1 md:order-none">
           <div className="relative ml-auto w-full max-w-[560px] md:-mt-[140px]">
             <div
@@ -126,7 +126,7 @@ export default function CtaBanner() {
             >
               <Image
                 src="https://www.steel-line.com.au/wp-content/uploads/2024/08/SteelLineGarageOnHome3.jpeg"
-                alt="Modern home with Steel-Line garage door"
+                alt="Modern home with Sparrow garage door"
                 fill
                 sizes="(min-width: 768px) 520px, 100vw"
                 className="object-cover"

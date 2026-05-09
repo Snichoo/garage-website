@@ -8,7 +8,7 @@ export default function AboutPage() {
     <main className="bg-white">
       <Header />
 
-      {/* Slim navy banner — gives the fixed header a dark backing */}
+      {/* Slim navy banner - gives the fixed header a dark backing */}
       <section className="relative isolate w-full overflow-hidden bg-brand-navy text-white">
         <Image
           src="/images/Jims-Hero-Image.webp"
@@ -44,13 +44,13 @@ export default function AboutPage() {
               <p className="mt-4 text-base leading-relaxed text-neutral-800 md:text-[17px]">
                 Family-owned and operated from East Brisbane, we&apos;ve become
                 the preferred choice for Queensland homeowners, builders and
-                resellers — thanks to our quality products, wide range of styles
+                resellers, thanks to our quality products, wide range of styles
                 and colours, fast turnaround, and a passionate team that
                 delivers genuine customer service on every job.
               </p>
             </div>
 
-            {/* Australia map — raw, no frame */}
+            {/* Australia map - raw, no frame */}
             <div className="flex items-center justify-center">
               <Image
                 src="/images/australia-pin.png"
@@ -64,11 +64,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Quality / Workmanship — solid yellow + black blocks on garage panel bg */}
+      {/* Quality / Workmanship - solid yellow + black blocks on garage panel bg */}
       <section className="garage-bg w-full py-12 md:py-20">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-            {/* Quality — yellow */}
+            {/* Quality - yellow */}
             <div className="flex bg-white p-2 shadow-lg md:p-3">
               <div className="flex-1 bg-brand-yellow p-8 text-black md:p-12">
                 <h3 className="font-display text-4xl font-extrabold uppercase leading-none tracking-tight md:text-5xl">
@@ -78,14 +78,14 @@ export default function AboutPage() {
                   Sparrow uses the best when it comes to materials. We fit
                   BlueScope Steel doors, reinforced nylon hinges and
                   Australian-made sectional panel lines designed to bring out
-                  any variations in the steel — so every door we install runs
+                  any variations in the steel, so every door we install runs
                   smoother, looks sharper and lasts longer than the cheap
                   alternatives.
                 </p>
               </div>
             </div>
 
-            {/* Workmanship — black */}
+            {/* Workmanship - black */}
             <div className="flex bg-white p-2 shadow-lg md:p-3">
               <div className="flex-1 bg-brand-navy p-8 text-white md:p-12">
                 <h3 className="font-display text-4xl font-extrabold uppercase leading-none tracking-tight text-brand-yellow md:text-5xl">
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 </h3>
                 <p className="mt-6 text-base font-semibold leading-relaxed text-white md:text-[17px]">
                   Every install and repair is handled in-house by our own
-                  technicians — no subcontractors, no national call centres. We
+                  technicians, with no subcontractors or national call centres. We
                   cover sectional doors, roller doors, tilt doors, automated
                   gates and smart kits, and we back every job with a
                   workmanship guarantee in writing.

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import QuoteButton from "./QuoteButton";
 
 type Card = {
   title: string;
@@ -8,23 +9,12 @@ type Card = {
   items: string[];
   href: string;
   imagePosition?: string;
+  callCta?: boolean;
 };
 
 const cards: Card[] = [
   {
-    title: "Residential",
-    src: "/images/residential.png",
-    alt: "Residential garage door",
-    items: [
-      "Garage Door Installation",
-      "Garage Door Replacement",
-      "Custom Designs & Colours",
-      "Remote Control Setup",
-    ],
-    href: "/residential",
-  },
-  {
-    title: "Emergency Door Repairs - 0412 667 147",
+    title: "Emergency Garage Door Repairs",
     src: "/images/emergency.jpg",
     alt: "Emergency garage door repair",
     items: [
@@ -34,6 +24,19 @@ const cards: Card[] = [
       "Same-day service available",
     ],
     href: "/emergency-repairs",
+    callCta: true,
+  },
+  {
+    title: "Garage Door Installation",
+    src: "/images/residential.png",
+    alt: "Garage door installation",
+    items: [
+      "Sectional Garage Doors",
+      "Roller Doors",
+      "Tilt Doors",
+      "Custom Designs & Colours",
+    ],
+    href: "/garage-doors",
   },
   {
     title: "Automated Gates",
@@ -69,13 +72,27 @@ function BulletIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="3"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-5 w-5 shrink-0 text-white/80"
+      className="mt-0.5 h-5 w-5 shrink-0 text-brand-yellow"
       aria-hidden
     >
-      <path d="M3 12h6l3-7 3 14 3-7h3" />
+      <path d="m5 12 5 5L20 7" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.41.6 3.69.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.53.6 3.69a1 1 0 0 1-.25 1.05l-2.23 2.05z" />
     </svg>
   );
 }
@@ -135,12 +152,21 @@ export default function Services() {
                 </ul>
 
                 <div className="mt-auto flex flex-col gap-3">
-                  <a
-                    href="#contact"
-                    className="inline-block bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
-                  >
-                    GET A FREE QUOTE
-                  </a>
+                  {c.callCta ? (
+                    <a
+                      href="tel:0468789795"
+                      className="inline-flex w-full items-center justify-center gap-2 bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
+                    >
+                      <PhoneIcon />
+                      0468 789 795
+                    </a>
+                  ) : (
+                    <QuoteButton
+                      className="inline-block w-full bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
+                    >
+                      GET A FREE QUOTE
+                    </QuoteButton>
+                  )}
                   <Link
                     href={c.href}
                     className="group/learn inline-flex items-center justify-center gap-2 text-center font-display text-sm font-bold uppercase tracking-wide text-white/90 underline-offset-4 transition hover:text-brand-yellow hover:underline"

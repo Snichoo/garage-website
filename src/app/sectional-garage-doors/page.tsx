@@ -5,6 +5,7 @@ import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
+import QuoteButton from "@/components/QuoteButton";
 import SectionalDesignPicker from "@/components/SectionalDesignPicker";
 import SeriesGallery from "@/components/SeriesGallery";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -23,9 +24,9 @@ const platinumSeries = [
 ];
 
 const features = [
-  "Space-saving design — opens vertically, ideal for short driveways or tight spaces.",
+  "Space-saving design that opens vertically, ideal for short driveways or tight spaces.",
   "Superior thermal and acoustic insulation, cutting energy costs and noise.",
-  "Versatile style — a range of colours, materials and finishes to match any home.",
+  "Versatile style with a range of colours, materials and finishes to match any home.",
   "Built tough with robust materials for long-lasting, reliable performance.",
 ];
 
@@ -65,7 +66,7 @@ export default function SectionalGarageDoorsPage() {
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
               Sectional garage doors are made of multiple horizontal panels
-              connected by hinges — opening vertically and sliding smoothly
+              connected by hinges, opening vertically and sliding smoothly
               into the ceiling space. Space-efficient and modern, they&apos;re
               an excellent choice for almost any home.
             </p>
@@ -101,12 +102,11 @@ export default function SectionalGarageDoorsPage() {
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
               </a>
-              <a
-                href="tel:0412667147"
+              <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
                 Get a free quote
-              </a>
+              </QuoteButton>
             </div>
           </div>
 
@@ -165,9 +165,9 @@ export default function SectionalGarageDoorsPage() {
           </div>
 
           <p className="mb-10 max-w-2xl text-base leading-relaxed text-neutral-700 md:text-lg">
-            Gliderol&apos;s sectional doors are available in multiple designs,
+            Sparrow&apos;s sectional doors are available in multiple designs,
             each catering to a specific look and feel. Whether you&apos;re after
-            a classic or modern style, Gliderol has a sectional garage door
+            a classic or modern style, Sparrow has a sectional garage door
             that fits your needs.
           </p>
 

@@ -5,10 +5,11 @@ import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
+import QuoteButton from "@/components/QuoteButton";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
-  "Compact design — slats roll into a drum, ideal for tight spaces and low headroom.",
+  "Compact design with slats that roll into a drum, ideal for tight spaces and low headroom.",
   "Built tough with strong materials to handle daily use and harsh weather.",
   "Low maintenance and long lasting, requiring minimal upkeep over the years.",
   "Customisable finishes and colours to complement your property's aesthetic.",
@@ -87,12 +88,11 @@ export default function RollerDoorsPage() {
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
               </a>
-              <a
-                href="tel:0412667147"
+              <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
                 Get a free quote
-              </a>
+              </QuoteButton>
             </div>
           </div>
 
