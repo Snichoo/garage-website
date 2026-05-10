@@ -91,7 +91,6 @@ const smartKits: SmartKit[] = [
   {
     id: "remotes",
     name: "Additional Remote Kits",
-    tag: "Extra Convenience",
     image: "/images/smart-kits/remote-control.avif",
     alt: "Extra long-range remotes for automated gates and garage doors",
     intro:

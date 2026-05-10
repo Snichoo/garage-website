@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { openQuoteModal } from "./QuoteModal";
 
 type Design = {
   name: string;
@@ -118,8 +119,9 @@ export default function SectionalDesignPicker() {
           <p className="mt-3 text-sm leading-relaxed text-neutral-700 md:text-base">
             {active.blurb}
           </p>
-          <a
-            href="#contact"
+          <button
+            type="button"
+            onClick={() => openQuoteModal()}
             className="mt-5 inline-flex items-center gap-2 bg-brand-yellow px-5 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-brand-navy transition hover:opacity-90 md:text-base"
           >
             Enquire about {active.name}
@@ -135,7 +137,7 @@ export default function SectionalDesignPicker() {
             >
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
-          </a>
+          </button>
         </div>
       </div>
     </div>
