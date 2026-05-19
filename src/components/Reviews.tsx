@@ -275,8 +275,11 @@ export default function Reviews() {
   const nudge = (dir: 1 | -1) => {
     const el = scrollerRef.current;
     if (!el) return;
-    const card = el.querySelector<HTMLElement>("[data-review-card]");
-    const step = card ? card.offsetWidth + 16 : 280;
+    const cards = el.querySelectorAll<HTMLElement>("[data-review-card]");
+    const step =
+      cards.length >= 2
+        ? cards[1].offsetLeft - cards[0].offsetLeft
+        : cards[0]?.offsetWidth ?? 280;
     el.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
