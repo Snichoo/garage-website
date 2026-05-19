@@ -113,27 +113,34 @@ export default function QuoteModal() {
             <input
               type="text"
               required
-              placeholder="Name"
+              placeholder="Name *"
               className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
             />
             <input
               type="tel"
               required
-              placeholder="Phone"
+              inputMode="tel"
+              pattern="[0-9 +()\-]{6,}"
+              placeholder="Phone *"
               className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
             />
           </div>
           <input
             type="email"
             required
-            placeholder="Email"
+            placeholder="Email *"
             className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
           <textarea
-            placeholder="Tell us about your job (optional)"
+            required
+            minLength={10}
+            placeholder="Tell us about your job *"
             rows={4}
             className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
+          <p className="-mt-1 text-xs text-neutral-500">
+            All fields are required.
+          </p>
           <button
             type="submit"
             className="mt-1 w-full bg-brand-yellow py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg"

@@ -1,12 +1,10 @@
 import Image from "next/image";
-import AreasWeServe from "@/components/AreasWeServe";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
-import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
   "Wi-Fi receivers for full remote control of gates and garage doors.",
@@ -362,10 +360,6 @@ export default function SmartKitsPage() {
           </div>
         </div>
       </section>
-
-      <WhyChooseUs />
-
-      <AreasWeServe />
 
       <Faq
         items={smartKitFaqs}

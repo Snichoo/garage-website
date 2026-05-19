@@ -40,28 +40,15 @@ const cards: Card[] = [
   },
   {
     title: "Automated Gates",
-    src: "/images/automated-gates.avif",
+    src: "/images/automated-gates.webp",
     alt: "Electric automated entry gates",
     items: [
-      "Swing & sliding gate automation",
+      "Telescopic & sliding gate automation",
       "Motor supply & installation",
       "Intercom & keypad integration",
       "Repairs & servicing",
     ],
     href: "/automated-gates",
-  },
-  {
-    title: "Smart Kits",
-    src: "/images/smart-kit.avif",
-    alt: "Smart garage and gate kit",
-    items: [
-      "Smartphone-controlled openers",
-      "Wi-Fi & app integration",
-      "Smart sensors & cameras",
-      "Retrofit existing systems",
-    ],
-    href: "/smart-kits",
-    imagePosition: "object-left",
   },
 ];
 
@@ -112,7 +99,7 @@ export default function Services() {
         </div>
 
         {/* Service cards */}
-        <div className="mx-auto grid max-w-[820px] grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6">
+        <div className="mx-auto grid max-w-[1140px] grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {cards.map((c) => (
             <article
               key={c.title}

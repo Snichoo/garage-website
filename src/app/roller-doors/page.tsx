@@ -1,4 +1,3 @@
-import AreasWeServe from "@/components/AreasWeServe";
 import ColorbondRange from "@/components/ColorbondRange";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
@@ -6,7 +5,6 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
-import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
   "Compact design with slats that roll into a drum, ideal for tight spaces and low headroom.",
@@ -138,10 +136,6 @@ export default function RollerDoorsPage() {
       <div id="colours">
         <ColorbondRange />
       </div>
-
-      <WhyChooseUs />
-
-      <AreasWeServe />
 
       <Faq />
 

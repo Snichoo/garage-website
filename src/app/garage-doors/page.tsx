@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import AreasWeServe from "@/components/AreasWeServe";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
-import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
   "Professional installation of sectional, roller and tilt garage doors.",
@@ -263,12 +261,10 @@ export default function GarageDoorsPage() {
           {/* Right: three door-type tiles, bento layout */}
           <div className="grid grid-cols-2 gap-3 md:gap-4">
             <DoorTile
-              kind="image"
-              src="/images/sectional/hampton.png"
-              alt="Modern sectional garage door"
+              kind="video"
+              src="/videos/Sectional_Door_FrontBack_Colormatched-1.mp4"
               label="Sectional Doors"
               aspect="aspect-[16/9]"
-              priority
               span2
             />
             <DoorTile
@@ -413,10 +409,6 @@ export default function GarageDoorsPage() {
           </div>
         </div>
       </section>
-
-      <WhyChooseUs />
-
-      <AreasWeServe />
 
       <Faq
         items={garageDoorFaqs}

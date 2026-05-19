@@ -3,15 +3,17 @@ type LocationMapProps = {
 };
 
 export default function LocationMap({ query }: LocationMapProps = {}) {
-  const address = query ?? "1/24 Lisburn St, East Brisbane QLD 4169";
+  // Searching Google Maps for an administrative area like "Brisbane, Queensland, Australia"
+  // shows the region with its boundary highlighted automatically.
+  const search = query ?? "Brisbane, Queensland, Australia";
   const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    address,
+    search,
   )}&output=embed`;
 
   return (
     <section className="w-full">
       <iframe
-        title={`Map showing ${address}`}
+        title={`Map showing ${search}`}
         src={embedSrc}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"

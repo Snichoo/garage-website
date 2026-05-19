@@ -1,24 +1,45 @@
+"use client";
+
+import { useState } from "react";
+
 type Swatch = {
   name: string;
   hex: string;
 };
 
+// First 12 are shown by default; the rest unlock via "Show more".
 const swatches: Swatch[] = [
-  { name: "Manor Red", hex: "#6A2419" },
-  { name: "Cottage Green", hex: "#2C443A" },
+  { name: "Manor Red", hex: "#5F1D0F" },
+  { name: "Pale Eucalypt", hex: "#7C856A" },
+  { name: "Cottage Green", hex: "#304C3D" },
+  { name: "Deep Ocean", hex: "#364252" },
+  { name: "Ironstone", hex: "#3F434C" },
   { name: "Night Sky", hex: "#0A0A0A" },
-  { name: "Gully", hex: "#827A6E" },
-  { name: "Paperbark", hex: "#C9C0A6" },
-  { name: "Classic Cream", hex: "#E4DDBE" },
   { name: "Monument", hex: "#323234" },
-  { name: "Basalt", hex: "#76777B" },
-  { name: "Bluegum", hex: "#9A9DA0" },
+  { name: "Woodland Grey", hex: "#4B4C46" },
+  { name: "Basalt", hex: "#6D6D6F" },
+  { name: "Wallaby", hex: "#7F7C77" },
+  { name: "Jasper", hex: "#6D6153" },
+  { name: "Gully", hex: "#857F73" },
+  { name: "Windspray", hex: "#898B8A" },
+  { name: "Bluegum", hex: "#969799" },
+  { name: "Paperbark", hex: "#CABEA4" },
   { name: "Dune", hex: "#B1ADA2" },
+  { name: "Southerly", hex: "#D2D1CC" },
+  { name: "Evening Haze", hex: "#C4C2A9" },
   { name: "Surfmist", hex: "#E4E2D5" },
+  { name: "Dover White", hex: "#F1ECDE" },
+  { name: "Classic Cream", hex: "#E9DCB9" },
   { name: "Shale Grey", hex: "#BDBFBA" },
 ];
 
+const INITIAL_VISIBLE = 12;
+
 export default function ColorbondRange() {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? swatches : swatches.slice(0, INITIAL_VISIBLE);
+  const hasMore = swatches.length > INITIAL_VISIBLE;
+
   return (
     <section className="w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -40,19 +61,47 @@ export default function ColorbondRange() {
         </p>
 
         <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 md:gap-4">
-          {swatches.map((s) => (
+          {visible.map((s) => (
             <div key={s.name} className="group flex flex-col">
               <div
                 className="aspect-square w-full overflow-hidden rounded-xl shadow-md ring-1 ring-black/10 transition group-hover:-translate-y-0.5 group-hover:shadow-lg"
                 style={{ backgroundColor: s.hex }}
               />
               <p className="mt-2 text-center font-display text-sm font-bold text-brand-navy md:text-base">
-                {s.name}<span className="text-[0.7em]">®</span>
+                {s.name}
+                <span className="text-[0.7em]">®</span>
               </p>
             </div>
           ))}
         </div>
 
+        {hasMore && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setExpanded((e) => !e)}
+              aria-expanded={expanded}
+              className="inline-flex items-center gap-2 bg-brand-navy px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-brand-yellow shadow-md transition hover:opacity-90 md:text-base"
+            >
+              {expanded
+                ? "Show fewer colours"
+                : `Show all ${swatches.length} colours`}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+                aria-hidden
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -121,14 +121,15 @@ body {
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
 }
 
-/* Slow the reviews carousel on mobile, restore default on sm+ */
-.reviews-carousel {
-  animation-duration: 90s;
+/* Reviews carousel: hide native scrollbar while preserving scroll behaviour. */
+.reviews-scroller {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: auto;
+  overscroll-behavior-x: contain;
 }
-@media (min-width: 640px) {
-  .reviews-carousel {
-    animation-duration: 45s;
-  }
+.reviews-scroller::-webkit-scrollbar {
+  display: none;
 }
 
 /* Scroll-triggered reveal for top-level page sections.

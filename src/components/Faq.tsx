@@ -73,13 +73,13 @@ export default function Faq({ items, intro }: FaqProps = {}) {
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left md:px-7 md:py-5"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left md:px-7 md:py-5"
                 >
-                  <span className="font-display text-base font-extrabold text-brand-navy md:text-lg">
+                  <span className="font-display text-lg font-extrabold text-brand-navy md:text-lg">
                     {item.q}
                   </span>
                   <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-navy text-brand-yellow transition-transform duration-200 ${
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-navy text-brand-yellow transition-transform duration-200 md:h-8 md:w-8 ${
                       isOpen ? "rotate-45" : ""
                     }`}
                     aria-hidden
@@ -91,7 +91,7 @@ export default function Faq({ items, intro }: FaqProps = {}) {
                       strokeWidth="3"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="h-4 w-4"
+                      className="h-5 w-5 md:h-4 md:w-4"
                     >
                       <path d="M12 5v14M5 12h14" />
                     </svg>
@@ -103,7 +103,7 @@ export default function Faq({ items, intro }: FaqProps = {}) {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-5 text-sm leading-relaxed text-neutral-700 md:px-7 md:pb-6 md:text-base">
+                    <p className="px-5 pb-6 text-base leading-relaxed text-neutral-700 md:px-7 md:pb-6 md:text-base">
                       {item.a}
                     </p>
                   </div>

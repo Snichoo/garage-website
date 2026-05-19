@@ -1,15 +1,13 @@
 import Image from "next/image";
-import AreasWeServe from "@/components/AreasWeServe";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
-import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
-  "Professional installation of automation for swing, sliding and double gates.",
+  "Professional installation of automation for telescopic, sliding and double gates.",
   "Custom designs, finishes and materials to suit any property.",
   "Robust construction built to handle daily use and harsh weather.",
   "Comprehensive maintenance and repair to keep your gate operating safely.",
@@ -17,12 +15,12 @@ const features = [
 
 const gateFaqs = [
   {
-    q: "What is the difference between swing, sliding or double gates?",
-    a: "Swing gates open inward or outward on hinges, sliding gates move horizontally along a track, and double gates consist of two symmetrical panels that open either inward or outward. Each type is suited to different property layouts and space requirements.",
+    q: "What is the difference between telescopic, sliding or double gates?",
+    a: "Telescopic gates use two or more overlapping panels that slide and nest together, halving the run-off space a standard sliding gate needs. Sliding gates move horizontally along a single track, and double gates consist of two symmetrical panels that open either inward or outward. Each type is suited to different property layouts and space requirements.",
   },
   {
     q: "Can all gates be automated?",
-    a: "Yes, we offer automation upgrades for all types of gates, including swing, sliding, and double gates. Automation enhances convenience and security.",
+    a: "Yes, we offer automation upgrades for all types of gates, including telescopic, sliding, and double gates. Automation enhances convenience and security.",
   },
   {
     q: "How often should I schedule gate maintenance?",
@@ -50,21 +48,21 @@ type GateType = {
 
 const gateTypes: GateType[] = [
   {
-    id: "swing",
-    name: "Automated Swing Gates",
-    image: "/images/gates/swing-gate.avif",
-    alt: "Modern wrought iron automated swing gate",
+    id: "telescopic",
+    name: "Automated Telescopic Gates",
+    image: "/images/automated-gates.webp",
+    alt: "Modern automated telescopic gate with overlapping panels",
     intro:
-      "Swing gates open inward or outward on sturdy hinges, a classic, sophisticated entrance ideal for properties with the room to swing freely.",
+      "Telescopic gates use two or more overlapping panels that slide and nest together, delivering a wide opening in roughly half the run-off space of a standard sliding gate.",
     benefits: [
-      "Timeless, traditional design that suits almost any property.",
-      "Smooth, quiet operation with minimal maintenance.",
+      "Ideal for narrow driveways and properties with limited side clearance.",
+      "Wide clear opening without sacrificing kerbside space.",
+      "Smooth, synchronised panel motion with quiet operation.",
       "Available in a wide range of materials, styles and finishes.",
-      "Built to withstand frequent use and changing weather.",
     ],
     services: [
       "Automation Installation",
-      "Cable Replacement",
+      "Track & Roller Service",
       "Maintenance Service",
       "Motor Replacement",
     ],
@@ -77,7 +75,7 @@ const gateTypes: GateType[] = [
     intro:
       "Sliding gates run horizontally along a track, perfect for properties with limited driveway space, combining function with a clean, modern look.",
     benefits: [
-      "Space-saving design ideal where swing gates aren't an option.",
+      "Space-saving design ideal where double gates aren't an option.",
       "Robust locking and sturdy construction for enhanced security.",
       "Low maintenance with consistent, reliable performance.",
       "Customisable in a range of designs, colours and materials.",
@@ -236,9 +234,9 @@ export default function AutomatedGatesPage() {
           {/* Right: three gate-type images, bento layout */}
           <div className="grid grid-cols-2 gap-3 md:gap-4">
             <GateTile
-              src="/images/gates/swing-gate.avif"
-              alt="Modern wrought iron automated swing gate"
-              label="Swing Gates"
+              src="/images/automated-gates.webp"
+              alt="Modern automated telescopic gate with overlapping panels"
+              label="Telescopic Gates"
               aspect="aspect-[16/9]"
               priority
               span2
@@ -358,13 +356,9 @@ export default function AutomatedGatesPage() {
         </div>
       </section>
 
-      <WhyChooseUs />
-
-      <AreasWeServe />
-
       <Faq
         items={gateFaqs}
-        intro="Common questions about our automated swing, sliding and double gate services."
+        intro="Common questions about our automated telescopic, sliding and double gate services."
       />
 
       <CtaBanner />

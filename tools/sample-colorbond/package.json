@@ -1,0 +1,13 @@
+{
+  "name": "sample-colorbond",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Detect swatch colours from a colorbond/screenshot PNG and print hex values.",
+  "bin": "./index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  }
+}

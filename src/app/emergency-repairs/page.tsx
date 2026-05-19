@@ -1,11 +1,10 @@
 import Image from "next/image";
-import AreasWeServe from "@/components/AreasWeServe";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import HowCanWeHelp from "@/components/HowCanWeHelp";
 import LocationMap from "@/components/LocationMap";
-import WhyChooseUs from "@/components/WhyChooseUs";
 
 const features = [
   "24/7 call-outs, weekends and public holidays.",
@@ -198,9 +197,7 @@ export default function EmergencyRepairsPage() {
         </div>
       </section>
 
-      <WhyChooseUs />
-
-      <AreasWeServe />
+      <HowCanWeHelp />
 
       <Faq />
 

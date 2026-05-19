@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
 
 type Review = {
   name: string;
@@ -195,7 +198,88 @@ function Star({ className = "w-3 h-3" }: { className?: string }) {
   );
 }
 
+function ChevronIcon({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      {direction === "left" ? (
+        <path d="m15 18-6-6 6-6" />
+      ) : (
+        <path d="m9 18 6-6-6-6" />
+      )}
+    </svg>
+  );
+}
+
 export default function Reviews() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<{
+    active: boolean;
+    startX: number;
+    startScroll: number;
+    moved: boolean;
+  }>({ active: false, startX: 0, startScroll: 0, moved: false });
+
+  // Seamless wrap when user manually scrolls past the loop boundary.
+  const handleScroll = () => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const half = el.scrollWidth / 2;
+    if (el.scrollLeft >= half) {
+      el.scrollLeft -= half;
+    } else if (el.scrollLeft < 0) {
+      el.scrollLeft += half;
+    }
+  };
+
+  // Pointer drag-to-scroll.
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    dragRef.current = {
+      active: true,
+      startX: e.clientX,
+      startScroll: el.scrollLeft,
+      moved: false,
+    };
+    el.setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragRef.current.active) return;
+    const el = scrollerRef.current;
+    if (!el) return;
+    const dx = e.clientX - dragRef.current.startX;
+    if (Math.abs(dx) > 4) dragRef.current.moved = true;
+    el.scrollLeft = dragRef.current.startScroll - dx;
+  };
+
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragRef.current.active) return;
+    dragRef.current.active = false;
+    const el = scrollerRef.current;
+    if (el && el.hasPointerCapture(e.pointerId)) {
+      el.releasePointerCapture(e.pointerId);
+    }
+  };
+
+  const nudge = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-review-card]");
+    const step = card ? card.offsetWidth + 16 : 280;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
   return (
     <section
       className="reviews-font w-full bg-white py-8 sm:py-12"
@@ -229,19 +313,40 @@ export default function Reviews() {
 
           {/* Right: reviews carousel */}
           <div className="w-full min-w-0 flex-1">
-            <div
-              className="mask-gradient relative overflow-hidden"
-              style={{ touchAction: "pan-y pinch-zoom" }}
-            >
-              <div
-                className="reviews-carousel flex animate-slide-infinite items-start gap-3 will-change-transform sm:gap-4"
-                style={{ width: "300%" }}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => nudge(-1)}
+                aria-label="Previous reviews"
+                className="absolute left-1 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center rounded-full bg-white p-2 text-neutral-700 shadow-md ring-1 ring-black/10 transition hover:text-brand-navy"
               >
-                {[0, 1, 2].map((setIndex) =>
+                <ChevronIcon direction="left" />
+              </button>
+              <button
+                type="button"
+                onClick={() => nudge(1)}
+                aria-label="Next reviews"
+                className="absolute right-1 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center rounded-full bg-white p-2 text-neutral-700 shadow-md ring-1 ring-black/10 transition hover:text-brand-navy"
+              >
+                <ChevronIcon direction="right" />
+              </button>
+
+              <div
+                ref={scrollerRef}
+                className="reviews-scroller mask-gradient relative flex cursor-grab items-start gap-3 overflow-x-auto pb-1 active:cursor-grabbing sm:gap-4"
+                style={{ touchAction: "pan-y" }}
+                onScroll={handleScroll}
+                onPointerDown={onPointerDown}
+                onPointerMove={onPointerMove}
+                onPointerUp={onPointerUp}
+                onPointerCancel={onPointerUp}
+              >
+                {[0, 1].map((setIndex) =>
                   reviews.map((review, index) => (
                     <div
                       key={`${setIndex}-${index}`}
-                      className="w-64 flex-shrink-0 sm:w-72"
+                      data-review-card
+                      className="w-64 flex-shrink-0 select-none sm:w-72"
                     >
                       <div className="rounded-lg border border-gray-200 bg-white p-3 shadow-sm sm:p-4">
                         <div className="mb-2 flex items-start justify-between sm:mb-3">

@@ -1,4 +1,3 @@
-import AreasWeServe from "@/components/AreasWeServe";
 import ColorbondRange from "@/components/ColorbondRange";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
@@ -8,7 +7,6 @@ import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
 import SectionalDesignPicker from "@/components/SectionalDesignPicker";
 import SeriesGallery from "@/components/SeriesGallery";
-import WhyChooseUs from "@/components/WhyChooseUs";
 import WindowOptions from "@/components/WindowOptions";
 
 const nativeSeries = Array.from({ length: 8 }, (_, i) => ({
@@ -175,8 +173,6 @@ export default function SectionalGarageDoorsPage() {
         </div>
       </section>
 
-      <WhyChooseUs />
-
       <ColorbondRange />
 
       <SeriesGallery
@@ -193,8 +189,6 @@ export default function SectionalGarageDoorsPage() {
       />
 
       <WindowOptions />
-
-      <AreasWeServe />
 
       <Faq />
 

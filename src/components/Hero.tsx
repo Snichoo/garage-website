@@ -115,25 +115,35 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <input
                 type="text"
-                placeholder="Name"
+                required
+                placeholder="Name *"
                 className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
               />
               <input
                 type="email"
-                placeholder="Email"
+                required
+                placeholder="Email *"
                 className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
               />
               <input
                 type="tel"
-                placeholder="Phone"
+                required
+                inputMode="tel"
+                pattern="[0-9 +()\-]{6,}"
+                placeholder="Phone *"
                 className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy sm:col-span-2"
               />
             </div>
             <textarea
-              placeholder="Your Message"
+              required
+              minLength={10}
+              placeholder="Your Message *"
               rows={5}
               className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
             />
+            <p className="-mt-1 text-xs text-neutral-500">
+              All fields are required.
+            </p>
             <button
               type="submit"
               className="mt-2 w-full bg-brand-yellow py-3 font-display text-base font-extrabold text-brand-navy transition hover:opacity-90 md:text-lg"

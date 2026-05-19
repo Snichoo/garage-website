@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { suburbs } from "@/data/suburbs";
+import { regions, getSuburbsByRegion } from "@/data/suburbs";
 
 function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -21,15 +21,15 @@ const services = [
   { label: "Roller Doors", href: "/roller-doors" },
   { label: "Tilt Doors", href: "/tilt-doors" },
   { label: "Automated Gates", href: "/automated-gates" },
-  { label: "Smart Kits", href: "/smart-kits" },
   { label: "Emergency Repairs", href: "/emergency-repairs" },
 ];
 
 const company = [
-  { label: "About Us", href: "/#about" },
-  { label: "Services", href: "/#services" },
+  { label: "About Us", href: "/about" },
+  { label: "Door Installations", href: "/garage-doors" },
+  { label: "Locations", href: "/locations" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
-  { label: "FAQs", href: "/#faq" },
 ];
 
 type FooterProps = {
@@ -113,22 +113,52 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
             </ul>
           </div>
 
-          {/* Servicing suburbs */}
+          {/* Our regions */}
           <div className="md:col-span-3">
             <h3 className="font-display text-sm font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
-              Servicing Suburbs
+              Our Regions
             </h3>
-            <ul className="mt-5 space-y-3">
-              {suburbs.map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href={`/suburbs/${s.slug}`}
-                    className="font-display text-base font-semibold text-white/85 transition hover:text-brand-yellow"
-                  >
-                    {s.name}
-                  </Link>
-                </li>
-              ))}
+            <p className="mt-3 text-sm italic leading-relaxed text-white/70">
+              We service the Greater Brisbane area, with dedicated support across:
+            </p>
+            <ul className="mt-4 space-y-1">
+              {regions.map((region) => {
+                const list = getSuburbsByRegion(region.slug);
+                if (list.length === 0) return null;
+                return (
+                  <li key={region.slug}>
+                    <details className="group border-b border-white/10 py-2">
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-2 font-display text-base font-semibold text-white/90 transition hover:text-brand-yellow [&::-webkit-details-marker]:hidden">
+                        <span>{region.name}</span>
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
+                          aria-hidden
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </summary>
+                      <ul className="mt-2 space-y-1.5 pl-1 pb-2">
+                        {list.map((s) => (
+                          <li key={s.slug}>
+                            <Link
+                              href={`/suburbs/${s.slug}`}
+                              className="font-display text-sm font-semibold text-brand-yellow/90 transition hover:text-brand-yellow"
+                            >
+                              {s.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

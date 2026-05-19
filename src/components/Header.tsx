@@ -10,20 +10,23 @@ type NavItem = {
   dropdown?: { label: string; href: string }[];
 };
 
-const navItems: NavItem[] = [
+type NavItemWithFlags = NavItem & { mobileOnly?: boolean };
+
+const navItems: NavItemWithFlags[] = [
+  { label: "Home", href: "/", mobileOnly: true },
   { label: "About Us", href: "/about" },
   {
-    label: "Services",
-    href: "/#services",
+    label: "Door Installations",
+    href: "/garage-doors",
     dropdown: [
       { label: "Sectional Garage Doors", href: "/sectional-garage-doors" },
       { label: "Roller Doors", href: "/roller-doors" },
       { label: "Tilt Doors", href: "/tilt-doors" },
       { label: "Automated Gates", href: "/automated-gates" },
-      { label: "Smart Kits", href: "/smart-kits" },
-      { label: "Emergency Service", href: "/emergency-repairs" },
     ],
   },
+  { label: "Emergency Service", href: "/emergency-repairs" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -195,12 +198,14 @@ export default function Header() {
               />
             </a>
 
-            <nav className="flex items-center gap-8">
-              {navItems.map((item) => (
+            <nav className="flex items-center gap-4 xl:gap-6">
+              {navItems
+                .filter((item) => !item.mobileOnly)
+                .map((item) => (
                 <div key={item.label} className="group relative">
                   <a
                     href={item.href}
-                    className="flex items-center gap-1 font-display text-base font-bold tracking-wide transition hover:text-brand-yellow"
+                    className="flex items-center gap-1 whitespace-nowrap font-display text-[13px] font-bold tracking-wide transition hover:text-brand-yellow xl:text-sm"
                   >
                     {item.label}
                     {item.dropdown && <ChevronDown />}
@@ -239,13 +244,13 @@ export default function Header() {
               </button>
               <a
                 href="tel:0468789795"
-                className="inline-flex items-center gap-3 rounded-full bg-brand-yellow px-6 py-3.5 text-brand-navy shadow-lg transition hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-yellow px-3 py-2 text-brand-navy shadow-lg transition hover:opacity-90 xl:gap-3 xl:px-6 xl:py-3.5"
               >
-                <span className="font-display text-xs font-extrabold uppercase tracking-wide">
+                <span className="hidden whitespace-nowrap font-display text-[10px] font-extrabold uppercase tracking-wide xl:inline xl:text-xs">
                   CALL US NOW
                 </span>
-                <span className="flex items-center gap-2 font-display text-lg font-extrabold">
-                  <PhoneIcon />
+                <span className="flex items-center gap-1.5 whitespace-nowrap font-display text-sm font-extrabold xl:gap-2 xl:text-lg">
+                  <PhoneIcon className="h-4 w-4 xl:h-5 xl:w-5" />
                   0468 789 795
                 </span>
               </a>

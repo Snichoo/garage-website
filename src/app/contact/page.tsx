@@ -36,7 +36,7 @@ function MailIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-function PinIcon({ className = "h-5 w-5" }: { className?: string }) {
+function TruckIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -49,8 +49,10 @@ function PinIcon({ className = "h-5 w-5" }: { className?: string }) {
       className={className}
       aria-hidden
     >
-      <path d="M12 22s7-7.58 7-13a7 7 0 1 0-14 0c0 5.42 7 13 7 13z" />
-      <circle cx="12" cy="9" r="2.5" />
+      <path d="M3 17V6a1 1 0 0 1 1-1h10v12" />
+      <path d="M14 9h4l3 4v4h-2" />
+      <circle cx="7.5" cy="17.5" r="2.5" />
+      <circle cx="17.5" cy="17.5" r="2.5" />
     </svg>
   );
 }
@@ -104,29 +106,45 @@ export default function ContactPage() {
                 <input
                   type="text"
                   required
-                  placeholder="First Name"
+                  placeholder="First Name *"
                   className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
                 />
                 <input
                   type="text"
                   required
-                  placeholder="Last Name"
+                  placeholder="Last Name *"
                   className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
                 />
               </div>
 
-              <input
-                type="email"
-                required
-                placeholder="Email"
-                className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
-              />
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <input
+                  type="email"
+                  required
+                  placeholder="Email *"
+                  className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
+                />
+                <input
+                  type="tel"
+                  required
+                  inputMode="tel"
+                  pattern="[0-9 +()\-]{6,}"
+                  placeholder="Phone *"
+                  className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
+                />
+              </div>
 
               <textarea
-                placeholder="Message (optional)"
+                required
+                minLength={10}
+                placeholder="Message *"
                 rows={6}
                 className="w-full resize-none border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
               />
+
+              <p className="-mt-2 text-xs text-neutral-500">
+                All fields are required.
+              </p>
 
               <button
                 type="submit"
@@ -183,16 +201,16 @@ export default function ContactPage() {
               <div className="absolute inset-0 bg-black/15" />
               <div className="relative flex items-start gap-5">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-brand-yellow text-brand-navy shadow-md">
-                  <PinIcon className="h-6 w-6" />
+                  <TruckIcon className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="font-display text-lg font-extrabold uppercase tracking-wide text-brand-yellow">
-                    How Can We Help?
+                    Mobile Service
                   </h3>
                   <p className="mt-2 font-display text-base font-extrabold leading-relaxed md:text-lg">
-                    1/24 Lisburn Street,
+                    We come to you across
                     <br />
-                    East Brisbane, QLD 4169
+                    Greater Brisbane.
                   </p>
                 </div>
               </div>

@@ -47,7 +47,7 @@ export default function SuburbPage({
       <Reviews />
       <Services />
       <WhyChooseUs suburb={suburb.name} />
-      <AreasWeServe suburb={suburb.name} />
+      <AreasWeServe suburb={suburb.name} blurb={suburb.blurb} />
       <Faq />
       <CtaBanner />
       <LocationMap query={mapQuery} />

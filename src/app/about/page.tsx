@@ -2,6 +2,7 @@ import Image from "next/image";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import MeetTheTeam from "@/components/MeetTheTeam";
 
 export default function AboutPage() {
   return (
@@ -104,6 +105,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <MeetTheTeam />
       <CtaBanner />
       <Footer />
     </main>
