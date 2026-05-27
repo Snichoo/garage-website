@@ -118,7 +118,7 @@ export default function GalleryPage() {
 
           <p className="mb-10 max-w-2xl text-base leading-relaxed text-neutral-700 md:text-lg">
             Sectional doors, roller doors, custom finishes and full
-            installations — explore our recent work and see what&apos;s
+            installations. Explore our recent work and see what&apos;s
             possible for your home.
           </p>
 

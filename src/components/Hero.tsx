@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const features = [
-  "Same-Day Repairs",
+  "Same Day Repairs",
   "All Garage Door Types",
   "Transparent Pricing",
   "Licensed & Insured",
@@ -41,14 +41,26 @@ function PhoneIcon() {
 
 type HeroProps = {
   suburb?: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+  accent?: string;
+  heroTagline?: string;
 };
 
-export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
+export default function Hero({
+  suburb = "Brisbane",
+  heroImage = "/images/hero.jpg",
+  heroImageAlt = "",
+  accent,
+  heroTagline,
+}: HeroProps = {}) {
+  const callLabel = `Call Our ${suburb} Team`;
+  const quoteSubmitLabel = `Send To Our ${suburb} Team`;
   return (
     <section className="relative isolate w-full overflow-hidden bg-brand-navy text-white">
       <Image
-        src="/images/hero.jpg"
-        alt=""
+        src={heroImage}
+        alt={heroImageAlt}
         fill
         priority
         sizes="100vw"
@@ -57,16 +69,24 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
       {/* Dark overlay for legibility */}
       <div className="absolute inset-0 -z-10 bg-black/55" />
 
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-6 pb-12 pt-32 md:gap-10 md:pb-24 md:pt-48 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:pt-36">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-6 pb-8 pt-32 md:gap-10 md:pb-14 md:pt-48 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:pt-36">
         {/* Left: copy */}
         <div className="flex flex-col gap-5 md:gap-6">
           <h1 className="font-display text-[34px] font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
-            {suburb}&apos;s Trusted
+            <span style={accent ? { color: accent } : undefined}>
+              {suburb}&apos;s
+            </span>{" "}
+            Trusted
             <br />
             <span className="text-brand-yellow">
               Garage Door Specialists
             </span>
           </h1>
+          {heroTagline && (
+            <p className="max-w-2xl text-sm leading-relaxed text-white/85 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] md:text-base">
+              {heroTagline}
+            </p>
+          )}
 
           {/* Google rating badge */}
           <div className="flex w-fit items-center gap-3 rounded-md bg-white px-3 py-2 text-[#1E1E1E] shadow-md">
@@ -100,8 +120,8 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
             className="mt-2 inline-flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-lg md:text-xl"
           >
             <PhoneIcon />
-            <span className="sm:hidden">Emergency Repairs 0468 789 795</span>
-            <span className="hidden sm:inline">Emergency Door Repairs 0468 789 795</span>
+            <span className="sm:hidden">{callLabel} 0468 789 795</span>
+            <span className="hidden sm:inline">{callLabel} on 0468 789 795</span>
           </a>
         </div>
 
@@ -138,7 +158,7 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
               required
               minLength={10}
               placeholder="Your Message *"
-              rows={5}
+              rows={3}
               className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
             />
             <p className="-mt-1 text-xs text-neutral-500">
@@ -148,7 +168,7 @@ export default function Hero({ suburb = "Brisbane" }: HeroProps = {}) {
               type="submit"
               className="mt-2 w-full bg-brand-yellow py-3 font-display text-base font-extrabold text-brand-navy transition hover:opacity-90 md:text-lg"
             >
-              Send us a message
+              {quoteSubmitLabel}
             </button>
           </form>
         </div>

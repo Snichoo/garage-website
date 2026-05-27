@@ -51,10 +51,10 @@ export default function AreasWeServe({
               <span className="text-brand-yellow">SERVE</span>
             </h2>
             <p className="text-base leading-relaxed text-white/85 md:text-lg">
-              We extend our reliable service across {suburb}
-              {blurb ? ` — ${blurb}` : ""}, offering smart, safe, and secure
-              solutions. From homes to businesses, trust us to provide
-              excellence and peace of mind tailored to your needs.
+              We cover {suburb} and the wider Brisbane area
+              {blurb ? `, ${blurb}` : ""}. Smart, safe and secure solutions
+              for homes and businesses alike, with the peace of mind that
+              comes from a local team.
             </p>
           </div>
 

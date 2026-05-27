@@ -16,9 +16,13 @@ export default function MeetTheTeam() {
                 sizes="(min-width: 1024px) 480px, (min-width: 768px) 440px, 100vw"
                 className="object-cover object-top"
               />
-              <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <span className="rotate-[-18deg] select-none font-display text-6xl font-extrabold uppercase tracking-[0.2em] text-white/30 drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)] md:text-7xl lg:text-8xl">
-                  Sample
+              <span className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 text-center">
+                <span className="rotate-[-18deg] select-none font-display text-3xl font-extrabold uppercase leading-tight tracking-[0.15em] text-white/40 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] md:text-4xl lg:text-5xl">
+                  One Photo
+                  <br />
+                  Two People
+                  <br />
+                  In It
                 </span>
               </span>
             </div>

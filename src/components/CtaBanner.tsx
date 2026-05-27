@@ -39,7 +39,12 @@ function DotField({ id, className }: { id: string; className?: string }) {
 */
 const IMAGE_SHAPE = "4px 40% 4px 40%";
 
-export default function CtaBanner() {
+type CtaBannerProps = {
+  suburb?: string;
+};
+
+export default function CtaBanner({ suburb }: CtaBannerProps = {}) {
+  const ctaLabel = suburb ? `Book My ${suburb} Quote` : "FREE Measure & Quote";
   return (
     <section className="relative w-full overflow-hidden">
       {/* ── Brand-navy background panel ── */}
@@ -91,7 +96,7 @@ export default function CtaBanner() {
             <QuoteButton
               className="inline-flex items-center justify-center rounded-md bg-brand-yellow px-8 py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-lg transition hover:opacity-90 md:text-lg"
             >
-              FREE Measure &amp; Quote
+              {ctaLabel}
             </QuoteButton>
             {/* Arrow image - desktop: above-right of button; mobile: to the right of button */}
             <div className="pointer-events-none absolute right-2 top-[-40px] block min-[1206px]:hidden">

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import AreasWeServe from "@/components/AreasWeServe";
+import CommonProblems from "@/components/CommonProblems";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import FeatureStrip from "@/components/FeatureStrip";
@@ -7,10 +8,13 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LocationMap from "@/components/LocationMap";
+import MeetTheTeam from "@/components/MeetTheTeam";
+import RecentJobs from "@/components/RecentJobs";
 import Reviews from "@/components/Reviews";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { suburbs } from "@/data/suburbs";
+import { getSuburbFaqs, getSuburbProfile } from "@/data/suburbProfiles";
 
 export function generateStaticParams() {
   return suburbs.map((s) => ({ suburb: s.slug }));
@@ -25,7 +29,7 @@ export function generateMetadata({
   if (!suburb) return {};
   return {
     title: `Garage Door Specialists in ${suburb.name} | Trusted Local Experts`,
-    description: `${suburb.name}'s trusted garage door specialists. Same-day repairs, installation and servicing across ${suburb.name} and surrounds.`,
+    description: `Same-day garage door repairs, installation and servicing in ${suburb.name}. Local specialists, transparent pricing and 5-star Google reviews.`,
   };
 }
 
@@ -37,19 +41,44 @@ export default function SuburbPage({
   const suburb = suburbs.find((s) => s.slug === params.suburb);
   if (!suburb) notFound();
 
+  const profile = getSuburbProfile(suburb.slug);
+  const faqs = getSuburbFaqs(suburb.name, suburb.postcode, profile);
   const mapQuery = `${suburb.name} QLD ${suburb.postcode}`;
 
   return (
     <main className="garage-bg">
       <Header />
-      <Hero suburb={suburb.name} />
+      <Hero
+        suburb={suburb.name}
+        heroImage={profile?.heroImage}
+        heroImageAlt={profile?.heroImageAlt}
+        accent={profile?.accent}
+        heroTagline={profile?.heroTagline}
+      />
       <FeatureStrip />
       <Reviews />
       <Services />
-      <WhyChooseUs suburb={suburb.name} />
+      <WhyChooseUs
+        suburb={suburb.name}
+        accent={profile?.accent}
+      />
+      {profile && (
+        <CommonProblems
+          suburb={suburb.name}
+          postcode={suburb.postcode}
+          problems={profile.problems}
+          accent={profile.accent}
+          accentSoft={profile.accentSoft}
+        />
+      )}
+      <MeetTheTeam />
+      <RecentJobs suburb={suburb.name} />
       <AreasWeServe suburb={suburb.name} blurb={suburb.blurb} />
-      <Faq />
-      <CtaBanner />
+      <Faq
+        items={faqs}
+        intro={`Real questions we get from homeowners in ${suburb.name} about repairs, replacements, motors and same-day service.`}
+      />
+      <CtaBanner suburb={suburb.name} />
       <LocationMap query={mapQuery} />
       <Footer suburb={suburb.name} />
     </main>

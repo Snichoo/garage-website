@@ -12,6 +12,18 @@ function Shield100() {
   );
 }
 
+function LocalServiceIcon() {
+  return (
+    <Image
+      src="/images/local-service.png"
+      alt="Local Brisbane garage door specialists"
+      width={300}
+      height={300}
+      className="h-32 w-32 object-contain md:h-40 md:w-40"
+    />
+  );
+}
+
 function Ring247() {
   return (
     <Image
@@ -52,9 +64,13 @@ function WhyCard({
 
 type WhyChooseUsProps = {
   suburb?: string;
+  accent?: string;
 };
 
-export default function WhyChooseUs(_props: WhyChooseUsProps = {}) {
+export default function WhyChooseUs({
+  suburb,
+  accent,
+}: WhyChooseUsProps = {}) {
   return (
     <section className="garage-bg-navy w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -140,12 +156,21 @@ export default function WhyChooseUs(_props: WhyChooseUsProps = {}) {
             <Shield100 />
           </WhyCard>
 
-          <WhyCard
-            title="Round-The-Clock Access"
-            body="Available around the clock, weekends and public holidays."
-          >
-            <Ring247 />
-          </WhyCard>
+          {suburb ? (
+            <WhyCard
+              title={`Local ${suburb} Experts`}
+              body="Technicians who actually know the streets, the homes and the driveways around here. We're on call across your postcode every day of the week."
+            >
+              <LocalServiceIcon />
+            </WhyCard>
+          ) : (
+            <WhyCard
+              title="Around The Clock Access"
+              body="Available around the clock, weekends and public holidays."
+            >
+              <Ring247 />
+            </WhyCard>
+          )}
 
           <div className="flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white/95 shadow-sm">
             <div className="flex items-start justify-center">
