@@ -71,7 +71,7 @@ const smartKits: SmartKit[] = [
     id: "security",
     name: "Security and Monitoring Kits",
     image: "/images/smart-kits/video-intercom.avif",
-    alt: "Wi-Fi video intercom mounted at the entrance of an automated gate",
+    alt: "Wi-Fi security camera mounted at the entrance of an automated gate",
     intro:
       "Combine Wi-Fi receivers with cameras, motion sensors and real-time alerts for enhanced security, ideal for monitoring your gates and garage doors remotely.",
     benefits: [
@@ -234,7 +234,7 @@ export default function SmartKitsPage() {
           <div className="grid grid-cols-2 gap-3 md:gap-4">
             <KitTile
               src="/images/smart-kits/video-intercom.avif"
-              alt="Wi-Fi video intercom mounted at the entrance of an automated gate"
+              alt="Wi-Fi security camera mounted at the entrance of an automated gate"
               label="Security & Monitoring"
               aspect="aspect-[16/9]"
               priority

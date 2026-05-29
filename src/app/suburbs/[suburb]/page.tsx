@@ -8,8 +8,8 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LocationMap from "@/components/LocationMap";
-import MeetTheTeam from "@/components/MeetTheTeam";
 import RecentJobs from "@/components/RecentJobs";
+import SuburbTeam from "@/components/SuburbTeam";
 import Reviews from "@/components/Reviews";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -71,7 +71,7 @@ export default function SuburbPage({
           accentSoft={profile.accentSoft}
         />
       )}
-      <MeetTheTeam />
+      <SuburbTeam suburb={suburb.name} />
       <RecentJobs suburb={suburb.name} />
       <AreasWeServe suburb={suburb.name} blurb={suburb.blurb} />
       <Faq

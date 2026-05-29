@@ -47,6 +47,30 @@ type HeroProps = {
   heroTagline?: string;
 };
 
+/**
+ * Brighten a hex colour so it remains legible on the dark navy hero.
+ * If the colour already has high luminance we leave it alone; otherwise
+ * we mix it with white until it clears the threshold.
+ */
+function lightenForDarkBg(hex?: string): string | undefined {
+  if (!hex) return undefined;
+  const match = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!match) return hex;
+  const value = parseInt(match[1], 16);
+  const r = (value >> 16) & 0xff;
+  const g = (value >> 8) & 0xff;
+  const b = value & 0xff;
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  const TARGET = 0.62;
+  if (luminance >= TARGET) return hex;
+  const mix = Math.min(1, (TARGET - luminance) / (1 - luminance));
+  const blend = (channel: number) =>
+    Math.round(channel + (255 - channel) * mix)
+      .toString(16)
+      .padStart(2, "0");
+  return `#${blend(r)}${blend(g)}${blend(b)}`;
+}
+
 export default function Hero({
   suburb = "Brisbane",
   heroImage = "/images/hero.jpg",
@@ -56,6 +80,7 @@ export default function Hero({
 }: HeroProps = {}) {
   const callLabel = `Call Our ${suburb} Team`;
   const quoteSubmitLabel = `Send To Our ${suburb} Team`;
+  const accentReadable = lightenForDarkBg(accent);
   return (
     <section className="relative isolate w-full overflow-hidden bg-brand-navy text-white">
       <Image
@@ -73,7 +98,7 @@ export default function Hero({
         {/* Left: copy */}
         <div className="flex flex-col gap-5 md:gap-6">
           <h1 className="font-display text-[34px] font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
-            <span style={accent ? { color: accent } : undefined}>
+            <span style={accentReadable ? { color: accentReadable } : undefined}>
               {suburb}&apos;s
             </span>{" "}
             Trusted

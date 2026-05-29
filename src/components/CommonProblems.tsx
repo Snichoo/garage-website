@@ -19,12 +19,12 @@ export default function CommonProblems({
     <section className="w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
         {/* Stencil shadow heading */}
-        <div className="relative mb-10 h-[42px] md:mb-12 md:h-[80px]">
-          <h2 className="outlined-text absolute left-0 top-0 select-none whitespace-nowrap font-display text-[28px] font-extrabold uppercase leading-none tracking-tight md:text-[56px]">
+        <div className="relative mb-10 h-[40px] overflow-hidden md:mb-12 md:h-[80px]">
+          <h2 className="outlined-text absolute left-0 top-0 max-w-full select-none whitespace-nowrap font-display text-[24px] font-extrabold uppercase leading-none tracking-tight md:text-[56px]">
             Common Issues in {suburb}
           </h2>
           <h2
-            className="absolute bottom-0 left-2 whitespace-nowrap font-display text-[22px] font-extrabold uppercase leading-none tracking-tight md:left-5 md:text-[46px]"
+            className="absolute bottom-0 left-2 max-w-full whitespace-nowrap font-display text-[20px] font-extrabold uppercase leading-none tracking-tight md:left-5 md:text-[46px]"
             style={{ color: accent }}
           >
             Common Issues in {suburb}

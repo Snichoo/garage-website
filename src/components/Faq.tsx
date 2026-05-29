@@ -11,15 +11,27 @@ const defaultFaqs: FaqItem[] = [
   },
   {
     q: "How do I maintain my garage door?",
-    a: "Regular maintenance includes cleaning the surface, lubricating moving parts, checking the balance, and inspecting the door and opener for wear and tear. Professional servicing is recommended annually to ensure optimal performance and safety.",
+    a: "Regular maintenance includes a full door service once a year. We tighten every bolt and screw on the door, realign the rails to a level position, lubricate every moving part, and finally reset the pressure on the opener itself. Cleaning is not included.",
   },
   {
     q: "Are garage doors insulated?",
-    a: "Yes, many garage doors, especially sectional and roller types, are available with insulation options. Insulated doors help regulate indoor temperatures, reduce energy costs, and minimize noise.",
+    a: "Roller doors cannot be insulated. Sectional doors can be ordered with insulation built in, which helps regulate indoor temperatures, reduce energy costs, and minimise noise.",
+  },
+  {
+    q: "What is the cost of a garage door?",
+    a: "Prices vary a lot depending on several factors. The type of door (roller, sectional or tilt) is one. Size is the biggest factor, the smaller the door the cheaper the price. Finally, customisations such as windows or special colours can add to the price.",
+  },
+  {
+    q: "What to do if my garage door spring broke?",
+    a: "First and foremost, pull on the manual release to take the load off the opener so it does not get damaged on the way. If auto-locking mechanisms are engaged, manually retract them and do not try to force the door open. Finally, give us a call. Changing a spring yourself can be tricky and dangerous.",
+  },
+  {
+    q: "Can I pair my garage to my gate openers?",
+    a: "Absolutely. Openers can be paired to the same remote using an external receiver, or by using the same brand for both.",
   },
   {
     q: "Can I customize the design of my garage door?",
-    a: "Absolutely! At Sparrow Garage Doors, we offer a range of customizable options, including materials, colors, finishes, and additional features such as windows or decorative hardware.",
+    a: "Absolutely. At Sparrow Garage Doors, we offer a range of customisable options, including materials, colours, finishes, and additional features such as windows or decorative hardware.",
   },
   {
     q: "How long does it take to install a garage door?",

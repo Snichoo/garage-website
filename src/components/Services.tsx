@@ -43,9 +43,9 @@ const cards: Card[] = [
     src: "/images/automated-gates.webp",
     alt: "Electric automated entry gates",
     items: [
-      "Telescopic & sliding gate automation",
+      "Telescopic, swing & sliding gate automation",
       "Motor supply & installation",
-      "Intercom & keypad integration",
+      "Keypad & remote integration",
       "Repairs & servicing",
     ],
     href: "/automated-gates",
