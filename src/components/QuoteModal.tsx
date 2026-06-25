@@ -150,10 +150,10 @@ export default function QuoteModal() {
           <p className="text-center text-xs text-neutral-500">
             Or call us direct on{" "}
             <a
-              href="tel:0468789795"
+              href="tel:0731803857"
               className="font-bold text-brand-navy underline"
             >
-              0468 789 795
+              07 3180 3857
             </a>
           </p>
         </form>

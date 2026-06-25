@@ -95,10 +95,10 @@ export default function GalleryPage() {
               Get a Free Quote
             </QuoteButton>
             <a
-              href="tel:0468789795"
+              href="tel:0731803857"
               className="inline-flex w-full items-center justify-center border-2 border-white/30 bg-white/5 px-8 py-3 font-display text-base font-extrabold uppercase tracking-wide text-white transition hover:bg-white/10 sm:w-auto md:text-lg"
             >
-              Call 0468 789 795
+              Call 07 3180 3857
             </a>
           </div>
         </div>

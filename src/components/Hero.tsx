@@ -141,12 +141,12 @@ export default function Hero({
           </ul>
 
           <a
-            href="tel:0468789795"
+            href="tel:0731803857"
             className="mt-2 inline-flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-lg md:text-xl"
           >
             <PhoneIcon />
-            <span className="sm:hidden">{callLabel} 0468 789 795</span>
-            <span className="hidden sm:inline">{callLabel} on 0468 789 795</span>
+            <span className="sm:hidden">{callLabel} 07 3180 3857</span>
+            <span className="hidden sm:inline">{callLabel} on 07 3180 3857</span>
           </a>
         </div>
 

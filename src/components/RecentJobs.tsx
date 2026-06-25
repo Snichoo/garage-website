@@ -244,10 +244,10 @@ export default function RecentJobs({ suburb }: RecentJobsProps) {
             Get a Free Quote
           </QuoteButton>
           <a
-            href="tel:0468789795"
+            href="tel:0731803857"
             className="inline-flex items-center justify-center bg-brand-yellow px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-brand-navy shadow-md transition hover:bg-brand-yellow/90 md:text-base"
           >
-            Call 0468 789 795
+            Call 07 3180 3857
           </a>
         </div>
       </div>

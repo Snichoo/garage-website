@@ -65,12 +65,12 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
             </p>
 
             <a
-              href="tel:0468789795"
+              href="tel:0731803857"
               className="mt-6 inline-flex items-center gap-3 rounded-full bg-brand-yellow px-6 py-3 text-brand-navy shadow-lg transition hover:opacity-90"
             >
               <PhoneIcon className="h-5 w-5" />
               <span className="font-display text-base font-extrabold tracking-wide">
-                0468 789 795
+                07 3180 3857
               </span>
             </a>
           </div>

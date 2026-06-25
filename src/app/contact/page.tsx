@@ -158,7 +158,7 @@ export default function ContactPage() {
           {/* Info cards */}
           <div className="flex flex-col gap-5">
             <a
-              href="tel:0468789795"
+              href="tel:0731803857"
               className="garage-bg-navy-tight group relative overflow-hidden p-6 text-white shadow-xl ring-1 ring-white/10 transition hover:-translate-y-0.5 md:p-7"
             >
               <div className="absolute inset-0 bg-black/15" />
@@ -171,7 +171,7 @@ export default function ContactPage() {
                     Phone
                   </h3>
                   <p className="mt-1 font-display text-xl font-extrabold">
-                    0468 789 795
+                    07 3180 3857
                   </p>
                 </div>
               </div>

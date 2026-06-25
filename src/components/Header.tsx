@@ -121,12 +121,12 @@ export default function Header() {
       <header className="fixed inset-x-0 top-0 z-40 w-full">
         {/* Mobile-only call-out band */}
         <a
-          href="tel:0468789795"
+          href="tel:0731803857"
           className="flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3 text-brand-navy transition hover:opacity-95 lg:hidden"
         >
           <PhoneIcon className="h-5 w-5" />
           <span className="font-display text-base font-extrabold tracking-wide">
-            CALL US 0468 789 795
+            CALL US 07 3180 3857
           </span>
         </a>
 
@@ -243,7 +243,7 @@ export default function Header() {
                 Get Free Quote
               </button>
               <a
-                href="tel:0468789795"
+                href="tel:0731803857"
                 className="inline-flex items-center gap-2 rounded-full bg-brand-yellow px-3 py-2 text-brand-navy shadow-lg transition hover:opacity-90 xl:gap-3 xl:px-6 xl:py-3.5"
               >
                 <span className="hidden whitespace-nowrap font-display text-[10px] font-extrabold uppercase tracking-wide xl:inline xl:text-xs">
@@ -251,7 +251,7 @@ export default function Header() {
                 </span>
                 <span className="flex items-center gap-1.5 whitespace-nowrap font-display text-sm font-extrabold xl:gap-2 xl:text-lg">
                   <PhoneIcon className="h-4 w-4 xl:h-5 xl:w-5" />
-                  0468 789 795
+                  07 3180 3857
                 </span>
               </a>
             </div>
@@ -334,11 +334,11 @@ export default function Header() {
               Get Free Quote
             </button>
             <a
-              href="tel:0468789795"
+              href="tel:0731803857"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-4 py-3 font-display text-base font-extrabold text-brand-navy shadow-md transition hover:opacity-90"
             >
               <PhoneIcon className="h-5 w-5" />
-              0468 789 795
+              07 3180 3857
             </a>
           </div>
         </div>
