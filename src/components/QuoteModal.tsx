@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 
 const OPEN_EVENT = "sparrow:open-quote";
-const SESSION_KEY = "sparrow_quote_auto_seen";
-const AUTO_OPEN_DELAY_MS = 25_000;
 
 export function openQuoteModal() {
   if (typeof window !== "undefined") {
@@ -37,18 +35,6 @@ export default function QuoteModal() {
     const onOpen = () => setOpen(true);
     window.addEventListener(OPEN_EVENT, onOpen);
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (sessionStorage.getItem(SESSION_KEY)) return;
-    const t = window.setTimeout(() => {
-      if (!sessionStorage.getItem(SESSION_KEY)) {
-        sessionStorage.setItem(SESSION_KEY, "1");
-        setOpen(true);
-      }
-    }, AUTO_OPEN_DELAY_MS);
-    return () => window.clearTimeout(t);
   }, []);
 
   useEffect(() => {

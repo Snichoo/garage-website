@@ -21,7 +21,6 @@ body {
    - very low contrast so it reads as texture, not pattern */
 .garage-bg {
   background-color: #f4f4f4;
-  background-attachment: fixed;
   background-image:
     /* top hairline highlight on each panel */
     repeating-linear-gradient(
@@ -46,6 +45,15 @@ body {
         #ececec 48px,
         #f7f7f7 96px
       );
+}
+
+/* background-attachment: fixed forces the browser to repaint the whole
+   multi-layer gradient on every scroll frame, which freezes/stutters scrolling
+   on mobile. Only enable it on hover-capable, fine-pointer devices (desktops). */
+@media (hover: hover) and (pointer: fine) {
+  .garage-bg {
+    background-attachment: fixed;
+  }
 }
 
 /* Navy variant of the garage-door panel background */
