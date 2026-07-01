@@ -36,7 +36,7 @@ export const posts: BlogPost[] = [
     date: "2026-03-09",
     readTime: "6 min read",
     category: "Buying Guide",
-    image: "/images/residential.png",
+    image: "/images/residential.webp",
     imageAlt: "Modern home with a sectional garage door",
     body: [
       "Most Brisbane homes end up choosing between a sectional door and a roller door. Both are good options. They just suit different garages.",

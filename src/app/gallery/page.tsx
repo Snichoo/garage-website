@@ -5,12 +5,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Our Work | Sparrow Garage Doors Brisbane",
+export const metadata: Metadata = pageMetadata({
+  title: "Garage Door Gallery Brisbane | Our Recent Work",
   description:
     "Browse recent garage door installations, upgrades and repairs by Sparrow Garage Doors across Brisbane. See the quality behind every project.",
-};
+  path: "/gallery",
+});
 
 type GalleryImage = {
   src: string;

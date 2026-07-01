@@ -12,6 +12,13 @@ import OurWorkInAction from "@/components/OurWorkInAction";
 import Reviews from "@/components/Reviews";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import { pageMetadata, siteConfig } from "@/lib/site";
+
+export const metadata = pageMetadata({
+  title: "Garage Doors Brisbane | Installation, Replacement & Repairs",
+  description: `Brisbane's local garage door specialists. Installation, replacement and same-day repairs for roller, sectional and tilt doors, plus motors and springs. Free quotes, call ${siteConfig.phoneDisplay}.`,
+  path: "/",
+});
 
 export default function Home() {
   return (

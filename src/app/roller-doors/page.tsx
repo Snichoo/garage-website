@@ -5,6 +5,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+
+export const metadata = pageMetadata({
+  title: "Roller Doors Brisbane | Supply, Installation & Repairs",
+  description: `Roller garage doors supplied, installed and repaired across Brisbane. Compact, secure and low-maintenance doors ideal for tight spaces and low headroom. Free quote, call ${siteConfig.phoneDisplay}.`,
+  path: "/roller-doors",
+});
 
 const features = [
   "Compact design with slats that roll into a drum, ideal for tight spaces and low headroom.",
@@ -33,6 +41,20 @@ function CheckMark() {
 export default function RollerDoorsPage() {
   return (
     <main className="garage-bg">
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Roller Doors", path: "/roller-doors" },
+          ]),
+          serviceSchema({
+            name: "Roller Door Supply, Installation & Repairs",
+            description:
+              "Supply, installation and repair of roller garage doors across Brisbane and South East Queensland.",
+            path: "/roller-doors",
+          }),
+        ]}
+      />
       <Header />
 
       {/* Hero */}

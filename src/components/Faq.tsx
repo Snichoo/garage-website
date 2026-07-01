@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import JsonLd from "@/components/JsonLd";
+import { faqPageSchema } from "@/lib/site";
 
 type FaqItem = { q: string; a: string };
 
@@ -58,6 +60,7 @@ export default function Faq({ items, intro }: FaqProps = {}) {
 
   return (
     <section id="faq" className="w-full py-12 md:py-20">
+      <JsonLd data={faqPageSchema(faqs)} />
       <div className="mx-auto max-w-[1100px] px-6">
         {/* Stencil heading */}
         <div className="relative mb-10 h-[60px] md:mb-12 md:h-[120px]">

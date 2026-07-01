@@ -5,6 +5,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HowCanWeHelp from "@/components/HowCanWeHelp";
 import LocationMap from "@/components/LocationMap";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+
+export const metadata = pageMetadata({
+  title: "Emergency Garage Door Repairs Brisbane | 24/7 Service",
+  description: `24/7 emergency garage door repairs across Brisbane. Broken springs, snapped cables, off-track and jammed doors fixed on the spot, any brand or model. Call ${siteConfig.phoneDisplay} now.`,
+  path: "/emergency-repairs",
+});
 
 const features = [
   "24/7 call-outs, weekends and public holidays.",
@@ -60,6 +68,20 @@ function CheckMark() {
 export default function EmergencyRepairsPage() {
   return (
     <main className="garage-bg">
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Emergency Repairs", path: "/emergency-repairs" },
+          ]),
+          serviceSchema({
+            name: "Emergency Garage Door Repairs",
+            description:
+              "24/7 emergency garage door repairs across Brisbane and South East Queensland, including broken springs, cables, off-track and jammed doors.",
+            path: "/emergency-repairs",
+          }),
+        ]}
+      />
       <Header />
 
       {/* Hero */}

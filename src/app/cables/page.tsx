@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import PartServicePage, { type PartServiceContent } from "@/components/PartServicePage";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Garage Door Cables - Repair & Replacement | Sparrow Garage Doors",
-  description:
-    "Lift and safety cable replacement for garage doors across Brisbane. Stop your door dropping, jamming or running off the drum with same-day cable repairs.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Garage Door Cable Repairs Brisbane | Fast Replacement",
+  description: `Frayed or snapped garage door cable? We replace lift and safety cables across Brisbane to stop your door dropping or jamming. Same-day repairs, call ${siteConfig.phoneDisplay}.`,
+  path: "/cables",
+});
 
 const content: PartServiceContent = {
   titleLead: "Garage Door",
@@ -26,5 +28,23 @@ const content: PartServiceContent = {
 };
 
 export default function CablesPage() {
-  return <PartServicePage content={content} />;
+  return (
+    <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Garage Door Cables", path: "/cables" },
+          ]),
+          serviceSchema({
+            name: "Garage Door Cable Replacement",
+            description:
+              "Lift and safety cable repair and replacement for garage doors across Brisbane and South East Queensland.",
+            path: "/cables",
+          }),
+        ]}
+      />
+      <PartServicePage content={content} />
+    </>
+  );
 }

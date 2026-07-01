@@ -28,14 +28,56 @@ function CloseIcon() {
   );
 }
 
+type Status = "idle" | "sending" | "success" | "error";
+
 export default function QuoteModal() {
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    const onOpen = () => setOpen(true);
+    const onOpen = () => {
+      setStatus("idle");
+      setErrorMsg("");
+      setOpen(true);
+    };
     window.addEventListener(OPEN_EVENT, onOpen);
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
   }, []);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "sending") return;
+    setStatus("sending");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      formType: "quote",
+      name: String(fd.get("name") || ""),
+      phone: String(fd.get("phone") || ""),
+      email: String(fd.get("email") || ""),
+      message: String(fd.get("message") || ""),
+    };
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Something went wrong.");
+      }
+      form.reset();
+      setStatus("success");
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
+      setStatus("error");
+    }
+  }
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -94,16 +136,53 @@ export default function QuoteModal() {
           </div>
         </div>
 
-        <form className="flex flex-col gap-4 p-6 text-brand-black md:p-7">
+        {status === "success" ? (
+          <div className="flex flex-col items-center gap-3 p-8 text-center text-brand-black">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-600">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-7 w-7"
+                aria-hidden
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
+            <h3 className="font-display text-xl font-extrabold text-brand-navy">
+              Thanks, we&apos;ve got it!
+            </h3>
+            <p className="text-sm text-neutral-600">
+              We&apos;ll be in touch shortly to arrange your free measure and quote.
+            </p>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="mt-2 bg-brand-yellow px-6 py-3 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 p-6 text-brand-black md:p-7"
+        >
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <input
               type="text"
+              name="name"
               required
               placeholder="Name *"
               className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
             />
             <input
               type="tel"
+              name="phone"
               required
               inputMode="tel"
               pattern="[0-9 +()\-]{6,}"
@@ -113,11 +192,13 @@ export default function QuoteModal() {
           </div>
           <input
             type="email"
+            name="email"
             required
             placeholder="Email *"
             className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
           <textarea
+            name="message"
             required
             minLength={10}
             placeholder="Tell us about your job *"
@@ -127,11 +208,17 @@ export default function QuoteModal() {
           <p className="-mt-1 text-xs text-neutral-500">
             All fields are required.
           </p>
+          {status === "error" && (
+            <p className="-mt-1 text-sm font-semibold text-red-600">
+              {errorMsg}
+            </p>
+          )}
           <button
             type="submit"
-            className="mt-1 w-full bg-brand-yellow py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg"
+            disabled={status === "sending"}
+            className="mt-1 w-full bg-brand-yellow py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 md:text-lg"
           >
-            Request my free quote
+            {status === "sending" ? "Sending..." : "Request my free quote"}
           </button>
           <p className="text-center text-xs text-neutral-500">
             Or call us direct on{" "}
@@ -143,6 +230,7 @@ export default function QuoteModal() {
             </a>
           </p>
         </form>
+        )}
       </div>
     </div>
   );

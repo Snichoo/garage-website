@@ -1,7 +1,15 @@
 import Image from "next/image";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
+import { pageMetadata, siteConfig } from "@/lib/site";
+
+export const metadata = pageMetadata({
+  title: "Contact Sparrow Garage Doors Brisbane | Free Quotes",
+  description: `Contact Sparrow Garage Doors for a free quote or fast booking across Brisbane. Call ${siteConfig.phoneDisplay} or send an enquiry for installation, repairs and servicing.`,
+  path: "/contact",
+});
 
 function PhoneIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -101,58 +109,7 @@ export default function ContactPage() {
               Fill in the form and we&apos;ll be in touch within one business day.
             </p>
 
-            <form className="mt-8 flex flex-col gap-5">
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <input
-                  type="text"
-                  required
-                  placeholder="First Name *"
-                  className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
-                />
-                <input
-                  type="text"
-                  required
-                  placeholder="Last Name *"
-                  className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <input
-                  type="email"
-                  required
-                  placeholder="Email *"
-                  className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
-                />
-                <input
-                  type="tel"
-                  required
-                  inputMode="tel"
-                  pattern="[0-9 +()\-]{6,}"
-                  placeholder="Phone *"
-                  className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
-                />
-              </div>
-
-              <textarea
-                required
-                minLength={10}
-                placeholder="Message *"
-                rows={6}
-                className="w-full resize-none border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
-              />
-
-              <p className="-mt-2 text-xs text-neutral-500">
-                All fields are required.
-              </p>
-
-              <button
-                type="submit"
-                className="mt-2 inline-flex w-full items-center justify-center bg-brand-yellow px-6 py-4 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-lg transition hover:opacity-90 md:text-lg"
-              >
-                Submit
-              </button>
-            </form>
+            <ContactForm />
           </div>
 
           {/* Info cards */}

@@ -5,12 +5,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import { regions, getSuburbsByRegion } from "@/data/suburbs";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = {
-  title: "Locations We Service | Sparrow Garage Doors Brisbane",
+export const metadata = pageMetadata({
+  title: "Garage Door Service Areas | Brisbane & South East QLD",
   description:
     "Sparrow Garage Doors is a mobile service operating across the Greater Brisbane area. See the suburbs we cover for installation, servicing and emergency repairs.",
-};
+  path: "/locations",
+});
 
 function PinIcon() {
   return (

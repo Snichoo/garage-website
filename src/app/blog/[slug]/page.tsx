@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import JsonLd from "@/components/JsonLd";
 import { getPostBySlug, posts } from "@/data/posts";
+import { pageMetadata, articleSchema, breadcrumbSchema } from "@/lib/site";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -13,10 +15,12 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const post = getPostBySlug(params.slug);
   if (!post) return {};
-  return {
-    title: `${post.title} | Sparrow Garage Doors Blog`,
+  return pageMetadata({
+    title: `${post.title} | Sparrow Garage Doors`,
     description: post.excerpt,
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+  });
 }
 
 function formatDate(iso: string) {
@@ -39,6 +43,22 @@ export default function BlogPostPage({
 
   return (
     <main className="garage-bg">
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+          articleSchema({
+            title: post.title,
+            description: post.excerpt,
+            path: `/blog/${post.slug}`,
+            image: post.image,
+            datePublished: post.date,
+          }),
+        ]}
+      />
       <Header />
 
       {/* Hero */}

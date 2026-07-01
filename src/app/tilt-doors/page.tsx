@@ -5,6 +5,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+
+export const metadata = pageMetadata({
+  title: "Tilt Garage Doors Brisbane | Installation & Repairs",
+  description: `Classic tilt garage doors installed, serviced and repaired across Brisbane. Timeless single-panel doors built tough for years of daily use. Free quote, call ${siteConfig.phoneDisplay}.`,
+  path: "/tilt-doors",
+});
 
 const features = [
   "Classic design with a timeless, elegant look that suits traditional and modern homes.",
@@ -33,6 +41,20 @@ function CheckMark() {
 export default function TiltDoorsPage() {
   return (
     <main className="garage-bg">
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Tilt Doors", path: "/tilt-doors" },
+          ]),
+          serviceSchema({
+            name: "Tilt Garage Door Installation & Repairs",
+            description:
+              "Installation, servicing and repair of tilt garage doors across Brisbane and South East Queensland.",
+            path: "/tilt-doors",
+          }),
+        ]}
+      />
       <Header />
 
       {/* Hero */}

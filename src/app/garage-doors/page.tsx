@@ -6,6 +6,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+
+export const metadata = pageMetadata({
+  title: "Garage Door Installation Brisbane | Supply & Fit New Doors",
+  description: `New garage doors supplied and installed across Brisbane. Sectional, roller and tilt doors in a huge range of colours and finishes. Free measure & quote, call ${siteConfig.phoneDisplay}.`,
+  path: "/garage-doors",
+});
 
 const features = [
   "Professional installation of sectional, roller and tilt garage doors.",
@@ -209,6 +217,20 @@ function DoorTile(props: DoorTileProps) {
 export default function GarageDoorsPage() {
   return (
     <main className="garage-bg">
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Garage Doors", path: "/garage-doors" },
+          ]),
+          serviceSchema({
+            name: "Garage Door Installation",
+            description:
+              "Supply and installation of new sectional, roller and tilt garage doors across Brisbane and South East Queensland.",
+            path: "/garage-doors",
+          }),
+        ]}
+      />
       <Header />
 
       {/* Hero */}

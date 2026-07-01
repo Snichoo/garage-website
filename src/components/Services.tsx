@@ -28,7 +28,7 @@ const cards: Card[] = [
   },
   {
     title: "Garage Door Installation",
-    src: "/images/residential.png",
+    src: "/images/residential.webp",
     alt: "Garage door installation",
     items: [
       "Sectional Garage Doors",

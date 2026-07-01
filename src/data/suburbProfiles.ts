@@ -236,7 +236,7 @@ export const suburbProfiles: Record<string, SuburbProfile> = {
   },
 
   mcdowall: {
-    heroImage: "/images/suburbs/mcdowall.png",
+    heroImage: "/images/suburbs/mcdowall.webp",
     heroImageAlt:
       "A McDowall family home backing onto bushland with a double sectional garage door",
     accent: "#3D7C47",
