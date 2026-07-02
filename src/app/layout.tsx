@@ -72,15 +72,10 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: [
-      { url: "/favicon/favicon.ico", sizes: "any", type: "image/x-icon" },
-      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    shortcut: "/favicon/favicon.ico",
-    apple: [{ url: "/favicon/apple-touch-icon.png", sizes: "180x180" }],
-  },
+  // Icons are provided by the app/ file conventions (favicon.ico, icon.png,
+  // apple-icon.png), which Next renders as the correct <link> tags. Keeping
+  // them there (not here) avoids the file convention silently overriding a
+  // config block, and ensures Google sees a large 512px PNG icon.
   manifest: "/favicon/site.webmanifest",
 };
 
