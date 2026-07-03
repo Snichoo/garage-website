@@ -68,9 +68,9 @@ export async function POST(request: Request) {
   const phone = typeof data.phone === "string" ? data.phone.trim() : "";
   const message = typeof data.message === "string" ? data.message.trim() : "";
 
-  if (!name || !email || !phone || !message) {
+  if (!name || !email || !phone) {
     return NextResponse.json(
-      { error: "Please fill in all fields." },
+      { error: "Please fill in all required fields." },
       { status: 400 }
     );
   }
@@ -84,8 +84,10 @@ export async function POST(request: Request) {
     { label: "Name", value: name },
     { label: "Email", value: email },
     { label: "Phone", value: phone },
-    { label: "Message", value: message },
   ];
+  if (message) {
+    fields.push({ label: "Message", value: message });
+  }
 
   try {
     const { error } = await resend.emails.send({

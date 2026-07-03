@@ -199,14 +199,12 @@ export default function QuoteModal() {
           />
           <textarea
             name="message"
-            required
-            minLength={10}
-            placeholder="Tell us about your job *"
+            placeholder="Tell us about your job (optional)"
             rows={4}
             className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
           <p className="-mt-1 text-xs text-neutral-500">
-            All fields are required.
+            * Required fields
           </p>
           {status === "error" && (
             <p className="-mt-1 text-sm font-semibold text-red-600">
