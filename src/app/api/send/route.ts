@@ -68,33 +68,30 @@ export async function POST(request: Request) {
   const phone = typeof data.phone === "string" ? data.phone.trim() : "";
   const message = typeof data.message === "string" ? data.message.trim() : "";
 
-  if (!name || !email || !phone) {
-    return NextResponse.json(
-      { error: "Please fill in all required fields." },
-      { status: 400 }
-    );
-  }
-
   const heading =
     formType === "quote"
       ? "New Free Quote Request"
       : "New Contact Form Message";
 
-  const fields: Field[] = [
-    { label: "Name", value: name },
-    { label: "Email", value: email },
-    { label: "Phone", value: phone },
-  ];
-  if (message) {
-    fields.push({ label: "Message", value: message });
+  const fields: Field[] = [];
+  if (name) fields.push({ label: "Name", value: name });
+  if (email) fields.push({ label: "Email", value: email });
+  if (phone) fields.push({ label: "Phone", value: phone });
+  if (message) fields.push({ label: "Message", value: message });
+
+  if (fields.length === 0) {
+    return NextResponse.json(
+      { error: "Please fill in at least one field." },
+      { status: 400 }
+    );
   }
 
   try {
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
-      replyTo: email,
-      subject: `${heading} - ${name}`,
+      replyTo: email || undefined,
+      subject: name ? `${heading} - ${name}` : heading,
       html: buildHtml(heading, fields),
     });
 

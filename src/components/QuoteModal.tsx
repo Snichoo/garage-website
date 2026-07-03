@@ -176,36 +176,30 @@ export default function QuoteModal() {
             <input
               type="text"
               name="name"
-              required
-              placeholder="Name *"
+              placeholder="Name"
               className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
             />
             <input
               type="tel"
               name="phone"
-              required
               inputMode="tel"
               pattern="[0-9 +()\-]{6,}"
-              placeholder="Phone *"
+              placeholder="Phone"
               className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
             />
           </div>
           <input
             type="email"
             name="email"
-            required
-            placeholder="Email *"
+            placeholder="Email"
             className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
           <textarea
             name="message"
-            placeholder="Tell us about your job (optional)"
+            placeholder="Tell us about your job"
             rows={4}
             className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
-          <p className="-mt-1 text-xs text-neutral-500">
-            * Required fields
-          </p>
           {status === "error" && (
             <p className="-mt-1 text-sm font-semibold text-red-600">
               {errorMsg}

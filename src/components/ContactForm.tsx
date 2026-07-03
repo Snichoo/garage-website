@@ -77,15 +77,13 @@ export default function ContactForm() {
         <input
           type="text"
           name="firstName"
-          required
-          placeholder="First Name *"
+          placeholder="First Name"
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
         <input
           type="text"
           name="lastName"
-          required
-          placeholder="Last Name *"
+          placeholder="Last Name"
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
       </div>
@@ -94,31 +92,25 @@ export default function ContactForm() {
         <input
           type="email"
           name="email"
-          required
-          placeholder="Email *"
+          placeholder="Email"
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
         <input
           type="tel"
           name="phone"
-          required
           inputMode="tel"
           pattern="[0-9 +()\-]{6,}"
-          placeholder="Phone *"
+          placeholder="Phone"
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
       </div>
 
       <textarea
         name="message"
-        required
-        minLength={10}
-        placeholder="Message *"
+        placeholder="Message"
         rows={6}
         className="w-full resize-none border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
       />
-
-      <p className="-mt-2 text-xs text-neutral-500">All fields are required.</p>
 
       {status === "error" && (
         <p className="-mt-2 text-sm font-semibold text-red-600">{errorMsg}</p>
