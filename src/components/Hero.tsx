@@ -1,4 +1,5 @@
 import Image from "next/image";
+import HeroQuoteForm from "./HeroQuoteForm";
 
 const features = [
   "Same Day Repairs",
@@ -156,38 +157,7 @@ export default function Hero({
             Get A <span className="font-bold text-brand-navy">Free Quote</span>
           </h2>
 
-          <form className="flex flex-col gap-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
-              />
-              <input
-                type="tel"
-                inputMode="tel"
-                pattern="[0-9 +()\-]{6,}"
-                placeholder="Phone"
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy sm:col-span-2"
-              />
-            </div>
-            <textarea
-              placeholder="Your Message"
-              rows={3}
-              className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
-            />
-            <button
-              type="submit"
-              className="mt-2 w-full bg-brand-yellow py-3 font-display text-base font-extrabold text-brand-navy transition hover:opacity-90 md:text-lg"
-            >
-              {quoteSubmitLabel}
-            </button>
-          </form>
+          <HeroQuoteForm submitLabel={quoteSubmitLabel} />
         </div>
       </div>
     </section>
