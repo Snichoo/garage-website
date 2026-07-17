@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSiteContent } from "./ContentProvider";
 
 const OPEN_EVENT = "sparrow:open-quote";
 
@@ -31,6 +32,7 @@ function CloseIcon() {
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function QuoteModal() {
+  const { quoteModal, quoteForm, business } = useSiteContent();
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -116,13 +118,13 @@ export default function QuoteModal() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="font-display text-xs font-extrabold uppercase tracking-[0.25em] text-brand-yellow">
-                Free Measure &amp; Quote
+                {quoteModal.kicker}
               </p>
               <h2
                 id="quote-modal-title"
                 className="mt-1 font-display text-2xl font-extrabold leading-tight md:text-3xl"
               >
-                Get your free quote
+                {quoteModal.title}
               </h2>
             </div>
             <button
@@ -154,10 +156,10 @@ export default function QuoteModal() {
               </svg>
             </div>
             <h3 className="font-display text-xl font-extrabold text-brand-navy">
-              Thanks, we&apos;ve got it!
+              {quoteModal.successTitle}
             </h3>
             <p className="text-sm text-neutral-600">
-              We&apos;ll be in touch shortly to arrange your free measure and quote.
+              {quoteModal.successText}
             </p>
             <button
               type="button"
@@ -176,7 +178,7 @@ export default function QuoteModal() {
             <input
               type="text"
               name="name"
-              placeholder="Name"
+              placeholder={quoteForm.namePlaceholder}
               className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
             />
             <input
@@ -184,19 +186,19 @@ export default function QuoteModal() {
               name="phone"
               inputMode="tel"
               pattern="[0-9 +()\-]{6,}"
-              placeholder="Phone"
+              placeholder={quoteForm.phonePlaceholder}
               className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
             />
           </div>
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={quoteForm.emailPlaceholder}
             className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
           <textarea
             name="message"
-            placeholder="Tell us about your job"
+            placeholder={quoteModal.messagePlaceholder}
             rows={4}
             className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
@@ -210,15 +212,15 @@ export default function QuoteModal() {
             disabled={status === "sending"}
             className="mt-1 w-full bg-brand-yellow py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 md:text-lg"
           >
-            {status === "sending" ? "Sending..." : "Request my free quote"}
+            {status === "sending" ? quoteModal.sendingLabel : quoteModal.submitLabel}
           </button>
           <p className="text-center text-xs text-neutral-500">
-            Or call us direct on{" "}
+            {quoteModal.callPrompt}{" "}
             <a
-              href="tel:0731803857"
+              href={`tel:${business.phoneLink}`}
               className="font-bold text-brand-navy underline"
             >
-              07 3180 3857
+              {business.phoneDisplay}
             </a>
           </p>
         </form>

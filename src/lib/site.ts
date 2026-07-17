@@ -7,31 +7,60 @@ import type { Metadata } from "next";
  * and JSON-LD structured data. Override it per environment with the
  * NEXT_PUBLIC_SITE_URL variable (e.g. in .env.local or your host's dashboard).
  */
+import { getContent } from "./content";
+
+/**
+ * Business fields (name, phone, email, ...) are getters backed by the
+ * editable content store, so changes made in the admin dashboard flow into
+ * page metadata, JSON-LD and the sitemap as well as the visible pages.
+ * Server-side only: do not import this module from client components.
+ */
 export const siteConfig = {
   /** Canonical, production origin. No trailing slash. */
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.sparrowgaragedoors.com").replace(
     /\/$/,
     "",
   ),
-  name: "Sparrow Garage Doors",
+  get name() {
+    return getContent().business.name;
+  },
   /** Short brand used as the title-tag suffix. */
-  shortName: "Sparrow Garage Doors",
+  get shortName() {
+    return getContent().business.name;
+  },
   /** Primary service region shown in default titles/descriptions. */
-  primaryLocation: "Brisbane",
-  description:
-    "Local Brisbane garage door specialists. Installation, replacement and same-day repairs for sectional, roller and tilt doors, plus motors, springs and cables.",
-  phoneDisplay: "07 3180 3857",
-  phoneIntl: "+61731803857",
-  email: "sparrowgaragedoors@gmail.com",
+  get primaryLocation() {
+    return getContent().business.primaryLocation;
+  },
+  get description() {
+    return getContent().business.description;
+  },
+  get phoneDisplay() {
+    return getContent().business.phoneDisplay;
+  },
+  get phoneIntl() {
+    const digits = getContent().business.phoneLink.replace(/\D/g, "");
+    return digits.startsWith("0") ? `+61${digits.slice(1)}` : `+${digits}`;
+  },
+  get email() {
+    return getContent().business.email;
+  },
+  get logo() {
+    return getContent().business.logo;
+  },
   /** Real photo used for JSON-LD business/article imagery. */
   ogImage: "/images/residential.webp",
   /** Dynamic branded social card endpoint (1200x630), used for OG/Twitter. */
   ogCard: "/og",
-  ogCardAlt:
-    "Sparrow Garage Doors: Garage Doors Brisbane, Installation, Replacement & Repairs",
+  get ogCardAlt() {
+    const { name, primaryLocation } = getContent().business;
+    return `${name}: Garage Doors ${primaryLocation}, Installation, Replacement & Repairs`;
+  },
   geo: { latitude: -27.4698, longitude: 153.0251 },
-  areaServed: "Brisbane and South East Queensland",
-} as const;
+  get areaServed() {
+    return getContent().business.areaServed;
+  },
+};
 
 /** Build an absolute URL from a site-relative path. */
 export function absoluteUrl(path = "/"): string {
@@ -90,7 +119,7 @@ export function localBusinessSchema(): Json {
     name: siteConfig.name,
     url: siteConfig.url,
     image: absoluteUrl(siteConfig.ogImage),
-    logo: absoluteUrl("/images/logo.png"),
+    logo: absoluteUrl(siteConfig.logo),
     telephone: siteConfig.phoneIntl,
     email: siteConfig.email,
     description: siteConfig.description,
@@ -126,18 +155,7 @@ export function localBusinessSchema(): Json {
   };
 }
 
-/** FAQPage schema built from a list of question/answer pairs. */
-export function faqPageSchema(items: { q: string; a: string }[]): Json {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
-    })),
-  };
-}
+export { faqPageSchema } from "./faqSchema";
 
 /** BreadcrumbList schema. Pass ordered { name, path } crumbs. */
 export function breadcrumbSchema(crumbs: { name: string; path: string }[]): Json {

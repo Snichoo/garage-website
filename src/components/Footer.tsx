@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { regions, getSuburbsByRegion } from "@/data/suburbs";
+import { getContent } from "@/lib/content";
+import { fill } from "@/content/defaults";
 
 function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -36,8 +38,10 @@ type FooterProps = {
   suburb?: string;
 };
 
-export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
+export default function Footer({ suburb }: FooterProps = {}) {
   const year = new Date().getFullYear();
+  const { business, footer } = getContent();
+  const place = suburb ?? business.primaryLocation;
 
   return (
     <footer className="garage-bg-navy relative w-full text-white">
@@ -51,26 +55,24 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
           <div className="md:col-span-4">
             <a href="/" aria-label="Home" className="inline-block">
               <Image
-                src="/images/logo.png"
-                alt="Logo"
+                src={business.logo}
+                alt={`${business.name} logo`}
                 width={280}
                 height={100}
                 className="h-16 w-auto brightness-0 invert"
               />
             </a>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/80 md:text-base">
-              {suburb}&apos;s trusted experts in garage doors. Quality
-              installation, reliable servicing, and friendly local advice for
-              homes and businesses across South East Queensland.
+              {fill(footer.blurb, { suburb: place })}
             </p>
 
             <a
-              href="tel:0731803857"
+              href={`tel:${business.phoneLink}`}
               className="mt-6 inline-flex items-center gap-3 rounded-full bg-brand-yellow px-6 py-3 text-brand-navy shadow-lg transition hover:opacity-90"
             >
               <PhoneIcon className="h-5 w-5" />
               <span className="font-display text-base font-extrabold tracking-wide">
-                07 3180 3857
+                {business.phoneDisplay}
               </span>
             </a>
           </div>
@@ -78,7 +80,7 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
           {/* Services */}
           <div className="md:col-span-3">
             <h3 className="font-display text-sm font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
-              Services
+              {footer.servicesHeading}
             </h3>
             <ul className="mt-5 space-y-3">
               {services.map((item) => (
@@ -97,7 +99,7 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
           {/* Company */}
           <div className="md:col-span-2">
             <h3 className="font-display text-sm font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
-              Company
+              {footer.companyHeading}
             </h3>
             <ul className="mt-5 space-y-3">
               {company.map((item) => (
@@ -116,10 +118,10 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
           {/* Our regions */}
           <div className="md:col-span-3">
             <h3 className="font-display text-sm font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
-              Our Regions
+              {footer.regionsHeading}
             </h3>
             <p className="mt-3 text-sm italic leading-relaxed text-white/70">
-              We service the Greater Brisbane area, with dedicated support across:
+              {footer.regionsIntro}
             </p>
             <ul className="mt-4 space-y-1">
               {regions.map((region) => {
@@ -166,7 +168,7 @@ export default function Footer({ suburb = "Brisbane" }: FooterProps = {}) {
         {/* Divider */}
         <div className="mt-12 border-t border-white/15 pt-6 md:mt-16">
           <div className="flex flex-col items-center justify-between gap-3 text-xs text-white/60 md:flex-row md:text-sm">
-            <p>© {year} All rights reserved.</p>
+            <p>{fill(footer.copyright, { year })}</p>
           </div>
         </div>
       </div>

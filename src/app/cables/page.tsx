@@ -3,11 +3,13 @@ import PartServicePage, { type PartServiceContent } from "@/components/PartServi
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Garage Door Cable Repairs Brisbane | Fast Replacement",
   description: `Frayed or snapped garage door cable? We replace lift and safety cables across Brisbane to stop your door dropping or jamming. Same-day repairs, call ${siteConfig.phoneDisplay}.`,
   path: "/cables",
 });
+}
 
 const content: PartServiceContent = {
   titleLead: "Garage Door",

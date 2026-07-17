@@ -3,32 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { openQuoteModal } from "./QuoteModal";
-
-type NavItem = {
-  label: string;
-  href: string;
-  dropdown?: { label: string; href: string }[];
-};
-
-type NavItemWithFlags = NavItem & { mobileOnly?: boolean };
-
-const navItems: NavItemWithFlags[] = [
-  { label: "Home", href: "/", mobileOnly: true },
-  { label: "About Us", href: "/about" },
-  {
-    label: "Door Installations",
-    href: "/garage-doors",
-    dropdown: [
-      { label: "Sectional Garage Doors", href: "/sectional-garage-doors" },
-      { label: "Roller Doors", href: "/roller-doors" },
-      { label: "Tilt Doors", href: "/tilt-doors" },
-      { label: "Automated Gates", href: "/automated-gates" },
-    ],
-  },
-  { label: "Emergency Service", href: "/emergency-repairs" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact Us", href: "/contact" },
-];
+import { useSiteContent } from "./ContentProvider";
+import { fill } from "@/content/defaults";
 
 function ChevronDown() {
   return (
@@ -101,6 +77,8 @@ function CloseIcon({ className = "h-7 w-7" }: { className?: string }) {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { business, header } = useSiteContent();
+  const navItems = header.nav;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -121,12 +99,12 @@ export default function Header() {
       <header className="fixed inset-x-0 top-0 z-40 w-full">
         {/* Mobile-only call-out band */}
         <a
-          href="tel:0731803857"
+          href={`tel:${business.phoneLink}`}
           className="flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3 text-brand-navy transition hover:opacity-95 lg:hidden"
         >
           <PhoneIcon className="h-5 w-5" />
           <span className="font-display text-base font-extrabold tracking-wide">
-            CALL US 07 3180 3857
+            {fill(header.callBannerLabel, { phone: business.phoneDisplay })}
           </span>
         </a>
 
@@ -139,8 +117,8 @@ export default function Header() {
           <div className="flex items-center justify-between gap-2 px-4 py-2.5">
             <a href="/" className="flex items-center" aria-label="Home">
               <Image
-                src="/images/logo.png"
-                alt="Logo"
+                src={business.logo}
+                alt={`${business.name} logo`}
                 width={280}
                 height={100}
                 priority
@@ -159,7 +137,7 @@ export default function Header() {
                     : "border-white text-white hover:bg-white hover:text-brand-navy"
                 }`}
               >
-                Get Free Quote
+                {header.quoteButtonLabel}
               </button>
               <button
                 aria-label="Open menu"
@@ -187,8 +165,8 @@ export default function Header() {
           <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-3">
             <a href="/" className="flex items-center" aria-label="Home">
               <Image
-                src="/images/logo.png"
-                alt="Logo"
+                src={business.logo}
+                alt={`${business.name} logo`}
                 width={280}
                 height={100}
                 priority
@@ -240,18 +218,18 @@ export default function Header() {
                     : "border-white text-white hover:bg-white hover:text-brand-navy"
                 }`}
               >
-                Get Free Quote
+                {header.quoteButtonLabel}
               </button>
               <a
-                href="tel:0731803857"
+                href={`tel:${business.phoneLink}`}
                 className="inline-flex items-center gap-2 rounded-full bg-brand-yellow px-3 py-2 text-brand-navy shadow-lg transition hover:opacity-90 xl:gap-3 xl:px-6 xl:py-3.5"
               >
                 <span className="hidden whitespace-nowrap font-display text-[10px] font-extrabold uppercase tracking-wide xl:inline xl:text-xs">
-                  CALL US NOW
+                  {header.callNowLabel}
                 </span>
                 <span className="flex items-center gap-1.5 whitespace-nowrap font-display text-sm font-extrabold xl:gap-2 xl:text-lg">
                   <PhoneIcon className="h-4 w-4 xl:h-5 xl:w-5" />
-                  07 3180 3857
+                  {business.phoneDisplay}
                 </span>
               </a>
             </div>
@@ -283,7 +261,7 @@ export default function Header() {
         >
           <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
             <span className="font-display text-base font-extrabold uppercase tracking-wide text-brand-navy">
-              Menu
+              {header.menuTitle}
             </span>
             <button
               type="button"
@@ -331,14 +309,14 @@ export default function Header() {
               }}
               className="inline-flex items-center justify-center rounded-full border-2 border-brand-navy px-4 py-3 font-display text-base font-extrabold uppercase tracking-wide text-brand-navy transition hover:bg-brand-navy hover:text-white"
             >
-              Get Free Quote
+              {header.quoteButtonLabel}
             </button>
             <a
-              href="tel:0731803857"
+              href={`tel:${business.phoneLink}`}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-4 py-3 font-display text-base font-extrabold text-brand-navy shadow-md transition hover:opacity-90"
             >
               <PhoneIcon className="h-5 w-5" />
-              07 3180 3857
+              {business.phoneDisplay}
             </a>
           </div>
         </div>

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import JsonLd from "@/components/JsonLd";
-import { faqPageSchema } from "@/lib/site";
+import { faqPageSchema } from "@/lib/faqSchema";
+import { useSiteContent } from "@/components/ContentProvider";
 
 type FaqItem = { q: string; a: string };
 
@@ -54,8 +55,9 @@ type FaqProps = {
 };
 
 export default function Faq({ items, intro }: FaqProps = {}) {
-  const faqs = items ?? defaultFaqs;
-  const blurb = intro ?? defaultIntro;
+  const content = useSiteContent();
+  const faqs = items ?? content.faq.items ?? defaultFaqs;
+  const blurb = intro ?? content.faq.intro ?? defaultIntro;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (

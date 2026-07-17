@@ -9,11 +9,13 @@ import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Garage Door Installation Brisbane | Supply & Fit New Doors",
   description: `New garage doors supplied and installed across Brisbane. Sectional, roller and tilt doors in a huge range of colours and finishes. Free measure & quote, call ${siteConfig.phoneDisplay}.`,
   path: "/garage-doors",
 });
+}
 
 const features = [
   "Professional installation of sectional, roller and tilt garage doors.",

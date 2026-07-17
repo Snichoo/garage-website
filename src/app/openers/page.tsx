@@ -3,11 +3,13 @@ import PartServicePage, { type PartServiceContent } from "@/components/PartServi
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Garage Door Openers & Motors Brisbane | Supply & Repair",
   description: `Garage door opener and motor supply, installation and repair across Brisbane. Motors, remotes, sensors and Wi-Fi upgrades for every door type and brand. Call ${siteConfig.phoneDisplay}.`,
   path: "/openers",
 });
+}
 
 const content: PartServiceContent = {
   titleLead: "Garage Door",

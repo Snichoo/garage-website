@@ -1,5 +1,7 @@
 import Image from "next/image";
 import QuoteButton from "./QuoteButton";
+import { getContent } from "@/lib/content";
+import { fill } from "@/content/defaults";
 
 /* Decorative dot-grid overlay */
 function DotField({ id, className }: { id: string; className?: string }) {
@@ -44,7 +46,10 @@ type CtaBannerProps = {
 };
 
 export default function CtaBanner({ suburb }: CtaBannerProps = {}) {
-  const ctaLabel = suburb ? `Book My ${suburb} Quote` : "FREE Measure & Quote";
+  const { ctaBanner } = getContent();
+  const ctaLabel = suburb
+    ? fill(ctaBanner.suburbButtonLabel, { suburb })
+    : ctaBanner.buttonLabel;
   return (
     <section className="relative w-full overflow-hidden">
       {/* ── Brand-navy background panel ── */}
@@ -52,7 +57,7 @@ export default function CtaBanner({ suburb }: CtaBannerProps = {}) {
       <div className="absolute inset-x-0 bottom-0 top-[110px] overflow-hidden bg-brand-navy md:top-[160px]">
         {/* Blurred house image filling the panel */}
         <Image
-          src="https://www.steel-line.com.au/wp-content/uploads/2024/08/SteelLineGarageOnHome3.jpeg"
+          src={ctaBanner.image}
           alt=""
           fill
           sizes="100vw"
@@ -79,14 +84,13 @@ export default function CtaBanner({ suburb }: CtaBannerProps = {}) {
         {/* Left column: copy + button + arrow */}
         <div className="relative order-2 text-white md:order-none">
           <h2 className="font-display text-3xl font-extrabold lowercase leading-[1.08] tracking-tight md:text-[42px] lg:text-[52px]">
-            schedule your free measure and quote today with sparrow
+            {ctaBanner.heading}
           </h2>
 
           {/* Paragraph + arrow wrapper - arrow floats to the right of the text */}
           <div className="relative mt-5">
             <p className="max-w-[340px] text-sm font-semibold italic leading-relaxed text-white/90 md:text-base">
-              Discover the perfect door for your home and enjoy peace of mind
-              with the experts in garage doors.
+              {ctaBanner.text}
             </p>
 
           </div>
@@ -130,8 +134,8 @@ export default function CtaBanner({ suburb }: CtaBannerProps = {}) {
               style={{ borderRadius: IMAGE_SHAPE }}
             >
               <Image
-                src="https://www.steel-line.com.au/wp-content/uploads/2024/08/SteelLineGarageOnHome3.jpeg"
-                alt="Modern home with Sparrow garage door"
+                src={ctaBanner.image}
+                alt="Modern home with a new garage door"
                 fill
                 sizes="(min-width: 768px) 520px, 100vw"
                 className="object-cover"

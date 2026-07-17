@@ -4,54 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import QuoteButton from "./QuoteButton";
+import { useSiteContent } from "./ContentProvider";
 
 type GalleryImage = { src: string; alt: string };
 type Slide = { hero: GalleryImage; topRight: GalleryImage; bottomRight: GalleryImage };
 
-const slides: Slide[] = [
-  {
-    hero: {
-      src: "/images/gallery/09-2.jpg",
-      alt: "Aerial view of a completed garage door installation",
-    },
-    topRight: {
-      src: "/images/gallery/07-4.jpg",
-      alt: "Modern garage door fitted on a Brisbane home",
-    },
-    bottomRight: {
-      src: "/images/gallery/08-1.jpg",
-      alt: "Premium sectional garage door install",
-    },
-  },
-  {
-    hero: {
-      src: "/images/gallery/04-5.jpg",
-      alt: "Custom garage door finish",
-    },
-    topRight: {
-      src: "/images/gallery/05-4.jpg",
-      alt: "Residential garage door upgrade",
-    },
-    bottomRight: {
-      src: "/images/gallery/06-3.jpg",
-      alt: "Garage door fitted to suit a contemporary facade",
-    },
-  },
-  {
-    hero: {
-      src: "/images/gallery/03-5.jpg",
-      alt: "Stylish garage door replacement",
-    },
-    topRight: {
-      src: "/images/gallery/02-5.jpg",
-      alt: "Quality garage door installation",
-    },
-    bottomRight: {
-      src: "/images/gallery/10-sams.jpg",
-      alt: "Recent Sparrow garage door installation",
-    },
-  },
-];
+/** Group the flat editable image list into slides of three. */
+function buildSlides(images: { image: string; alt: string }[]): Slide[] {
+  const slides: Slide[] = [];
+  for (let i = 0; i + 2 < images.length; i += 3) {
+    slides.push({
+      hero: { src: images[i].image, alt: images[i].alt },
+      topRight: { src: images[i + 1].image, alt: images[i + 1].alt },
+      bottomRight: { src: images[i + 2].image, alt: images[i + 2].alt },
+    });
+  }
+  return slides;
+}
 
 function ChevronIcon({ direction }: { direction: "left" | "right" }) {
   return (
@@ -78,6 +47,8 @@ function ChevronIcon({ direction }: { direction: "left" | "right" }) {
 const AUTO_ADVANCE_MS = 6000;
 
 export default function OurWorkInAction() {
+  const { workGallery } = useSiteContent();
+  const slides = buildSlides(workGallery.images);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const total = slides.length;
@@ -106,7 +77,7 @@ export default function OurWorkInAction() {
     >
       {/* Background image */}
       <Image
-        src="/images/Jims-Hero-Image.webp"
+        src={workGallery.backgroundImage}
         alt=""
         fill
         sizes="100vw"
@@ -123,11 +94,11 @@ export default function OurWorkInAction() {
         {/* Heading */}
         <div className="text-center">
           <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-            <span className="text-brand-yellow">OUR WORK</span>{" "}
-            <span className="text-white">in Action</span>
+            <span className="text-brand-yellow">{workGallery.headingHighlight}</span>{" "}
+            <span className="text-white">{workGallery.headingRest}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm font-semibold uppercase tracking-[0.2em] text-white/80 md:text-base">
-            See the Quality Behind Every Project
+            {workGallery.subtitle}
           </p>
         </div>
 

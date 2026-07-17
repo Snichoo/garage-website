@@ -8,11 +8,13 @@ import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Roller Doors Brisbane | Supply, Installation & Repairs",
   description: `Roller garage doors supplied, installed and repaired across Brisbane. Compact, secure and low-maintenance doors ideal for tight spaces and low headroom. Free quote, call ${siteConfig.phoneDisplay}.`,
   path: "/roller-doors",
 });
+}
 
 const features = [
   "Compact design with slats that roll into a drum, ideal for tight spaces and low headroom.",

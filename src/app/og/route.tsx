@@ -4,7 +4,9 @@ import { siteConfig } from "@/lib/site";
 // Plain endpoint (not a metadata file convention) that renders the shared
 // 1200x630 social card. Referenced explicitly from every page's metadata so
 // each route reliably ships one correctly sized Open Graph / Twitter image.
-export const runtime = "edge";
+// Node runtime (not edge) so the editable content store can be read from disk.
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export function GET() {
   return new ImageResponse(
@@ -38,7 +40,7 @@ export function GET() {
               letterSpacing: 6,
             }}
           >
-            SPARROW GARAGE DOORS
+            {siteConfig.name.toUpperCase()}
           </div>
         </div>
 
@@ -51,7 +53,7 @@ export function GET() {
               lineHeight: 1.02,
             }}
           >
-            Garage Doors Brisbane
+            {`Garage Doors ${siteConfig.primaryLocation}`}
           </div>
           <div
             style={{

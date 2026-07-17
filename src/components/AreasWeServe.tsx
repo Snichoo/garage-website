@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { regions } from "@/data/suburbs";
+import { getContent } from "@/lib/content";
+import { fill } from "@/content/defaults";
 
 function PinIcon() {
   return (
@@ -21,16 +23,18 @@ type AreasWeServeProps = {
 };
 
 export default function AreasWeServe({
-  suburb = "Brisbane",
+  suburb,
   blurb,
 }: AreasWeServeProps = {}) {
+  const { areasWeServe, business } = getContent();
+  const place = suburb ?? business.primaryLocation;
   return (
     <section className="w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="relative isolate overflow-hidden rounded-2xl bg-brand-navy px-8 py-12 text-white shadow-xl md:px-14 md:py-16">
           {/* Background image */}
           <Image
-            src="/images/Jims-Hero-Image.webp"
+            src={areasWeServe.backgroundImage}
             alt=""
             fill
             sizes="(min-width: 1200px) 1200px, 100vw"
@@ -46,15 +50,13 @@ export default function AreasWeServe({
           {/* Heading row */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_1fr] md:gap-12">
             <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-              AREAS WE
+              {areasWeServe.headingTop}
               <br />
-              <span className="text-brand-yellow">SERVE</span>
+              <span className="text-brand-yellow">{areasWeServe.headingHighlight}</span>
             </h2>
             <p className="text-base leading-relaxed text-white/85 md:text-lg">
-              We cover {suburb} and the wider Brisbane area
-              {blurb ? `, ${blurb}` : ""}. Smart, safe and secure solutions
-              for homes and businesses alike, with the peace of mind that
-              comes from a local team.
+              {fill(areasWeServe.intro, { suburb: place })}
+              {blurb ? `, ${blurb}` : ""}. {areasWeServe.rest}
             </p>
           </div>
 

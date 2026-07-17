@@ -7,12 +7,15 @@ import HowCanWeHelp from "@/components/HowCanWeHelp";
 import LocationMap from "@/components/LocationMap";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { getContent } from "@/lib/content";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Emergency Garage Door Repairs Brisbane | 24/7 Service",
   description: `24/7 emergency garage door repairs across Brisbane. Broken springs, snapped cables, off-track and jammed doors fixed on the spot, any brand or model. Call ${siteConfig.phoneDisplay} now.`,
   path: "/emergency-repairs",
 });
+}
 
 const features = [
   "24/7 call-outs, weekends and public holidays.",
@@ -66,6 +69,7 @@ function CheckMark() {
 
 
 export default function EmergencyRepairsPage() {
+  const { business } = getContent();
   return (
     <main className="garage-bg">
       <JsonLd
@@ -115,10 +119,10 @@ export default function EmergencyRepairsPage() {
             </ul>
             <div className="mt-2 flex flex-wrap items-center gap-3">
               <a
-                href="tel:0731803857"
+                href={`tel:${business.phoneLink}`}
                 className="inline-flex items-center gap-3 bg-brand-yellow px-6 py-4 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 md:text-lg"
               >
-                Call 07 3180 3857
+                Call {business.phoneDisplay}
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"

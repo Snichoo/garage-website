@@ -8,11 +8,13 @@ import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Smart Garage Door Kits Brisbane | Wi-Fi Openers Installed",
   description: `Smart garage and gate kits installed across Brisbane. Wi-Fi openers, cameras, sensors and extra remotes for full control from your phone. Call ${siteConfig.phoneDisplay}.`,
   path: "/smart-kits",
 });
+}
 
 const features = [
   "Wi-Fi receivers for full remote control of gates and garage doors.",

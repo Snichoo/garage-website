@@ -8,11 +8,13 @@ import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Tilt Garage Doors Brisbane | Installation & Repairs",
   description: `Classic tilt garage doors installed, serviced and repaired across Brisbane. Timeless single-panel doors built tough for years of daily use. Free quote, call ${siteConfig.phoneDisplay}.`,
   path: "/tilt-doors",
 });
+}
 
 const features = [
   "Classic design with a timeless, elegant look that suits traditional and modern homes.",

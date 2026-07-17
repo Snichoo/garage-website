@@ -6,13 +6,16 @@ import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
 import { pageMetadata } from "@/lib/site";
+import { getContent } from "@/lib/content";
 
-export const metadata: Metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Garage Door Gallery Brisbane | Our Recent Work",
   description:
     "Browse recent garage door installations, upgrades and repairs by Sparrow Garage Doors across Brisbane. See the quality behind every project.",
   path: "/gallery",
 });
+}
 
 type GalleryImage = {
   src: string;
@@ -65,6 +68,7 @@ const gallery: GalleryImage[] = [
 ];
 
 export default function GalleryPage() {
+  const { business } = getContent();
   return (
     <main className="garage-bg">
       <Header />
@@ -97,10 +101,10 @@ export default function GalleryPage() {
               Get a Free Quote
             </QuoteButton>
             <a
-              href="tel:0731803857"
+              href={`tel:${business.phoneLink}`}
               className="inline-flex w-full items-center justify-center border-2 border-white/30 bg-white/5 px-8 py-3 font-display text-base font-extrabold uppercase tracking-wide text-white transition hover:bg-white/10 sm:w-auto md:text-lg"
             >
-              Call 07 3180 3857
+              Call {business.phoneDisplay}
             </a>
           </div>
         </div>

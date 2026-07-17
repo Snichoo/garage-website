@@ -11,11 +11,13 @@ import WindowOptions from "@/components/WindowOptions";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Sectional Garage Doors Brisbane | Supply & Installation",
   description: `Insulated sectional garage doors supplied and installed across Brisbane. Space-saving panels in Colorbond colours, timber-look finishes and window options. Free quote, call ${siteConfig.phoneDisplay}.`,
   path: "/sectional-garage-doors",
 });
+}
 
 const nativeSeries = Array.from({ length: 8 }, (_, i) => ({
   src: `/images/native/${i === 0 ? "1-1-1" : `1-${i + 1}`}.jpg`,

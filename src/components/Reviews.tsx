@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { useSiteContent } from "./ContentProvider";
 
 type Review = {
   name: string;
@@ -13,7 +14,8 @@ type Review = {
   photo?: string;
 };
 
-const reviews: Review[] = [
+// Kept as a fallback; the live list comes from the editable site content.
+const fallbackReviews: Review[] = [
   {
     name: "aw",
     text: "Excellent service - my garage door motor had been entering an error state for a few months and I was quoted a full motor replace over the phone from another company. I called Sparrow and spoke with Elisha who offered to investigate first and he managed to fix it for a reasonable service cost - significantly cheaper than wasting money on a full motor replacement. Great, friendly, honest and efficient service, very highly recommended.",
@@ -221,6 +223,8 @@ function ChevronIcon({ direction }: { direction: "left" | "right" }) {
 }
 
 export default function Reviews() {
+  const content = useSiteContent();
+  const reviews = content.reviews.items ?? fallbackReviews;
   const scrollerRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{
     active: boolean;
@@ -293,7 +297,7 @@ export default function Reviews() {
           {/* Left: rating info */}
           <div className="w-full flex-shrink-0 text-center sm:w-auto">
             <p className="mb-2 text-xl font-bold text-neutral-900 sm:text-3xl">
-              EXCELLENT
+              {content.reviews.heading}
             </p>
             <div className="mb-2 flex items-center justify-center gap-1 text-amber-400">
               <Star className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -303,7 +307,7 @@ export default function Reviews() {
               <Star className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <p className="mb-1 text-sm font-semibold text-neutral-900 sm:text-base">
-              30+ 5 Star Google Reviews
+              {content.reviews.subheading}
             </p>
             <Image
               src="/images/google-text.png"

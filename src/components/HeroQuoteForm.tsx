@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useSiteContent } from "./ContentProvider";
 
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function HeroQuoteForm({ submitLabel }: { submitLabel: string }) {
+  const { quoteForm, quoteModal } = useSiteContent();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -61,10 +63,10 @@ export default function HeroQuoteForm({ submitLabel }: { submitLabel: string }) 
           </svg>
         </div>
         <h3 className="font-display text-xl font-extrabold text-brand-navy">
-          Thanks, we&apos;ve got it!
+          {quoteForm.successTitle}
         </h3>
         <p className="text-sm text-neutral-600">
-          We&apos;ll be in touch shortly to arrange your free quote.
+          {quoteForm.successText}
         </p>
       </div>
     );
@@ -76,13 +78,13 @@ export default function HeroQuoteForm({ submitLabel }: { submitLabel: string }) 
         <input
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder={quoteForm.namePlaceholder}
           className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
         />
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={quoteForm.emailPlaceholder}
           className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
         />
         <input
@@ -90,13 +92,13 @@ export default function HeroQuoteForm({ submitLabel }: { submitLabel: string }) 
           name="phone"
           inputMode="tel"
           pattern="[0-9 +()\-]{6,}"
-          placeholder="Phone"
+          placeholder={quoteForm.phonePlaceholder}
           className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy sm:col-span-2"
         />
       </div>
       <textarea
         name="message"
-        placeholder="Your Message"
+        placeholder={quoteForm.messagePlaceholder}
         rows={3}
         className="w-full resize-none rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy"
       />
@@ -108,7 +110,7 @@ export default function HeroQuoteForm({ submitLabel }: { submitLabel: string }) 
         disabled={status === "sending"}
         className="mt-2 w-full bg-brand-yellow py-3 font-display text-base font-extrabold text-brand-navy transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 md:text-lg"
       >
-        {status === "sending" ? "Sending..." : submitLabel}
+        {status === "sending" ? quoteModal.sendingLabel : submitLabel}
       </button>
     </form>
   );

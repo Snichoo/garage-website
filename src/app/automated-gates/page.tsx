@@ -8,11 +8,13 @@ import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Automatic Gates Brisbane | Installation & Automation",
   description: `Automatic gate installation and automation across Brisbane. Sliding, swing and telescopic gates with remote and smart control, built tough for daily use. Free quote, call ${siteConfig.phoneDisplay}.`,
   path: "/automated-gates",
 });
+}
 
 const features = [
   "Professional installation of automation for telescopic, sliding and double gates.",

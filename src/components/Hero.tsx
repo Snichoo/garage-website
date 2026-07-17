@@ -1,12 +1,7 @@
 import Image from "next/image";
 import HeroQuoteForm from "./HeroQuoteForm";
-
-const features = [
-  "Same Day Repairs",
-  "All Garage Door Types",
-  "Transparent Pricing",
-  "Licensed & Insured",
-];
+import { getContent } from "@/lib/content";
+import { fill } from "@/content/defaults";
 
 function CheckIcon() {
   return (
@@ -73,19 +68,23 @@ function lightenForDarkBg(hex?: string): string | undefined {
 }
 
 export default function Hero({
-  suburb = "Brisbane",
-  heroImage = "/images/hero.jpg",
+  suburb,
+  heroImage,
   heroImageAlt = "",
   accent,
   heroTagline,
 }: HeroProps = {}) {
-  const callLabel = `Call Our ${suburb} Team`;
-  const quoteSubmitLabel = `Send To Our ${suburb} Team`;
+  const { hero, business } = getContent();
+  const place = suburb ?? business.primaryLocation;
+  const image = heroImage ?? hero.image;
+  const features = hero.features;
+  const callLabel = fill(hero.callButton, { suburb: place });
+  const quoteSubmitLabel = fill(hero.formSubmitLabel, { suburb: place });
   const accentReadable = lightenForDarkBg(accent);
   return (
     <section className="relative isolate w-full overflow-hidden bg-brand-navy text-white">
       <Image
-        src={heroImage}
+        src={image}
         alt={heroImageAlt}
         fill
         priority
@@ -100,12 +99,12 @@ export default function Hero({
         <div className="flex flex-col gap-5 md:gap-6">
           <h1 className="font-display text-[34px] font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
             <span style={accentReadable ? { color: accentReadable } : undefined}>
-              {suburb}&apos;s
+              {place}&apos;s
             </span>{" "}
-            Trusted
+            {hero.titleMiddle}
             <br />
             <span className="text-brand-yellow">
-              Garage Door Specialists
+              {hero.titleHighlight}
             </span>
           </h1>
           {heroTagline && (
@@ -126,9 +125,9 @@ export default function Hero({
             <div className="leading-tight">
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-amber-500">★★★★★</span>
-                <span className="font-bold">5.0</span>
+                <span className="font-bold">{business.ratingScore}</span>
               </div>
-              <div className="text-xs font-bold">Top Rated Garage Door Company</div>
+              <div className="text-xs font-bold">{business.ratingLabel}</div>
             </div>
           </div>
 
@@ -142,19 +141,22 @@ export default function Hero({
           </ul>
 
           <a
-            href="tel:0731803857"
+            href={`tel:${business.phoneLink}`}
             className="mt-2 inline-flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3.5 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-lg md:text-xl"
           >
             <PhoneIcon />
-            <span className="sm:hidden">{callLabel} 07 3180 3857</span>
-            <span className="hidden sm:inline">{callLabel} on 07 3180 3857</span>
+            <span className="sm:hidden">{callLabel} {business.phoneDisplay}</span>
+            <span className="hidden sm:inline">{callLabel} on {business.phoneDisplay}</span>
           </a>
         </div>
 
         {/* Right: contact card */}
         <div className="rounded-xl bg-white p-6 text-brand-black shadow-2xl md:p-8">
           <h2 className="mb-6 text-center font-display text-2xl font-extrabold text-[#1E1E1E] md:text-3xl">
-            Get A <span className="font-bold text-brand-navy">Free Quote</span>
+            {hero.formTitle}{" "}
+            <span className="font-bold text-brand-navy">
+              {hero.formTitleHighlight}
+            </span>
           </h2>
 
           <HeroQuoteForm submitLabel={quoteSubmitLabel} />

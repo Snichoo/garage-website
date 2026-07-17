@@ -1,4 +1,5 @@
 import type { SuburbProblem } from "@/data/suburbProfiles";
+import { getContent } from "@/lib/content";
 
 type CommonProblemsProps = {
   suburb: string;
@@ -15,6 +16,7 @@ export default function CommonProblems({
   accent,
   accentSoft,
 }: CommonProblemsProps) {
+  const { business } = getContent();
   return (
     <section className="w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -62,7 +64,7 @@ export default function CommonProblems({
             </p>
           </div>
           <a
-            href="tel:0731803857"
+            href={`tel:${business.phoneLink}`}
             className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-brand-yellow px-6 py-3 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 md:text-lg"
           >
             Call Our {suburb} Team

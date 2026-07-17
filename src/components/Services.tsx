@@ -1,56 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import QuoteButton from "./QuoteButton";
-
-type Card = {
-  title: string;
-  src: string;
-  alt: string;
-  items: string[];
-  href: string;
-  imagePosition?: string;
-  callCta?: boolean;
-};
-
-const cards: Card[] = [
-  {
-    title: "Emergency Garage Door Repairs",
-    src: "/images/emergency.jpg",
-    alt: "Emergency garage door repair",
-    items: [
-      "Emergency garage door repair",
-      "Garage door not opening/closing fix",
-      "Cable, roller & track repair",
-      "Same-day service available",
-    ],
-    href: "/emergency-repairs",
-    callCta: true,
-  },
-  {
-    title: "Garage Door Installation",
-    src: "/images/residential.webp",
-    alt: "Garage door installation",
-    items: [
-      "Sectional Garage Doors",
-      "Roller Doors",
-      "Tilt Doors",
-      "Custom Designs & Colours",
-    ],
-    href: "/garage-doors",
-  },
-  {
-    title: "Automated Gates",
-    src: "/images/automated-gates.webp",
-    alt: "Electric automated entry gates",
-    items: [
-      "Telescopic, swing & sliding gate automation",
-      "Motor supply & installation",
-      "Keypad & remote integration",
-      "Repairs & servicing",
-    ],
-    href: "/automated-gates",
-  },
-];
+import { getContent } from "@/lib/content";
 
 function BulletIcon() {
   return (
@@ -85,16 +36,18 @@ function PhoneIcon() {
 }
 
 export default function Services() {
+  const { business, services } = getContent();
+  const cards = services.cards;
   return (
     <section className="relative w-full overflow-hidden py-12 md:py-16">
       <div className="relative mx-auto max-w-[1200px] px-6">
         {/* Heading */}
         <div className="relative mb-10 h-[88px] md:mb-12 md:h-[160px]">
           <h2 className="outlined-text absolute left-0 top-0 select-none font-display text-[68px] font-extrabold leading-none tracking-tight md:text-[120px]">
-            SERVICES
+            {services.heading}
           </h2>
           <h2 className="absolute bottom-0 left-4 font-display text-[58px] font-extrabold leading-none tracking-tight text-brand-navy md:left-8 md:text-[104px]">
-            SERVICES
+            {services.heading}
           </h2>
         </div>
 
@@ -111,7 +64,7 @@ export default function Services() {
                 className="relative block aspect-[16/10] w-full overflow-hidden"
               >
                 <Image
-                  src={c.src}
+                  src={c.image}
                   alt={c.alt}
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
@@ -141,24 +94,24 @@ export default function Services() {
                 <div className="mt-auto flex flex-col gap-3">
                   {c.callCta ? (
                     <a
-                      href="tel:0731803857"
+                      href={`tel:${business.phoneLink}`}
                       className="inline-flex w-full items-center justify-center gap-2 bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
                     >
                       <PhoneIcon />
-                      07 3180 3857
+                      {business.phoneDisplay}
                     </a>
                   ) : (
                     <QuoteButton
                       className="inline-block w-full bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
                     >
-                      GET A FREE QUOTE
+                      {services.quoteButtonLabel}
                     </QuoteButton>
                   )}
                   <Link
                     href={c.href}
                     className="group/learn inline-flex items-center justify-center gap-2 text-center font-display text-sm font-bold uppercase tracking-wide text-white/90 underline-offset-4 transition hover:text-brand-yellow hover:underline"
                   >
-                    Learn More
+                    {services.learnMoreLabel}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"

@@ -3,6 +3,8 @@ import { DM_Sans, Sora } from "next/font/google";
 import QuoteModal from "@/components/QuoteModal";
 import ScrollAnimator from "@/components/ScrollAnimator";
 import JsonLd from "@/components/JsonLd";
+import { ContentProvider } from "@/components/ContentProvider";
+import { getContent } from "@/lib/content";
 import { siteConfig, localBusinessSchema } from "@/lib/site";
 import "./globals.css";
 
@@ -20,8 +22,13 @@ const sora = Sora({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+export function generateMetadata(): Metadata {
+  return buildRootMetadata();
+}
+
+function buildRootMetadata(): Metadata {
+  return {
+    metadataBase: new URL(siteConfig.url),
   title: {
     default: `Garage Doors ${siteConfig.primaryLocation} | Installation, Replacement & Repairs`,
     template: `%s | ${siteConfig.shortName}`,
@@ -76,8 +83,9 @@ export const metadata: Metadata = {
   // apple-icon.png), which Next renders as the correct <link> tags. Keeping
   // them there (not here) avoids the file convention silently overriding a
   // config block, and ensures Google sees a large 512px PNG icon.
-  manifest: "/favicon/site.webmanifest",
-};
+    manifest: "/favicon/site.webmanifest",
+  };
+}
 
 export default function RootLayout({
   children,
@@ -87,10 +95,12 @@ export default function RootLayout({
   return (
     <html lang="en-AU" className={`${dmSans.variable} ${sora.variable}`}>
       <body className="font-sans antialiased">
-        <JsonLd data={localBusinessSchema()} />
-        {children}
-        <QuoteModal />
-        <ScrollAnimator />
+        <ContentProvider content={getContent()}>
+          <JsonLd data={localBusinessSchema()} />
+          {children}
+          <QuoteModal />
+          <ScrollAnimator />
+        </ContentProvider>
       </body>
     </html>
   );

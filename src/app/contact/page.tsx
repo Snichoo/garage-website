@@ -4,12 +4,15 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import { pageMetadata, siteConfig } from "@/lib/site";
+import { getContent } from "@/lib/content";
 
-export const metadata = pageMetadata({
-  title: "Contact Sparrow Garage Doors Brisbane | Free Quotes",
-  description: `Contact Sparrow Garage Doors for a free quote or fast booking across Brisbane. Call ${siteConfig.phoneDisplay} or send an enquiry for installation, repairs and servicing.`,
-  path: "/contact",
-});
+export function generateMetadata() {
+  return pageMetadata({
+    title: `Contact ${siteConfig.name} ${siteConfig.primaryLocation} | Free Quotes`,
+    description: `Contact ${siteConfig.name} for a free quote or fast booking across ${siteConfig.primaryLocation}. Call ${siteConfig.phoneDisplay} or send an enquiry for installation, repairs and servicing.`,
+    path: "/contact",
+  });
+}
 
 function PhoneIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -66,6 +69,7 @@ function TruckIcon({ className = "h-5 w-5" }: { className?: string }) {
 }
 
 export default function ContactPage() {
+  const { business, contactPage } = getContent();
   return (
     <main className="garage-bg">
       <Header />
@@ -73,7 +77,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="relative isolate w-full overflow-hidden bg-brand-navy text-white">
         <Image
-          src="/images/contact-bg.avif"
+          src={contactPage.heroImage}
           alt=""
           fill
           priority
@@ -85,12 +89,11 @@ export default function ContactPage() {
 
         <div className="mx-auto max-w-[1200px] px-6 pb-20 pt-36 text-center md:pb-28 md:pt-48">
           <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
-            <span className="text-brand-yellow">Get In Touch</span>{" "}
-            <span className="text-white">With Us</span>
+            <span className="text-brand-yellow">{contactPage.heroTitleHighlight}</span>{" "}
+            <span className="text-white">{contactPage.heroTitleRest}</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
-            If you want reliable communication and high-quality trade services
-            done by professionals, we&apos;re Your Go-to Guys!
+            {contactPage.heroText}
           </p>
         </div>
 
@@ -103,10 +106,11 @@ export default function ContactPage() {
           {/* Form card */}
           <div className="bg-white p-6 shadow-2xl ring-1 ring-black/5 md:p-10">
             <h2 className="font-display text-2xl font-extrabold text-brand-navy md:text-3xl">
-              Send Us A <span className="text-brand-yellow">Message</span>
+              {contactPage.formTitle}{" "}
+              <span className="text-brand-yellow">{contactPage.formTitleHighlight}</span>
             </h2>
             <p className="mt-2 text-sm text-neutral-600 md:text-base">
-              Fill in the form and we&apos;ll be in touch within one business day.
+              {contactPage.formText}
             </p>
 
             <ContactForm />
@@ -115,7 +119,7 @@ export default function ContactPage() {
           {/* Info cards */}
           <div className="flex flex-col gap-5">
             <a
-              href="tel:0731803857"
+              href={`tel:${business.phoneLink}`}
               className="garage-bg-navy-tight group relative overflow-hidden p-6 text-white shadow-xl ring-1 ring-white/10 transition hover:-translate-y-0.5 md:p-7"
             >
               <div className="absolute inset-0 bg-black/15" />
@@ -125,17 +129,17 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-display text-lg font-extrabold uppercase tracking-wide text-brand-yellow">
-                    Phone
+                    {contactPage.phoneCardTitle}
                   </h3>
                   <p className="mt-1 font-display text-xl font-extrabold">
-                    07 3180 3857
+                    {business.phoneDisplay}
                   </p>
                 </div>
               </div>
             </a>
 
             <a
-              href="mailto:Sparroegaragedoors@gmail.com"
+              href={`mailto:${business.email}`}
               className="garage-bg-navy-tight group relative overflow-hidden p-6 text-white shadow-xl ring-1 ring-white/10 transition hover:-translate-y-0.5 md:p-7"
             >
               <div className="absolute inset-0 bg-black/15" />
@@ -145,10 +149,10 @@ export default function ContactPage() {
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-display text-lg font-extrabold uppercase tracking-wide text-brand-yellow">
-                    Email
+                    {contactPage.emailCardTitle}
                   </h3>
                   <p className="mt-1 break-all font-display text-base font-extrabold md:text-lg">
-                    Sparroegaragedoors@gmail.com
+                    {business.email}
                   </p>
                 </div>
               </div>
@@ -162,12 +166,10 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-display text-lg font-extrabold uppercase tracking-wide text-brand-yellow">
-                    Mobile Service
+                    {contactPage.mobileCardTitle}
                   </h3>
                   <p className="mt-2 font-display text-base font-extrabold leading-relaxed md:text-lg">
-                    We come to you across
-                    <br />
-                    Greater Brisbane.
+                    {contactPage.mobileCardText}
                   </p>
                 </div>
               </div>

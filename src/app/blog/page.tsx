@@ -6,12 +6,14 @@ import Header from "@/components/Header";
 import { posts } from "@/data/posts";
 import { pageMetadata } from "@/lib/site";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Garage Door Tips & Advice | Sparrow Garage Doors Blog",
   description:
     "Garage door maintenance tips, buying guides, and troubleshooting advice from Brisbane's local garage door specialists.",
   path: "/blog",
 });
+}
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-AU", {

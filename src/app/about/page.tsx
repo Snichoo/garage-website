@@ -5,12 +5,14 @@ import Header from "@/components/Header";
 import MeetTheTeam from "@/components/MeetTheTeam";
 import { pageMetadata } from "@/lib/site";
 
-export const metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "About Sparrow Garage Doors | Local Brisbane Specialists",
   description:
     "Meet the local team behind Sparrow Garage Doors. Family-run specialists in garage door installation, repairs and servicing across Brisbane and South East Queensland.",
   path: "/about",
 });
+}
 
 export default function AboutPage() {
   return (

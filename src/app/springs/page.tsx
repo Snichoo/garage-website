@@ -3,11 +3,13 @@ import PartServicePage, { type PartServiceContent } from "@/components/PartServi
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
+export function generateMetadata() {
+  return pageMetadata({
   title: "Garage Door Spring Repairs Brisbane | Replacement Service",
   description: `Broken garage door spring? We replace torsion and extension springs across Brisbane to restore balance and safe, quiet operation. Same-day service, call ${siteConfig.phoneDisplay}.`,
   path: "/springs",
 });
+}
 
 const content: PartServiceContent = {
   titleLead: "Garage Door",

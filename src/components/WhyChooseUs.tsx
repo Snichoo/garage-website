@@ -1,40 +1,6 @@
 import Image from "next/image";
-
-function Shield100() {
-  return (
-    <Image
-      src="/images/guarantee.png"
-      alt="100% Guaranteed"
-      width={300}
-      height={300}
-      className="h-32 w-32 object-contain mix-blend-multiply md:h-40 md:w-40"
-    />
-  );
-}
-
-function LocalServiceIcon() {
-  return (
-    <Image
-      src="/images/local-service.png"
-      alt="Local Brisbane garage door specialists"
-      width={300}
-      height={300}
-      className="h-32 w-32 object-contain md:h-40 md:w-40"
-    />
-  );
-}
-
-function Ring247() {
-  return (
-    <Image
-      src="/images/247.png"
-      alt="Available 24/7"
-      width={300}
-      height={300}
-      className="h-32 w-32 object-contain mix-blend-multiply md:h-40 md:w-40"
-    />
-  );
-}
+import { getContent } from "@/lib/content";
+import { fill } from "@/content/defaults";
 
 function WhyCard({
   title,
@@ -69,18 +35,18 @@ type WhyChooseUsProps = {
 
 export default function WhyChooseUs({
   suburb,
-  accent,
 }: WhyChooseUsProps = {}) {
+  const { whyChooseUs } = getContent();
   return (
     <section className="garage-bg-navy w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">
         {/* Stencil heading */}
         <div className="relative mb-10 h-[88px] md:mb-12 md:h-[160px]">
           <h2 className="outlined-text-navy absolute left-0 top-0 select-none font-display text-[68px] font-extrabold leading-none tracking-tight md:text-[120px]">
-            WHY US?
+            {whyChooseUs.heading}
           </h2>
           <h2 className="absolute bottom-0 left-4 font-display text-[58px] font-extrabold leading-none tracking-tight text-brand-yellow md:left-8 md:text-[104px]">
-            WHY US?
+            {whyChooseUs.heading}
           </h2>
         </div>
 
@@ -91,10 +57,10 @@ export default function WhyChooseUs({
               {/* Left: text + rating */}
               <div className="flex flex-1 flex-col">
                 <h3 className="font-display text-xl font-extrabold text-brand-navy md:text-2xl">
-                  Quality Services and Expert Technicians
+                  {whyChooseUs.qualityTitle}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-neutral-700 md:text-base">
-                  Locally made and serviced. Our expert technicians deliver quality on every repair and maintenance job.
+                  {whyChooseUs.qualityBody}
                 </p>
                 <div className="mt-6 flex flex-col items-center gap-2 md:items-start">
                   <div className="flex items-center gap-1.5 text-brand-yellow">
@@ -111,7 +77,7 @@ export default function WhyChooseUs({
                     ))}
                   </div>
                   <p className="font-display text-sm font-extrabold uppercase tracking-[0.25em] text-brand-navy md:text-base">
-                    Rated Excellent
+                    {whyChooseUs.qualityRatingLabel}
                   </p>
                 </div>
               </div>
@@ -119,7 +85,7 @@ export default function WhyChooseUs({
               {/* Right: technician illustration */}
               <div className="flex shrink-0 items-center justify-center">
                 <Image
-                  src="/images/quality1.png"
+                  src={whyChooseUs.qualityImage}
                   alt="Expert technician illustration"
                   width={300}
                   height={300}
@@ -130,14 +96,14 @@ export default function WhyChooseUs({
           </div>
           <div className="flex flex-col rounded-2xl border border-gray-200 bg-white/95 p-6 shadow-sm md:p-8">
             <h3 className="font-display text-xl font-extrabold text-brand-navy md:text-2xl">
-              Custom Solution and Design
+              {whyChooseUs.customTitle}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-neutral-700 md:text-base">
-              Customisable to fit any home and budget. Choose from various styles and colours.
+              {whyChooseUs.customBody}
             </p>
             <div className="mt-6 flex flex-1 items-center justify-center">
               <Image
-                src="/images/custom1.png"
+                src={whyChooseUs.customImage}
                 alt="Custom solution and design illustration"
                 width={300}
                 height={300}
@@ -150,32 +116,50 @@ export default function WhyChooseUs({
         {/* Bottom row */}
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-8 md:gap-8 lg:grid-cols-3">
           <WhyCard
-            title="100% Guaranteed"
-            body="We put our utmost effort into ensuring your satisfaction."
+            title={whyChooseUs.guaranteeTitle}
+            body={whyChooseUs.guaranteeBody}
           >
-            <Shield100 />
+            <Image
+              src={whyChooseUs.guaranteeImage}
+              alt="100% Guaranteed"
+              width={300}
+              height={300}
+              className="h-32 w-32 object-contain mix-blend-multiply md:h-40 md:w-40"
+            />
           </WhyCard>
 
           {suburb ? (
             <WhyCard
-              title={`Local ${suburb} Experts`}
-              body="Technicians who actually know the streets, the homes and the driveways around here. We're on call across your postcode every day of the week."
+              title={fill(whyChooseUs.localTitle, { suburb })}
+              body={whyChooseUs.localBody}
             >
-              <LocalServiceIcon />
+              <Image
+                src={whyChooseUs.localImage}
+                alt="Local garage door specialists"
+                width={300}
+                height={300}
+                className="h-32 w-32 object-contain md:h-40 md:w-40"
+              />
             </WhyCard>
           ) : (
             <WhyCard
-              title="Around The Clock Access"
-              body="Available around the clock, weekends and public holidays."
+              title={whyChooseUs.aroundClockTitle}
+              body={whyChooseUs.aroundClockBody}
             >
-              <Ring247 />
+              <Image
+                src={whyChooseUs.aroundClockImage}
+                alt="Available 24/7"
+                width={300}
+                height={300}
+                className="h-32 w-32 object-contain mix-blend-multiply md:h-40 md:w-40"
+              />
             </WhyCard>
           )}
 
           <div className="flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white/95 shadow-sm">
             <div className="flex items-start justify-center">
               <Image
-                src="/images/simple-pricing.webp"
+                src={whyChooseUs.pricingImage}
                 alt="Simple pricing"
                 width={400}
                 height={300}
@@ -184,10 +168,10 @@ export default function WhyChooseUs({
             </div>
             <div className="p-6 pt-2 md:p-8 md:pt-2">
               <h3 className="font-display text-xl font-extrabold text-brand-navy md:text-2xl">
-                Simple Pricing
+                {whyChooseUs.pricingTitle}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-700 md:text-base">
-                Transparent, fair pricing. No hidden costs, just honest work.
+                {whyChooseUs.pricingBody}
               </p>
             </div>
           </div>

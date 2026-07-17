@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useSiteContent } from "./ContentProvider";
 
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function ContactForm() {
+  const { contactForm, quoteModal } = useSiteContent();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -62,10 +64,10 @@ export default function ContactForm() {
           </svg>
         </div>
         <h3 className="font-display text-xl font-extrabold text-brand-navy">
-          Message sent!
+          {contactForm.successTitle}
         </h3>
         <p className="text-sm text-neutral-600">
-          Thanks for reaching out. We&apos;ll be in touch within one business day.
+          {contactForm.successText}
         </p>
       </div>
     );
@@ -77,13 +79,13 @@ export default function ContactForm() {
         <input
           type="text"
           name="firstName"
-          placeholder="First Name"
+          placeholder={contactForm.firstNamePlaceholder}
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
         <input
           type="text"
           name="lastName"
-          placeholder="Last Name"
+          placeholder={contactForm.lastNamePlaceholder}
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
       </div>
@@ -92,7 +94,7 @@ export default function ContactForm() {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={contactForm.emailPlaceholder}
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
         <input
@@ -100,14 +102,14 @@ export default function ContactForm() {
           name="phone"
           inputMode="tel"
           pattern="[0-9 +()\-]{6,}"
-          placeholder="Phone"
+          placeholder={contactForm.phonePlaceholder}
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
       </div>
 
       <textarea
         name="message"
-        placeholder="Message"
+        placeholder={contactForm.messagePlaceholder}
         rows={6}
         className="w-full resize-none border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
       />
@@ -121,7 +123,7 @@ export default function ContactForm() {
         disabled={status === "sending"}
         className="mt-2 inline-flex w-full items-center justify-center bg-brand-yellow px-6 py-4 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-lg transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 md:text-lg"
       >
-        {status === "sending" ? "Sending..." : "Submit"}
+        {status === "sending" ? quoteModal.sendingLabel : contactForm.submitLabel}
       </button>
     </form>
   );
