@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { siteConfig } from "@/lib/site";
+import { getSiteConfig } from "@/lib/site";
 
 // Plain endpoint (not a metadata file convention) that renders the shared
 // 1200x630 social card. Referenced explicitly from every page's metadata so
@@ -8,7 +8,8 @@ import { siteConfig } from "@/lib/site";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export function GET() {
+export async function GET() {
+  const cfg = await getSiteConfig();
   return new ImageResponse(
     (
       <div
@@ -40,7 +41,7 @@ export function GET() {
               letterSpacing: 6,
             }}
           >
-            {siteConfig.name.toUpperCase()}
+            {cfg.name.toUpperCase()}
           </div>
         </div>
 
@@ -53,7 +54,7 @@ export function GET() {
               lineHeight: 1.02,
             }}
           >
-            {`Garage Doors ${siteConfig.primaryLocation}`}
+            {`Garage Doors ${cfg.primaryLocation}`}
           </div>
           <div
             style={{
@@ -69,7 +70,7 @@ export function GET() {
 
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ color: "white", fontSize: 38, fontWeight: 700 }}>
-            {`Free quotes. Call ${siteConfig.phoneDisplay}`}
+            {`Free quotes. Call ${cfg.phoneDisplay}`}
           </div>
         </div>
       </div>

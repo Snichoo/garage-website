@@ -33,10 +33,10 @@ type WhyChooseUsProps = {
   accent?: string;
 };
 
-export default function WhyChooseUs({
+export default async function WhyChooseUs({
   suburb,
 }: WhyChooseUsProps = {}) {
-  const { whyChooseUs } = getContent();
+  const { whyChooseUs } = await getContent();
   return (
     <section className="garage-bg-navy w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">

@@ -184,6 +184,15 @@ export type SiteContent = {
     mobileCardTitle: string;
     mobileCardText: string;
   };
+  thankYouPage: {
+    heroTitleHighlight: string;
+    heroTitleRest: string;
+    heroText: string;
+    heroImage: string;
+    steps: { title: string; text: string }[];
+    callPrompt: string;
+    homeButtonLabel: string;
+  };
 };
 
 /** Replace {tokens} in editable copy, e.g. fill(str, { suburb: "Brisbane" }). */
@@ -691,5 +700,28 @@ export const defaultContent: SiteContent = {
     emailCardTitle: "Email",
     mobileCardTitle: "Mobile Service",
     mobileCardText: "We come to you across Greater Brisbane.",
+  },
+  thankYouPage: {
+    heroTitleHighlight: "Thank You",
+    heroTitleRest: "For Getting In Touch",
+    heroText:
+      "Your enquiry has landed with our team. We'll be in touch within one business day to sort out your garage door.",
+    heroImage: "/images/contact-bg.avif",
+    steps: [
+      {
+        title: "We read your enquiry",
+        text: "One of our local team goes over the details you sent through, usually within a couple of hours.",
+      },
+      {
+        title: "We give you a call",
+        text: "We'll ring or email you back within one business day to confirm the job and answer any questions.",
+      },
+      {
+        title: "We book you in",
+        text: "We lock in a time that suits you and come to you anywhere across Greater Brisbane.",
+      },
+    ],
+    callPrompt: "Need us sooner? Give us a call on",
+    homeButtonLabel: "Back to home",
   },
 };

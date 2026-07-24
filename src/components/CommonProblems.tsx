@@ -9,14 +9,14 @@ type CommonProblemsProps = {
   accentSoft: string;
 };
 
-export default function CommonProblems({
+export default async function CommonProblems({
   suburb,
   postcode,
   problems,
   accent,
   accentSoft,
 }: CommonProblemsProps) {
-  const { business } = getContent();
+  const { business } = await getContent();
   return (
     <section className="w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1200px] px-6">

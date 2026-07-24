@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { list } from "@vercel/blob";
 
 export const dynamic = "force-dynamic";
 
@@ -33,9 +34,25 @@ function collectImages(dir: string, urlPrefix: string, out: string[]): void {
 }
 
 export async function GET() {
-  const publicDir = path.join(process.cwd(), "public");
   const images: string[] = [];
-  collectImages(path.join(publicDir, "uploads"), "/uploads", images);
-  collectImages(path.join(publicDir, "images"), "/images", images);
+
+  // Admin uploads: Vercel Blob in production, public/uploads locally.
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    try {
+      const { blobs } = await list({ prefix: "uploads/", limit: 1000 });
+      for (const blob of blobs.sort((a, b) => +new Date(b.uploadedAt) - +new Date(a.uploadedAt))) {
+        images.push(blob.url);
+      }
+    } catch {
+      // Blob listing failed; fall through with whatever else we can find.
+    }
+  } else {
+    collectImages(path.join(process.cwd(), "public", "uploads"), "/uploads", images);
+  }
+
+  // Images bundled with the site (public/images is traced into this function
+  // via outputFileTracingIncludes in next.config.js so it exists on Vercel).
+  collectImages(path.join(process.cwd(), "public", "images"), "/images", images);
+
   return NextResponse.json({ images });
 }

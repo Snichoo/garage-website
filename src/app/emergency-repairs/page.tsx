@@ -6,13 +6,14 @@ import Header from "@/components/Header";
 import HowCanWeHelp from "@/components/HowCanWeHelp";
 import LocationMap from "@/components/LocationMap";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 import { getContent } from "@/lib/content";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Emergency Garage Door Repairs Brisbane | 24/7 Service",
-  description: `24/7 emergency garage door repairs across Brisbane. Broken springs, snapped cables, off-track and jammed doors fixed on the spot, any brand or model. Call ${siteConfig.phoneDisplay} now.`,
+  description: `24/7 emergency garage door repairs across Brisbane. Broken springs, snapped cables, off-track and jammed doors fixed on the spot, any brand or model. Call ${cfg.phoneDisplay} now.`,
   path: "/emergency-repairs",
 });
 }
@@ -68,8 +69,8 @@ function CheckMark() {
 }
 
 
-export default function EmergencyRepairsPage() {
-  const { business } = getContent();
+export default async function EmergencyRepairsPage() {
+  const { business } = await getContent();
   return (
     <main className="garage-bg">
       <JsonLd
@@ -78,7 +79,7 @@ export default function EmergencyRepairsPage() {
             { name: "Home", path: "/" },
             { name: "Emergency Repairs", path: "/emergency-repairs" },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: "Emergency Garage Door Repairs",
             description:
               "24/7 emergency garage door repairs across Brisbane and South East Queensland, including broken springs, cables, off-track and jammed doors.",

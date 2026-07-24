@@ -38,9 +38,9 @@ type FooterProps = {
   suburb?: string;
 };
 
-export default function Footer({ suburb }: FooterProps = {}) {
+export default async function Footer({ suburb }: FooterProps = {}) {
   const year = new Date().getFullYear();
-  const { business, footer } = getContent();
+  const { business, footer } = await getContent();
   const place = suburb ?? business.primaryLocation;
 
   return (
@@ -169,6 +169,17 @@ export default function Footer({ suburb }: FooterProps = {}) {
         <div className="mt-12 border-t border-white/15 pt-6 md:mt-16">
           <div className="flex flex-col items-center justify-between gap-3 text-xs text-white/60 md:flex-row md:text-sm">
             <p>{fill(footer.copyright, { year })}</p>
+            <p>
+              Website by{" "}
+              <a
+                href="https://moonlanemedia.com.au"
+                target="_blank"
+                rel="noopener"
+                className="font-semibold text-white/80 transition hover:text-brand-yellow"
+              >
+                Moonlane Media
+              </a>
+            </p>
           </div>
         </div>
       </div>

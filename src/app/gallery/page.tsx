@@ -67,8 +67,8 @@ const gallery: GalleryImage[] = [
   },
 ];
 
-export default function GalleryPage() {
-  const { business } = getContent();
+export default async function GalleryPage() {
+  const { business } = await getContent();
   return (
     <main className="garage-bg">
       <Header />

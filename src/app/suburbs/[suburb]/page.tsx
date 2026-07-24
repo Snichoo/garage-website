@@ -18,7 +18,7 @@ import { suburbs } from "@/data/suburbs";
 import { getSuburbFaqs, getSuburbProfile } from "@/data/suburbProfiles";
 import {
   pageMetadata,
-  siteConfig,
+  getSiteConfig,
   breadcrumbSchema,
   serviceSchema,
 } from "@/lib/site";
@@ -27,21 +27,22 @@ export function generateStaticParams() {
   return suburbs.map((s) => ({ suburb: s.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { suburb: string };
 }) {
   const suburb = suburbs.find((s) => s.slug === params.suburb);
   if (!suburb) return {};
+  const cfg = await getSiteConfig();
   return pageMetadata({
     title: `Garage Doors ${suburb.name} | Installation, Replacement & Repairs`,
-    description: `Garage door installation, replacement and same-day repairs in ${suburb.name} ${suburb.postcode}. Local specialists for roller, sectional & tilt doors, motors & springs. Call ${siteConfig.phoneDisplay}.`,
+    description: `Garage door installation, replacement and same-day repairs in ${suburb.name} ${suburb.postcode}. Local specialists for roller, sectional & tilt doors, motors & springs. Call ${cfg.phoneDisplay}.`,
     path: `/suburbs/${suburb.slug}`,
   });
 }
 
-export default function SuburbPage({
+export default async function SuburbPage({
   params,
 }: {
   params: { suburb: string };
@@ -63,7 +64,7 @@ export default function SuburbPage({
             { name: "Locations", path: "/locations" },
             { name: suburb.name, path },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: `Garage Door Repairs & Installation in ${suburb.name}`,
             description: `Garage door installation, replacement and same-day repairs for homes in ${suburb.name} ${suburb.postcode} and surrounding suburbs.`,
             path,

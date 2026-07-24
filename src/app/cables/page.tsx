@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import PartServicePage, { type PartServiceContent } from "@/components/PartServicePage";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Garage Door Cable Repairs Brisbane | Fast Replacement",
-  description: `Frayed or snapped garage door cable? We replace lift and safety cables across Brisbane to stop your door dropping or jamming. Same-day repairs, call ${siteConfig.phoneDisplay}.`,
+  description: `Frayed or snapped garage door cable? We replace lift and safety cables across Brisbane to stop your door dropping or jamming. Same-day repairs, call ${cfg.phoneDisplay}.`,
   path: "/cables",
 });
 }
@@ -29,7 +30,7 @@ const content: PartServiceContent = {
   ],
 };
 
-export default function CablesPage() {
+export default async function CablesPage() {
   return (
     <>
       <JsonLd
@@ -38,7 +39,7 @@ export default function CablesPage() {
             { name: "Home", path: "/" },
             { name: "Garage Door Cables", path: "/cables" },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: "Garage Door Cable Replacement",
             description:
               "Lift and safety cable repair and replacement for garage doors across Brisbane and South East Queensland.",

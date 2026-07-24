@@ -1,7 +1,7 @@
 import { getContent } from "@/lib/content";
 
-export default function MeetTheTeam() {
-  const { meetTheTeam } = getContent();
+export default async function MeetTheTeam() {
+  const { meetTheTeam } = await getContent();
   return (
     <section className="w-full py-12 md:py-20">
       <div className="mx-auto max-w-[1000px] px-6">

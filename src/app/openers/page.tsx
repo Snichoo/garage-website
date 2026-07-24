@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import PartServicePage, { type PartServiceContent } from "@/components/PartServicePage";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Garage Door Openers & Motors Brisbane | Supply & Repair",
-  description: `Garage door opener and motor supply, installation and repair across Brisbane. Motors, remotes, sensors and Wi-Fi upgrades for every door type and brand. Call ${siteConfig.phoneDisplay}.`,
+  description: `Garage door opener and motor supply, installation and repair across Brisbane. Motors, remotes, sensors and Wi-Fi upgrades for every door type and brand. Call ${cfg.phoneDisplay}.`,
   path: "/openers",
 });
 }
@@ -27,7 +28,7 @@ const content: PartServiceContent = {
   ],
 };
 
-export default function OpenersPage() {
+export default async function OpenersPage() {
   return (
     <>
       <JsonLd
@@ -36,7 +37,7 @@ export default function OpenersPage() {
             { name: "Home", path: "/" },
             { name: "Garage Door Openers", path: "/openers" },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: "Garage Door Opener & Motor Supply, Installation & Repair",
             description:
               "Supply, installation and repair of garage door openers and motors across Brisbane and South East Queensland.",

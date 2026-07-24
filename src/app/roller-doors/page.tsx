@@ -6,12 +6,13 @@ import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Roller Doors Brisbane | Supply, Installation & Repairs",
-  description: `Roller garage doors supplied, installed and repaired across Brisbane. Compact, secure and low-maintenance doors ideal for tight spaces and low headroom. Free quote, call ${siteConfig.phoneDisplay}.`,
+  description: `Roller garage doors supplied, installed and repaired across Brisbane. Compact, secure and low-maintenance doors ideal for tight spaces and low headroom. Free quote, call ${cfg.phoneDisplay}.`,
   path: "/roller-doors",
 });
 }
@@ -40,7 +41,7 @@ function CheckMark() {
   );
 }
 
-export default function RollerDoorsPage() {
+export default async function RollerDoorsPage() {
   return (
     <main className="garage-bg">
       <JsonLd
@@ -49,7 +50,7 @@ export default function RollerDoorsPage() {
             { name: "Home", path: "/" },
             { name: "Roller Doors", path: "/roller-doors" },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: "Roller Door Supply, Installation & Repairs",
             description:
               "Supply, installation and repair of roller garage doors across Brisbane and South East Queensland.",

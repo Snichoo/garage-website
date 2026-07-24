@@ -6,12 +6,13 @@ import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Automatic Gates Brisbane | Installation & Automation",
-  description: `Automatic gate installation and automation across Brisbane. Sliding, swing and telescopic gates with remote and smart control, built tough for daily use. Free quote, call ${siteConfig.phoneDisplay}.`,
+  description: `Automatic gate installation and automation across Brisbane. Sliding, swing and telescopic gates with remote and smart control, built tough for daily use. Free quote, call ${cfg.phoneDisplay}.`,
   path: "/automated-gates",
 });
 }
@@ -178,7 +179,7 @@ function GateTile({
   );
 }
 
-export default function AutomatedGatesPage() {
+export default async function AutomatedGatesPage() {
   return (
     <main className="garage-bg">
       <JsonLd
@@ -187,7 +188,7 @@ export default function AutomatedGatesPage() {
             { name: "Home", path: "/" },
             { name: "Automated Gates", path: "/automated-gates" },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: "Automatic Gate Installation & Automation",
             description:
               "Installation, automation and repair of sliding, swing and telescopic gates across Brisbane and South East Queensland.",

@@ -47,6 +47,10 @@ const SECTION_LABELS: Record<string, { label: string; hint?: string }> = {
   ctaBanner: { label: "Bottom Call To Action" },
   footer: { label: "Footer" },
   contactPage: { label: "Contact Page" },
+  thankYouPage: {
+    label: "Thank You Page",
+    hint: "Shown after someone sends an enquiry through any form on the site.",
+  },
 };
 
 const FIELD_LABELS: Record<string, string> = {

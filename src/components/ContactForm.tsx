@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSiteContent } from "./ContentProvider";
 
@@ -7,6 +8,7 @@ type Status = "idle" | "sending" | "success" | "error";
 
 export default function ContactForm() {
   const { contactForm, quoteModal } = useSiteContent();
+  const router = useRouter();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -39,12 +41,15 @@ export default function ContactForm() {
       }
       form.reset();
       setStatus("success");
+      router.push("/thank-you");
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("error");
     }
   }
 
+  // Shown for the moment it takes the /thank-you page to load, and as the
+  // fallback if that navigation is ever blocked.
   if (status === "success") {
     return (
       <div className="mt-8 flex flex-col items-center gap-3 border border-green-200 bg-green-50 p-8 text-center">

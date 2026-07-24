@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { put } from "@vercel/blob";
 
 export const dynamic = "force-dynamic";
 
@@ -43,13 +44,21 @@ export async function POST(request: Request) {
     .replace(/[^a-z0-9-_]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 60) || "image";
-
   const fileName = `${Date.now()}-${baseName}${ext}`;
+
+  // On Vercel the filesystem is read-only, so uploads go to Vercel Blob.
+  // Locally (no blob token) they are written to public/uploads instead.
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const blob = await put(`uploads/${fileName}`, file, {
+      access: "public",
+      addRandomSuffix: false,
+    });
+    return NextResponse.json({ path: blob.url });
+  }
+
   const uploadDir = path.join(process.cwd(), "public", "uploads");
   fs.mkdirSync(uploadDir, { recursive: true });
-
   const bytes = Buffer.from(await file.arrayBuffer());
   fs.writeFileSync(path.join(uploadDir, fileName), bytes);
-
   return NextResponse.json({ path: `/uploads/${fileName}` });
 }

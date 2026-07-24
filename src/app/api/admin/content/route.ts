@@ -5,7 +5,7 @@ import { getContent, saveContent } from "@/lib/content";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  return NextResponse.json(getContent());
+  return NextResponse.json(await getContent());
 }
 
 export async function PUT(request: Request) {
@@ -18,7 +18,7 @@ export async function PUT(request: Request) {
   }
 
   try {
-    saveContent(body);
+    await saveContent(body);
   } catch (err) {
     return NextResponse.json(
       { error: err instanceof Error ? err.message : "Failed to save." },

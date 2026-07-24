@@ -3,13 +3,14 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
-import { pageMetadata, siteConfig } from "@/lib/site";
+import { pageMetadata, getSiteConfig } from "@/lib/site";
 import { getContent } from "@/lib/content";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
-    title: `Contact ${siteConfig.name} ${siteConfig.primaryLocation} | Free Quotes`,
-    description: `Contact ${siteConfig.name} for a free quote or fast booking across ${siteConfig.primaryLocation}. Call ${siteConfig.phoneDisplay} or send an enquiry for installation, repairs and servicing.`,
+    title: `Contact ${cfg.name} ${cfg.primaryLocation} | Free Quotes`,
+    description: `Contact ${cfg.name} for a free quote or fast booking across ${cfg.primaryLocation}. Call ${cfg.phoneDisplay} or send an enquiry for installation, repairs and servicing.`,
     path: "/contact",
   });
 }
@@ -68,8 +69,8 @@ function TruckIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-export default function ContactPage() {
-  const { business, contactPage } = getContent();
+export default async function ContactPage() {
+  const { business, contactPage } = await getContent();
   return (
     <main className="garage-bg">
       <Header />

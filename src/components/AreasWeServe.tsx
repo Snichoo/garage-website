@@ -22,11 +22,11 @@ type AreasWeServeProps = {
   blurb?: string;
 };
 
-export default function AreasWeServe({
+export default async function AreasWeServe({
   suburb,
   blurb,
 }: AreasWeServeProps = {}) {
-  const { areasWeServe, business } = getContent();
+  const { areasWeServe, business } = await getContent();
   const place = suburb ?? business.primaryLocation;
   return (
     <section className="w-full py-12 md:py-20">

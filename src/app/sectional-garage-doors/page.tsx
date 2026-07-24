@@ -9,12 +9,13 @@ import SectionalDesignPicker from "@/components/SectionalDesignPicker";
 import SeriesGallery from "@/components/SeriesGallery";
 import WindowOptions from "@/components/WindowOptions";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Sectional Garage Doors Brisbane | Supply & Installation",
-  description: `Insulated sectional garage doors supplied and installed across Brisbane. Space-saving panels in Colorbond colours, timber-look finishes and window options. Free quote, call ${siteConfig.phoneDisplay}.`,
+  description: `Insulated sectional garage doors supplied and installed across Brisbane. Space-saving panels in Colorbond colours, timber-look finishes and window options. Free quote, call ${cfg.phoneDisplay}.`,
   path: "/sectional-garage-doors",
 });
 }
@@ -55,7 +56,7 @@ function CheckMark() {
   );
 }
 
-export default function SectionalGarageDoorsPage() {
+export default async function SectionalGarageDoorsPage() {
   return (
     <main className="garage-bg">
       <JsonLd
@@ -64,7 +65,7 @@ export default function SectionalGarageDoorsPage() {
             { name: "Home", path: "/" },
             { name: "Sectional Garage Doors", path: "/sectional-garage-doors" },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: "Sectional Garage Door Supply & Installation",
             description:
               "Supply and installation of insulated sectional garage doors across Brisbane and South East Queensland.",

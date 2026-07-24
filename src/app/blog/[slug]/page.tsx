@@ -31,7 +31,7 @@ function formatDate(iso: string) {
   });
 }
 
-export default function BlogPostPage({
+export default async function BlogPostPage({
   params,
 }: {
   params: { slug: string };
@@ -50,7 +50,7 @@ export default function BlogPostPage({
             { name: "Blog", path: "/blog" },
             { name: post.title, path: `/blog/${post.slug}` },
           ]),
-          articleSchema({
+          await articleSchema({
             title: post.title,
             description: post.excerpt,
             path: `/blog/${post.slug}`,

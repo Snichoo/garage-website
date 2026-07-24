@@ -39,8 +39,8 @@ function CheckMark() {
   );
 }
 
-export default function PartServicePage({ content }: { content: PartServiceContent }) {
-  const { business } = getContent();
+export default async function PartServicePage({ content }: { content: PartServiceContent }) {
+  const { business } = await getContent();
   return (
     <main className="garage-bg">
       <Header />

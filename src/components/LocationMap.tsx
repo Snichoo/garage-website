@@ -4,10 +4,10 @@ type LocationMapProps = {
   query?: string;
 };
 
-export default function LocationMap({ query }: LocationMapProps = {}) {
+export default async function LocationMap({ query }: LocationMapProps = {}) {
   // Searching Google Maps for an administrative area like "Brisbane, Queensland, Australia"
   // shows the region with its boundary highlighted automatically.
-  const search = query ?? getContent().locationMap.query;
+  const search = query ?? (await getContent()).locationMap.query;
   const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
     search,
   )}&output=embed`;

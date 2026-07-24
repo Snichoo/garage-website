@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getContent } from "@/lib/content";
 
-export default function HowCanWeHelp() {
-  const { howCanWeHelp } = getContent();
+export default async function HowCanWeHelp() {
+  const { howCanWeHelp } = await getContent();
   const items = howCanWeHelp.items;
   return (
     <section className="relative w-full overflow-hidden py-12 md:py-16">

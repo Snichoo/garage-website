@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import PartServicePage, { type PartServiceContent } from "@/components/PartServicePage";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Garage Door Spring Repairs Brisbane | Replacement Service",
-  description: `Broken garage door spring? We replace torsion and extension springs across Brisbane to restore balance and safe, quiet operation. Same-day service, call ${siteConfig.phoneDisplay}.`,
+  description: `Broken garage door spring? We replace torsion and extension springs across Brisbane to restore balance and safe, quiet operation. Same-day service, call ${cfg.phoneDisplay}.`,
   path: "/springs",
 });
 }
@@ -29,7 +30,7 @@ const content: PartServiceContent = {
   ],
 };
 
-export default function SpringsPage() {
+export default async function SpringsPage() {
   return (
     <>
       <JsonLd
@@ -38,7 +39,7 @@ export default function SpringsPage() {
             { name: "Home", path: "/" },
             { name: "Garage Door Springs", path: "/springs" },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: "Garage Door Spring Replacement",
             description:
               "Torsion and extension spring repair and replacement for garage doors across Brisbane and South East Queensland.",

@@ -35,8 +35,8 @@ function PhoneIcon() {
   );
 }
 
-export default function Services() {
-  const { business, services } = getContent();
+export default async function Services() {
+  const { business, services } = await getContent();
   const cards = services.cards;
   return (
     <section className="relative w-full overflow-hidden py-12 md:py-16">

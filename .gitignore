@@ -4,3 +4,7 @@ out
 .env*
 !.env.example
 .DS_Store
+
+# Local admin CMS data (Vercel uses Blob storage instead)
+content/site-content.json
+public/uploads/

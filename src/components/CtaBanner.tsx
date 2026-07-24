@@ -45,8 +45,8 @@ type CtaBannerProps = {
   suburb?: string;
 };
 
-export default function CtaBanner({ suburb }: CtaBannerProps = {}) {
-  const { ctaBanner } = getContent();
+export default async function CtaBanner({ suburb }: CtaBannerProps = {}) {
+  const { ctaBanner } = await getContent();
   const ctaLabel = suburb
     ? fill(ctaBanner.suburbButtonLabel, { suburb })
     : ctaBanner.buttonLabel;

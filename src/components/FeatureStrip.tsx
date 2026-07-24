@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { getContent } from "@/lib/content";
 
-export default function FeatureStrip() {
-  const features = getContent().featureStrip.items;
+export default async function FeatureStrip() {
+  const features = (await getContent()).featureStrip.items;
   return (
     <section className="w-full bg-brand-navy text-white">
       <ul className="mx-auto grid max-w-[1400px] grid-cols-6 gap-x-2 gap-y-7 px-6 py-8 md:grid-cols-5 md:gap-y-0 md:py-7">

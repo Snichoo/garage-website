@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSiteContent } from "./ContentProvider";
 
@@ -33,6 +34,8 @@ type Status = "idle" | "sending" | "success" | "error";
 
 export default function QuoteModal() {
   const { quoteModal, quoteForm, business } = useSiteContent();
+  const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -46,6 +49,13 @@ export default function QuoteModal() {
     window.addEventListener(OPEN_EVENT, onOpen);
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
   }, []);
+
+  // The modal lives in the root layout, so it survives route changes. Close it
+  // once a navigation lands: after a send that is the /thank-you page arriving,
+  // which keeps the success state on screen until the page is actually there.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -75,6 +85,7 @@ export default function QuoteModal() {
       }
       form.reset();
       setStatus("success");
+      router.push("/thank-you");
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("error");

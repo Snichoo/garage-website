@@ -6,12 +6,13 @@ import Header from "@/components/Header";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, siteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
+import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/lib/site";
 
-export function generateMetadata() {
+export async function generateMetadata() {
+  const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Smart Garage Door Kits Brisbane | Wi-Fi Openers Installed",
-  description: `Smart garage and gate kits installed across Brisbane. Wi-Fi openers, cameras, sensors and extra remotes for full control from your phone. Call ${siteConfig.phoneDisplay}.`,
+  description: `Smart garage and gate kits installed across Brisbane. Wi-Fi openers, cameras, sensors and extra remotes for full control from your phone. Call ${cfg.phoneDisplay}.`,
   path: "/smart-kits",
 });
 }
@@ -176,7 +177,7 @@ function KitTile({
   );
 }
 
-export default function SmartKitsPage() {
+export default async function SmartKitsPage() {
   return (
     <main className="garage-bg">
       <JsonLd
@@ -185,7 +186,7 @@ export default function SmartKitsPage() {
             { name: "Home", path: "/" },
             { name: "Smart Kits", path: "/smart-kits" },
           ]),
-          serviceSchema({
+          await serviceSchema({
             name: "Smart Garage Door & Gate Kits",
             description:
               "Supply and installation of smart Wi-Fi openers, cameras, sensors and remotes for garage doors and gates across Brisbane.",

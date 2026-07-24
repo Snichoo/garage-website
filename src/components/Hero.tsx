@@ -67,14 +67,14 @@ function lightenForDarkBg(hex?: string): string | undefined {
   return `#${blend(r)}${blend(g)}${blend(b)}`;
 }
 
-export default function Hero({
+export default async function Hero({
   suburb,
   heroImage,
   heroImageAlt = "",
   accent,
   heroTagline,
 }: HeroProps = {}) {
-  const { hero, business } = getContent();
+  const { hero, business } = await getContent();
   const place = suburb ?? business.primaryLocation;
   const image = heroImage ?? hero.image;
   const features = hero.features;
