@@ -18,8 +18,8 @@ export default async function HowCanWeHelp() {
           </h2>
         </div>
 
-        {/* Icon grid */}
-        <ul className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 md:mt-14 md:grid-cols-6 md:gap-x-6">
+        {/* Icon grid - one entry per main service category */}
+        <ul className="mx-auto mt-10 grid max-w-[1000px] grid-cols-2 gap-x-4 gap-y-10 md:mt-14 md:grid-cols-4 md:gap-x-6">
           {items.map(({ label, icon, href }) => (
             <li key={label} className="flex">
               <Link

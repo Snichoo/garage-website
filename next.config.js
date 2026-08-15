@@ -9,6 +9,18 @@ const nextConfig = {
       { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
     ],
   },
+  // Routes renamed in the 2026 nav restructure. Keep these permanently so the
+  // old URLs (and any Google Ads landing pages pointing at them) still resolve.
+  async redirects() {
+    return [
+      {
+        source: "/automated-gates",
+        destination: "/gate-automation",
+        permanent: true,
+      },
+      { source: "/smart-kits", destination: "/smart-systems", permanent: true },
+    ];
+  },
   experimental: {
     // Vercel serverless functions can't read public/ from the filesystem
     // unless the files are traced in. The admin image picker lists

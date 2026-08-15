@@ -80,6 +80,7 @@ export type SiteContent = {
     items: { label: string; icon: string; href: string }[];
   };
   meetTheTeam: {
+    kicker: string;
     headingTop: string;
     headingBottom: string;
     introStart: string;
@@ -166,9 +167,12 @@ export type SiteContent = {
   footer: {
     blurb: string;
     servicesHeading: string;
+    services: NavLink[];
     companyHeading: string;
+    company: NavLink[];
     regionsHeading: string;
     regionsIntro: string;
+    legal: NavLink[];
     copyright: string;
   };
   contactPage: {
@@ -225,21 +229,67 @@ export const defaultContent: SiteContent = {
     callNowLabel: "CALL US NOW",
     menuTitle: "Menu",
     nav: [
-      { label: "Home", href: "/", mobileOnly: true },
-      { label: "About Us", href: "/about" },
+      { label: "Home", href: "/" },
       {
-        label: "Door Installations",
-        href: "/garage-doors",
+        label: "Repairs",
+        href: "/repairs",
         dropdown: [
-          { label: "Sectional Garage Doors", href: "/sectional-garage-doors" },
-          { label: "Roller Doors", href: "/roller-doors" },
-          { label: "Tilt Doors", href: "/tilt-doors" },
-          { label: "Automated Gates", href: "/automated-gates" },
+          { label: "Emergency Garage Door Repairs", href: "/emergency-repairs" },
+          { label: "Garage Door Repairs", href: "/garage-door-repairs" },
+          { label: "Gate Repairs", href: "/gate-repairs" },
+          { label: "Broken Spring Replacement", href: "/springs" },
+          { label: "Cable Replacement", href: "/cables" },
+          { label: "Garage Door Off Track", href: "/garage-door-off-track" },
+          { label: "Garage Door Servicing", href: "/garage-door-servicing" },
+          {
+            label: "Garage Door Safety Inspection",
+            href: "/garage-door-safety-inspection",
+          },
         ],
       },
-      { label: "Emergency Service", href: "/emergency-repairs" },
-      { label: "Blog", href: "/blog" },
-      { label: "Contact Us", href: "/contact" },
+      {
+        label: "Garage Doors",
+        href: "/garage-doors",
+        dropdown: [
+          { label: "New Garage Doors", href: "/garage-doors" },
+          { label: "Sectional Garage Doors", href: "/sectional-garage-doors" },
+          { label: "Roller Garage Doors", href: "/roller-doors" },
+          { label: "Tilt Garage Doors", href: "/tilt-doors" },
+        ],
+      },
+      {
+        label: "Gates",
+        href: "/gates",
+        dropdown: [
+          { label: "New Gates", href: "/gates" },
+          { label: "Sliding Gates", href: "/sliding-gates" },
+          { label: "Swing Gates", href: "/swing-gates" },
+          { label: "Gate Motors & Automation", href: "/gate-automation" },
+        ],
+      },
+      {
+        label: "Automation",
+        href: "/automation",
+        dropdown: [
+          { label: "Garage Door Openers", href: "/openers" },
+          {
+            label: "Garage Door Motor Replacement",
+            href: "/garage-door-motor-replacement",
+          },
+          { label: "Gate Motors & Automation", href: "/gate-automation" },
+          { label: "Gate Motor Replacement", href: "/gate-motor-replacement" },
+          { label: "Smart Systems", href: "/smart-systems" },
+        ],
+      },
+      {
+        label: "Contact",
+        href: "/contact",
+        dropdown: [
+          { label: "Contact Us", href: "/contact" },
+          { label: "Request a Quote", href: "/request-a-quote" },
+          { label: "Book a Service", href: "/book-a-service" },
+        ],
+      },
     ],
   },
   hero: {
@@ -278,41 +328,49 @@ export const defaultContent: SiteContent = {
     learnMoreLabel: "Learn More",
     cards: [
       {
-        title: "Emergency Garage Door Repairs",
+        title: "Repairs",
         image: "/images/emergency.jpg",
         alt: "Emergency garage door repair",
         items: [
-          "Emergency garage door repair",
-          "Garage door not opening/closing fix",
-          "Cable, roller & track repair",
-          "Same-day service available",
+          "Emergency garage door repairs",
+          "Garage door & gate repairs",
+          "Springs, cables & off track",
         ],
-        href: "/emergency-repairs",
+        href: "/repairs",
         callCta: true,
       },
       {
-        title: "Garage Door Installation",
+        title: "New Garage Doors",
         image: "/images/residential.webp",
-        alt: "Garage door installation",
+        alt: "New garage door installed on a Brisbane home",
         items: [
-          "Sectional Garage Doors",
-          "Roller Doors",
-          "Tilt Doors",
-          "Custom Designs & Colours",
+          "Sectional garage doors",
+          "Roller garage doors",
+          "Tilt garage doors",
         ],
         href: "/garage-doors",
       },
       {
-        title: "Automated Gates",
-        image: "/images/automated-gates.webp",
-        alt: "Electric automated entry gates",
+        title: "New Gates",
+        image: "/images/gates/sliding-gate.avif",
+        alt: "New automated sliding driveway gate",
         items: [
-          "Telescopic, swing & sliding gate automation",
-          "Motor supply & installation",
-          "Keypad & remote integration",
-          "Repairs & servicing",
+          "Sliding gates",
+          "Swing gates",
+          "Complete gate & motor packages",
         ],
-        href: "/automated-gates",
+        href: "/gates",
+      },
+      {
+        title: "Motors & Automation",
+        image: "/images/openers-hero.webp",
+        alt: "Garage door remote being used at a home",
+        items: [
+          "Garage door openers & motors",
+          "Gate motors & automation",
+          "Motor replacements & smart systems",
+        ],
+        href: "/automation",
       },
     ],
   },
@@ -480,38 +538,29 @@ export const defaultContent: SiteContent = {
     moreText: "and more ...",
     items: [
       {
-        label: "Door Installations",
+        label: "Repairs",
+        icon: "/images/icons/help-maintenance.png",
+        href: "/repairs",
+      },
+      {
+        label: "New Garage Doors",
         icon: "/images/icons/help-installations.png",
         href: "/garage-doors",
       },
       {
-        label: "Springs",
-        icon: "/images/icons/help-springs.png",
-        href: "/springs",
+        label: "New Gates",
+        icon: "/images/icons/help-gates.svg",
+        href: "/gates",
       },
       {
-        label: "Openers",
+        label: "Motors & Automation",
         icon: "/images/icons/help-openers.png",
-        href: "/openers",
-      },
-      {
-        label: "Cables",
-        icon: "/images/icons/help-cables.png",
-        href: "/cables",
-      },
-      {
-        label: "Maintenance & Repairs",
-        icon: "/images/icons/help-maintenance.png",
-        href: "/emergency-repairs",
-      },
-      {
-        label: "Smart Kits",
-        icon: "/images/icons/help-smart-kits.png",
-        href: "/smart-kits",
+        href: "/automation",
       },
     ],
   },
   meetTheTeam: {
+    kicker: "About Sparrow",
     headingTop: "Your Local",
     headingBottom: "Sparrow Team",
     introStart: "At Sparrow Garage Doors, every job is run by one of our two managers. Between them they have over",
@@ -681,10 +730,26 @@ export const defaultContent: SiteContent = {
     blurb:
       "{suburb}'s trusted experts in garage doors. Quality installation, reliable servicing, and friendly local advice for homes and businesses across South East Queensland.",
     servicesHeading: "Services",
+    services: [
+      { label: "Repairs", href: "/repairs" },
+      { label: "Garage Doors", href: "/garage-doors" },
+      { label: "Gates", href: "/gates" },
+      { label: "Automation", href: "/automation" },
+    ],
     companyHeading: "Company",
-    regionsHeading: "Our Regions",
+    company: [
+      { label: "About Sparrow", href: "/about" },
+      { label: "Gallery / Our Work", href: "/gallery" },
+      { label: "Blog", href: "/blog" },
+      { label: "Contact Us", href: "/contact" },
+    ],
+    regionsHeading: "Service Areas",
     regionsIntro:
       "We service the Greater Brisbane area, with dedicated support across:",
+    legal: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms & Conditions", href: "/terms" },
+    ],
     copyright: "© {year} All rights reserved.",
   },
   contactPage: {

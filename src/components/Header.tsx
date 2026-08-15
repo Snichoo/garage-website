@@ -162,7 +162,7 @@ export default function Header() {
               : "bg-transparent text-white"
           }`}
         >
-          <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-3">
+          <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 py-3 xl:gap-6">
             <a href="/" className="flex items-center" aria-label="Home">
               <Image
                 src={business.logo}
@@ -170,26 +170,26 @@ export default function Header() {
                 width={280}
                 height={100}
                 priority
-                className={`h-20 w-auto transition ${
+                className={`h-16 w-auto transition xl:h-20 ${
                   scrolled ? "" : "brightness-0 invert"
                 }`}
               />
             </a>
 
-            <nav className="flex items-center gap-4 xl:gap-6">
+            <nav className="flex items-center gap-3 xl:gap-6">
               {navItems
                 .filter((item) => !item.mobileOnly)
                 .map((item) => (
                 <div key={item.label} className="group relative">
                   <a
                     href={item.href}
-                    className="flex items-center gap-1 whitespace-nowrap font-display text-[13px] font-bold tracking-wide transition hover:text-brand-yellow xl:text-sm"
+                    className="flex items-center gap-1 whitespace-nowrap font-display text-[12px] font-bold uppercase tracking-wide transition hover:text-brand-yellow xl:text-sm"
                   >
                     {item.label}
                     {item.dropdown && <ChevronDown />}
                   </a>
                   {item.dropdown && (
-                    <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
+                    <div className="invisible absolute left-1/2 top-full z-50 w-max min-w-[15rem] max-w-[22rem] -translate-x-1/2 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
                       <ul className="overflow-hidden rounded-xl bg-white py-2 text-[#1E1E1E] shadow-xl ring-1 ring-black/5">
                         {item.dropdown.map((sub) => (
                           <li key={sub.label}>
@@ -208,11 +208,11 @@ export default function Header() {
               ))}
             </nav>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 xl:gap-3">
               <button
                 type="button"
                 onClick={() => openQuoteModal()}
-                className={`inline-flex items-center rounded-full border-2 px-5 py-3 font-display text-xs font-extrabold uppercase tracking-wide transition ${
+                className={`inline-flex items-center whitespace-nowrap rounded-full border-2 px-3.5 py-2.5 font-display text-[11px] font-extrabold uppercase tracking-wide transition xl:px-5 xl:py-3 xl:text-xs ${
                   scrolled
                     ? "border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white"
                     : "border-white text-white hover:bg-white hover:text-brand-navy"

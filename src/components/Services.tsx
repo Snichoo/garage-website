@@ -51,8 +51,8 @@ export default async function Services() {
           </h2>
         </div>
 
-        {/* Service cards */}
-        <div className="mx-auto grid max-w-[1140px] grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+        {/* Service cards - one per main category */}
+        <div className="mx-auto grid max-w-[1140px] grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-5">
           {cards.map((c) => (
             <article
               key={c.title}
@@ -67,13 +67,13 @@ export default async function Services() {
                   src={c.image}
                   alt={c.alt}
                   fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 285px, (min-width: 640px) 50vw, 100vw"
                   className={`object-cover transition duration-300 group-hover:scale-105 ${c.imagePosition ?? "object-[center_70%]"}`}
                 />
               </Link>
 
-              <div className="flex flex-1 flex-col gap-5 p-5 md:p-6">
-                <h3 className="font-display text-xl font-extrabold leading-tight text-brand-yellow md:text-2xl">
+              <div className="flex flex-1 flex-col gap-5 p-5 lg:p-5 md:p-6">
+                <h3 className="font-display text-xl font-extrabold uppercase leading-tight text-brand-yellow md:text-2xl lg:text-xl">
                   <Link href={c.href} className="transition hover:underline">
                     {c.title}
                   </Link>
@@ -95,14 +95,14 @@ export default async function Services() {
                   {c.callCta ? (
                     <a
                       href={`tel:${business.phoneLink}`}
-                      className="inline-flex w-full items-center justify-center gap-2 bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
+                      className="inline-flex w-full items-center justify-center gap-2 bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 lg:text-sm"
                     >
                       <PhoneIcon />
                       {business.phoneDisplay}
                     </a>
                   ) : (
                     <QuoteButton
-                      className="inline-block w-full bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90"
+                      className="inline-block w-full bg-brand-yellow py-3 text-center font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 lg:text-sm"
                     >
                       {services.quoteButtonLabel}
                     </QuoteButton>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
@@ -11,17 +12,17 @@ import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/
 export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
-  title: "Automatic Gates Brisbane | Installation & Automation",
-  description: `Automatic gate installation and automation across Brisbane. Sliding, swing and telescopic gates with remote and smart control, built tough for daily use. Free quote, call ${cfg.phoneDisplay}.`,
-  path: "/automated-gates",
+  title: "Gate Motors & Automation Brisbane | Supply & Installation",
+  description: `Gate motors and automation across Brisbane. Sliding, swing and telescopic gates automated with remotes, keypads, safety beams and smart control. Free quote, call ${cfg.phoneDisplay}.`,
+  path: "/gate-automation",
 });
 }
 
 const features = [
-  "Professional installation of automation for telescopic, sliding and double gates.",
-  "Custom designs, finishes and materials to suit any property.",
-  "Robust construction built to handle daily use and harsh weather.",
-  "Comprehensive maintenance and repair to keep your gate operating safely.",
+  "Motors supplied and installed for telescopic, sliding and double gates.",
+  "Remotes, keypads, intercoms and smart phone control.",
+  "Safety beams and auto-reverse fitted and tested on every install.",
+  "Motor replacement, maintenance and repair on any brand.",
 ];
 
 const gateFaqs = [
@@ -179,20 +180,21 @@ function GateTile({
   );
 }
 
-export default async function AutomatedGatesPage() {
+export default async function GateAutomationPage() {
   return (
     <main className="garage-bg">
       <JsonLd
         data={[
           breadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Automated Gates", path: "/automated-gates" },
+            { name: "Automation", path: "/automation" },
+            { name: "Gate Motors & Automation", path: "/gate-automation" },
           ]),
           await serviceSchema({
-            name: "Automatic Gate Installation & Automation",
+            name: "Gate Motors & Automation",
             description:
-              "Installation, automation and repair of sliding, swing and telescopic gates across Brisbane and South East Queensland.",
-            path: "/automated-gates",
+              "Supply, installation and replacement of gate motors and automation for sliding, swing and telescopic gates across Brisbane and South East Queensland.",
+            path: "/gate-automation",
           }),
         ]}
       />
@@ -206,15 +208,15 @@ export default async function AutomatedGatesPage() {
           {/* Left copy */}
           <div className="flex flex-col gap-6">
             <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
-              Automated Gates,
+              Gate Motors &amp;
               <br />
-              <span className="text-brand-yellow">Built to Last</span>
+              <span className="text-brand-yellow">Automation</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
-              From professional installation to regular maintenance and reliable
-              repairs, our team makes sure your automated gate operates smoothly
-              and securely, whether you&apos;re setting up a brand-new system
-              or fixing an existing one.
+              Whether you want the gate you already have automated, a tired
+              motor replaced, or a full system installed alongside a brand new
+              gate, we supply and fit the motor, remotes, keypads and safety
+              gear and hand it over working properly on the day.
             </p>
             <ul className="flex flex-col gap-3">
               {features.map((f) => (
@@ -288,17 +290,24 @@ export default async function AutomatedGatesPage() {
           {/* Stencil heading */}
           <div className="relative mb-6 h-[34px] md:mb-8 md:h-[80px]">
             <h2 className="outlined-text absolute left-0 top-0 select-none whitespace-nowrap font-display text-[24px] font-extrabold leading-none tracking-tight md:text-[60px]">
-              TYPES OF GATES
+              WHAT WE AUTOMATE
             </h2>
             <h2 className="absolute bottom-0 left-1.5 whitespace-nowrap font-display text-[22px] font-extrabold leading-none tracking-tight text-brand-navy md:left-3 md:text-[56px]">
-              TYPES OF GATES
+              WHAT WE AUTOMATE
             </h2>
           </div>
 
           <p className="mb-12 max-w-2xl text-base leading-relaxed text-neutral-700 md:text-lg">
-            We design, install and service every common style of automated
-            gate. Find the layout that fits your property, then we&apos;ll take
-            care of the rest.
+            We automate every common gate layout, on gates we have built and on
+            gates that were already there. If you are after a complete new gate
+            as well, see our{" "}
+            <Link
+              href="/gates"
+              className="font-bold text-brand-navy underline underline-offset-4 transition hover:text-brand-yellow"
+            >
+              new gates
+            </Link>{" "}
+            page.
           </p>
 
           <div className="flex flex-col gap-12 md:gap-16">

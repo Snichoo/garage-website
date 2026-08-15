@@ -11,9 +11,9 @@ import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/
 export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
-  title: "Smart Garage Door Kits Brisbane | Wi-Fi Openers Installed",
-  description: `Smart garage and gate kits installed across Brisbane. Wi-Fi openers, cameras, sensors and extra remotes for full control from your phone. Call ${cfg.phoneDisplay}.`,
-  path: "/smart-kits",
+  title: "Smart Systems Brisbane | Wi-Fi Garage Door & Gate Control",
+  description: `Smart systems installed across Brisbane for garage doors and gates. Wi-Fi openers, cameras, sensors and extra remotes for full control from your phone. Call ${cfg.phoneDisplay}.`,
+  path: "/smart-systems",
 });
 }
 
@@ -24,13 +24,13 @@ const features = [
   "Professional installation, programming and ongoing support.",
 ];
 
-const smartKitFaqs = [
+const smartSystemFaqs = [
   {
-    q: "What is included in a Wi-Fi Control Kit?",
-    a: "A Wi-Fi Control Kit typically includes a Wi-Fi receiver and all necessary components to connect your automated gate or garage door to your smartphone, allowing for remote control.",
+    q: "What is included in a Wi-Fi control system?",
+    a: "A Wi-Fi control system typically includes a Wi-Fi receiver and all necessary components to connect your automated gate or garage door to your smartphone, allowing for remote control.",
   },
   {
-    q: "Can I install a smart kit myself?",
+    q: "Can I install a smart system myself?",
     a: "While installation is straightforward, we recommend professional installation to ensure that all components are set up correctly and integrated with your existing systems.",
   },
   {
@@ -38,8 +38,8 @@ const smartKitFaqs = [
     a: "Additional remotes sync with your existing gate or door system, providing more flexibility for control. They can be programmed for multiple gates or additional functions such as opening lights or alarms.",
   },
   {
-    q: "Do smart kits require a Wi-Fi connection?",
-    a: "Yes, these kits require a stable Wi-Fi connection for remote control, monitoring, and alerts.",
+    q: "Do smart systems require a Wi-Fi connection?",
+    a: "Yes, these systems require a stable Wi-Fi connection for remote control, monitoring, and alerts.",
   },
   {
     q: "How often should I replace the batteries in my remotes?",
@@ -47,7 +47,7 @@ const smartKitFaqs = [
   },
 ];
 
-type SmartKit = {
+type SmartSystem = {
   id: string;
   name: string;
   tag?: string;
@@ -58,14 +58,14 @@ type SmartKit = {
   services: string[];
 };
 
-const smartKits: SmartKit[] = [
+const smartSystems: SmartSystem[] = [
   {
     id: "wifi",
-    name: "Wi-Fi Control Kits",
+    name: "Wi-Fi Control Systems",
     image: "/images/smart-kits/back-view-businesswoman-with-smartphone.avif",
     alt: "Person using a smartphone to remotely control a gate",
     intro:
-      "Wi-Fi Control Kits enable remote operation of your automated gates and garage doors through Wi-Fi receivers, letting you control your system from anywhere, anytime, using a smartphone app.",
+      "Wi-Fi control systems enable remote operation of your automated gates and garage doors through Wi-Fi receivers, letting you control your system from anywhere, anytime, using a smartphone app.",
     benefits: [
       "Remote access to your gates and doors from your phone, no matter where you are.",
       "Quick, hassle-free installation with minimal disruption.",
@@ -80,7 +80,7 @@ const smartKits: SmartKit[] = [
   },
   {
     id: "security",
-    name: "Security and Monitoring Kits",
+    name: "Security and Monitoring Systems",
     image: "/images/smart-kits/video-intercom.avif",
     alt: "Wi-Fi security camera mounted at the entrance of an automated gate",
     intro:
@@ -99,11 +99,11 @@ const smartKits: SmartKit[] = [
   },
   {
     id: "remotes",
-    name: "Additional Remote Kits",
+    name: "Additional Remote Systems",
     image: "/images/smart-kits/remote-control.avif",
     alt: "Extra long-range remotes for automated gates and garage doors",
     intro:
-      "Additional remote kits provide extra or specialised remotes for your gates and garage doors, adding convenience, long-range access and the ability to sync multiple devices.",
+      "Additional remote systems provide extra or specialised remotes for your gates and garage doors, adding convenience, long-range access and the ability to sync multiple devices.",
     benefits: [
       "Add more remotes for greater flexibility and convenience.",
       "Long-range access to control gates and doors from greater distances.",
@@ -135,7 +135,7 @@ function CheckMark() {
   );
 }
 
-type KitTileProps = {
+type SystemTileProps = {
   src: string;
   alt: string;
   label: string;
@@ -144,14 +144,14 @@ type KitTileProps = {
   span2?: boolean;
 };
 
-function KitTile({
+function SystemTile({
   src,
   alt,
   label,
   aspect,
   priority = false,
   span2 = false,
-}: KitTileProps) {
+}: SystemTileProps) {
   return (
     <div
       className={`relative w-full overflow-hidden rounded-2xl border border-white/15 bg-black/40 shadow-2xl ring-1 ring-white/5 ${aspect} ${
@@ -177,20 +177,21 @@ function KitTile({
   );
 }
 
-export default async function SmartKitsPage() {
+export default async function SmartSystemsPage() {
   return (
     <main className="garage-bg">
       <JsonLd
         data={[
           breadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Smart Kits", path: "/smart-kits" },
+            { name: "Automation", path: "/automation" },
+            { name: "Smart Systems", path: "/smart-systems" },
           ]),
           await serviceSchema({
-            name: "Smart Garage Door & Gate Kits",
+            name: "Smart Systems for Garage Doors & Gates",
             description:
-              "Supply and installation of smart Wi-Fi openers, cameras, sensors and remotes for garage doors and gates across Brisbane.",
-            path: "/smart-kits",
+              "Supply and installation of smart systems, including Wi-Fi control, cameras, sensors and remotes, for garage doors and gates across Brisbane.",
+            path: "/smart-systems",
           }),
         ]}
       />
@@ -204,15 +205,15 @@ export default async function SmartKitsPage() {
           {/* Left copy */}
           <div className="flex flex-col gap-6">
             <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
-              Smart Kits,
+              Smart Systems,
               <br />
               <span className="text-brand-yellow">Smarter Control</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
               Enhance your experience with automated gates and garage doors by
-              exploring our range of smart kits. From Wi-Fi receivers to
+              exploring our range of smart systems. From Wi-Fi receivers to
               security cameras and additional remotes, our carefully curated
-              kits combine the latest technology with seamless operation -
+              systems combine the latest technology with seamless operation -
               making it easier than ever to manage your entry points.
             </p>
             <ul className="flex flex-col gap-3">
@@ -233,7 +234,7 @@ export default async function SmartKitsPage() {
                 href="#types"
                 className="inline-flex items-center gap-3 bg-brand-yellow px-6 py-4 font-display text-base font-extrabold tracking-wide text-brand-navy shadow-md transition hover:opacity-90 md:text-lg"
               >
-                Explore smart kits
+                Explore smart systems
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -257,7 +258,7 @@ export default async function SmartKitsPage() {
 
           {/* Right: three kit images, bento layout */}
           <div className="grid grid-cols-2 gap-3 md:gap-4">
-            <KitTile
+            <SystemTile
               src="/images/smart-kits/video-intercom.avif"
               alt="Wi-Fi security camera mounted at the entrance of an automated gate"
               label="Security & Monitoring"
@@ -265,13 +266,13 @@ export default async function SmartKitsPage() {
               priority
               span2
             />
-            <KitTile
+            <SystemTile
               src="/images/smart-kits/back-view-businesswoman-with-smartphone.avif"
               alt="Person using a smartphone to remotely control a gate"
               label="Wi-Fi Control"
               aspect="aspect-[4/3]"
             />
-            <KitTile
+            <SystemTile
               src="/images/smart-kits/remote-control.avif"
               alt="Remote control for garage door"
               label="Additional Remotes"
@@ -281,28 +282,28 @@ export default async function SmartKitsPage() {
         </div>
       </section>
 
-      {/* Smart kit types - detailed */}
+      {/* Smart system types - detailed */}
       <section id="types" className="w-full py-12 md:py-20">
         <div className="mx-auto max-w-[1200px] px-6">
           {/* Stencil heading */}
           <div className="relative mb-6 h-[34px] md:mb-8 md:h-[80px]">
             <h2 className="outlined-text absolute left-0 top-0 select-none whitespace-nowrap font-display text-[24px] font-extrabold leading-none tracking-tight md:text-[60px]">
-              TYPES OF SMART KITS
+              TYPES OF SMART SYSTEMS
             </h2>
             <h2 className="absolute bottom-0 left-1.5 whitespace-nowrap font-display text-[22px] font-extrabold leading-none tracking-tight text-brand-navy md:left-3 md:text-[56px]">
-              TYPES OF SMART KITS
+              TYPES OF SMART SYSTEMS
             </h2>
           </div>
 
           <p className="mb-12 max-w-2xl text-base leading-relaxed text-neutral-700 md:text-lg">
             Whether you&apos;re upgrading with remote access, adding extra
             security, or expanding your control options, we supply, install
-            and support a full range of smart kits for automated gates and
+            and support a full range of smart systems for automated gates and
             garage doors.
           </p>
 
           <div className="flex flex-col gap-12 md:gap-16">
-            {smartKits.map((k, i) => {
+            {smartSystems.map((k, i) => {
               const reverse = i % 2 === 1;
               return (
                 <article
@@ -387,8 +388,8 @@ export default async function SmartKitsPage() {
       </section>
 
       <Faq
-        items={smartKitFaqs}
-        intro="Common questions about our Wi-Fi control, security and additional remote kits for gates and garage doors."
+        items={smartSystemFaqs}
+        intro="Common questions about our Wi-Fi control, security and additional remote systems for gates and garage doors."
       />
 
       <CtaBanner />

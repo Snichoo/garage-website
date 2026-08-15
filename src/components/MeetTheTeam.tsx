@@ -3,10 +3,13 @@ import { getContent } from "@/lib/content";
 export default async function MeetTheTeam() {
   const { meetTheTeam } = await getContent();
   return (
-    <section className="w-full py-12 md:py-20">
+    <section id="about" className="w-full scroll-mt-28 py-12 md:py-20">
       <div className="mx-auto max-w-[1000px] px-6">
         {/* Copy */}
         <div className="flex flex-col">
+          <p className="mb-3 font-display text-xs font-extrabold uppercase tracking-[0.25em] text-brand-navy/60">
+            {meetTheTeam.kicker}
+          </p>
           <h2 className="font-display text-3xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-4xl lg:text-5xl">
             <span className="block text-brand-navy">{meetTheTeam.headingTop}</span>
             <span className="block text-black">{meetTheTeam.headingBottom}</span>

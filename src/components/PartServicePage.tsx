@@ -19,7 +19,11 @@ export type PartServiceContent = {
   heroIconAlt: string;
   heroImage?: string;
   heroImageAlt?: string;
+  /** Tailwind aspect classes for the hero photo. Defaults to portrait. */
+  heroImageAspect?: string;
   heroBullets: string[];
+  /** Pills listing what the job covers, shown under the hero copy. */
+  services?: string[];
 };
 
 function CheckMark() {
@@ -99,12 +103,35 @@ export default async function PartServicePage({ content }: { content: PartServic
                 Get a free quote
               </QuoteButton>
             </div>
+
+            {content.services && content.services.length > 0 && (
+              <div className="mt-2">
+                <p className="font-display text-xs font-extrabold uppercase tracking-[0.25em] text-brand-yellow">
+                  Services We Offer
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {content.services.map((s) => (
+                    <li
+                      key={s}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3 py-1.5 font-display text-xs font-bold text-white/90 backdrop-blur md:text-sm"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Right: hero photo (if provided) or icon panel */}
           <div className="flex items-center justify-center">
             {content.heroImage ? (
-              <div className="relative aspect-[4/5] w-full max-w-[480px] overflow-hidden rounded-3xl border border-white/15 shadow-2xl md:aspect-[5/6]">
+              <div
+                className={`relative w-full max-w-[480px] overflow-hidden rounded-3xl border border-white/15 shadow-2xl ${
+                  content.heroImageAspect ?? "aspect-[4/5] md:aspect-[5/6]"
+                }`}
+              >
                 <Image
                   src={content.heroImage}
                   alt={content.heroImageAlt ?? content.heroIconAlt}

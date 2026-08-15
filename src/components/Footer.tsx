@@ -18,22 +18,6 @@ function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
-const services = [
-  { label: "Sectional Garage Doors", href: "/sectional-garage-doors" },
-  { label: "Roller Doors", href: "/roller-doors" },
-  { label: "Tilt Doors", href: "/tilt-doors" },
-  { label: "Automated Gates", href: "/automated-gates" },
-  { label: "Emergency Repairs", href: "/emergency-repairs" },
-];
-
-const company = [
-  { label: "About Us", href: "/about" },
-  { label: "Door Installations", href: "/garage-doors" },
-  { label: "Locations", href: "/locations" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact Us", href: "/contact" },
-];
-
 type FooterProps = {
   suburb?: string;
 };
@@ -78,12 +62,12 @@ export default async function Footer({ suburb }: FooterProps = {}) {
           </div>
 
           {/* Services */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <h3 className="font-display text-sm font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
               {footer.servicesHeading}
             </h3>
             <ul className="mt-5 space-y-3">
-              {services.map((item) => (
+              {footer.services.map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
@@ -102,7 +86,7 @@ export default async function Footer({ suburb }: FooterProps = {}) {
               {footer.companyHeading}
             </h3>
             <ul className="mt-5 space-y-3">
-              {company.map((item) => (
+              {footer.company.map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
@@ -115,8 +99,8 @@ export default async function Footer({ suburb }: FooterProps = {}) {
             </ul>
           </div>
 
-          {/* Our regions */}
-          <div className="md:col-span-3">
+          {/* Service areas */}
+          <div className="md:col-span-4">
             <h3 className="font-display text-sm font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
               {footer.regionsHeading}
             </h3>
@@ -169,6 +153,18 @@ export default async function Footer({ suburb }: FooterProps = {}) {
         <div className="mt-12 border-t border-white/15 pt-6 md:mt-16">
           <div className="flex flex-col items-center justify-between gap-3 text-xs text-white/60 md:flex-row md:text-sm">
             <p>{fill(footer.copyright, { year })}</p>
+            <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              {footer.legal.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="font-semibold text-white/70 transition hover:text-brand-yellow"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
             <p>
               Website by{" "}
               <a

@@ -54,6 +54,33 @@ To make new copy editable: add the field in `defaults.ts`, then read it via
 `await getContent()` in server components or `useSiteContent()` in client
 components. It appears in the editor automatically.
 
+## Site structure
+
+Navigation is built around four service categories, each with a hub page and
+child pages underneath it. The hub pages are what the header dropdowns point at.
+
+| Category | Hub | Child pages |
+|---|---|---|
+| Repairs | `/repairs` | `/emergency-repairs`, `/garage-door-repairs`, `/gate-repairs`, `/springs`, `/cables`, `/garage-door-off-track`, `/garage-door-servicing`, `/garage-door-safety-inspection` |
+| Garage Doors | `/garage-doors` | `/sectional-garage-doors`, `/roller-doors`, `/tilt-doors` |
+| Gates | `/gates` | `/sliding-gates`, `/swing-gates`, `/gate-automation` |
+| Automation | `/automation` | `/openers`, `/garage-door-motor-replacement`, `/gate-automation`, `/gate-motor-replacement`, `/smart-systems` |
+| Contact | `/contact` | `/request-a-quote`, `/book-a-service` |
+
+Off the main nav but still linked from the homepage and footer: `/about`,
+`/gallery`, `/blog`, `/locations`, `/suburbs/*`, `/privacy-policy`, `/terms`.
+
+Shared page shells (use these rather than hand-rolling a new page):
+
+- `components/ServiceHubPage.tsx` - category hubs (hero, optional feature band,
+  card grid of child services, FAQ).
+- `components/PartServicePage.tsx` - single-service detail pages.
+- `components/EnquiryPage.tsx` - focused form pages (quote, booking).
+- `components/LegalPage.tsx` - privacy/terms style prose pages.
+
+`/automated-gates` and `/smart-kits` were renamed to `/gate-automation` and
+`/smart-systems`. Permanent redirects live in `next.config.js` - keep them.
+
 ## Architecture notes
 
 - `getContent()` / `getSiteConfig()` are **async**; most page/section components
@@ -83,6 +110,13 @@ for conversion events.
 
 ## Watch out for
 
+- **Saved CMS content overrides arrays wholesale.** `deepMerge()` in
+  `lib/content.ts` replaces arrays rather than merging them. If the owner has
+  previously saved the site content from `/admin`, their stored `header.nav`,
+  `services.cards`, `howCanWeHelp.items` and `footer.*` link lists win over the
+  defaults in code. After a structural change like the nav restructure, open
+  `/admin`, confirm the menu/services/footer sections show the new items, and
+  save once so the stored copy matches.
 - `/admin` is disallowed in `robots.ts` — keep it that way.
 - `content/site-content.json` and `public/uploads/` are gitignored (local-only;
   prod state lives in Blob).

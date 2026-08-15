@@ -12,17 +12,17 @@ import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/
 export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
-  title: "Garage Door Installation Brisbane | Supply & Fit New Doors",
-  description: `New garage doors supplied and installed across Brisbane. Sectional, roller and tilt doors in a huge range of colours and finishes. Free measure & quote, call ${cfg.phoneDisplay}.`,
+  title: "New Garage Doors Brisbane | Supplied & Installed",
+  description: `New garage doors supplied and installed across Brisbane. Sectional, roller and tilt doors in a huge range of colours and finishes, with the motor fitted. Free measure & quote, call ${cfg.phoneDisplay}.`,
   path: "/garage-doors",
 });
 }
 
 const features = [
-  "Professional installation of sectional, roller and tilt garage doors.",
+  "New sectional, roller and tilt doors supplied and installed.",
+  "Free on-site measure and quote before you commit to anything.",
   "Wide range of designs, colours and finishes to suit any home.",
-  "Built tough with quality materials for long-lasting performance.",
-  "Comprehensive servicing, repairs and motor replacements.",
+  "Motor, remotes and removal of the old door included in the quote.",
 ];
 
 const garageDoorFaqs = [
@@ -244,15 +244,16 @@ export default async function GarageDoorsPage() {
           {/* Left copy */}
           <div className="flex flex-col gap-6">
             <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)] md:text-6xl">
-              Garage Door Installation,
+              New Garage Doors,
               <br />
               <span className="text-brand-yellow">Built to Last</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
-              From sectional and roller doors to classic tilt designs, we
-              supply and install the full range of residential garage doors.
-              Our team will help you choose the right style, colour and motor
-              for your home, then handle the install from start to finish.
+              Buying a new garage door? We supply and install the full range of
+              residential doors across Brisbane, from sectional and roller
+              doors to classic tilt designs. We measure up for free, help you
+              settle on the right style, colour and motor, then take the old
+              door away and fit the new one from start to finish.
             </p>
             <ul className="flex flex-col gap-3">
               {features.map((f) => (
@@ -325,7 +326,15 @@ export default async function GarageDoorsPage() {
             We supply and install every common style of residential garage
             door. Pick the type that fits your home and we&apos;ll handle the
             rest, from custom sizing and colour matching to professional
-            installation and ongoing service.
+            installation and ongoing service. Already have a door that needs
+            attention? Head to{" "}
+            <Link
+              href="/repairs"
+              className="font-bold text-brand-navy underline underline-offset-4 transition hover:text-brand-yellow"
+            >
+              garage door repairs
+            </Link>{" "}
+            instead.
           </p>
 
           <div className="flex flex-col gap-12 md:gap-16">
