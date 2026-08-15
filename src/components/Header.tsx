@@ -6,7 +6,7 @@ import { openQuoteModal } from "./QuoteModal";
 import { useSiteContent } from "./ContentProvider";
 import { fill } from "@/content/defaults";
 
-function ChevronDown() {
+function ChevronDown({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +16,7 @@ function ChevronDown() {
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-4 w-4"
+      className={className}
       aria-hidden
     >
       <path d="m6 9 6 6 6-6" />
@@ -77,6 +77,9 @@ function CloseIcon({ className = "h-7 w-7" }: { className?: string }) {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  // Mobile only: one open section at a time, so the panel stays short enough
+  // to scan. The nav carries ~24 sub-links, which is unusable fully expanded.
+  const [openSection, setOpenSection] = useState<string | null>(null);
   const { business, header } = useSiteContent();
   const navItems = header.nav;
 
@@ -89,6 +92,8 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    // Collapse sections on close so the panel reopens in a predictable state.
+    if (!menuOpen) setOpenSection(null);
     return () => {
       document.body.style.overflow = "";
     };
@@ -272,33 +277,69 @@ export default function Header() {
               <CloseIcon className="h-6 w-6" />
             </button>
           </div>
-          <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-3 py-4">
-            {navItems.map((item) => (
-              <div key={item.label}>
-                <a
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block rounded-lg px-3 py-3 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:bg-brand-navy/5"
+          <nav className="flex flex-1 flex-col overflow-y-auto px-3 py-2">
+            {navItems.map((item) => {
+              const expanded = openSection === item.label;
+              return (
+                <div
+                  key={item.label}
+                  className="border-b border-gray-100 last:border-b-0"
                 >
-                  {item.label}
-                </a>
-                {item.dropdown && (
-                  <ul className="ml-3 mt-1 flex flex-col gap-1 border-l border-gray-200 pl-3">
-                    {item.dropdown.map((sub) => (
-                      <li key={sub.label}>
-                        <a
-                          href={sub.href}
-                          onClick={() => setMenuOpen(false)}
-                          className="block rounded-md px-3 py-2 font-display text-sm font-bold text-brand-navy/80 transition hover:bg-brand-navy/5 hover:text-brand-navy"
-                        >
-                          {sub.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
+                  {/* Label navigates to the category page; the chevron only
+                      expands, so both are reachable on touch. */}
+                  <div className="flex items-center">
+                    <a
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex-1 rounded-lg px-3 py-3.5 font-display text-base font-extrabold uppercase tracking-wide text-brand-navy transition hover:bg-brand-navy/5"
+                    >
+                      {item.label}
+                    </a>
+                    {item.dropdown && (
+                      <button
+                        type="button"
+                        aria-expanded={expanded}
+                        aria-label={`${expanded ? "Collapse" : "Expand"} ${item.label} menu`}
+                        onClick={() =>
+                          setOpenSection(expanded ? null : item.label)
+                        }
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-brand-navy/70 transition hover:bg-brand-navy/5 hover:text-brand-navy"
+                      >
+                        <ChevronDown
+                          className={`h-5 w-5 transition-transform duration-200 ${
+                            expanded ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {item.dropdown && (
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-200 ease-out ${
+                        expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <ul className="mb-2 ml-3 flex flex-col gap-0.5 border-l border-gray-200 pl-3">
+                          {item.dropdown.map((sub) => (
+                            <li key={sub.label}>
+                              <a
+                                href={sub.href}
+                                onClick={() => setMenuOpen(false)}
+                                className="block rounded-md px-3 py-2.5 font-display text-sm font-bold text-brand-navy/80 transition hover:bg-brand-navy/5 hover:text-brand-navy"
+                              >
+                                {sub.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </nav>
           <div className="flex flex-col gap-2 p-4">
             <button
