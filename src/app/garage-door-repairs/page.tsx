@@ -20,8 +20,9 @@ const content: PartServiceContent = {
     "We repair every common garage door and brand across Brisbane, from worn rollers and bent tracks to cracked panels, tired motors and sensors that have drifted out of alignment. Most jobs are diagnosed and finished in a single visit.",
   heroIcon: "/images/icons/help-maintenance.png",
   heroIconAlt: "Garage door repair icon",
-  heroImage: "/images/expert-technician.jpg",
-  heroImageAlt: "Sparrow technician repairing a residential garage door",
+  heroImage: "/images/gallery/03-5.jpg",
+  heroImageAlt: "Charcoal sectional garage door repaired and running smoothly on a Brisbane home",
+  heroImageAspect: "aspect-[4/3]",
   heroBullets: [
     "Sectional, roller and tilt doors on every major brand.",
     "Rollers, hinges, tracks, panels, motors and sensors.",

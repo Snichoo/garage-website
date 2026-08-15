@@ -5,7 +5,7 @@ import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/
 export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
-    title: "New Gates Brisbane | Sliding & Swing Gates Supplied & Installed",
+    title: "New Gates Brisbane | Sliding & Swing Gates Installed",
     description: `New driveway gates supplied and installed across Brisbane. Sliding and swing gates built to suit your property, with the motor, remotes and safety gear fitted as one complete package. Call ${cfg.phoneDisplay}.`,
     path: "/gates",
   });

@@ -59,8 +59,8 @@ const content: ServiceHubContent = {
     {
       title: "Garage Door Repairs",
       href: "/garage-door-repairs",
-      image: "/images/expert-technician.jpg",
-      alt: "Sparrow technician repairing a residential garage door",
+      image: "/images/gallery/03-5.jpg",
+      alt: "Charcoal sectional garage door running smoothly after repair",
       description:
         "General repairs for doors that are noisy, slow, crooked or only opening halfway, on every brand and door type.",
       points: [
@@ -124,8 +124,8 @@ const content: ServiceHubContent = {
     {
       title: "Garage Door Servicing",
       href: "/garage-door-servicing",
-      image: "/images/gallery/05-4.jpg",
-      alt: "Serviced garage door on a Brisbane home",
+      image: "/images/gallery/06-3.jpg",
+      alt: "Well maintained white double garage door on a Brisbane home",
       description:
         "An annual service keeps the door quiet and catches worn parts before they strand you. Bolts tightened, rails levelled, everything lubricated.",
       points: [

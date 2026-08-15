@@ -20,8 +20,8 @@ const content: PartServiceContent = {
     "We replace motors on sliding, swing and telescopic gates across Brisbane. The new unit is matched to the weight and span of your gate rather than whatever happens to be on the van, then the control board and remotes are reprogrammed, the travel limits set and the safety beams tested before we leave.",
   heroIcon: "/images/icons/help-gates.svg",
   heroIconAlt: "Gate motor icon",
-  heroImage: "/images/gates/sliding-gate.avif",
-  heroImageAlt: "Automated sliding gate driven by an electric gate motor",
+  heroImage: "/images/gates/double-gates.avif",
+  heroImageAlt: "Automated double entry gates driven by electric gate motors",
   heroImageAspect: "aspect-[4/3]",
   heroBullets: [
     "Sliding, swing and telescopic gate motors on any brand.",

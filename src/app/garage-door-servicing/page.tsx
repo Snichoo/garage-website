@@ -20,8 +20,8 @@ const content: PartServiceContent = {
     "Our full service covers every bolt and screw on the door, realigning the rails to a level position, lubricating every moving part, and resetting the pressure on the opener itself so it stops and reverses correctly. Cleaning is not included.",
   heroIcon: "/images/icons/help-maintenance.png",
   heroIconAlt: "Garage door servicing icon",
-  heroImage: "/images/gallery/05-4.jpg",
-  heroImageAlt: "Well maintained garage door on a Brisbane home",
+  heroImage: "/images/gallery/06-3.jpg",
+  heroImageAlt: "Well maintained white double garage door on a Brisbane home",
   heroImageAspect: "aspect-[4/3]",
   heroBullets: [
     "Every bolt and screw on the door tightened.",
