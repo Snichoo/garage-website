@@ -1,8 +1,20 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "sparrowgaragedoors@gmail.com";
+
+/**
+ * Built on first use rather than at module scope. The Resend constructor throws
+ * when the key is missing, and Next.js loads this module during `next build`
+ * ("Collecting page data"), which would fail the build in any environment
+ * without RESEND_API_KEY set (e.g. preview deployments). The handler below
+ * already returns a clean 500 when the key is absent.
+ */
+let resendClient: Resend | null = null;
+function getResend(): Resend {
+  if (!resendClient) resendClient = new Resend(process.env.RESEND_API_KEY);
+  return resendClient;
+}
 
 // Resend requires a verified domain to use a custom "from" address.
 // Until the domain is verified, use the shared onboarding sender.
@@ -87,7 +99,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { error } = await resend.emails.send({
+    const { error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
       replyTo: email || undefined,
