@@ -54,7 +54,7 @@ type DoorType = {
   name: string;
   media:
     | { kind: "image"; src: string; alt: string }
-    | { kind: "video"; src: string; objectPosition?: string };
+    | { kind: "video"; src: string; poster: string; objectPosition?: string };
   intro: string;
   benefits: string[];
   services: string[];
@@ -68,6 +68,7 @@ const doorTypes: DoorType[] = [
     media: {
       kind: "video",
       src: "/videos/sectional-door-v2.mp4",
+      poster: "/images/video-posters/sectional-door-v2.webp",
       objectPosition: "60% center",
     },
     intro:
@@ -92,6 +93,7 @@ const doorTypes: DoorType[] = [
     media: {
       kind: "video",
       src: "/videos/roller-door-v2.mp4",
+      poster: "/images/video-posters/roller-door-v2.webp",
     },
     intro:
       "Roller doors are made of narrow horizontal slats that roll up into a compact drum above the opening. Known for their durability, security and space-saving design, they're an excellent choice for garages with restricted headroom.",
@@ -115,6 +117,7 @@ const doorTypes: DoorType[] = [
     media: {
       kind: "video",
       src: "/videos/tilt-door-v2.mp4",
+      poster: "/images/video-posters/tilt-door-v2.webp",
     },
     intro:
       "Tilt doors operate as a single solid panel that tilts outward and upward when opening. With a timeless design and robust construction, they're perfect for garages with ample outdoor space and homeowners seeking a traditional aesthetic.",
@@ -175,7 +178,7 @@ type DoorTileProps = {
   span2?: boolean;
 } & (
   | { kind: "image"; src: string; alt: string }
-  | { kind: "video"; src: string }
+  | { kind: "video"; src: string; poster: string }
 );
 
 function DoorTile(props: DoorTileProps) {
@@ -199,6 +202,7 @@ function DoorTile(props: DoorTileProps) {
       ) : (
         <LazyVideo
           src={props.src}
+          poster={props.poster}
           className="absolute inset-0 h-full w-full object-cover"
         />
       )}
@@ -285,6 +289,7 @@ export default async function GarageDoorsPage() {
             <DoorTile
               kind="video"
               src="/videos/sectional-door-v2.mp4"
+              poster="/images/video-posters/sectional-door-v2.webp"
               label="Sectional Doors"
               aspect="aspect-[16/9]"
               span2
@@ -292,12 +297,14 @@ export default async function GarageDoorsPage() {
             <DoorTile
               kind="video"
               src="/videos/roller-door-v2.mp4"
+              poster="/images/video-posters/roller-door-v2.webp"
               label="Roller Doors"
               aspect="aspect-[4/3]"
             />
             <DoorTile
               kind="video"
               src="/videos/tilt-door-v2.mp4"
+              poster="/images/video-posters/tilt-door-v2.webp"
               label="Tilt Doors"
               aspect="aspect-[4/3]"
             />
@@ -362,6 +369,7 @@ export default async function GarageDoorsPage() {
                     ) : (
                       <LazyVideo
                         src={d.media.src}
+                        poster={d.media.poster}
                         style={d.media.objectPosition ? { objectPosition: d.media.objectPosition } : undefined}
                         className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
                       />

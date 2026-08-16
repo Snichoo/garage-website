@@ -139,6 +139,7 @@ export default async function SectionalGarageDoorsPage() {
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/15 bg-black/40 shadow-2xl">
               <LazyVideo
                 src="/videos/sectional-door-v2.mp4"
+                poster="/images/video-posters/sectional-door-v2.webp"
                 className="h-full w-full object-contain"
               />
             </div>

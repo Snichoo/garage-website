@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 type LazyVideoProps = {
   src: string;
+  poster?: string;
   className?: string;
   style?: CSSProperties;
 };
@@ -13,7 +14,12 @@ type LazyVideoProps = {
  * Keeps decorative videos off the network until they are close to view, then
  * pauses them again when they leave the viewport to reduce mobile decoding.
  */
-export default function LazyVideo({ src, className, style }: LazyVideoProps) {
+export default function LazyVideo({
+  src,
+  poster,
+  className,
+  style,
+}: LazyVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -46,6 +52,7 @@ export default function LazyVideo({ src, className, style }: LazyVideoProps) {
     <video
       ref={videoRef}
       src={shouldLoad ? src : undefined}
+      poster={poster}
       autoPlay={shouldLoad}
       muted
       loop
