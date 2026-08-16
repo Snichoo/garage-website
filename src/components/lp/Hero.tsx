@@ -24,7 +24,7 @@ export function Hero({ phone }: { phone: Phone }) {
       <div className="absolute inset-0 bg-black/50 sm:hidden" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/25 sm:from-black/85 sm:to-black/40" />
 
-      <div className="relative mx-auto flex w-full min-w-0 max-w-[1440px] flex-1 flex-col px-5 pb-5 pt-[144px] sm:px-6 lg:px-10 lg:pt-[120px]">
+      <div className="relative mx-auto flex w-full min-w-0 max-w-[1440px] flex-1 flex-col px-5 pb-5 pt-24 sm:px-6 lg:px-10 lg:pt-[120px]">
         <div className="flex min-w-0 flex-1 flex-col justify-center py-3 sm:py-1">
           <div className="w-full min-w-0 max-w-[1000px]">
             <p className="flex items-center gap-2.5 text-[22px] font-semibold sm:text-2xl">

@@ -173,6 +173,15 @@ body {
   z-index: -1;
 }
 
+/* The homepage hero uses a slimmer stroke so it sits beneath the first line
+   without intruding into "Installed, Repaired" on compact screens. */
+.lp-swoosh.lp-swoosh--hero::after {
+  left: 0;
+  bottom: -0.1em;
+  width: 96%;
+  height: 0.22em;
+}
+
 /* Scroll-triggered reveal for top-level page sections.
    ScrollAnimator only applies .scroll-reveal to elements that start
    off-screen, so above-the-fold content paints normally with no flash. */

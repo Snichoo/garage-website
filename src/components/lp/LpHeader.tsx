@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import QuoteButton from "@/components/QuoteButton";
 import { openQuoteModal } from "@/components/QuoteModal";
 import { useSiteContent } from "@/components/ContentProvider";
-import { fill } from "@/content/defaults";
 import { ChevronIcon, ClockIcon, PhoneIcon } from "./icons";
 
 const navLinkClass =
@@ -44,9 +43,6 @@ export function SiteHeader({
   const { business, header } = useSiteContent();
   const [menuOpen, setMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
-  const shortQuoteLabel =
-    header.quoteButtonLabel.replace(/^get\s+/i, "").trim() ||
-    header.quoteButtonLabel;
   const [brandLead, ...brandTail] = business.name.toUpperCase().split(" ");
 
   useEffect(() => {
@@ -73,29 +69,19 @@ export function SiteHeader({
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 bg-brand-navy text-white shadow-[0_4px_24px_-8px_rgba(0,0,0,0.45)]">
-        <a
-          href={`tel:${business.phoneLink}`}
-          className="flex w-full items-center justify-center gap-2 bg-brand-yellow px-4 py-3 text-brand-navy transition hover:opacity-95 lg:hidden"
-        >
-          <PhoneIcon aria-hidden className="h-5 w-5" />
-          <span className="font-display text-base font-extrabold tracking-wide">
-            {fill(header.callBannerLabel, { phone: business.phoneDisplay })}
-          </span>
-        </a>
-
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-brand-line bg-white text-brand-navy shadow-[0_4px_24px_-8px_rgba(0,0,0,0.35)] lg:border-b-0 lg:bg-brand-navy lg:text-white">
         <div
           aria-hidden
           className="absolute left-[330px] right-0 top-0 hidden h-11 bg-white [clip-path:polygon(0_0,100%_0,100%_100%,52px_100%)] lg:block"
         />
 
-        <div className="relative flex h-16 w-full items-center px-4 sm:px-6 lg:h-[100px] lg:items-stretch lg:px-8">
+        <div className="relative flex h-20 w-full items-center px-4 sm:px-6 lg:h-[100px] lg:items-stretch lg:px-8">
           <a
             href={logoHref}
             className="relative z-20 flex shrink-0 items-center"
             aria-label={logoAriaLabel ?? `${business.name} home`}
           >
-            <span className="relative block h-10 w-[62px] shrink-0 overflow-hidden sm:h-11 sm:w-[68px] lg:h-[62px] lg:w-[96px]">
+            <span className="relative block h-12 w-[74px] shrink-0 overflow-hidden sm:h-14 sm:w-[86px] lg:h-[62px] lg:w-[96px]">
               <Image
                 src={business.logo}
                 alt=""
@@ -103,8 +89,8 @@ export function SiteHeader({
                 width={1080}
                 height={1080}
                 priority
-                sizes="(min-width: 1024px) 96px, (min-width: 640px) 68px, 62px"
-                className="absolute left-0 top-0 h-auto w-full brightness-0 invert"
+                sizes="(min-width: 1024px) 96px, (min-width: 640px) 86px, 74px"
+                className="absolute left-0 top-0 h-auto w-full lg:brightness-0 lg:invert"
               />
             </span>
             <span className="ml-1 flex flex-col leading-none sm:ml-1.5 lg:ml-2">
@@ -175,21 +161,14 @@ export function SiteHeader({
             </nav>
           </div>
 
-          <div className="ml-auto flex items-center gap-1.5 sm:gap-2 lg:hidden">
-            <QuoteButton
-              ariaLabel={header.quoteButtonLabel}
-              className="inline-flex rounded-md bg-brand-yellow px-3 py-2 font-display text-[12px] font-extrabold uppercase tracking-wide text-brand-navy sm:px-3.5 sm:text-[13px]"
-            >
-              <span className="min-[380px]:hidden">Quote</span>
-              <span className="hidden min-[380px]:inline">{shortQuoteLabel}</span>
-            </QuoteButton>
+          <div className="ml-auto flex items-center lg:hidden">
             <button
               type="button"
               aria-label="Open menu"
               aria-controls="lp-mobile-menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(true)}
-              className="grid size-9 place-items-center rounded-md bg-white text-brand-navy shadow-sm sm:size-10"
+              className="grid size-11 place-items-center rounded-md text-brand-navy transition-colors hover:bg-brand-navy/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2"
             >
               <MenuMark />
             </button>

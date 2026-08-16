@@ -4,9 +4,9 @@ import {
   GateIcon,
   MeasureIcon,
   NoCallOutIcon,
-  PinIcon,
   RatedIcon,
   SpannerIcon,
+  StarIcon,
 } from "@/components/lp/icons";
 import { Swoosh } from "@/components/lp/swoosh";
 import { getContent } from "@/lib/content";
@@ -45,16 +45,19 @@ export default async function HomeHero() {
       <div className="absolute inset-0 bg-black/50 sm:hidden" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/25 sm:from-black/85 sm:to-black/40" />
 
-      <div className="relative mx-auto flex w-full min-w-0 max-w-[1440px] flex-1 flex-col px-5 pb-5 pt-[144px] sm:px-6 lg:px-10 lg:pt-[120px]">
+      <div className="relative mx-auto flex w-full min-w-0 max-w-[1440px] flex-1 flex-col px-5 pb-5 pt-24 sm:px-6 lg:px-10 lg:pt-[120px]">
         <div className="flex min-w-0 flex-1 flex-col justify-center py-3 sm:py-1">
           <div className="w-full min-w-0 max-w-[1000px]">
-            <p className="flex items-center gap-2.5 text-[22px] font-semibold sm:text-2xl">
-              <PinIcon className="h-7 w-7 text-brand-yellow" />
-              Brisbane | South East Queensland
+            <p className="flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold tracking-wide min-[360px]:text-[14px] sm:gap-2 sm:text-xl">
+              <StarIcon
+                aria-hidden
+                className="h-4 w-4 shrink-0 text-brand-yellow sm:h-5 sm:w-5"
+              />
+              5-Star Rated Local Brisbane Team
             </p>
 
             <h1 className="mt-4 max-w-full font-display text-[31px] font-extrabold leading-[1.02] text-white min-[380px]:text-[34px] min-[430px]:text-[38px] sm:text-[58px] sm:leading-[0.98] md:text-[76px] xl:text-[94px]">
-              <Swoosh>Garage Doors</Swoosh>
+              <Swoosh className="lp-swoosh--hero">Garage Doors</Swoosh>
               <span>
                 <br />
                 Installed, Repaired
