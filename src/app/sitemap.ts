@@ -12,10 +12,9 @@ const staticPages: {
 }[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
 
-  // Four main service categories
+  // Main service categories
   { path: "/repairs", priority: 0.9, changeFrequency: "monthly" },
   { path: "/garage-doors", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/gates", priority: 0.9, changeFrequency: "monthly" },
   { path: "/automation", priority: 0.9, changeFrequency: "monthly" },
 
   // Repairs

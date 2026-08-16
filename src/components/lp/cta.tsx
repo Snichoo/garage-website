@@ -84,23 +84,37 @@ export function SectionCta({
 }
 
 /** Hero button stack: quote, call, and the two reassurance ticks. */
-export function CtaStack({ phone }: { phone: Phone }) {
+export function CtaStack({
+  phone,
+  quoteLabel,
+  reassurances = [
+    "Talk to a real gate technician.",
+    "Free on-site measure. No obligation.",
+  ],
+}: {
+  phone: Phone;
+  quoteLabel?: string;
+  reassurances?: readonly [string, string];
+}) {
   return (
     <div className="w-full max-w-[480px]">
       <div className="relative">
         {/* `!` so the hero size wins over the button's own sm: size. */}
-        <LpQuoteButton className="border-4 border-white sm:!text-[26px]" />
+        <LpQuoteButton
+          className="border-4 border-white sm:!text-[26px]"
+          label={quoteLabel}
+        />
         <ArrowDoodle className="pointer-events-none absolute -right-14 top-2 hidden h-16 w-14 text-white sm:block" />
       </div>
       <LpCallButton phone={phone} className="mt-3" />
       <div className="mt-4 flex flex-col items-center justify-center gap-2 text-center text-[15px] font-medium text-white sm:flex-row sm:flex-wrap sm:gap-x-8">
         <span className="flex items-center justify-center gap-2">
           <TickMark className="h-5 w-5 shrink-0 text-brand-yellow" />
-          Talk to a real gate technician.
+          {reassurances[0]}
         </span>
         <span className="flex items-center justify-center gap-2">
           <TickMark className="h-5 w-5 shrink-0 text-brand-yellow" />
-          Free on-site measure. No obligation.
+          {reassurances[1]}
         </span>
       </div>
     </div>

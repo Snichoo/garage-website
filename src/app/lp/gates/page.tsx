@@ -15,9 +15,9 @@ import { faqs, testimonials } from "@/components/lp/gates-content";
 /**
  * Paid-traffic landing page for gate campaigns.
  *
- * It is deliberately kept out of the sitemap and marked noindex: it targets the
- * same keywords as /gates, so letting both into the index would split the
- * organic signal. Ads can still crawl and serve it.
+ * It is deliberately kept out of the sitemap and marked noindex because this
+ * paid campaign page overlaps the organic gate service pages. Ads can still
+ * crawl and serve it.
  */
 export async function generateMetadata(): Promise<Metadata> {
   const { business } = await getContent();

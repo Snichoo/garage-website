@@ -56,14 +56,14 @@ components. It appears in the editor automatically.
 
 ## Site structure
 
-Navigation is built around four service categories, each with a hub page and
-child pages underneath it. The hub pages are what the header dropdowns point at.
+Navigation is built around the core service categories. Gates links directly
+to the three gate types rather than using a separate category hub.
 
 | Category | Hub | Child pages |
 |---|---|---|
 | Repairs | `/repairs` | `/emergency-repairs`, `/garage-door-repairs`, `/gate-repairs`, `/springs`, `/cables`, `/garage-door-off-track`, `/garage-door-servicing`, `/garage-door-safety-inspection` |
 | Garage Doors | `/garage-doors` | `/sectional-garage-doors`, `/roller-doors`, `/tilt-doors` |
-| Gates | `/gates` | `/sliding-gates`, `/swing-gates`, `/gate-automation` |
+| Gates | `/gate-automation#types` | `/sliding-gates`, `/swing-gates`, `/gate-automation#telescopic` |
 | Automation | `/automation` | `/openers`, `/garage-door-motor-replacement`, `/gate-automation`, `/gate-motor-replacement`, `/smart-systems` |
 | Contact | `/contact` | `/request-a-quote`, `/book-a-service` |
 

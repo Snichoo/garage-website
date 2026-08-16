@@ -300,14 +300,8 @@ export default async function GateAutomationPage() {
           <p className="mb-12 max-w-2xl text-base leading-relaxed text-neutral-700 md:text-lg">
             We automate every common gate layout, on gates we have built and on
             gates that were already there. If you are after a complete new gate
-            as well, see our{" "}
-            <Link
-              href="/gates"
-              className="font-bold text-brand-navy underline underline-offset-4 transition hover:text-brand-yellow"
-            >
-              new gates
-            </Link>{" "}
-            page.
+            as well, we can size the right sliding, swing or telescopic layout
+            during the free on-site measure.
           </p>
 
           <div className="flex flex-col gap-12 md:gap-16">

@@ -259,12 +259,11 @@ export const defaultContent: SiteContent = {
       },
       {
         label: "Gates",
-        href: "/gates",
+        href: "/gate-automation#types",
         dropdown: [
-          { label: "New Gates", href: "/gates" },
           { label: "Sliding Gates", href: "/sliding-gates" },
           { label: "Swing Gates", href: "/swing-gates" },
-          { label: "Gate Motors & Automation", href: "/gate-automation" },
+          { label: "Telescopic Gates", href: "/gate-automation#telescopic" },
         ],
       },
       {
@@ -351,15 +350,15 @@ export const defaultContent: SiteContent = {
         href: "/garage-doors",
       },
       {
-        title: "New Gates",
+        title: "Automatic Gates",
         image: "/images/gates/sliding-gate.avif",
         alt: "New automated sliding driveway gate",
         items: [
           "Sliding gates",
           "Swing gates",
-          "Complete gate & motor packages",
+          "Telescopic gates",
         ],
-        href: "/gates",
+        href: "/gate-automation#types",
       },
       {
         title: "Motors & Automation",
@@ -548,9 +547,9 @@ export const defaultContent: SiteContent = {
         href: "/garage-doors",
       },
       {
-        label: "New Gates",
+        label: "Automatic Gates",
         icon: "/images/icons/help-gates.svg",
-        href: "/gates",
+        href: "/gate-automation#types",
       },
       {
         label: "Motors & Automation",
@@ -733,7 +732,9 @@ export const defaultContent: SiteContent = {
     services: [
       { label: "Repairs", href: "/repairs" },
       { label: "Garage Doors", href: "/garage-doors" },
-      { label: "Gates", href: "/gates" },
+      { label: "Sliding Gates", href: "/sliding-gates" },
+      { label: "Swing Gates", href: "/swing-gates" },
+      { label: "Telescopic Gates", href: "/gate-automation#telescopic" },
       { label: "Automation", href: "/automation" },
     ],
     companyHeading: "Company",

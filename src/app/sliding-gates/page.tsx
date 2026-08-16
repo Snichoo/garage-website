@@ -46,7 +46,6 @@ export default async function SlidingGatesPage() {
         data={[
           breadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Gates", path: "/gates" },
             { name: "Sliding Gates", path: "/sliding-gates" },
           ]),
           await serviceSchema({
