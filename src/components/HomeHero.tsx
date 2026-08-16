@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { CtaStack } from "@/components/lp/cta";
 import {
+  ClockIcon,
   GateIcon,
-  MeasureIcon,
-  NoCallOutIcon,
+  InsuredIcon,
   RatedIcon,
   SpannerIcon,
   StarIcon,
@@ -12,9 +12,9 @@ import { Swoosh } from "@/components/lp/swoosh";
 import { getContent } from "@/lib/content";
 
 const badges = [
-  { top: "$0", bottom: "Call Out Fee", icon: NoCallOutIcon },
+  { top: "Same Day", bottom: "Service", icon: ClockIcon },
   { top: "20+ Years", bottom: "On The Tools", icon: SpannerIcon },
-  { top: "Free", bottom: "On-Site Measures", icon: MeasureIcon },
+  { top: "Fully", bottom: "Insured", icon: InsuredIcon },
   { top: "Doors + Motors", bottom: "One Local Team", icon: GateIcon },
   { top: "5.0 Star", bottom: "Google Rated", icon: RatedIcon },
 ];
