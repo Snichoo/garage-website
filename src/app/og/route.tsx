@@ -70,7 +70,7 @@ export async function GET() {
 
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ color: "white", fontSize: 38, fontWeight: 700 }}>
-            {`Free quotes. Call ${cfg.phoneDisplay}`}
+            {`Get a quote today. Call ${cfg.phoneDisplay}`}
           </div>
         </div>
       </div>

@@ -9,8 +9,8 @@ import { getContent } from "@/lib/content";
 export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
-    title: `Contact ${cfg.name} ${cfg.primaryLocation} | Free Quotes`,
-    description: `Contact ${cfg.name} for a free quote or fast booking across ${cfg.primaryLocation}. Call ${cfg.phoneDisplay} or send an enquiry for installation, repairs and servicing.`,
+    title: `Contact ${cfg.name} ${cfg.primaryLocation} | Get a Quote Today`,
+    description: `Contact ${cfg.name} to get a quote today or make a fast booking across ${cfg.primaryLocation}. Call ${cfg.phoneDisplay} or send an enquiry for installation, repairs and servicing.`,
     path: "/contact",
   });
 }

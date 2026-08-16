@@ -12,7 +12,7 @@ export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Tilt Garage Doors Brisbane | Installation & Repairs",
-  description: `Classic tilt garage doors installed, serviced and repaired across Brisbane. Timeless single-panel doors built tough for years of daily use. Free quote, call ${cfg.phoneDisplay}.`,
+  description: `Classic tilt garage doors installed, serviced and repaired across Brisbane. Timeless single-panel doors built tough for years of daily use. Get a quote today—call ${cfg.phoneDisplay}.`,
   path: "/tilt-doors",
 });
 }
@@ -114,7 +114,7 @@ export default async function TiltDoorsPage() {
               <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
-                Get a free quote
+                Get a quote today
               </QuoteButton>
             </div>
           </div>

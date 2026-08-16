@@ -46,7 +46,20 @@ function deepMerge<T>(base: T, override: unknown): T {
   return override as T;
 }
 
-/** Keep saved CMS arrays aligned with route changes introduced in code. */
+function migrateLegacyCopy(
+  value: string,
+  legacyValues: readonly string[],
+  replacement: string,
+): string {
+  const normalized = value.trim().toLowerCase();
+  return legacyValues.some(
+    (legacyValue) => legacyValue.trim().toLowerCase() === normalized,
+  )
+    ? replacement
+    : value;
+}
+
+/** Keep saved CMS content aligned with route and copy changes in code. */
 function applyRouteMigrations(content: SiteContent): SiteContent {
   let hasGatesItem = false;
   const nav = content.header.nav.map((item) => {
@@ -91,9 +104,30 @@ function applyRouteMigrations(content: SiteContent): SiteContent {
 
   return {
     ...content,
-    header: { ...content.header, nav },
+    header: {
+      ...content.header,
+      quoteButtonLabel: migrateLegacyCopy(
+        content.header.quoteButtonLabel,
+        ["Get Free Quote", "Get A Free Quote"],
+        "Get a Quote Today",
+      ),
+      nav,
+    },
+    hero: {
+      ...content.hero,
+      formTitleHighlight: migrateLegacyCopy(
+        content.hero.formTitleHighlight,
+        ["Free Quote"],
+        "Quote Today",
+      ),
+    },
     services: {
       ...content.services,
+      quoteButtonLabel: migrateLegacyCopy(
+        content.services.quoteButtonLabel,
+        ["GET A FREE QUOTE", "GET YOUR FREE QUOTE"],
+        "GET A QUOTE TODAY",
+      ),
       cards: content.services.cards.map((card) =>
         card.title.trim().toLowerCase() === "automatic gates"
           ? { ...card, href: "/gates" }
@@ -106,6 +140,53 @@ function applyRouteMigrations(content: SiteContent): SiteContent {
         item.label.trim().toLowerCase() === "automatic gates"
           ? { ...item, href: "/gates" }
           : item,
+      ),
+    },
+    quoteModal: {
+      ...content.quoteModal,
+      kicker: migrateLegacyCopy(
+        content.quoteModal.kicker,
+        ["Free Measure & Quote", "Free Quote"],
+        "Free On-Site Measure",
+      ),
+      title: migrateLegacyCopy(
+        content.quoteModal.title,
+        ["Get your free quote", "Get my free quote"],
+        "Get a Quote Today",
+      ),
+      successText: migrateLegacyCopy(
+        content.quoteModal.successText,
+        [
+          "We'll be in touch shortly to arrange your free measure and quote.",
+          "We'll be in touch shortly to arrange your free quote.",
+        ],
+        "We'll be in touch shortly to arrange your free on-site measure and prepare your quote.",
+      ),
+      submitLabel: migrateLegacyCopy(
+        content.quoteModal.submitLabel,
+        ["Request my free quote", "Get my free on-site quote"],
+        "Get a Quote Today",
+      ),
+    },
+    quoteForm: {
+      ...content.quoteForm,
+      successText: migrateLegacyCopy(
+        content.quoteForm.successText,
+        ["We'll be in touch shortly to arrange your free quote."],
+        "We'll be in touch shortly about your quote.",
+      ),
+    },
+    ctaBanner: {
+      ...content.ctaBanner,
+      heading: migrateLegacyCopy(
+        content.ctaBanner.heading,
+        ["schedule your free measure and quote today with sparrow"],
+        "schedule your free on-site measure with sparrow today",
+      ),
+      buttonLabel: migrateLegacyCopy(
+        content.ctaBanner.buttonLabel,
+        ["FREE Measure & Quote", "GET A FREE QUOTE", "FREE QUOTE"],
+        "GET A QUOTE TODAY",
       ),
     },
   };

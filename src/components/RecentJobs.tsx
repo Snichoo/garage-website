@@ -243,7 +243,7 @@ export default function RecentJobs({ suburb }: RecentJobsProps) {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <QuoteButton className="inline-flex items-center justify-center bg-white px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-brand-navy shadow-md transition hover:bg-white/90 md:text-base">
-            Get a Free Quote
+            Get a Quote Today
           </QuoteButton>
           <a
             href={`tel:${business.phoneLink}`}

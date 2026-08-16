@@ -191,7 +191,7 @@ export default async function ServiceHubPage({
                 </a>
               )}
               <QuoteButton className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg">
-                Get a free quote
+                Get a quote today
               </QuoteButton>
             </div>
           </div>
@@ -243,7 +243,7 @@ export default async function ServiceHubPage({
                     ))}
                   </ul>
                   <QuoteButton className="mt-auto inline-flex w-full items-center justify-center gap-3 bg-brand-yellow px-6 py-3 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg">
-                    Get a free quote
+                    Get a quote today
                   </QuoteButton>
                 </div>
               </div>

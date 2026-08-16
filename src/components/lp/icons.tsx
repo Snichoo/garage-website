@@ -185,3 +185,14 @@ export function RatedIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+/** Fully insured: a protective shield with a confirmation tick. */
+export function InsuredIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <g {...stroke}>
+        <path d="M24 5.5 39 11v11.2c0 9.4-5.9 16.6-15 20.3-9.1-3.7-15-10.9-15-20.3V11z" />
+        <path d="m16.5 24 5 5 10-11" />
+      </g>
+    </svg>
+  );
+}

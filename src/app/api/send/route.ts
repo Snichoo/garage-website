@@ -92,7 +92,7 @@ export async function POST(request: Request) {
 
   const heading =
     formType === "quote"
-      ? "New Free Quote Request"
+      ? "New Quote Request"
       : "New Contact Form Message";
 
   const fields: Field[] = [];

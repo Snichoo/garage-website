@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { PinIcon } from "./icons";
+import { StarIcon } from "./icons";
 import { Swoosh } from "./swoosh";
 import { CtaStack, type Phone } from "./cta";
 import { heroBadges } from "./gates-content";
@@ -27,16 +27,19 @@ export function Hero({ phone }: { phone: Phone }) {
       <div className="relative mx-auto flex w-full min-w-0 max-w-[1440px] flex-1 flex-col px-5 pb-5 pt-24 sm:px-6 lg:px-10 lg:pt-[120px]">
         <div className="flex min-w-0 flex-1 flex-col justify-center py-3 sm:py-1">
           <div className="w-full min-w-0 max-w-[1000px]">
-            <p className="flex items-center gap-2.5 text-[22px] font-semibold sm:text-2xl">
-              <PinIcon className="h-7 w-7 text-brand-yellow" />
-              Brisbane | South East Queensland
+            <p className="flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold tracking-wide min-[360px]:text-[14px] sm:gap-2 sm:text-xl">
+              <StarIcon
+                aria-hidden
+                className="h-4 w-4 shrink-0 text-brand-yellow sm:h-5 sm:w-5"
+              />
+              5-Star Rated Local Brisbane Team
             </p>
 
             {/* Sizes step up so "Automatic Gates" always holds one line: the
                 highlight stroke is drawn across the span, so a wrap would
                 leave it stranded across two lines. */}
             <h1 className="mt-4 max-w-full font-display text-[31px] font-extrabold leading-[1.02] text-white min-[380px]:text-[34px] min-[430px]:text-[38px] sm:text-[54px] sm:leading-[0.98] md:text-[64px] xl:text-[80px]">
-              <Swoosh>Automatic Gates</Swoosh>
+              <Swoosh className="lp-swoosh--hero">Automatic Gates</Swoosh>
               <span>
                 <br />
                 Built, Installed

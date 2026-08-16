@@ -57,6 +57,16 @@ export default function QuoteModal() {
     setOpen(false);
   }, [pathname]);
 
+  // Chrome can restore a page from its back/forward cache without remounting
+  // React. Do not bring a transient quote dialog back with that old page.
+  useEffect(() => {
+    const closeOnRestore = (event: PageTransitionEvent) => {
+      if (event.persisted) setOpen(false);
+    };
+    window.addEventListener("pageshow", closeOnRestore);
+    return () => window.removeEventListener("pageshow", closeOnRestore);
+  }, []);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === "sending") return;
@@ -94,13 +104,6 @@ export default function QuoteModal() {
   }
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -113,6 +116,7 @@ export default function QuoteModal() {
 
   return (
     <div
+      data-body-scroll-lock="true"
       className="fixed inset-0 z-[100] flex items-center justify-center px-4 py-6"
       role="dialog"
       aria-modal="true"

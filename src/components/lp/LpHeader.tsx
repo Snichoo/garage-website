@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import QuoteButton from "@/components/QuoteButton";
 import { openQuoteModal } from "@/components/QuoteModal";
@@ -41,6 +43,7 @@ export function SiteHeader({
   logoAriaLabel,
 }: SiteHeaderProps = {}) {
   const { business, header } = useSiteContent();
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [brandLead, ...brandTail] = business.name.toUpperCase().split(" ");
@@ -51,19 +54,30 @@ export function SiteHeader({
       return;
     }
 
-    const previousOverflow = document.body.style.overflow;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMenuOpen(false);
     };
 
-    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [menuOpen]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // A page restored from Chrome's back/forward cache should never reopen a
+  // transient drawer from the previous visit.
+  useEffect(() => {
+    const closeOnRestore = (event: PageTransitionEvent) => {
+      if (event.persisted) setMenuOpen(false);
+    };
+    window.addEventListener("pageshow", closeOnRestore);
+    return () => window.removeEventListener("pageshow", closeOnRestore);
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -76,7 +90,7 @@ export function SiteHeader({
         />
 
         <div className="relative flex h-20 w-full items-center px-4 sm:px-6 lg:h-[100px] lg:items-stretch lg:px-8">
-          <a
+          <Link
             href={logoHref}
             className="relative z-20 flex shrink-0 items-center"
             aria-label={logoAriaLabel ?? `${business.name} home`}
@@ -101,7 +115,7 @@ export function SiteHeader({
                 {brandTail.join(" ")}
               </span>
             </span>
-          </a>
+          </Link>
 
           <div className="relative z-10 ml-auto hidden h-full flex-col lg:flex">
             <div className="flex h-11 items-center justify-end gap-5 text-[15px]">
@@ -124,7 +138,7 @@ export function SiteHeader({
                 .filter((item) => !item.mobileOnly)
                 .map((item) => (
                   <div key={item.label} className="group relative flex h-full items-center">
-                    <a href={item.href} className={navLinkClass}>
+                    <Link href={item.href} className={navLinkClass}>
                       {item.label}
                       {item.dropdown && (
                         // ChevronIcon points up by default; rotate it so a
@@ -134,19 +148,20 @@ export function SiteHeader({
                           className="h-3.5 w-3.5 rotate-180"
                         />
                       )}
-                    </a>
+                    </Link>
 
                     {item.dropdown && (
                       <div className="invisible absolute left-1/2 top-full z-30 w-max min-w-[15rem] max-w-[22rem] -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                         <ul className="overflow-hidden rounded-xl bg-white py-2 text-brand-ink shadow-2xl ring-1 ring-black/5">
                           {item.dropdown.map((sub) => (
                             <li key={sub.label}>
-                              <a
+                              <Link
                                 href={sub.href}
+                                prefetch={false}
                                 className="block px-5 py-2.5 font-display text-sm font-bold tracking-wide transition-colors hover:bg-brand-navy hover:text-white"
                               >
                                 {sub.label}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -177,7 +192,10 @@ export function SiteHeader({
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-[70] lg:hidden">
+        <div
+          data-mobile-body-scroll-lock="true"
+          className="fixed inset-0 z-[70] lg:hidden"
+        >
           <button
             type="button"
             aria-label="Close menu"
@@ -217,13 +235,13 @@ export function SiteHeader({
                 return (
                   <div key={item.label} className="border-b border-brand-line last:border-b-0">
                     <div className="flex items-center">
-                      <a
+                      <Link
                         href={item.href}
                         onClick={closeMenu}
                         className="flex-1 rounded-lg px-3 py-3.5 font-display text-base font-extrabold uppercase tracking-wide text-brand-navy transition hover:bg-brand-navy/5"
                       >
                         {item.label}
-                      </a>
+                      </Link>
                       {item.dropdown && (
                         <button
                           type="button"
@@ -252,13 +270,14 @@ export function SiteHeader({
                           <ul className="mb-2 ml-3 border-l border-brand-line pl-3">
                             {item.dropdown.map((sub) => (
                               <li key={sub.label}>
-                                <a
+                                <Link
                                   href={sub.href}
+                                  prefetch={false}
                                   onClick={closeMenu}
                                   className="block rounded-md px-3 py-2.5 font-display text-sm font-bold text-brand-navy/80 transition hover:bg-brand-navy/5 hover:text-brand-navy"
                                 >
                                   {sub.label}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>

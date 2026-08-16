@@ -6,22 +6,22 @@ export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
     title: `Request a Quote | ${cfg.name} ${cfg.primaryLocation}`,
-    description: `Request a free quote for garage doors, gates, repairs or automation across ${cfg.primaryLocation}. No call-out fee and upfront fixed pricing. Call ${cfg.phoneDisplay} or send your details.`,
+    description: `Request a quote today for garage doors, gates, repairs or automation across ${cfg.primaryLocation}. No call-out fee and upfront fixed pricing. Call ${cfg.phoneDisplay} or send your details.`,
     path: "/request-a-quote",
   });
 }
 
 const content: EnquiryPageContent = {
   titleHighlight: "Request",
-  titleRest: "A Free Quote",
+  titleRest: "A Quote Today",
   intro:
     "Tell us what you need and we'll come back with a straight, fixed price. New doors and gates include a free on-site measure, and there is never a call-out fee.",
   heroImage: "/images/contact-bg.avif",
   formTitle: "Get Your",
-  formTitleHighlight: "Free Quote",
+  formTitleHighlight: "Quote Today",
   formText:
     "Send through your details and a short description of the job. The more you can tell us about the door or gate, the more accurate we can be before we even arrive.",
-  submitLabel: "Request my free quote",
+  submitLabel: "Get a Quote Today",
   steps: [
     {
       title: "We read your enquiry",

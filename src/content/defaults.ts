@@ -233,7 +233,7 @@ export const defaultContent: SiteContent = {
   },
   header: {
     callBannerLabel: "CALL US {phone}",
-    quoteButtonLabel: "Get Free Quote",
+    quoteButtonLabel: "Get a Quote Today",
     callNowLabel: "CALL US NOW",
     menuTitle: "Menu",
     nav: [
@@ -311,7 +311,7 @@ export const defaultContent: SiteContent = {
     ],
     callButton: "Call Our {suburb} Team",
     formTitle: "Get A",
-    formTitleHighlight: "Free Quote",
+    formTitleHighlight: "Quote Today",
     formSubmitLabel: "Send To Our {suburb} Team",
     image: "/images/hero.jpg",
   },
@@ -332,7 +332,7 @@ export const defaultContent: SiteContent = {
   },
   services: {
     heading: "SERVICES",
-    quoteButtonLabel: "GET A FREE QUOTE",
+    quoteButtonLabel: "GET A QUOTE TODAY",
     learnMoreLabel: "Learn More",
     cards: [
       {
@@ -796,12 +796,12 @@ export const defaultContent: SiteContent = {
     ],
   },
   quoteModal: {
-    kicker: "Free Measure & Quote",
-    title: "Get your free quote",
+    kicker: "Free On-Site Measure",
+    title: "Get a Quote Today",
     successTitle: "Thanks, we've got it!",
     successText:
-      "We'll be in touch shortly to arrange your free measure and quote.",
-    submitLabel: "Request my free quote",
+      "We'll be in touch shortly to arrange your free on-site measure and prepare your quote.",
+    submitLabel: "Get a Quote Today",
     sendingLabel: "Sending...",
     callPrompt: "Or call us direct on",
     messagePlaceholder: "Tell us about your job",
@@ -813,7 +813,7 @@ export const defaultContent: SiteContent = {
     addressPlaceholder: "Address (optional)",
     messagePlaceholder: "Your Message",
     successTitle: "Thanks, we've got it!",
-    successText: "We'll be in touch shortly to arrange your free quote.",
+    successText: "We'll be in touch shortly about your quote.",
   },
   contactForm: {
     firstNamePlaceholder: "First Name",
@@ -828,9 +828,9 @@ export const defaultContent: SiteContent = {
       "Thanks for reaching out. We'll be in touch within one business day.",
   },
   ctaBanner: {
-    heading: "schedule your free measure and quote today with sparrow",
+    heading: "schedule your free on-site measure with sparrow today",
     text: "Discover the perfect door for your home and enjoy peace of mind with the experts in garage doors.",
-    buttonLabel: "FREE Measure & Quote",
+    buttonLabel: "GET A QUOTE TODAY",
     suburbButtonLabel: "Book My {suburb} Quote",
     image:
       "https://www.steel-line.com.au/wp-content/uploads/2024/08/SteelLineGarageOnHome3.jpeg",

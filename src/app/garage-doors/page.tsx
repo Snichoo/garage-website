@@ -13,14 +13,14 @@ export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
   title: "New Garage Doors Brisbane | Supplied & Installed",
-  description: `New garage doors supplied and installed across Brisbane. Sectional, roller and tilt doors in a huge range of colours and finishes, with the motor fitted. Free measure & quote, call ${cfg.phoneDisplay}.`,
+  description: `New garage doors supplied and installed across Brisbane. Sectional, roller and tilt doors in a huge range of colours and finishes, with the motor fitted. Free on-site measure and a fixed quote—call ${cfg.phoneDisplay}.`,
   path: "/garage-doors",
 });
 }
 
 const features = [
   "New sectional, roller and tilt doors supplied and installed.",
-  "Free on-site measure and quote before you commit to anything.",
+  "Free on-site measure before you commit to anything.",
   "Wide range of designs, colours and finishes to suit any home.",
   "Motor, remotes and removal of the old door included in the quote.",
 ];
@@ -279,7 +279,7 @@ export default async function GarageDoorsPage() {
               <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
-                Get a free quote
+                Get a quote today
               </QuoteButton>
             </div>
           </div>
@@ -432,7 +432,7 @@ export default async function GarageDoorsPage() {
                         <QuoteButton
                           className="inline-flex flex-1 items-center justify-center gap-3 border-2 border-white/30 bg-white/5 px-6 py-3 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
                         >
-                          Get a free quote
+                          Get a quote today
                         </QuoteButton>
                       </div>
                     </div>

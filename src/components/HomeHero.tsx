@@ -14,7 +14,7 @@ import { getContent } from "@/lib/content";
 const badges = [
   { top: "$0", bottom: "Call Out Fee", icon: NoCallOutIcon },
   { top: "20+ Years", bottom: "On The Tools", icon: SpannerIcon },
-  { top: "Free", bottom: "Quotes & Measures", icon: MeasureIcon },
+  { top: "Free", bottom: "On-Site Measures", icon: MeasureIcon },
   { top: "Doors + Motors", bottom: "One Local Team", icon: GateIcon },
   { top: "5.0 Star", bottom: "Google Rated", icon: RatedIcon },
 ];
@@ -77,10 +77,10 @@ export default async function HomeHero() {
             <div className="mt-6">
               <CtaStack
                 phone={phone}
-                quoteLabel="Get My Free Quote"
+                quoteLabel="Get a Quote Today"
                 reassurances={[
                   "Talk to a real garage door technician.",
-                  "Free quote. No obligation.",
+                  "No obligation. Upfront fixed pricing.",
                 ]}
               />
             </div>

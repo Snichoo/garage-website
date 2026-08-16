@@ -6,7 +6,7 @@ export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
     title: "Swing Gates Brisbane | New Gates Supplied & Automated",
-    description: `New swing driveway gates supplied, installed and automated across Brisbane. Single and double leaf gates with a wide, grand opening and no ground track. Free quote, call ${cfg.phoneDisplay}.`,
+    description: `New swing driveway gates supplied, installed and automated across Brisbane. Single and double leaf gates with a wide, grand opening and no ground track. Get a quote today—call ${cfg.phoneDisplay}.`,
     path: "/swing-gates",
   });
 }

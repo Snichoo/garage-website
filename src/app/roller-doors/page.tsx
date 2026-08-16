@@ -12,7 +12,7 @@ export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Roller Doors Brisbane | Supply, Installation & Repairs",
-  description: `Roller garage doors supplied, installed and repaired across Brisbane. Compact, secure and low-maintenance doors ideal for tight spaces and low headroom. Free quote, call ${cfg.phoneDisplay}.`,
+  description: `Roller garage doors supplied, installed and repaired across Brisbane. Compact, secure and low-maintenance doors ideal for tight spaces and low headroom. Get a quote today—call ${cfg.phoneDisplay}.`,
   path: "/roller-doors",
 });
 }
@@ -114,7 +114,7 @@ export default async function RollerDoorsPage() {
               <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
-                Get a free quote
+                Get a quote today
               </QuoteButton>
             </div>
           </div>

@@ -13,7 +13,7 @@ export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Gate Motors & Automation Brisbane | Supply & Installation",
-  description: `Gate motors and automation across Brisbane. Sliding, swing and telescopic gates automated with remotes, keypads, safety beams and smart control. Free quote, call ${cfg.phoneDisplay}.`,
+  description: `Gate motors and automation across Brisbane. Sliding, swing and telescopic gates automated with remotes, keypads, safety beams and smart control. Get a quote today—call ${cfg.phoneDisplay}.`,
   path: "/gate-automation",
 });
 }
@@ -253,7 +253,7 @@ export default async function GateAutomationPage() {
               <QuoteButton
                 className="inline-flex items-center gap-3 rounded-none border-2 border-white/30 bg-white/5 px-6 py-3.5 font-display text-base font-extrabold tracking-wide text-white transition hover:bg-white/10 md:text-lg"
               >
-                Get a free quote
+                Get a quote today
               </QuoteButton>
             </div>
           </div>
@@ -373,7 +373,7 @@ export default async function GateAutomationPage() {
                       <QuoteButton
                         className="mt-auto inline-flex w-full items-center justify-center gap-3 bg-brand-yellow px-6 py-3 font-display text-base font-extrabold tracking-wide text-brand-navy transition hover:opacity-90 md:text-lg"
                       >
-                        Get a free quote
+                        Get a quote today
                       </QuoteButton>
                     </div>
                   </div>

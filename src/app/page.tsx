@@ -17,7 +17,7 @@ export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
   title: "Garage Doors Brisbane | Installation, Replacement & Repairs",
-  description: `Brisbane's local garage door specialists. Installation, replacement and same-day repairs for roller, sectional and tilt doors, plus motors and springs. Free quotes, call ${cfg.phoneDisplay}.`,
+  description: `Brisbane's local garage door specialists. Installation, replacement and same-day repairs for roller, sectional and tilt doors, plus motors and springs. Get a quote today—call ${cfg.phoneDisplay}.`,
   path: "/",
 });
 }

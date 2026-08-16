@@ -98,7 +98,7 @@ export default async function GalleryPage() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <QuoteButton className="inline-flex w-full items-center justify-center bg-brand-yellow px-8 py-3.5 font-display text-base font-extrabold uppercase tracking-wide text-brand-navy shadow-md transition hover:bg-brand-yellow/90 sm:w-auto md:text-lg">
-              Get a Free Quote
+              Get a Quote Today
             </QuoteButton>
             <a
               href={`tel:${business.phoneLink}`}

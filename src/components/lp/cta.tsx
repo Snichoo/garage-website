@@ -7,7 +7,7 @@ export type Phone = { display: string; link: string };
 /** Primary conversion button: opens the site-wide quote modal. */
 export function LpQuoteButton({
   className,
-  label = "Get My Free On-Site Quote",
+  label = "Get a Quote Today",
 }: {
   className?: string;
   label?: string;

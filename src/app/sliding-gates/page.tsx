@@ -6,7 +6,7 @@ export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
     title: "Sliding Gates Brisbane | New Gates Supplied & Automated",
-    description: `New sliding driveway gates supplied, installed and automated across Brisbane. Space-saving, secure and built for sloped or short driveways. Free measure and quote, call ${cfg.phoneDisplay}.`,
+    description: `New sliding driveway gates supplied, installed and automated across Brisbane. Space-saving, secure and built for sloped or short driveways. Free on-site measure and a fixed quote—call ${cfg.phoneDisplay}.`,
     path: "/sliding-gates",
   });
 }

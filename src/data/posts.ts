@@ -42,7 +42,7 @@ export const posts: BlogPost[] = [
       "Most Brisbane homes end up choosing between a sectional door and a roller door. Both are good options. They just suit different garages.",
       "Sectional doors are made of horizontal panels that slide up and along the ceiling. They look more modern, insulate better, and are great where you want a clean facade. They need ceiling space for the tracks.",
       "Roller doors are a single curtain of slats that rolls up into a drum above the opening. They're compact, low maintenance, and perfect for garages with low headroom or where you want to maximise driveway space.",
-      "Our short answer: pick a sectional door if appearance and insulation matter more, and a roller if space, simplicity, and price are the priority. We're happy to come out and quote both side by side at no cost.",
+      "Our short answer: pick a sectional door if appearance and insulation matter more, and a roller if space, simplicity, and price are the priority. We can price both side by side so you can compare them properly.",
     ],
   },
   {

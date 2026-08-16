@@ -1,8 +1,8 @@
 import type { ComponentType, SVGProps } from "react";
 import {
+  ClockIcon,
   GateIcon,
-  MeasureIcon,
-  NoCallOutIcon,
+  InsuredIcon,
   RatedIcon,
   SpannerIcon,
 } from "./icons";
@@ -17,9 +17,9 @@ type Icon = ComponentType<SVGProps<SVGSVGElement>>;
 
 /** Trust row pinned to the bottom of the hero. */
 export const heroBadges: { top: string; bottom: string; icon: Icon }[] = [
-  { top: "$0", bottom: "Call Out Fee", icon: NoCallOutIcon },
+  { top: "Same Day", bottom: "Service", icon: ClockIcon },
   { top: "20+ Years", bottom: "On The Tools", icon: SpannerIcon },
-  { top: "Free", bottom: "On-Site Measure", icon: MeasureIcon },
+  { top: "Fully", bottom: "Insured", icon: InsuredIcon },
   { top: "Gate + Motor", bottom: "One Team", icon: GateIcon },
   { top: "5.0 Star", bottom: "Google Rated", icon: RatedIcon },
 ];
@@ -97,7 +97,7 @@ export const chooseUs: { title: string; body: string; icon: string }[] = [
   },
   {
     title: "$0 Call Out",
-    body: "No fee to come out, look at the driveway, quote the job or diagnose a gate that has stopped working.",
+    body: "No fee to come out, look at the driveway or diagnose a gate that has stopped working.",
     icon: "/images/lp/icons/us-callout.png",
   },
   {
@@ -188,7 +188,7 @@ export const testimonials = [
 export const faqs = [
   {
     q: "How much does an automatic gate cost in Brisbane?",
-    a: "It depends on the width of the opening, the material and style of the gate, how much fall there is across the driveway and how far the power has to run to reach the motor. Those things move the price more than anything else, which is why we measure on site and give you one fixed written quote instead of a guess over the phone. The measure and the quote are free, and there is no call-out fee.",
+    a: "It depends on the width of the opening, the material and style of the gate, how much fall there is across the driveway and how far the power has to run to reach the motor. Those things move the price more than anything else, which is why we measure on site and give you one fixed written quote instead of a guess over the phone. The on-site measure is free, and there is no call-out fee.",
   },
   {
     q: "Can you automate the gate I already have?",
