@@ -142,6 +142,37 @@ body {
   display: none;
 }
 
+/* ---------------------------------------------------------------------------
+   Google Ads landing pages (/lp/*)
+   Angled highlight stroke that sits behind a run of heading text. The stroke
+   art is a PNG with an alpha channel, so it is used as a mask rather than a
+   background image: that way the colour comes from --lp-swoosh-color and can
+   be brand yellow on dark sections and navy on light ones.
+--------------------------------------------------------------------------- */
+.lp-swoosh {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.lp-swoosh::after {
+  content: "";
+  position: absolute;
+  left: -3%;
+  bottom: -0.28em;
+  width: 106%;
+  height: 0.55em;
+  background-color: var(--lp-swoosh-color, #fdd710);
+  -webkit-mask-image: url("/images/lp/swoosh.png");
+  mask-image: url("/images/lp/swoosh.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  z-index: -1;
+}
+
 /* Scroll-triggered reveal for top-level page sections.
    ScrollAnimator only applies .scroll-reveal to elements that start
    off-screen, so above-the-fold content paints normally with no flash. */

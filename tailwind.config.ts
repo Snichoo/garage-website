@@ -9,6 +9,13 @@ const config: Config = {
           navy: "#15355E",
           yellow: "#FDD710",
           black: "#1E1E1E",
+          /* Extra tones used by the Google Ads landing pages under /lp. */
+          navyDeep: "#0F2745",
+          yellowDark: "#E5C300",
+          ink: "#151414",
+          body: "#3A3A3A",
+          grey: "#F2F2F2",
+          line: "#DDDEDF",
         },
       },
       fontFamily: {
