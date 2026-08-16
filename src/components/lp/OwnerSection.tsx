@@ -29,10 +29,11 @@ export function OwnerSection({
         <div className="flex flex-col items-center self-end">
           <div className="relative h-[430px] w-full max-w-[480px] sm:h-[560px] lg:h-[660px]">
             <Image
-              src="/images/lp/owner-figure.png"
+              src="/images/lp/owner-figure-v2.webp"
               alt={`The owner of ${businessName}`}
               fill
-              sizes="(min-width: 1024px) 42vw, 100vw"
+              sizes="(min-width: 1024px) 480px, (min-width: 640px) 480px, calc(100vw - 48px)"
+              quality={70}
               className="object-contain object-bottom"
             />
           </div>

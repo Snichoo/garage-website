@@ -142,6 +142,14 @@ function applyRouteMigrations(content: SiteContent): SiteContent {
           : item,
       ),
     },
+    reviews: {
+      ...content.reviews,
+      items: content.reviews.items.map((review) =>
+        review.photo === "/images/leilani-review.webp"
+          ? { ...review, photo: "/images/leilani-review-card.webp" }
+          : review,
+      ),
+    },
     quoteModal: {
       ...content.quoteModal,
       kicker: migrateLegacyCopy(

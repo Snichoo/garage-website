@@ -23,6 +23,8 @@ function Item({
         aria-hidden
         width={256}
         height={256}
+        sizes="66px"
+        quality={70}
         className="mt-1 h-[56px] w-[66px] shrink-0 object-contain object-left"
       />
       <div>
@@ -67,6 +69,7 @@ export function WhyChooseUs() {
           alt="Dark aluminium slat gate and matching fence on a Brisbane driveway"
           fill
           sizes="100vw"
+          quality={65}
           className="object-cover object-center"
         />
         <div

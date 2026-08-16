@@ -401,7 +401,7 @@ export const defaultContent: SiteContent = {
         avatar: "L",
         avatarBg: "#00897B",
         verified: true,
-        photo: "/images/leilani-review.webp",
+        photo: "/images/leilani-review-card.webp",
       },
       {
         name: "Brenda Jelagat",

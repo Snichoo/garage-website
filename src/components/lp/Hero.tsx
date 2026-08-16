@@ -16,6 +16,7 @@ export function Hero({ phone }: { phone: Phone }) {
         fill
         priority
         sizes="100vw"
+        quality={70}
         className="object-cover object-[62%_center]"
       />
       {/* Desktop: cinematic left to right fade, so the copy sits on black and the gate shows on the right. */}

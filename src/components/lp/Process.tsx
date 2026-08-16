@@ -15,7 +15,7 @@ export function Process({ phone }: { phone: Phone }) {
     >
       {/* Big job photo, flush to the left edge of the screen on desktop. */}
       <div className="pointer-events-none absolute bottom-0 left-0 hidden aspect-[553/366] w-[52vw] max-w-[940px] lg:block">
-        <Image src={PHOTO} alt={PHOTO_ALT} fill sizes="52vw" className="object-cover object-center" />
+        <Image src={PHOTO} alt={PHOTO_ALT} fill sizes="(min-width: 1808px) 940px, 52vw" quality={70} className="object-cover object-center" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_50%,#fff)]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#fff,transparent_26%,transparent_84%,#fff)]" />
       </div>
@@ -33,7 +33,7 @@ export function Process({ phone }: { phone: Phone }) {
 
           {/* Mobile version of the same photo, under the heading. */}
           <div className="relative mt-10 aspect-[553/366] w-full overflow-hidden lg:hidden">
-            <Image src={PHOTO} alt={PHOTO_ALT} fill sizes="100vw" className="object-cover object-center" />
+            <Image src={PHOTO} alt={PHOTO_ALT} fill sizes="calc(100vw - 48px)" quality={70} className="object-cover object-center" />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff,transparent_24%,transparent_76%,#fff)]" />
             <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#fff,transparent_24%,transparent_76%,#fff)]" />
           </div>
@@ -50,6 +50,8 @@ export function Process({ phone }: { phone: Phone }) {
                     aria-hidden
                     width={256}
                     height={256}
+                    sizes="88px"
+                    quality={70}
                     className="h-[80px] w-[88px] shrink-0 object-contain"
                   />
                   {i < steps.length - 1 && <span className="my-2 w-px flex-1 bg-brand-line" />}

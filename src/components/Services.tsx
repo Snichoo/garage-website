@@ -68,6 +68,7 @@ export default async function Services() {
                   alt={c.alt}
                   fill
                   sizes="(min-width: 1024px) 285px, (min-width: 640px) 50vw, 100vw"
+                  quality={65}
                   className={`object-cover transition duration-300 group-hover:scale-105 ${c.imagePosition ?? "object-[center_70%]"}`}
                 />
               </Link>

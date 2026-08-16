@@ -3,6 +3,7 @@ import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import LazyVideo from "@/components/LazyVideo";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
 import SectionalDesignPicker from "@/components/SectionalDesignPicker";
@@ -136,13 +137,8 @@ export default async function SectionalGarageDoorsPage() {
           {/* Right: video + services */}
           <div className="flex flex-col gap-6">
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/15 bg-black/40 shadow-2xl">
-              <video
-                src="/videos/Sectional_Door_FrontBack_Colormatched-1.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+              <LazyVideo
+                src="/videos/sectional-door-v2.mp4"
                 className="h-full w-full object-contain"
               />
             </div>

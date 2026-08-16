@@ -9,7 +9,7 @@ import { defaultContent, type HelpItem } from "@/content/defaults";
 const gridClasses =
   "mx-auto grid max-w-[1000px] grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6";
 
-const SERVICE_SPRITE = "/images/icons/help-services-sprite.png";
+const SERVICE_SPRITE = "/images/icons/help-services-sprite-v2.webp";
 const SERVICE_SPRITE_GRID_SIZE = 5;
 
 type SpritePosition = readonly [xPercent: number, yPercent: number];

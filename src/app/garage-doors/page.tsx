@@ -4,6 +4,7 @@ import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import LazyVideo from "@/components/LazyVideo";
 import LocationMap from "@/components/LocationMap";
 import QuoteButton from "@/components/QuoteButton";
 import JsonLd from "@/components/JsonLd";
@@ -66,7 +67,7 @@ const doorTypes: DoorType[] = [
     name: "Sectional Garage Doors",
     media: {
       kind: "video",
-      src: "/videos/Sectional_Door_FrontBack_Colormatched-1.mp4",
+      src: "/videos/sectional-door-v2.mp4",
       objectPosition: "60% center",
     },
     intro:
@@ -90,7 +91,7 @@ const doorTypes: DoorType[] = [
     name: "Roller Garage Doors",
     media: {
       kind: "video",
-      src: "/videos/Roller_Door_FrontBack_Colormatched.mp4",
+      src: "/videos/roller-door-v2.mp4",
     },
     intro:
       "Roller doors are made of narrow horizontal slats that roll up into a compact drum above the opening. Known for their durability, security and space-saving design, they're an excellent choice for garages with restricted headroom.",
@@ -113,7 +114,7 @@ const doorTypes: DoorType[] = [
     name: "Tilt Garage Doors",
     media: {
       kind: "video",
-      src: "/videos/Tilt_Door.mp4",
+      src: "/videos/tilt-door-v2.mp4",
     },
     intro:
       "Tilt doors operate as a single solid panel that tilts outward and upward when opening. With a timeless design and robust construction, they're perfect for garages with ample outdoor space and homeowners seeking a traditional aesthetic.",
@@ -192,17 +193,12 @@ function DoorTile(props: DoorTileProps) {
           fill
           sizes={span2 ? "(min-width: 1024px) 640px, 100vw" : "(min-width: 1024px) 320px, 50vw"}
           priority={priority}
-          quality={95}
+          quality={70}
           className="object-cover"
         />
       ) : (
-        <video
+        <LazyVideo
           src={props.src}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
           className="absolute inset-0 h-full w-full object-cover"
         />
       )}
@@ -288,20 +284,20 @@ export default async function GarageDoorsPage() {
           <div className="grid grid-cols-2 gap-3 md:gap-4">
             <DoorTile
               kind="video"
-              src="/videos/Sectional_Door_FrontBack_Colormatched-1.mp4"
+              src="/videos/sectional-door-v2.mp4"
               label="Sectional Doors"
               aspect="aspect-[16/9]"
               span2
             />
             <DoorTile
               kind="video"
-              src="/videos/Roller_Door_FrontBack_Colormatched.mp4"
+              src="/videos/roller-door-v2.mp4"
               label="Roller Doors"
               aspect="aspect-[4/3]"
             />
             <DoorTile
               kind="video"
-              src="/videos/Tilt_Door.mp4"
+              src="/videos/tilt-door-v2.mp4"
               label="Tilt Doors"
               aspect="aspect-[4/3]"
             />
@@ -360,17 +356,12 @@ export default async function GarageDoorsPage() {
                         alt={d.media.alt}
                         fill
                         sizes="(min-width: 1024px) 580px, 100vw"
-                        quality={95}
+                        quality={70}
                         className="object-cover transition duration-300 group-hover:scale-105"
                       />
                     ) : (
-                      <video
+                      <LazyVideo
                         src={d.media.src}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
                         style={d.media.objectPosition ? { objectPosition: d.media.objectPosition } : undefined}
                         className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
                       />

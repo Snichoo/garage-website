@@ -31,7 +31,7 @@ const fallbackReviews: Review[] = [
     avatar: "L",
     avatarBg: "#00897B",
     verified: true,
-    photo: "/images/leilani-review.webp",
+    photo: "/images/leilani-review-card.webp",
   },
   {
     name: "Brenda Jelagat",
@@ -411,7 +411,9 @@ export default function Reviews() {
                               src={review.photo}
                               alt={`Photo from ${review.name}`}
                               width={288}
-                              height={180}
+                              height={144}
+                              sizes="(min-width: 640px) 256px, 230px"
+                              quality={65}
                               className="h-32 w-full object-cover sm:h-36"
                             />
                           </div>

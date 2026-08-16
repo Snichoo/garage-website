@@ -102,7 +102,7 @@ export function SiteHeader({
                 aria-hidden
                 width={1080}
                 height={1080}
-                priority
+                loading="eager"
                 sizes="(min-width: 1024px) 96px, (min-width: 640px) 86px, 74px"
                 className="absolute left-0 top-0 h-auto w-full lg:brightness-0 lg:invert"
               />

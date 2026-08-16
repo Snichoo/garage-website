@@ -39,6 +39,7 @@ export default async function HomeHero() {
         fill
         priority
         sizes="100vw"
+        quality={65}
         className="object-cover object-[62%_center]"
       />
       <div className="absolute inset-0 hidden bg-gradient-to-r from-black from-[8%] via-black/80 via-[48%] to-transparent to-[82%] sm:block" />

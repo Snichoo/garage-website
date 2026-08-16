@@ -16,6 +16,7 @@ export function Services() {
           aria-hidden
           fill
           sizes="100vw"
+          quality={65}
           className="object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/85 to-white" />
@@ -23,10 +24,11 @@ export function Services() {
         <div className="pointer-events-none absolute right-0 top-8 hidden aspect-[2000/1433] w-[38vw] max-w-[720px] lg:block xl:w-[44vw] xl:max-w-[820px] 2xl:w-[46vw] 2xl:max-w-[900px]">
           <div className="absolute right-0 top-[12%] h-[74%] w-[88%] bg-brand-navy [clip-path:polygon(48%_0,100%_0,100%_100%,14%_100%)]" />
           <Image
-            src="/images/lp/driveway-gate-clean.png"
+            src="/images/lp/driveway-gate-clean-v2.webp"
             alt="Modern automated sliding driveway gates"
             fill
-            sizes="(min-width: 1536px) 46vw, (min-width: 1280px) 44vw, 38vw"
+            sizes="(min-width: 1957px) 900px, (min-width: 1536px) 46vw, (min-width: 1280px) 44vw, 38vw"
+            quality={70}
             className="object-contain object-right"
           />
         </div>
@@ -58,6 +60,8 @@ export function Services() {
                 aria-hidden
                 width={256}
                 height={256}
+                sizes="112px"
+                quality={70}
                 className="h-[86px] w-[112px] shrink-0 object-contain object-left"
               />
               <h3 className="mt-5 font-display text-[24px] font-extrabold leading-tight text-brand-ink">
