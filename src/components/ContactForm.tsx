@@ -26,6 +26,7 @@ export default function ContactForm() {
       lastName: String(fd.get("lastName") || ""),
       email: String(fd.get("email") || ""),
       phone: String(fd.get("phone") || ""),
+      address: String(fd.get("address") || ""),
       message: String(fd.get("message") || ""),
     };
 
@@ -111,6 +112,16 @@ export default function ContactForm() {
           className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
         />
       </div>
+
+      <input
+        type="text"
+        name="address"
+        autoComplete="street-address"
+        maxLength={300}
+        aria-label="Address (optional)"
+        placeholder={contactForm.addressPlaceholder}
+        className="w-full border border-neutral-300 px-4 py-3.5 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
+      />
 
       <textarea
         name="message"

@@ -35,7 +35,7 @@ export function Hero({ phone }: { phone: Phone }) {
             {/* Sizes step up so "Automatic Gates" always holds one line: the
                 highlight stroke is drawn across the span, so a wrap would
                 leave it stranded across two lines. */}
-            <h1 className="mt-4 max-w-full font-display text-[31px] font-extrabold leading-[1.02] text-white min-[380px]:text-[34px] min-[430px]:text-[38px] sm:text-[58px] sm:leading-[0.98] md:text-[76px] xl:text-[94px]">
+            <h1 className="mt-4 max-w-full font-display text-[31px] font-extrabold leading-[1.02] text-white min-[380px]:text-[34px] min-[430px]:text-[38px] sm:text-[54px] sm:leading-[0.98] md:text-[64px] xl:text-[80px]">
               <Swoosh>Automatic Gates</Swoosh>
               <span>
                 <br />

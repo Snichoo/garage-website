@@ -11,8 +11,8 @@ import { regions, suburbs } from "@/data/suburbs";
 type Icon = ComponentType<SVGProps<SVGSVGElement>>;
 
 /* ---------------------------------------------------------------------------
-   All copy for the /lp/gates Google Ads landing page lives here, so the page
-   can be re-pointed at a different service by swapping this one file.
+   Shared copy for the public /gates page and the /lp/gates Google Ads route
+   lives here, so both URLs stay visually and editorially in sync.
 --------------------------------------------------------------------------- */
 
 /** Trust row pinned to the bottom of the hero. */

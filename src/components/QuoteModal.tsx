@@ -70,6 +70,7 @@ export default function QuoteModal() {
       name: String(fd.get("name") || ""),
       phone: String(fd.get("phone") || ""),
       email: String(fd.get("email") || ""),
+      address: String(fd.get("address") || ""),
       message: String(fd.get("message") || ""),
     };
 
@@ -124,7 +125,7 @@ export default function QuoteModal() {
         className="absolute inset-0 bg-black/65 backdrop-blur-sm"
       />
 
-      <div className="relative w-full max-w-lg overflow-hidden rounded-xl bg-white shadow-2xl">
+      <div className="relative flex max-h-[calc(100dvh-3rem)] w-full max-w-lg flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
         <div className="bg-brand-navy px-6 py-5 text-white">
           <div className="flex items-start justify-between gap-4">
             <div>
@@ -183,8 +184,9 @@ export default function QuoteModal() {
         ) : (
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-4 p-6 text-brand-black md:p-7"
+          className="min-h-0 overflow-y-auto overscroll-contain p-6 text-brand-black md:p-7"
         >
+          <div className="flex flex-col gap-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <input
               type="text"
@@ -205,6 +207,15 @@ export default function QuoteModal() {
             type="email"
             name="email"
             placeholder={quoteForm.emailPlaceholder}
+            className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
+          />
+          <input
+            type="text"
+            name="address"
+            autoComplete="street-address"
+            maxLength={300}
+            aria-label="Address (optional)"
+            placeholder={quoteForm.addressPlaceholder}
             className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy focus:ring-2 focus:ring-brand-yellow/40"
           />
           <textarea
@@ -234,6 +245,7 @@ export default function QuoteModal() {
               {business.phoneDisplay}
             </a>
           </p>
+          </div>
         </form>
         )}
       </div>

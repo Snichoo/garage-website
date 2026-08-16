@@ -15,6 +15,7 @@ const staticPages: {
   // Main service categories
   { path: "/repairs", priority: 0.9, changeFrequency: "monthly" },
   { path: "/garage-doors", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/gates", priority: 0.9, changeFrequency: "monthly" },
   { path: "/automation", priority: 0.9, changeFrequency: "monthly" },
 
   // Repairs

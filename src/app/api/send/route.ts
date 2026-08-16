@@ -78,6 +78,16 @@ export async function POST(request: Request) {
           .join(" ");
   const email = typeof data.email === "string" ? data.email.trim() : "";
   const phone = typeof data.phone === "string" ? data.phone.trim() : "";
+  if (data.address !== undefined && typeof data.address !== "string") {
+    return NextResponse.json({ error: "Invalid address." }, { status: 400 });
+  }
+  const address = typeof data.address === "string" ? data.address.trim() : "";
+  if (address.length > 300) {
+    return NextResponse.json(
+      { error: "Address must be 300 characters or fewer." },
+      { status: 400 }
+    );
+  }
   const message = typeof data.message === "string" ? data.message.trim() : "";
 
   const heading =
@@ -89,14 +99,18 @@ export async function POST(request: Request) {
   if (name) fields.push({ label: "Name", value: name });
   if (email) fields.push({ label: "Email", value: email });
   if (phone) fields.push({ label: "Phone", value: phone });
-  if (message) fields.push({ label: "Message", value: message });
 
-  if (fields.length === 0) {
+  // Address is optional context for a genuine enquiry, not a substitute for
+  // the contact/message fields that made a submission valid previously.
+  if (!name && !email && !phone && !message) {
     return NextResponse.json(
       { error: "Please fill in at least one field." },
       { status: 400 }
     );
   }
+
+  if (address) fields.push({ label: "Address", value: address });
+  if (message) fields.push({ label: "Message", value: message });
 
   try {
     const { error } = await getResend().emails.send({

@@ -63,7 +63,7 @@ to the three gate types rather than using a separate category hub.
 |---|---|---|
 | Repairs | `/repairs` | `/emergency-repairs`, `/garage-door-repairs`, `/gate-repairs`, `/springs`, `/cables`, `/garage-door-off-track`, `/garage-door-servicing`, `/garage-door-safety-inspection` |
 | Garage Doors | `/garage-doors` | `/sectional-garage-doors`, `/roller-doors`, `/tilt-doors` |
-| Gates | `/gate-automation#types` | `/sliding-gates`, `/swing-gates`, `/gate-automation#telescopic` |
+| Gates | `/gates` | `/gates`, `/sliding-gates`, `/swing-gates`, `/gate-automation#telescopic` |
 | Automation | `/automation` | `/openers`, `/garage-door-motor-replacement`, `/gate-automation`, `/gate-motor-replacement`, `/smart-systems` |
 | Contact | `/contact` | `/request-a-quote`, `/book-a-service` |
 

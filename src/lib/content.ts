@@ -46,6 +46,71 @@ function deepMerge<T>(base: T, override: unknown): T {
   return override as T;
 }
 
+/** Keep saved CMS arrays aligned with route changes introduced in code. */
+function applyRouteMigrations(content: SiteContent): SiteContent {
+  let hasGatesItem = false;
+  const nav = content.header.nav.map((item) => {
+    if (item.label.trim().toLowerCase() !== "gates") return item;
+
+    hasGatesItem = true;
+    const dropdown = item.dropdown ?? [];
+    const newGatesIndex = dropdown.findIndex(
+      (link) =>
+        link.href === "/gates" ||
+        link.label.trim().toLowerCase() === "new gates",
+    );
+    const updatedDropdown = dropdown.map((link, index) =>
+      index === newGatesIndex ? { ...link, href: "/gates" } : link,
+    );
+
+    return {
+      ...item,
+      href: "/gates",
+      dropdown:
+        newGatesIndex >= 0
+          ? updatedDropdown
+          : [{ label: "New Gates", href: "/gates" }, ...updatedDropdown],
+    };
+  });
+
+  if (!hasGatesItem) {
+    const gatesItem = defaultContent.header.nav.find(
+      (item) => item.label === "Gates",
+    );
+    if (gatesItem) {
+      const automationIndex = nav.findIndex(
+        (item) => item.label.trim().toLowerCase() === "automation",
+      );
+      nav.splice(
+        automationIndex >= 0 ? automationIndex : nav.length,
+        0,
+        gatesItem,
+      );
+    }
+  }
+
+  return {
+    ...content,
+    header: { ...content.header, nav },
+    services: {
+      ...content.services,
+      cards: content.services.cards.map((card) =>
+        card.title.trim().toLowerCase() === "automatic gates"
+          ? { ...card, href: "/gates" }
+          : card,
+      ),
+    },
+    howCanWeHelp: {
+      ...content.howCanWeHelp,
+      items: content.howCanWeHelp.items.map((item) =>
+        item.label.trim().toLowerCase() === "automatic gates"
+          ? { ...item, href: "/gates" }
+          : item,
+      ),
+    },
+  };
+}
+
 async function readOverridesFromBlob(): Promise<unknown | null> {
   const { blobs } = await list({ prefix: BLOB_PATHNAME, limit: 1 });
   const blob = blobs.find((b) => b.pathname === BLOB_PATHNAME);
@@ -71,10 +136,10 @@ export async function getContent(): Promise<SiteContent> {
     const overrides = useBlob()
       ? await readOverridesFromBlob()
       : readOverridesFromDisk();
-    if (!overrides) return defaultContent;
-    return deepMerge(defaultContent, overrides);
+    if (!overrides) return applyRouteMigrations(defaultContent);
+    return applyRouteMigrations(deepMerge(defaultContent, overrides));
   } catch {
-    return defaultContent;
+    return applyRouteMigrations(defaultContent);
   }
 }
 

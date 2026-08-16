@@ -30,7 +30,17 @@ function CloseMark() {
   );
 }
 
-export function LpHeader({ hours }: { hours: string }) {
+type SiteHeaderProps = {
+  hours?: string;
+  logoHref?: string;
+  logoAriaLabel?: string;
+};
+
+export function SiteHeader({
+  hours = "Open 7 days · Around the clock",
+  logoHref = "/",
+  logoAriaLabel,
+}: SiteHeaderProps = {}) {
   const { business, header } = useSiteContent();
   const [menuOpen, setMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -81,9 +91,9 @@ export function LpHeader({ hours }: { hours: string }) {
 
         <div className="relative flex h-16 w-full items-center px-4 sm:px-6 lg:h-[100px] lg:items-stretch lg:px-8">
           <a
-            href="#top"
+            href={logoHref}
             className="relative z-20 flex shrink-0 items-center"
-            aria-label={`${business.name} — back to top`}
+            aria-label={logoAriaLabel ?? `${business.name} home`}
           >
             <span className="relative block h-10 w-[62px] shrink-0 overflow-hidden sm:h-11 sm:w-[68px] lg:h-[62px] lg:w-[96px]">
               <Image
@@ -254,12 +264,10 @@ export function LpHeader({ hours }: { hours: string }) {
                       )}
                     </div>
 
-                    {item.dropdown && (
+                    {item.dropdown && expanded && (
                       <div
                         id={sectionId}
-                        className={`grid transition-[grid-template-rows] duration-200 ease-out ${
-                          expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                        }`}
+                        className="grid grid-rows-[1fr]"
                       >
                         <div className="overflow-hidden">
                           <ul className="mb-2 ml-3 border-l border-brand-line pl-3">
@@ -307,5 +315,15 @@ export function LpHeader({ hours }: { hours: string }) {
         </div>
       )}
     </>
+  );
+}
+
+export function LpHeader({ hours }: { hours: string }) {
+  return (
+    <SiteHeader
+      hours={hours}
+      logoHref="#top"
+      logoAriaLabel="Back to the top of the page"
+    />
   );
 }

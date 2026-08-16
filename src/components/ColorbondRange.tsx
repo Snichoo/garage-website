@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 type Swatch = {
   name: string;
@@ -37,6 +37,7 @@ const INITIAL_VISIBLE = 12;
 
 export default function ColorbondRange() {
   const [expanded, setExpanded] = useState(false);
+  const colourGridId = useId();
   const visible = expanded ? swatches : swatches.slice(0, INITIAL_VISIBLE);
   const hasMore = swatches.length > INITIAL_VISIBLE;
 
@@ -60,7 +61,10 @@ export default function ColorbondRange() {
           complementing any home exterior.
         </p>
 
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 md:gap-4">
+        <div
+          id={colourGridId}
+          className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 md:gap-4"
+        >
           {visible.map((s) => (
             <div key={s.name} className="group flex flex-col">
               <div
@@ -81,6 +85,7 @@ export default function ColorbondRange() {
               type="button"
               onClick={() => setExpanded((e) => !e)}
               aria-expanded={expanded}
+              aria-controls={colourGridId}
               className="inline-flex items-center gap-2 bg-brand-navy px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-brand-yellow shadow-md transition hover:opacity-90 md:text-base"
             >
               {expanded

@@ -25,6 +25,7 @@ export default function HeroQuoteForm({ submitLabel }: { submitLabel: string }) 
       name: String(fd.get("name") || ""),
       email: String(fd.get("email") || ""),
       phone: String(fd.get("phone") || ""),
+      address: String(fd.get("address") || ""),
       message: String(fd.get("message") || ""),
     };
 
@@ -98,6 +99,15 @@ export default function HeroQuoteForm({ submitLabel }: { submitLabel: string }) 
           inputMode="tel"
           pattern="[0-9 +()\-]{6,}"
           placeholder={quoteForm.phonePlaceholder}
+          className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy sm:col-span-2"
+        />
+        <input
+          type="text"
+          name="address"
+          autoComplete="street-address"
+          maxLength={300}
+          aria-label="Address (optional)"
+          placeholder={quoteForm.addressPlaceholder}
           className="w-full rounded-md border border-neutral-300 px-4 py-3 text-sm outline-none transition focus:border-brand-navy sm:col-span-2"
         />
       </div>

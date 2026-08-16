@@ -205,6 +205,7 @@ export default async function SectionalGarageDoorsPage() {
         description="Choose from the 8 timberlook colours in the Native Series Range."
         images={nativeSeries}
         gridCols="grid-cols-1 sm:grid-cols-2"
+        initialVisible={4}
       />
 
       <SeriesGallery

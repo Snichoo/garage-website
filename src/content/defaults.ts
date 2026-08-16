@@ -23,6 +23,12 @@ export type ReviewItem = {
   photo?: string;
 };
 export type FaqItem = { q: string; a: string };
+export type HelpItem = {
+  label: string;
+  icon: string;
+  href: string;
+  featured?: boolean;
+};
 
 export type SiteContent = {
   business: {
@@ -77,7 +83,7 @@ export type SiteContent = {
   howCanWeHelp: {
     heading: string;
     moreText: string;
-    items: { label: string; icon: string; href: string }[];
+    items: HelpItem[];
   };
   meetTheTeam: {
     kicker: string;
@@ -143,6 +149,7 @@ export type SiteContent = {
     namePlaceholder: string;
     emailPlaceholder: string;
     phonePlaceholder: string;
+    addressPlaceholder: string;
     messagePlaceholder: string;
     successTitle: string;
     successText: string;
@@ -152,6 +159,7 @@ export type SiteContent = {
     lastNamePlaceholder: string;
     emailPlaceholder: string;
     phonePlaceholder: string;
+    addressPlaceholder: string;
     messagePlaceholder: string;
     submitLabel: string;
     successTitle: string;
@@ -259,8 +267,9 @@ export const defaultContent: SiteContent = {
       },
       {
         label: "Gates",
-        href: "/gate-automation#types",
+        href: "/gates",
         dropdown: [
+          { label: "New Gates", href: "/gates" },
           { label: "Sliding Gates", href: "/sliding-gates" },
           { label: "Swing Gates", href: "/swing-gates" },
           { label: "Telescopic Gates", href: "/gate-automation#telescopic" },
@@ -358,7 +367,7 @@ export const defaultContent: SiteContent = {
           "Swing gates",
           "Telescopic gates",
         ],
-        href: "/gate-automation#types",
+        href: "/gates",
       },
       {
         title: "Motors & Automation",
@@ -534,27 +543,126 @@ export const defaultContent: SiteContent = {
   },
   howCanWeHelp: {
     heading: "WE HELP WITH",
-    moreText: "and more ...",
+    moreText: "More services",
     items: [
       {
         label: "Repairs",
         icon: "/images/icons/help-maintenance.png",
         href: "/repairs",
+        featured: true,
       },
       {
         label: "New Garage Doors",
         icon: "/images/icons/help-installations.png",
         href: "/garage-doors",
+        featured: true,
       },
       {
         label: "Automatic Gates",
         icon: "/images/icons/help-gates.svg",
-        href: "/gate-automation#types",
+        href: "/gates",
+        featured: true,
       },
       {
         label: "Motors & Automation",
         icon: "/images/icons/help-openers.png",
         href: "/automation",
+        featured: true,
+      },
+      {
+        label: "Emergency Repairs",
+        icon: "/images/icons/help-maintenance.png",
+        href: "/emergency-repairs",
+      },
+      {
+        label: "Garage Door Repairs",
+        icon: "/images/icons/help-maintenance.png",
+        href: "/garage-door-repairs",
+      },
+      {
+        label: "Gate Repairs",
+        icon: "/images/icons/help-gates.svg",
+        href: "/gate-repairs",
+      },
+      {
+        label: "Spring Replacement",
+        icon: "/images/icons/help-springs.png",
+        href: "/springs",
+      },
+      {
+        label: "Cable Replacement",
+        icon: "/images/icons/help-cables.png",
+        href: "/cables",
+      },
+      {
+        label: "Off-Track Doors",
+        icon: "/images/icons/help-maintenance.png",
+        href: "/garage-door-off-track",
+      },
+      {
+        label: "Garage Door Servicing",
+        icon: "/images/icons/help-maintenance.png",
+        href: "/garage-door-servicing",
+      },
+      {
+        label: "Safety Inspections",
+        icon: "/images/icons/help-maintenance.png",
+        href: "/garage-door-safety-inspection",
+      },
+      {
+        label: "Sectional Doors",
+        icon: "/images/icons/help-installations.png",
+        href: "/sectional-garage-doors",
+      },
+      {
+        label: "Roller Doors",
+        icon: "/images/icons/help-installations.png",
+        href: "/roller-doors",
+      },
+      {
+        label: "Tilt Doors",
+        icon: "/images/icons/help-installations.png",
+        href: "/tilt-doors",
+      },
+      {
+        label: "Sliding Gates",
+        icon: "/images/icons/help-gates.svg",
+        href: "/sliding-gates",
+      },
+      {
+        label: "Swing Gates",
+        icon: "/images/icons/help-gates.svg",
+        href: "/swing-gates",
+      },
+      {
+        label: "Telescopic Gates",
+        icon: "/images/icons/help-gates.svg",
+        href: "/gate-automation#telescopic",
+      },
+      {
+        label: "Garage Door Openers",
+        icon: "/images/icons/help-openers.png",
+        href: "/openers",
+      },
+      {
+        label: "Garage Door Motors",
+        icon: "/images/icons/help-openers.png",
+        href: "/garage-door-motor-replacement",
+      },
+      {
+        label: "Gate Motors & Automation",
+        icon: "/images/icons/help-gates.svg",
+        href: "/gate-automation",
+      },
+      {
+        label: "Gate Motor Replacement",
+        icon: "/images/icons/help-gates.svg",
+        href: "/gate-motor-replacement",
+      },
+      {
+        label: "Smart Systems",
+        icon: "/images/icons/help-smart-kits.png",
+        href: "/smart-systems",
       },
     ],
   },
@@ -702,6 +810,7 @@ export const defaultContent: SiteContent = {
     namePlaceholder: "Name",
     emailPlaceholder: "Email",
     phonePlaceholder: "Phone",
+    addressPlaceholder: "Address (optional)",
     messagePlaceholder: "Your Message",
     successTitle: "Thanks, we've got it!",
     successText: "We'll be in touch shortly to arrange your free quote.",
@@ -711,6 +820,7 @@ export const defaultContent: SiteContent = {
     lastNamePlaceholder: "Last Name",
     emailPlaceholder: "Email",
     phonePlaceholder: "Phone",
+    addressPlaceholder: "Address (optional)",
     messagePlaceholder: "Message",
     submitLabel: "Submit",
     successTitle: "Message sent!",
