@@ -1,4 +1,5 @@
 import { getContent } from "@/lib/content";
+import InteractiveMap from "./InteractiveMap";
 
 type LocationMapProps = {
   query?: string;
@@ -12,15 +13,5 @@ export default async function LocationMap({ query }: LocationMapProps = {}) {
     search,
   )}&output=embed`;
 
-  return (
-    <section className="w-full">
-      <iframe
-        title={`Map showing ${search}`}
-        src={embedSrc}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        className="block h-[360px] w-full border-0 md:h-[480px]"
-      />
-    </section>
-  );
+  return <InteractiveMap search={search} embedSrc={embedSrc} />;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useSiteContent } from "./ContentProvider";
 
 type Review = {
@@ -227,53 +227,62 @@ export default function Reviews() {
   const reviews = content.reviews.items ?? fallbackReviews;
   const scrollerRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{
-    active: boolean;
+    pointerId: number;
     startX: number;
     startScroll: number;
-    moved: boolean;
-  }>({ active: false, startX: 0, startScroll: 0, moved: false });
+  } | null>(null);
 
-  // Seamless wrap when user manually scrolls past the loop boundary.
-  const handleScroll = () => {
+  const stopDrag = useCallback(() => {
+    const drag = dragRef.current;
+    dragRef.current = null;
     const el = scrollerRef.current;
-    if (!el) return;
-    const half = el.scrollWidth / 2;
-    if (el.scrollLeft >= half) {
-      el.scrollLeft -= half;
-    } else if (el.scrollLeft < 0) {
-      el.scrollLeft += half;
+    if (drag && el?.hasPointerCapture(drag.pointerId)) {
+      el.releasePointerCapture(drag.pointerId);
     }
-  };
+  }, []);
 
-  // Pointer drag-to-scroll.
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.hidden) stopDrag();
+    };
+    window.addEventListener("blur", stopDrag);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      window.removeEventListener("blur", stopDrag);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      stopDrag();
+    };
+  }, [stopDrag]);
+
+  // Touch and pen keep native scrolling, momentum and pinch zoom. Only mouse
+  // dragging needs capture, which must end even if release happens in another tab.
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse" || e.button !== 0 || !e.isPrimary) return;
     const el = scrollerRef.current;
     if (!el) return;
+    e.preventDefault();
     dragRef.current = {
-      active: true,
+      pointerId: e.pointerId,
       startX: e.clientX,
       startScroll: el.scrollLeft,
-      moved: false,
     };
     el.setPointerCapture(e.pointerId);
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!dragRef.current.active) return;
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    if ((e.buttons & 1) === 0) {
+      stopDrag();
+      return;
+    }
     const el = scrollerRef.current;
     if (!el) return;
-    const dx = e.clientX - dragRef.current.startX;
-    if (Math.abs(dx) > 4) dragRef.current.moved = true;
-    el.scrollLeft = dragRef.current.startScroll - dx;
+    el.scrollLeft = drag.startScroll - (e.clientX - drag.startX);
   };
 
-  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!dragRef.current.active) return;
-    dragRef.current.active = false;
-    const el = scrollerRef.current;
-    if (el && el.hasPointerCapture(e.pointerId)) {
-      el.releasePointerCapture(e.pointerId);
-    }
+  const onPointerEnd = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (dragRef.current?.pointerId === e.pointerId) stopDrag();
   };
 
   const nudge = (dir: 1 | -1) => {
@@ -284,14 +293,20 @@ export default function Reviews() {
       cards.length >= 2
         ? cards[1].offsetLeft - cards[0].offsetLeft
         : cards[0]?.offsetWidth ?? 280;
-    el.scrollBy({ left: dir * step, behavior: "smooth" });
+    const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
+    const left =
+      dir > 0 && el.scrollLeft >= maxScroll - 1
+        ? 0
+        : dir < 0 && el.scrollLeft <= 1
+          ? maxScroll
+          : Math.max(0, Math.min(maxScroll, el.scrollLeft + dir * step));
+    // Wrap only on an arrow click; rewriting scrollLeft during native scrolling
+    // interrupts touch/trackpad momentum and browser scroll chaining.
+    el.scrollTo({ left, behavior: "smooth" });
   };
 
   return (
-    <section
-      className="reviews-font w-full bg-white py-8 sm:py-12"
-      style={{ touchAction: "pan-y pinch-zoom" }}
-    >
+    <section className="reviews-font w-full bg-white py-8 sm:py-12">
       <div className="mx-auto max-w-[1200px] px-4">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:gap-8">
           {/* Left: rating info */}
@@ -341,12 +356,11 @@ export default function Reviews() {
               <div
                 ref={scrollerRef}
                 className="reviews-scroller mask-gradient relative flex cursor-grab items-start gap-3 overflow-x-auto pb-1 active:cursor-grabbing sm:gap-4"
-                style={{ touchAction: "pan-y" }}
-                onScroll={handleScroll}
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}
-                onPointerUp={onPointerUp}
-                onPointerCancel={onPointerUp}
+                onPointerUp={onPointerEnd}
+                onPointerCancel={onPointerEnd}
+                onLostPointerCapture={onPointerEnd}
               >
                 {[0, 1].map((setIndex) =>
                   reviews.map((review, index) => (

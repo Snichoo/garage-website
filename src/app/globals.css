@@ -11,13 +11,14 @@ html,
 body {
   background: #ffffff;
   color: #111;
-  overflow-x: hidden;
+  /* Clip decorative horizontal overflow without creating another vertical
+     scroll container. `hidden` implicitly changes overflow-y to `auto`. */
+  overflow-x: clip;
   max-width: 100vw;
 }
 
-/* Lock the document only while a visible menu or modal exists. Keeping this
-   declarative prevents mobile browsers from restoring a stale inline
-   `overflow: hidden` style from their back/forward cache. */
+/* Lock only while the corresponding overlay is mounted. Keep both roots for
+   mobile Safari, without persisting inline locks across page restoration. */
 html:has([data-body-scroll-lock="true"]),
 body:has([data-body-scroll-lock="true"]) {
   overflow-y: hidden;
@@ -63,15 +64,6 @@ body:has([data-body-scroll-lock="true"]) {
         #ececec 48px,
         #f7f7f7 96px
       );
-}
-
-/* background-attachment: fixed forces the browser to repaint the whole
-   multi-layer gradient on every scroll frame, which freezes/stutters scrolling
-   on mobile. Only enable it on hover-capable, fine-pointer devices (desktops). */
-@media (hover: hover) and (pointer: fine) {
-  .garage-bg {
-    background-attachment: fixed;
-  }
 }
 
 /* Navy variant of the garage-door panel background */
@@ -203,13 +195,12 @@ body:has([data-body-scroll-lock="true"]) {
 /* Scroll-triggered reveal for top-level page sections.
    ScrollAnimator only applies .scroll-reveal to elements that start
    off-screen, so above-the-fold content paints normally with no flash. */
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
   .scroll-reveal {
     opacity: 0;
     transform: translateY(48px);
     transition: opacity 850ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
   }
   .scroll-reveal.scroll-reveal-visible {
     opacity: 1;

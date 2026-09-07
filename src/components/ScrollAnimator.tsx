@@ -32,7 +32,12 @@ export default function ScrollAnimator() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Touch scrolling must never depend on an observer revealing large,
+    // composited sections after the browser suspends and resumes a tab.
+    const motion = window.matchMedia(
+      "(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)",
+    );
+    if (!motion.matches || !("IntersectionObserver" in window)) return;
 
     const sections = Array.from(
       document.querySelectorAll<HTMLElement>("main > section, main > footer"),
@@ -41,6 +46,7 @@ export default function ScrollAnimator() {
 
     const viewportH = window.innerHeight;
     const sectionTargets = new Map<HTMLElement, HTMLElement[]>();
+    const originalDelays = new Map<HTMLElement, string>();
 
     for (const section of sections) {
       const rect = section.getBoundingClientRect();
@@ -50,6 +56,7 @@ export default function ScrollAnimator() {
       const targets = pickRevealTargets(section);
       targets.forEach((el, i) => {
         const delay = Math.min(i * STAGGER_MS, MAX_STAGGER_MS);
+        originalDelays.set(el, el.style.transitionDelay);
         el.style.transitionDelay = `${delay}ms`;
         el.classList.add("scroll-reveal");
       });
@@ -73,7 +80,31 @@ export default function ScrollAnimator() {
 
     for (const section of sectionTargets.keys()) observer.observe(section);
 
-    return () => observer.disconnect();
+    // Fail open after an interruption or preference change. In particular,
+    // disconnecting an observer must not strand its targets at opacity: 0.
+    const finish = () => {
+      observer.disconnect();
+      for (const [el, delay] of originalDelays) {
+        el.classList.remove("scroll-reveal", "scroll-reveal-visible");
+        el.style.transitionDelay = delay;
+      }
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "visible") finish();
+    };
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) finish();
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    window.addEventListener("pageshow", onPageShow);
+    motion.addEventListener("change", finish);
+
+    return () => {
+      finish();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.removeEventListener("pageshow", onPageShow);
+      motion.removeEventListener("change", finish);
+    };
   }, [pathname]);
 
   return null;

@@ -69,14 +69,27 @@ export function SiteHeader({
     setMenuOpen(false);
   }, [pathname]);
 
-  // A page restored from Chrome's back/forward cache should never reopen a
-  // transient drawer from the previous visit.
+  // A transient drawer must not survive tab suspension, page restoration or
+  // switching to the desktop layout where its close button is hidden.
   useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setMenuOpen(false);
+    };
+    const closeWhenHidden = () => {
+      if (document.hidden) setMenuOpen(false);
+    };
     const closeOnRestore = (event: PageTransitionEvent) => {
       if (event.persisted) setMenuOpen(false);
     };
+    desktop.addEventListener("change", closeOnDesktop);
+    document.addEventListener("visibilitychange", closeWhenHidden);
     window.addEventListener("pageshow", closeOnRestore);
-    return () => window.removeEventListener("pageshow", closeOnRestore);
+    return () => {
+      desktop.removeEventListener("change", closeOnDesktop);
+      document.removeEventListener("visibilitychange", closeWhenHidden);
+      window.removeEventListener("pageshow", closeOnRestore);
+    };
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
