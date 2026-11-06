@@ -266,13 +266,19 @@ export const defaultContent: SiteContent = {
         ],
       },
       {
+        // Sparrow no longer supplies or installs new gates (Nov 2026). The
+        // Gates menu covers repairs, servicing and automation of existing gates.
         label: "Gates",
         href: "/gates",
         dropdown: [
-          { label: "New Gates", href: "/gates" },
-          { label: "Sliding Gates", href: "/sliding-gates" },
-          { label: "Swing Gates", href: "/swing-gates" },
-          { label: "Telescopic Gates", href: "/gate-automation#telescopic" },
+          { label: "Gate Repairs", href: "/gate-repairs" },
+          { label: "Sliding Gate Automation", href: "/gate-automation#sliding" },
+          { label: "Swing Gate Automation", href: "/gate-automation#double" },
+          {
+            label: "Telescopic Gate Automation",
+            href: "/gate-automation#telescopic",
+          },
+          { label: "Gate Motor Replacement", href: "/gate-motor-replacement" },
         ],
       },
       {
@@ -359,13 +365,13 @@ export const defaultContent: SiteContent = {
         href: "/garage-doors",
       },
       {
-        title: "Automatic Gates",
+        title: "Gate Repairs & Automation",
         image: "/images/gates/sliding-gate.avif",
-        alt: "New automated sliding driveway gate",
+        alt: "Automated sliding driveway gate on its track",
         items: [
-          "Sliding gates",
-          "Swing gates",
-          "Telescopic gates",
+          "Gate repairs & servicing",
+          "Gate motors & automation",
+          "Sliding, swing & telescopic gates",
         ],
         href: "/gates",
       },
@@ -558,7 +564,7 @@ export const defaultContent: SiteContent = {
         featured: true,
       },
       {
-        label: "Automatic Gates",
+        label: "Gate Repairs & Automation",
         icon: "/images/icons/help-gates.svg",
         href: "/gates",
         featured: true,
@@ -625,17 +631,17 @@ export const defaultContent: SiteContent = {
         href: "/tilt-doors",
       },
       {
-        label: "Sliding Gates",
+        label: "Sliding Gate Automation",
         icon: "/images/icons/help-gates.svg",
-        href: "/sliding-gates",
+        href: "/gate-automation#sliding",
       },
       {
-        label: "Swing Gates",
+        label: "Swing Gate Automation",
         icon: "/images/icons/help-gates.svg",
-        href: "/swing-gates",
+        href: "/gate-automation#double",
       },
       {
-        label: "Telescopic Gates",
+        label: "Telescopic Gate Automation",
         icon: "/images/icons/help-gates.svg",
         href: "/gate-automation#telescopic",
       },
@@ -842,10 +848,9 @@ export const defaultContent: SiteContent = {
     services: [
       { label: "Repairs", href: "/repairs" },
       { label: "Garage Doors", href: "/garage-doors" },
-      { label: "Sliding Gates", href: "/sliding-gates" },
-      { label: "Swing Gates", href: "/swing-gates" },
-      { label: "Telescopic Gates", href: "/gate-automation#telescopic" },
-      { label: "Automation", href: "/automation" },
+      { label: "Gate Repairs", href: "/gate-repairs" },
+      { label: "Gate Automation", href: "/gate-automation" },
+      { label: "Motors & Automation", href: "/automation" },
     ],
     companyHeading: "Company",
     company: [

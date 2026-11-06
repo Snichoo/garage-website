@@ -45,7 +45,7 @@ export type ServiceHubContent = {
   sectionHeading: string;
   sectionIntro: string;
   services: HubService[];
-  /** Optional band between hero and cards, e.g. the complete-gate package. */
+  /** Optional band between hero and cards, e.g. a featured package. */
   band?: { heading: string; text: string; points: string[]; image: string; alt: string };
   faqs: { q: string; a: string }[];
   faqIntro: string;

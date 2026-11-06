@@ -37,9 +37,7 @@ const staticPages: {
   { path: "/roller-doors", priority: 0.9, changeFrequency: "monthly" },
   { path: "/tilt-doors", priority: 0.9, changeFrequency: "monthly" },
 
-  // Gates
-  { path: "/sliding-gates", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/swing-gates", priority: 0.85, changeFrequency: "monthly" },
+  // Gates (repairs and automation only; new gates are no longer supplied)
   { path: "/gate-automation", priority: 0.85, changeFrequency: "monthly" },
 
   // Automation

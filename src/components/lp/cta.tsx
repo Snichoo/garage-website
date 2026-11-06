@@ -89,7 +89,7 @@ export function CtaStack({
   quoteLabel,
   reassurances = [
     "Talk to a real gate technician.",
-    "Free on-site measure. No obligation.",
+    "$0 call out. No obligation.",
   ],
 }: {
   phone: Phone;

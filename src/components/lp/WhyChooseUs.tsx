@@ -56,9 +56,9 @@ export function WhyChooseUs() {
           <Swoosh>Choose Us</Swoosh>
         </h2>
         <p className="mx-auto mt-6 max-w-4xl text-center text-[20px] leading-relaxed text-white/80">
-          One team that builds the gate, runs the power and programs the
-          automation stacks up differently to a fabricator, a sparky and an
-          automation company each doing their own bit. Here is the side by side.
+          One team that repairs the gate, runs the power and programs the
+          automation stacks up differently to a gate company, a sparky and a
+          motor company each doing their own bit. Here is the side by side.
         </p>
       </div>
 
@@ -102,7 +102,7 @@ export function WhyChooseUs() {
                 <CrossIcon className="h-8 w-8 text-red-600" />
               </span>
               <span className="font-display text-[28px] font-extrabold text-white lg:text-[36px]">
-                Fabricators & One-Trade Installers
+                One-Trade Operators
               </span>
             </div>
             <div className="divide-y divide-white/10">

@@ -56,14 +56,18 @@ components. It appears in the editor automatically.
 
 ## Site structure
 
-Navigation is built around the core service categories. Gates links directly
-to the three gate types rather than using a separate category hub.
+Navigation is built around the core service categories. Sparrow stopped
+supplying and installing new gates in Nov 2026, so the Gates section covers
+repairs, servicing and automation of existing gates only. `/gates` (shared with
+the `/lp/gates` Google Ads route) is the gate repairs and automation page, and
+`/sliding-gates` and `/swing-gates` permanently redirect to the matching
+`/gate-automation` sections. Don't add new gate supply or install copy back.
 
 | Category | Hub | Child pages |
 |---|---|---|
 | Repairs | `/repairs` | `/emergency-repairs`, `/garage-door-repairs`, `/gate-repairs`, `/springs`, `/cables`, `/garage-door-off-track`, `/garage-door-servicing`, `/garage-door-safety-inspection` |
 | Garage Doors | `/garage-doors` | `/sectional-garage-doors`, `/roller-doors`, `/tilt-doors` |
-| Gates | `/gates` | `/gates`, `/sliding-gates`, `/swing-gates`, `/gate-automation#telescopic` |
+| Gates | `/gates` | `/gate-repairs`, `/gate-automation#sliding`, `/gate-automation#double`, `/gate-automation#telescopic`, `/gate-motor-replacement` |
 | Automation | `/automation` | `/openers`, `/garage-door-motor-replacement`, `/gate-automation`, `/gate-motor-replacement`, `/smart-systems` |
 | Contact | `/contact` | `/request-a-quote`, `/book-a-service` |
 
@@ -79,7 +83,9 @@ Shared page shells (use these rather than hand-rolling a new page):
 - `components/LegalPage.tsx` - privacy/terms style prose pages.
 
 `/automated-gates` and `/smart-kits` were renamed to `/gate-automation` and
-`/smart-systems`. Permanent redirects live in `next.config.js` - keep them.
+`/smart-systems`, and the retired new-gate pages `/sliding-gates` and
+`/swing-gates` point at `/gate-automation#sliding` and `#double`. Permanent
+redirects live in `next.config.js` - keep them.
 
 ## Architecture notes
 

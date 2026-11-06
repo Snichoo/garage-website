@@ -15,9 +15,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const { business } = await getContent();
   return {
     title: {
-      absolute: `Automatic Gates Brisbane | Installed & Automated | ${business.name}`,
+      absolute: `Gate Repairs & Automation Brisbane | ${business.name}`,
     },
-    description: `Sliding, swing and telescopic driveway gates supplied, installed and automated across Brisbane. Gate, motor, power and safety gear in one fixed quote. $0 call out, free on-site measure. Call ${business.phoneDisplay}.`,
+    description: `Sliding, swing and telescopic driveway gates repaired, serviced and automated across Brisbane. Gate, motor and safety gear sorted by one team in one fixed quote. $0 call out. Call ${business.phoneDisplay}.`,
     alternates: { canonical: "/gates" },
     robots: { index: false, follow: false, nocache: true },
   };

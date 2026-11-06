@@ -37,6 +37,18 @@ const nextConfig = {
         permanent: true,
       },
       { source: "/smart-kits", destination: "/smart-systems", permanent: true },
+      // Sparrow stopped supplying and installing new gates in Nov 2026. The
+      // old new-gate pages point at the matching gate automation sections.
+      {
+        source: "/sliding-gates",
+        destination: "/gate-automation#sliding",
+        permanent: true,
+      },
+      {
+        source: "/swing-gates",
+        destination: "/gate-automation#double",
+        permanent: true,
+      },
     ];
   },
   experimental: {

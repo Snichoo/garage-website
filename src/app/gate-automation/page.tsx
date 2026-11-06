@@ -12,8 +12,8 @@ import { pageMetadata, getSiteConfig, breadcrumbSchema, serviceSchema } from "@/
 export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
-  title: "Gate Motors & Automation Brisbane | Supply & Installation",
-  description: `Gate motors and automation across Brisbane. Sliding, swing and telescopic gates automated with remotes, keypads, safety beams and smart control. Get a quote today—call ${cfg.phoneDisplay}.`,
+  title: "Gate Motors & Automation Brisbane | Motors Supplied & Fitted",
+  description: `Gate motors and automation across Brisbane. Your existing sliding, swing or telescopic gate automated with remotes, keypads, safety beams and smart control. Get a quote today. Call ${cfg.phoneDisplay}.`,
   path: "/gate-automation",
 });
 }
@@ -61,16 +61,16 @@ type GateType = {
 const gateTypes: GateType[] = [
   {
     id: "telescopic",
-    name: "Automated Telescopic Gates",
+    name: "Telescopic Gate Automation",
     image: "/images/automated-gates.webp",
     alt: "Modern automated telescopic gate with overlapping panels",
     intro:
-      "Telescopic gates use two or more overlapping panels that slide and nest together, delivering a wide opening in roughly half the run-off space of a standard sliding gate.",
+      "Telescopic gates use two or more overlapping panels that slide and nest together, so the motor and drive have to keep every panel moving in step.",
     benefits: [
-      "Ideal for narrow driveways and properties with limited side clearance.",
-      "Wide clear opening without sacrificing kerbside space.",
-      "Smooth, synchronised panel motion with quiet operation.",
-      "Available in a wide range of materials, styles and finishes.",
+      "Motor sized for the combined weight and travel of every panel.",
+      "Synchronised drive so the panels open and nest together smoothly.",
+      "Track and roller service to stop panels binding or jamming.",
+      "Remotes, keypads, intercoms and smart phone control.",
     ],
     services: [
       "Automation Installation",
@@ -81,16 +81,16 @@ const gateTypes: GateType[] = [
   },
   {
     id: "sliding",
-    name: "Automated Sliding Gates",
+    name: "Sliding Gate Automation",
     image: "/images/gates/sliding-gate.avif",
     alt: "Automated sliding driveway gate on a track",
     intro:
-      "Sliding gates run horizontally along a track, perfect for properties with limited driveway space, combining function with a clean, modern look.",
+      "Sliding gates run horizontally along a track, and a well-matched motor keeps them gliding smoothly instead of straining, stalling or jumping the rack.",
     benefits: [
-      "Space-saving design ideal where double gates aren't an option.",
-      "Robust locking and sturdy construction for enhanced security.",
-      "Low maintenance with consistent, reliable performance.",
-      "Customisable in a range of designs, colours and materials.",
+      "Motor matched to the weight and length of your gate.",
+      "Rack, travel limits and soft stop set so it runs end to end.",
+      "Control board replacement and reprogramming when the electronics fail.",
+      "Safety beams and auto-reverse fitted and tested on the day.",
     ],
     services: [
       "Automation Installation",
@@ -101,16 +101,16 @@ const gateTypes: GateType[] = [
   },
   {
     id: "double",
-    name: "Double Gates Automation",
+    name: "Double Gate Automation",
     image: "/images/gates/double-gates.avif",
     alt: "Symmetrical automated double entry gates",
     intro:
-      "Double gates use two symmetrical panels that open inward or outward together, a wide, grand entrance for properties that want both presence and access.",
+      "Double gates use two symmetrical leaves that swing inward or outward together, so both motors have to be set up to move, stop and meet in step.",
     benefits: [
-      "Balanced, stylish appearance that elevates the property.",
-      "Wide opening for larger vehicles and equipment.",
-      "Customisable finishes, styles and materials.",
-      "High-quality construction for long-lasting performance.",
+      "Underground or articulated arm motors to suit your posts and leaves.",
+      "Both leaves set to open, close and meet evenly.",
+      "Re-alignment of sagging or dropped leaves before automating.",
+      "Remotes, keypads and safety beams set up and tested on the day.",
     ],
     services: [
       "Automation Installation",
@@ -214,9 +214,9 @@ export default async function GateAutomationPage() {
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
               Whether you want the gate you already have automated, a tired
-              motor replaced, or a full system installed alongside a brand new
-              gate, we supply and fit the motor, remotes, keypads and safety
-              gear and hand it over working properly on the day.
+              motor replaced or smart control added, we supply and fit the
+              motor, remotes, keypads and safety gear and hand it over working
+              properly on the day.
             </p>
             <ul className="flex flex-col gap-3">
               {features.map((f) => (
@@ -298,10 +298,9 @@ export default async function GateAutomationPage() {
           </div>
 
           <p className="mb-12 max-w-2xl text-base leading-relaxed text-neutral-700 md:text-lg">
-            We automate every common gate layout, on gates we have built and on
-            gates that were already there. If you are after a complete new gate
-            as well, we can size the right sliding, swing or telescopic layout
-            during the free on-site measure.
+            We automate every common gate layout on the gate that is already at
+            your driveway. We check the frame, the track or hinges and the
+            weight of the gate first, then match a motor rated for it.
           </p>
 
           <div className="flex flex-col gap-12 md:gap-16">

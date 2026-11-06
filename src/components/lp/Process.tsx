@@ -5,7 +5,7 @@ import { steps } from "./gates-content";
 import type { Phone } from "./cta";
 
 const PHOTO = "/images/gallery/02-5.jpg";
-const PHOTO_ALT = "Automated entry gates and fencing installed at a Brisbane home";
+const PHOTO_ALT = "Automated entry gates and fencing at a Brisbane home";
 
 export function Process({ phone }: { phone: Phone }) {
   return (
@@ -23,11 +23,11 @@ export function Process({ phone }: { phone: Phone }) {
       <div className="relative mx-auto grid max-w-[1440px] gap-12 px-6 lg:grid-cols-2 lg:px-10">
         <div className="relative">
           <h2 className="relative font-display text-[42px] font-extrabold leading-[1.02] text-brand-ink sm:text-[60px] lg:text-[76px]">
-            One Team, From First Measure to{" "}
+            One Team, From First Look to{" "}
             <Swoosh color="#15355E">Final Click.</Swoosh>
           </h2>
           <p className="mt-5 max-w-[580px] text-[18px] font-medium leading-relaxed text-brand-body sm:text-[20px]">
-            Gate, motor, power and safety gear—planned and installed by one
+            Gate, motor, power and safety gear, checked and fixed by one
             accountable team under one fixed quote.
           </p>
 
@@ -83,7 +83,7 @@ export function Process({ phone }: { phone: Phone }) {
           </div>
           <p className="mt-5 flex items-center gap-2 text-[17px] font-semibold text-brand-ink">
             <TickMark className="h-5 w-5 shrink-0 text-brand-navy" />
-            One quote, one install, one number to call afterwards.
+            One quote, one team, one number to call afterwards.
           </p>
         </div>
       </div>

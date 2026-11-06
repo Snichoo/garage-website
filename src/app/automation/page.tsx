@@ -75,7 +75,7 @@ const content: ServiceHubContent = {
       image: "/images/automated-gates.webp",
       alt: "Automated telescopic gate with overlapping panels",
       description:
-        "Automation for sliding, swing and telescopic gates, on a gate we built or one that was already there. Motors, remotes, keypads, intercoms and safety beams.",
+        "Automation for the sliding, swing or telescopic gate already at your driveway. Motors, remotes, keypads, intercoms and safety beams.",
       points: [
         "Sliding, swing and telescopic gates",
         "Power supply included in the quote",

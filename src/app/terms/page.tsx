@@ -33,13 +33,13 @@ const content: LegalPageContent = {
     {
       heading: "Cancellations",
       paragraphs: [
-        "Please give us as much notice as you can if you need to cancel or reschedule. For custom-made doors and gates, cancellation after the order has been placed with the manufacturer may incur charges for materials already committed. We will always tell you before that point is reached.",
+        "Please give us as much notice as you can if you need to cancel or reschedule. For custom-made doors, cancellation after the order has been placed with the manufacturer may incur charges for materials already committed. We will always tell you before that point is reached.",
       ],
     },
     {
       heading: "Payment",
       paragraphs: [
-        "Repairs and service work are payable on completion unless we have agreed otherwise in writing. New door and gate installations may require a deposit at the time of order, with the balance payable on completion.",
+        "Repairs and service work are payable on completion unless we have agreed otherwise in writing. New door installations may require a deposit at the time of order, with the balance payable on completion.",
         "Title to any supplied goods remains with {name} until payment has been received in full.",
       ],
     },

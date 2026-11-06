@@ -47,16 +47,17 @@ export function OwnerSection({
           <div className="mt-8 space-y-6 text-[18px] leading-relaxed text-white/90 sm:text-[20px]">
             <p>
               Every Sparrow job is run by one of our two managers. The person who
-              measures your driveway is the person who quotes it, installs the
-              gate, wires the motor and answers the phone when you ring six
-              months later. No call centres, no subcontractors, nobody guessing
-              at what somebody else promised you.
+              looks at your gate is the person who quotes it, fixes it, wires
+              the motor and answers the phone when you ring six months later. No
+              call centres, no subcontractors, nobody guessing at what somebody
+              else promised you.
             </p>
             <p>
-              It is also why the gate and the automation get quoted together. We
-              kept hearing about jobs where a fabricator, a sparky and an
-              automation company each did their own bit and left the homeowner
-              holding the pieces, so we took on the lot and own it end to end.
+              It is also why the gate and the automation get looked at together.
+              We kept hearing about jobs where one company fixed the gate,
+              another fixed the motor and each blamed the other, leaving the
+              homeowner holding the pieces, so we took on both and own it end to
+              end.
             </p>
             <p>
               Ring{" "}

@@ -105,9 +105,9 @@ export default function AboutPage() {
                 <p className="mt-6 text-base font-semibold leading-relaxed text-white md:text-[17px]">
                   Every install and repair is handled in-house by our own
                   technicians, with no subcontractors or national call centres. We
-                  cover repairs, new garage doors, new gates and everything
-                  motor and automation related, and we back every job with a
-                  workmanship guarantee in writing.
+                  cover garage door and gate repairs, new garage doors and
+                  everything motor and automation related, and we back every job
+                  with a workmanship guarantee in writing.
                 </p>
               </div>
             </div>

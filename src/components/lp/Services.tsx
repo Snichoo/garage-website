@@ -36,14 +36,14 @@ export function Services() {
         <div className="relative mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <div className="max-w-[820px]">
             <h2 className="font-display text-[42px] font-extrabold leading-[1.02] text-brand-ink sm:text-[60px] lg:text-[78px]">
-              Everything Your Driveway Needs,{" "}
+              Everything Your Gate Needs,{" "}
               <Swoosh color="#15355E">Under One Roof</Swoosh>
             </h2>
             <p className="mt-6 max-w-[700px] text-[20px] leading-relaxed text-brand-body sm:text-[23px]">
-              From a brand new sliding gate to a motor that has given up on the
-              gate you already own, the gate side and the automation side are
-              handled by the same team, so nothing falls through the gap between
-              trades.
+              From a slider dragging on its track to a motor that has given up
+              on the gate you already own, the gate side and the automation side
+              are handled by the same team, so nothing falls through the gap
+              between trades.
             </p>
           </div>
         </div>
@@ -78,7 +78,7 @@ export function Services() {
         <SectionCta
           className="mt-14"
           arrow="left"
-          subtext="Tell us your driveway and we'll quote it fast."
+          subtext="Tell us what your gate is doing and we'll quote it fast."
         />
       </div>
     </section>

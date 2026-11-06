@@ -46,10 +46,10 @@ export function ServiceAreas() {
           <Swoosh color="#15355E">We Work</Swoosh>
         </h2>
         <p className="mx-auto mt-7 max-w-4xl text-center text-[20px] leading-relaxed text-brand-body">
-          We install, automate and repair driveway gates right across Greater
+          We repair, service and automate driveway gates right across Greater
           Brisbane, from the inner suburbs out to Moreton Bay, Logan and
-          Ipswich. Call with your suburb and your driveway details and we will
-          confirm the next free measure available in your area.
+          Ipswich. Call with your suburb and what your gate is doing and we
+          will confirm the next visit available in your area.
         </p>
 
         {/* First row: two area cards with a gate photo between them. */}

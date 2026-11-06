@@ -12,7 +12,7 @@ export function Hero({ phone }: { phone: Phone }) {
     >
       <Image
         src="/images/lp/gate-hero.webp"
-        alt="Automated sliding driveway gate installed at a Brisbane home"
+        alt="Automated sliding driveway gate at a Brisbane home"
         fill
         priority
         sizes="100vw"
@@ -36,14 +36,14 @@ export function Hero({ phone }: { phone: Phone }) {
               5-Star Rated Local Brisbane Team
             </p>
 
-            {/* Sizes step up so "Automatic Gates" always holds one line: the
+            {/* Sizes step up so "Driveway Gates" always holds one line: the
                 highlight stroke is drawn across the span, so a wrap would
                 leave it stranded across two lines. */}
             <h1 className="mt-4 max-w-full font-display text-[31px] font-extrabold leading-[1.02] text-white min-[380px]:text-[34px] min-[430px]:text-[38px] sm:text-[54px] sm:leading-[0.98] md:text-[64px] xl:text-[80px]">
-              <Swoosh className="lp-swoosh--hero">Automatic Gates</Swoosh>
+              <Swoosh className="lp-swoosh--hero">Driveway Gates</Swoosh>
               <span>
                 <br />
-                Built, Installed
+                Repaired, Serviced
               </span>
               <span>
                 <br />& Automated.
@@ -51,9 +51,9 @@ export function Hero({ phone }: { phone: Phone }) {
             </h1>
 
             <p className="mt-4 max-w-[620px] text-[15px] font-medium leading-[1.55] text-white/85 sm:mt-5 sm:max-w-[860px] sm:text-xl sm:leading-relaxed xl:text-2xl">
-              New sliding, swing and telescopic driveway gates across Brisbane,
-              plus motors, remotes and repairs. One team builds the gate, fits
-              the automation and runs the power, so you are not chasing three
+              Repairs, servicing, motors and remotes for sliding, swing and
+              telescopic driveway gates across Brisbane. One team fixes the gate
+              and the automation on any brand, so you are not chasing two
               trades for one driveway.
             </p>
 

@@ -12,8 +12,8 @@ import {
 export async function generateMetadata() {
   const cfg = await getSiteConfig();
   return pageMetadata({
-    title: "New Gates Brisbane | Sliding & Swing Gates Installed",
-    description: `New driveway gates supplied and installed across Brisbane. Sliding and swing gates built to suit your property, with the motor, remotes and safety gear fitted as one complete package. Call ${cfg.phoneDisplay}.`,
+    title: "Gate Repairs & Automation Brisbane | Sliding & Swing Gates",
+    description: `Gate repairs, servicing and automation across Brisbane. Sliding, swing and telescopic gates fixed on any brand, plus motors, remotes and safety beams fitted to the gate you already have. Call ${cfg.phoneDisplay}.`,
     path: "/gates",
   });
 }
@@ -28,9 +28,9 @@ export default async function GatesPage() {
             { name: "Gates", path: "/gates" },
           ]),
           await serviceSchema({
-            name: "Automatic Gate Supply, Installation & Automation",
+            name: "Gate Repairs, Servicing & Automation",
             description:
-              "Supply, installation and automation of sliding, swing and telescopic driveway gates across Brisbane and South East Queensland.",
+              "Repairs, servicing and automation of existing sliding, swing and telescopic driveway gates across Brisbane and South East Queensland.",
             path: "/gates",
           }),
           faqPageSchema(faqs),

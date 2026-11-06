@@ -70,8 +70,8 @@ export default async function HomeHero() {
 
             <p className="mt-4 max-w-[620px] text-[15px] font-medium leading-[1.55] text-white/85 sm:mt-5 sm:max-w-[860px] sm:text-xl sm:leading-relaxed xl:text-2xl">
               New garage doors, same-day repairs and automation across Brisbane,
-              plus sliding, swing and telescopic gates. One local team handles
-              doors, motors, springs, cables and gate systems from quote to
+              plus gate repairs and gate motors. One local team handles doors,
+              motors, springs, cables and gate automation from quote to
               handover.
             </p>
 

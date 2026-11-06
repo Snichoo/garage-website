@@ -15,7 +15,7 @@ const content: EnquiryPageContent = {
   titleHighlight: "Request",
   titleRest: "A Quote Today",
   intro:
-    "Tell us what you need and we'll come back with a straight, fixed price. New doors and gates include a free on-site measure, and there is never a call-out fee.",
+    "Tell us what you need and we'll come back with a straight, fixed price. New doors include a free on-site measure, and there is never a call-out fee.",
   heroImage: "/images/contact-bg.avif",
   formTitle: "Get Your",
   formTitleHighlight: "Quote Today",
@@ -29,7 +29,7 @@ const content: EnquiryPageContent = {
     },
     {
       title: "We come back with a price",
-      text: "For most repairs we can quote over the phone. For new doors and gates we book a free on-site measure so the price is exact.",
+      text: "For most repairs we can quote over the phone. For new doors we book a free on-site measure so the price is exact.",
     },
     {
       title: "You decide, no pressure",

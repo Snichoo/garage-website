@@ -1,7 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { list, put } from "@vercel/blob";
-import { defaultContent, type SiteContent } from "@/content/defaults";
+import {
+  defaultContent,
+  type NavLink,
+  type SiteContent,
+} from "@/content/defaults";
 
 /**
  * Server-side content store. Admin edits are deep-merged over the defaults in
@@ -59,6 +63,44 @@ function migrateLegacyCopy(
     : value;
 }
 
+/**
+ * Sparrow stopped supplying and installing new gates in Nov 2026. The old
+ * new-gate pages now redirect (see next.config.js), so saved CMS links to them
+ * are pointed at the matching gate automation sections, and any "New Gates"
+ * link is dropped. Do not re-add new gate links here.
+ */
+const RETIRED_GATE_LINKS: Record<string, NavLink> = {
+  "/sliding-gates": {
+    label: "Sliding Gate Automation",
+    href: "/gate-automation#sliding",
+  },
+  "/swing-gates": {
+    label: "Swing Gate Automation",
+    href: "/gate-automation#double",
+  },
+};
+
+const defaultGatesCard = defaultContent.services.cards.find(
+  (card) => card.href === "/gates",
+);
+
+function isNewGatesLink(link: NavLink): boolean {
+  return link.label.trim().toLowerCase() === "new gates";
+}
+
+function migrateGateLink<T extends NavLink>(link: T): T {
+  const href = link.href.trim();
+  const retired = RETIRED_GATE_LINKS[href];
+  if (retired) return { ...link, ...retired };
+  if (
+    href === "/gate-automation#telescopic" &&
+    link.label.trim().toLowerCase() === "telescopic gates"
+  ) {
+    return { ...link, label: "Telescopic Gate Automation" };
+  }
+  return link;
+}
+
 /** Keep saved CMS content aligned with route and copy changes in code. */
 function applyRouteMigrations(content: SiteContent): SiteContent {
   let hasGatesItem = false;
@@ -66,23 +108,12 @@ function applyRouteMigrations(content: SiteContent): SiteContent {
     if (item.label.trim().toLowerCase() !== "gates") return item;
 
     hasGatesItem = true;
-    const dropdown = item.dropdown ?? [];
-    const newGatesIndex = dropdown.findIndex(
-      (link) =>
-        link.href === "/gates" ||
-        link.label.trim().toLowerCase() === "new gates",
-    );
-    const updatedDropdown = dropdown.map((link, index) =>
-      index === newGatesIndex ? { ...link, href: "/gates" } : link,
-    );
-
     return {
       ...item,
       href: "/gates",
-      dropdown:
-        newGatesIndex >= 0
-          ? updatedDropdown
-          : [{ label: "New Gates", href: "/gates" }, ...updatedDropdown],
+      dropdown: (item.dropdown ?? [])
+        .filter((link) => !isNewGatesLink(link))
+        .map((link) => migrateGateLink(link)),
     };
   });
 
@@ -130,17 +161,31 @@ function applyRouteMigrations(content: SiteContent): SiteContent {
       ),
       cards: content.services.cards.map((card) =>
         card.title.trim().toLowerCase() === "automatic gates"
-          ? { ...card, href: "/gates" }
+          ? {
+              ...card,
+              title: "Gate Repairs & Automation",
+              alt: defaultGatesCard?.alt ?? card.alt,
+              items: defaultGatesCard?.items ?? card.items,
+              href: "/gates",
+            }
           : card,
       ),
     },
     howCanWeHelp: {
       ...content.howCanWeHelp,
-      items: content.howCanWeHelp.items.map((item) =>
-        item.label.trim().toLowerCase() === "automatic gates"
-          ? { ...item, href: "/gates" }
-          : item,
-      ),
+      items: content.howCanWeHelp.items
+        .filter((item) => !isNewGatesLink(item))
+        .map((item) =>
+          item.label.trim().toLowerCase() === "automatic gates"
+            ? { ...item, label: "Gate Repairs & Automation", href: "/gates" }
+            : migrateGateLink(item),
+        ),
+    },
+    footer: {
+      ...content.footer,
+      services: content.footer.services
+        .filter((link) => !isNewGatesLink(link))
+        .map((link) => migrateGateLink(link)),
     },
     reviews: {
       ...content.reviews,
